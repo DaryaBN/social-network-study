@@ -216,8 +216,128 @@ aside{
 .blokAside{
     display: none;
 }
+/* User */
+.poster{
+    width: 100%;
+}
+.profilInfo{
+    background: #FFFFFF;
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
+    margin: 0;
+}
+.InfoPhoto{
+    border: 4px solid #FFFFFF;
+    border-radius: 60px;
+    position: relative;
+    bottom: 55px; 
+    margin-left: 13px;
+    height: 110px;
+}
+/* .InfoProfileText{
+   position: relative;
+   top: -40px
+} */
+.InfoName{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    margin: 0;
+    margin-left: 13px;
+}
+.InfoNick{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #ABACB1;
+    margin-top: 0;
+    margin-left: 13px;
+}
+.InfoStatus{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    margin-left: 13px;
+}
+.InfoLink{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    color: #ABACB1;
+    margin: 4px;
+    margin-left: 13px;
+}
+.InfoBlok360{
+    display: block;
+}
+.InfoBlok{
+    display: flex;
+    margin-right: 20px;
+}
+.InfoVektorBlok{
+    display: flex;
+    width: 10px;
+}
+.InfoVector{
+    position: relative;
+    right: 11.5px;
+    bottom: 3px;
 
-@media (min-width: 956px) {
+}
+.InfoVector1{
+    position: relative;
+    right: 4.5px;
+    margin-bottom: 7px;
+    
+}
+.InfoVector2{
+    position: relative;
+    left: -10px;
+    top: -6px;
+}
+.InfoIndicators{
+    width: 100%;
+    margin-left: 2.5%;
+    margin-right: 0;
+}
+.InfoIndicators1{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 28px;
+    margin-bottom: 0;
+    margin-top: 0px;
+
+}
+.InfoIndicators2{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 12px;
+    margin: 0;
+    padding-right: 15px;
+    color: #ABACB1;
+}
+.InfoButton{
+    margin: 20px 13px 24px 13px;
+    background: #FFFFFF;
+    border: 1px solid #0057FF;
+    border-radius: 5px;
+    padding: 14px;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 700;
+    text-align: center;
+    color: #0057FF;
+}
+.InfoBlok900{
+    display: none;
+}
+
+@media (min-width: 700px) {
     body{
         background: #edededd0;
         width: 100%;
@@ -549,4 +669,45 @@ aside{
         padding-left: 16px;
         margin-bottom: 3%;
     }
+    /*User*/
+    .profilInfo{
+        border-radius: 10px;
+        margin-bottom: 25px;
+    }
+    .InfoBlok360 {
+        display: none;
+    }
+    .InfoBlok900 {
+        display: block;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+   .InfoButton{
+        margin-top: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .InfoPhoto{
+        float: left;
+    }
+    .InfoLink{
+        display: flex;
+    }
+    .InfoBlok{
+        margin-right: 30px;
+        margin-bottom: 30px;
+        margin-left: 14px;
+    }
+    .NameNick{
+        width: 100%;
+        display: flex;
+    }
+    .InfoNick{
+        margin-top: 5px;
+    }
+    .InfoStatus{
+        margin-top: 0px;
+    }
+   
 }
