@@ -188,6 +188,10 @@ aside{
     justify-content: center;
     align-items: center; 
 }
+.blokNavigationMes{
+    position: relative;
+    bottom: -2px;
+}
 .underline{
     position: relative;
     top: 10px;
@@ -224,8 +228,10 @@ aside{
     background: #FFFFFF;
     box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
     margin: 0;
+    height: auto;
 }
 .InfoPhoto{
+    display: flex;
     border: 4px solid #FFFFFF;
     border-radius: 60px;
     position: relative;
@@ -233,10 +239,12 @@ aside{
     margin-left: 13px;
     height: 110px;
 }
-/* .InfoProfileText{
-   position: relative;
-   top: -40px
-} */
+.InfoProfileText{
+  display: flex;
+  flex-direction: column;
+  margin-top: -45px;
+   
+}
 .InfoName{
     font-style: normal;
     font-weight: 700;
@@ -336,6 +344,66 @@ aside{
 .InfoBlok900{
     display: none;
 }
+
+/* Followers List */
+.FollowersPoster{
+    display: block;
+}
+.FollowersPoster950{
+    display: none;
+}
+.poster{
+    object-fit: cover;
+}
+.button1{
+    margin: 24px 0px 25px 0px;
+    background: #0057FF;
+    border: 1px solid #0057FF;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    text-align: center;
+    color: #FFFFFF;
+}
+.FolloversRead{
+    float: right;
+    background: #FFFFFF;
+    border: 1px solid #0057FF;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 14px;
+    text-align: center;
+    color: #0057FF;
+    padding: 5px;
+    width: 20%;
+    margin-right: 15px;
+}
+.FolloversReadBlue{
+    float: right;
+    background:#0057FF ;
+    border: 1px solid #0057FF;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 5px;
+    width: 20%;
+    margin-right: 15px;
+}
+.FolloverText{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 32px;
+    margin-left: 10px;
+    margin-top: 0;
+}
+
 
 @media (min-width: 700px) {
     body{
@@ -670,6 +738,21 @@ aside{
         margin-bottom: 3%;
     }
     /*User*/
+    .FollowersPoster{
+        display: none;
+    }
+    .FollowersPoster950{
+        display: block;
+        display: flex;
+        height: 250px;
+    }
+    .poster{
+        border-top: 1px #FFFFFF;
+        border-radius: 10px 10px 0px 0px;
+    }
+    .InfoProfileText{
+        margin-top: 0px;
+    }
     .profilInfo{
         border-radius: 10px;
         margin-bottom: 25px;
@@ -687,6 +770,7 @@ aside{
         margin-top: 0;
         padding-left: 20px;
         padding-right: 20px;
+        width: 17%;
     }
     .InfoPhoto{
         float: left;
@@ -697,7 +781,7 @@ aside{
     .InfoBlok{
         margin-right: 30px;
         margin-bottom: 30px;
-        margin-left: 14px;
+        /* margin-left: 14px; */
     }
     .NameNick{
         width: 100%;
