@@ -201,9 +201,9 @@ aside{
 }
 .rectangle{
     display: block;
-    position: absolute;
-    left: 75%;
-    bottom: -205px;
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -236,15 +236,18 @@ aside{
     border-radius: 60px;
     position: relative;
     bottom: 55px; 
-    margin-left: 13px;
+    margin-left: 5px;
     height: 110px;
+    width: 110px;
 }
-.InfoProfileText{
-  display: flex;
-  flex-direction: column;
-  margin-top: -45px;
-   
+.InfoPhoto360{  
+    display: block;
 }
+/* .InfoProfileText{
+    display: flex;
+    flex-direction: column;
+} */
+
 .InfoName{
     font-style: normal;
     font-weight: 700;
@@ -480,9 +483,14 @@ aside{
     margin-left: 16px;
     margin-right: 16px;
     padding: 15px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
-
+.SingleTextPost{
+    display: none;
+}
+.SingleButtonBlok{
+    display: none;
+}
 
 @media (min-width: 700px) {
     body{
@@ -568,7 +576,6 @@ aside{
         margin-left: 10%;
         margin-bottom: 15px;
         margin-top: 25px;
-        /* padding-top: 25px; */
         width: 57%;
     }
     .profile{
@@ -611,7 +618,6 @@ aside{
         float: right;
         width: 20%;
         margin-right: 10%;
-        /* margin-bottom: 15px; */
         margin-top: 25px;
         padding: 1%;
         padding-top: 0;
@@ -829,9 +835,6 @@ aside{
         border-top: 1px #FFFFFF;
         border-radius: 10px 10px 0px 0px;
     }
-    .InfoProfileText{
-        margin-top: 0px;
-    }
     .profilInfo{
         border-radius: 10px;
         margin-bottom: 25px;
@@ -841,18 +844,25 @@ aside{
     }
     .InfoBlok900 {
         display: block;
+        float: left;
         display: flex;
         justify-content: space-between;
         margin-top: 10px;
+        max-height: 70px; 
     }
    .InfoButton{
         margin-top: 0;
         padding-left: 20px;
         padding-right: 20px;
         width: 17%;
+        height: 10%;
+
     }
     .InfoPhoto{
         float: left;
+    }
+    .InfoPhoto360{
+        display: none;
     }
     .InfoLink{
         display: flex;
@@ -873,5 +883,208 @@ aside{
         margin-top: 0px;
     }
     /* Single Post */
-   
+    .AsideColor{
+        display: block;
+        width: 100%;
+        background: #ffffff;
+        box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+        margin: 0;
+        padding-top: 16px;
+        background: #FFFFFF;
+        border: 3px solid #0057FF;
+        box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    .SingleAnswer{
+        display: none;
+    }
+    .SingleTextPost{
+        display: block;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 24px;
+        margin-top: 0;
+        margin-left: 16px;
+    }
+    .SingleButton{
+        border: 1px solid #0057FF;
+        border-radius: 10px; 
+        margin-left: 16px;
+        margin-bottom: 16px;
+        padding: 14px;
+    }
+    .SingleButton2{
+        border: 4px solid ;
+        border-color: #DFDFDF #0057FF  #DFDFDF  #DFDFDF; 
+        /* background: #0057FF; */
+        /* transform: rotate(-90deg); */
+        border-radius: 100px; 
+        width: 45px;
+        height: 30px;
+        margin-left: 16px;
+        margin-bottom: 16px;
+        margin-right: 16px;
+        padding: 10px 0 10px 0;
+        text-align: center;
+        color: #0057FF;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .SingleButton3{
+        background: #0057FF;
+        border: 1px solid #0057FF;
+        border-radius: 10px;
+        margin-bottom: 16px;
+        margin-right: 16px;
+        width: 220px;
+        color: #FFFFFF;
+        padding-top: 17px;
+        text-align: center;
+        
+    }
+    .SingleButtonBlok{
+        display: block;
+        display: flex;
+        justify-content: space-between;
+    }
+    .SingleButtonBlok2{
+        display: flex;
+    }
+
+    /* Settings */
+    .HeadingEdit{
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 43px;
+        margin-left: 50px;
+        margin-top: 50px;
+    }
+    .PrifilEdit{
+        background: #FFFFFF;
+        box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
+        border-radius: 10px; 
+        width: 60%;
+        margin-left: 52px;
+        float: left;
+    }
+    .EditInput {
+        display: flex;
+        background: #FFFFFF;
+        border: 1px solid #DFDFDF;
+        border-radius: 10px;
+        height: 52px;
+        margin-top: 24px;
+        margin-left: 16px;
+        margin-right: 16px;
+        width: 100%;
+        flex-direction: column;
+    }
+    .EditPhoto{
+        border-radius: 80px;
+        width: 20%;
+        background: rgba(0, 0, 0, 0.4);
+        float: right;
+        margin-right: 22px;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+    button{
+        width: 100%;
+        background: #0057FF;
+        border: 1px solid #0057FF;
+        border-radius: 10px;
+        color: white;
+        font-size: 18px;
+        width: 25%;
+        padding: 15px;
+        margin-top: 24px;
+        margin-left: 16px;
+        margin-bottom: 32px;
+    }
+    .EditText{
+        font-weight: 400;
+        font-size: 9px;
+        line-height: 11px;
+        color: #E40060;
+        margin-top: 3px;
+        margin-left: 25px;
+    }
+    .EditBlok{
+        display: flex;
+    }
+    .EditB{
+        width: 70%;
+    }
+    .EditC{
+        width: 95%;
+    }
+    .EditLabel{
+        font-weight: 400;
+        font-size: 9px;
+        line-height: 11px; 
+        color: #B1B1B1;
+        margin-left: 16px;
+        margin-top: 6px;
+        margin-bottom: 4px;
+    }
+    .EditValue{
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        color: #555555;
+        margin-bottom: 7px;
+        margin-top: 0px;
+        margin-left: 16px;
+    }
+    .EditColor{
+        background: #FFDEEC;
+        border: 1px solid #E40060;
+    }
+    .EditA{
+        height: 80px;
+    }
+    .EditBackground{
+        display: block;
+        float: right;
+        width: 25%;  
+        margin-right: 8%;
+        padding-top: 0;
+        padding-bottom: 0;
+        background: #FFFFFF;
+        box-shadow: 0px 5px 30px rgb(0 0 0 / 5%);
+        border-radius: 10px;
+    }
+    .EditTitle{
+        font-weight: 700;
+    }
+    .EditTitleColor{
+        color: #0057FF;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 10px;
+    }
+    .EditLine{
+        height: 40px;
+        width: 5px;
+        background: #0057FF;
+    }
+    .EditBackgroundP{
+        margin-left: 15px;
+    }
+    .EditVektor{
+        position: relative;
+        left: 60px;
+        top: 80px;
+        width: 18px;
+        float: right;
+    }
+    .EditTextInfo{
+        font-size: 14px;
+        line-height: 17px;
+        margin-left: 18px;
+    }
 }
