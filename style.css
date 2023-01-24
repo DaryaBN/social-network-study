@@ -39,6 +39,32 @@ body{
     text-align: center;
     color: #0057FF;
 }
+.button1Index{
+    margin: 24px 16px 25px 0px;
+    width: 260px;
+    background: #0057FF;
+    border: 1px solid #0057FF;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    text-align: center;
+    color: #FFFFFF;
+}
+.button2Index{
+    margin: 24px 0px 25px 0px;
+    width: 260px;
+    background: #FFFFFF;
+    border: 1px solid #0057FF;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    text-align: center;
+    color: #0057FF;
+}
 .wrapped{
     width: 100%;
 }
@@ -79,13 +105,17 @@ h2{
     box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
     margin: 0;
-    padding-top: 16px;
 }
 .profile{
     border: 1px solid #ffffff;
     border-radius: 50px;
     float: left;
     margin: 0px 10px;
+}
+.profile1{
+    border: 1px solid #ffffff;
+    border-radius: 50px;
+    width: 25px;
 }
 .name{
     font-weight: 700;
@@ -114,11 +144,18 @@ h2{
     color: #ABACB1;
 }
 .mes{
-    margin: 10px 60px 0px 75px;
+    margin: 10px 60px 0px 85px;
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
     width: 250px;
+}
+.mesPhoto{
+    margin: 10px 0px 0px 85px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    /* width: 250px; */
 }
 .cards {
     margin: 0;
@@ -176,17 +213,17 @@ aside{
 .footerFeed{
     display: block;
     width: 100%;
+    height: 32px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: space-around;
-    padding-top: 3%;
-    padding-bottom: 2%;
+    padding-top: 12px;
 }
 .blok{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 .blokNavigationMes{
     position: relative;
@@ -197,7 +234,7 @@ aside{
     top: 10px;
     height: 3px;
     width: 425%;
-    background: #0057FF;
+    background: #000000;
 }
 .rectangle{
     display: block;
@@ -218,6 +255,9 @@ aside{
     display: none;
 }
 .blokAside{
+    display: none;
+}
+.AsideColor{
     display: none;
 }
 /* User */
@@ -279,14 +319,14 @@ aside{
     line-height: 16px;
     color: #ABACB1;
     margin: 4px;
-    margin-left: 13px;
+    margin-left: 10px;
 }
 .InfoBlok360{
     display: block;
 }
 .InfoBlok{
     display: flex;
-    margin-right: 20px;
+    /* margin-right: 10px; */
 }
 .InfoVektorBlok{
     display: flex;
@@ -294,7 +334,7 @@ aside{
 }
 .InfoVector{
     position: relative;
-    right: 11.5px;
+    right: 9.5px;
     bottom: 3px;
 
 }
@@ -406,6 +446,10 @@ aside{
     margin-left: 10px;
     margin-top: 0;
 }
+.InfoPhotoBlok{
+    display: block;
+    height: 70px;
+}
 /* Single Post */
 .SingleMes{
     display: flex;
@@ -446,15 +490,6 @@ aside{
 .SingleImg{
     padding-top: 16px;   
 }
-.SingleCards {
-    margin-left: 16px;
-    margin-right: 16px;
-    margin-top: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
 .SingleCards li {
     display: flex;
     flex-wrap: wrap;
@@ -482,8 +517,6 @@ aside{
     color: #ABACB1;
     margin-left: 16px;
     margin-right: 16px;
-    padding: 15px;
-    /* margin-bottom: 30px; */
 }
 .SingleTextPost{
     display: none;
@@ -491,6 +524,199 @@ aside{
 .SingleButtonBlok{
     display: none;
 }
+textarea{
+    margin-top: 10px;
+    width: 98%;
+    border: none;
+    height: 30px;
+    resize: none; /*черточки внизу*/
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #ABACB1;;
+  }
+.AsideColor{
+   height: 40px;
+}
+/* Sing in */
+.SingIn{
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 940px;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+.SingInBackground{
+    width: 100%;
+    height: 324px;
+    background: #FFFFFF;
+    border-radius: 10px 10px 0px 0;
+}
+.HeadingSingIn{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    padding: 0;
+    margin: 0;
+    color: #1D1E22
+}
+.SingInBlok{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 18px;
+    padding-right: 19px;
+    margin-top: 17px;
+}
+.SingInInput {
+    display: flex;
+    background: #FFFFFF;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    height: 52px;
+    margin-top: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
+    width: 90%;
+    flex-direction: column;
+}
+.SingInLabel{
+    font-weight: 400;
+    font-size: 9px;
+    line-height: 11px; 
+    color: #B1B1B1;
+    margin-left: 16px;
+    margin-top: 6px;
+    margin-bottom: 4px;
+}
+.SingInValue{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #555555;
+    margin-bottom: 7px;
+    margin-top: 0px;
+    margin-left: 16px;
+}
+.SingInButton{
+    background: #0057FF;
+    border: 1px solid #0057FF;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 24px 18px 16px 18px;
+    padding: 15px;  
+}
+.SingInText{
+    font-weight: 400;
+    font-size: 9px;
+    line-height: 11px;
+    color: #E40060;
+    margin-top: 3px;
+    margin-left: 15px;
+}
+.SingInColor{
+    background: #FFDEEC;
+    border: 1px solid #E40060;
+}
+.SingInHandler{
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: #ABACB1;
+    border-radius: 2px;
+    margin: 16px auto 32px auto;
+}
+
+/* Sing up */
+.SingUpBackground{
+    width: 100%;
+    height: 481px;
+    background: #FFFFFF;
+    border-radius: 10px 10px 0 0;
+}
+.SingUpLabel{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px; 
+    color: #B1B1B1;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 16px;
+}
+/* Feed Post */
+.FeedPostText{
+    display: block;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+    margin-top: 0;
+    margin-left: 16px;
+}
+textarea{
+    margin-top: 10px;
+    width: 95%;
+    border: none;
+    height: 330px;
+    resize: none; /*черточки внизу*/
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+    color: #1D1E22;;
+}
+.FeedPostButtonBlok{
+    display: block;
+    display: flex;
+    justify-content: space-between;
+}
+.FeedPostButton{
+    border: 1px solid #0057FF;
+    border-radius: 10px; 
+    width: 25px;
+    height: 25px;
+    padding: 10px;
+    padding-top: 13px;
+    margin-right: 16px;
+    text-align: center;
+}
+.FeedPostButton2{
+    border: 4px solid ;
+    border-color: #DFDFDF #0057FF  #DFDFDF  #DFDFDF; 
+    border-radius: 100px; 
+    width: 40px;
+    height: 23px;
+    margin-left: 16px;
+    margin-bottom: 16px;
+    margin-right: 16px;
+    padding: 8px 0 10px 0;
+    text-align: center;
+    color: #0057FF;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+}
+.FeedPostButton3{
+    background: #0057FF;
+    border: 1px solid #0057FF;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    margin-right: 16px;
+    width: 220px;
+    color: #FFFFFF;
+    padding-top: 13px;
+    text-align: center; 
+}
+a {
+    text-decoration:none;
+    color: inherit
+    }
 
 @media (min-width: 700px) {
     body{
@@ -573,10 +799,10 @@ aside{
     }
     aside{
         float: left;
-        margin-left: 10%;
+        margin-left: 180px;
         margin-bottom: 15px;
         margin-top: 25px;
-        width: 57%;
+        width: 832px;
     }
     .profile{
         border: 1px solid #ffffff;
@@ -606,7 +832,7 @@ aside{
     }
     .cards {
         width: 100%;
-        padding-left: 13%;
+        padding-left: 85px;
         justify-content: start;
         gap: 10%;
     }
@@ -616,10 +842,12 @@ aside{
     .background {
         display: block;
         float: right;
-        width: 20%;
-        margin-right: 10%;
+        width: 312px;
+        margin-left: 16px;
+        margin-right: 140px;
         margin-top: 25px;
         padding: 1%;
+        padding-bottom: 0;
         padding-top: 0;
         background: #FFFFFF;
         box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
@@ -629,22 +857,31 @@ aside{
         font-weight: 700;
         font-size: 23px;
         line-height: 32px;
+        padding: 0;
+        margin-top: 8px;
+        margin-bottom: 0px;
     }
     h4{
         font-weight: 700;
         font-size: 16px;
         line-height: 20px;
         width: 150px;
+        margin-top: 13px;
         /* margin: 0; */
     }
     .location{
         float: left;
-        margin-top: -23px;
+        margin-top: -18px;
+    }
+    .location2{
+        float: left;
+        margin-top: -17px;
+        margin-left: 2.2px;
     }
     .city{
         float: left;
-        margin-top: -23px;
-        margin-left: 4%;
+        margin-top: -18px;
+        margin-left: 8px;
         font-weight: 400;
         font-size: 10px;
         line-height: 16px;
@@ -652,8 +889,8 @@ aside{
     }
     .numberOfPosts{
         float: left;
-        margin-top: -23px;
-        margin-left: 3%;
+        margin-top: -18px;
+        margin-left: 15px;
         font-weight: 400;
         font-size: 10px;
         line-height: 16px;
@@ -731,38 +968,42 @@ aside{
         margin-bottom: 0px;
         display: flex;
         justify-content: space-between;
-        align-items: center; 
     }
     .blokNavigation{
         display: flex;
         flex-direction: row;
-        justify-content: center;
-        align-items: center; 
-        padding-left: 3%;
-        padding-right: 4%; 
+    }
+    .blokNavigation2{
+        align-self: center;
+        margin-right: 20%;
+    }
+    .blok{
+        margin-left: 13px;
     }
     .texNavigationBlue{
         font-style: normal;
-        font-weight: 700;
+        font-weight: 500;
         font-size: 12px;
         line-height: 20px;
-        color: #0057FF;
-        margin-left: 7px;
+        color: #000000;
+        margin-left: 10px;
+        margin-right: 27px;
     }
     .texNavigation{
         font-style: normal;
-        font-weight: 700;
+        font-weight: 500;
         font-size: 12px;
         line-height: 20px;
         color: #B1B1B1;;
         margin-left: 7px;
+        margin-right: 27px;
     }
     .underline{
         position: relative;
         top: 18px;
         height: 3px;
-        width: 725%;
-        background: #0057FF;
+        width: 870%;
+        background: #000000;
     }
     .blokPropile{
         display: flex;
@@ -822,6 +1063,13 @@ aside{
         padding-left: 16px;
         margin-bottom: 3%;
     }
+    .blokNavigationProfil{
+        position: relative;
+        top: -19px;
+    }
+    .blokNavigationProfil1{
+        height: 0px;
+    }
     /*User*/
     .FollowersPoster{
         display: none;
@@ -845,18 +1093,18 @@ aside{
     .InfoBlok900 {
         display: block;
         float: left;
-        display: flex;
-        justify-content: space-between;
         margin-top: 10px;
-        max-height: 70px; 
+        max-height: 90px; 
+        width: 100%;
+    }
+    .UserInfoBlok{
+        display: flex;
     }
    .InfoButton{
         margin-top: 0;
-        padding-left: 20px;
-        padding-right: 20px;
-        width: 17%;
-        height: 10%;
-
+        padding-left: 40px;
+        padding-right: 40px;
+        margin-right: 0;
     }
     .InfoPhoto{
         float: left;
@@ -870,8 +1118,9 @@ aside{
     .InfoBlok{
         margin-right: 30px;
         margin-bottom: 30px;
-        /* margin-left: 14px; */
-    }
+        display: flex;
+        justify-content: space-between;
+    } 
     .NameNick{
         width: 100%;
         display: flex;
@@ -885,11 +1134,7 @@ aside{
     /* Single Post */
     .AsideColor{
         display: block;
-        width: 100%;
-        background: #ffffff;
-        box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
-        border-radius: 10px;
-        margin: 0;
+        width: 99%;
         padding-top: 16px;
         background: #FFFFFF;
         border: 3px solid #0057FF;
@@ -912,22 +1157,23 @@ aside{
     .SingleButton{
         border: 1px solid #0057FF;
         border-radius: 10px; 
+        width: 25px;
+        height: 25px;
         margin-left: 16px;
-        margin-bottom: 16px;
-        padding: 14px;
+        padding: 10px;
+        padding-top: 13px;
+        text-align: center;
     }
     .SingleButton2{
         border: 4px solid ;
         border-color: #DFDFDF #0057FF  #DFDFDF  #DFDFDF; 
-        /* background: #0057FF; */
-        /* transform: rotate(-90deg); */
         border-radius: 100px; 
-        width: 45px;
-        height: 30px;
+        width: 40px;
+        height: 23px;
         margin-left: 16px;
         margin-bottom: 16px;
         margin-right: 16px;
-        padding: 10px 0 10px 0;
+        padding: 8px 0 10px 0;
         text-align: center;
         color: #0057FF;
         font-weight: 700;
@@ -942,9 +1188,8 @@ aside{
         margin-right: 16px;
         width: 220px;
         color: #FFFFFF;
-        padding-top: 17px;
-        text-align: center;
-        
+        padding-top: 13px;
+        text-align: center; 
     }
     .SingleButtonBlok{
         display: block;
@@ -954,6 +1199,26 @@ aside{
     .SingleButtonBlok2{
         display: flex;
     }
+    .InfoPhotoBlok{
+        display: none;
+    }
+    textarea{
+        margin-top: 10px;
+        width: 95%;
+        border: none;
+        height: 50px;
+        resize: none; /*черточки внизу*/
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 24px;
+        color: #1D1E22;
+      }
+      .AsideColor{
+        margin-top: 16px;
+        height: 150px;
+     }
 
     /* Settings */
     .HeadingEdit{
@@ -984,13 +1249,16 @@ aside{
         flex-direction: column;
     }
     .EditPhoto{
-        border-radius: 80px;
+        border-radius: 100px;
         width: 20%;
-        background: rgba(0, 0, 0, 0.4);
+        /* background-color:rgba(0, 0, 0, 0.169);
+        opacity: 0.7;*/  /*будет светлый*/ 
+        filter: brightness(65%);  /*темный*/
         float: right;
         margin-right: 22px;
         margin-top: 24px;
         margin-bottom: 24px;
+        text-align: center;
     }
     button{
         width: 100%;
@@ -1011,7 +1279,7 @@ aside{
         line-height: 11px;
         color: #E40060;
         margin-top: 3px;
-        margin-left: 25px;
+        margin-left: 15px;
     }
     .EditBlok{
         display: flex;
@@ -1077,8 +1345,8 @@ aside{
     }
     .EditVektor{
         position: relative;
-        left: 60px;
-        top: 80px;
+        left: 11%;
+        bottom: -120px;
         width: 18px;
         float: right;
     }
@@ -1087,4 +1355,30 @@ aside{
         line-height: 17px;
         margin-left: 18px;
     }
+    /* Sing in */
+    .SingIn{
+        background: rgba(0, 0, 0, 0.6);
+        width: 100%;
+        height: 940px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .SingInBackground{
+        width: 362px;
+        height: 294px;
+        background: #FFFFFF;
+        border-radius: 10px;
+    }
+    /* Sing up */
+    .SingUpBackground{
+        width: 362px;
+        height: 445px;
+        background: #FFFFFF;
+        border-radius: 10px;
+    }
+    .SingInHandler{
+        display: none;
+    }
+
 }
