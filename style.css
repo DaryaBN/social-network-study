@@ -3,62 +3,49 @@ body{
     width: 100%;
     margin: 0px;
 }
+header{
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 360px; */
+    background: #FFFFFF;
+}
+.box{
+    width: 100%;
+}
 .vector {
-    margin: 24px;
+    margin-top: 24px;
     text-align: center;
 }
 .text {
-    margin: 0 0px 25px 0px;
+    width: 328px;
+    margin: 22px auto 24px auto;
     font-size: 32px;
     font-weight: 700;
     line-height: 38px;
-    padding: 0 15px 0 15px;
     text-align: center;
 }
-.button1{
-    margin: 24px 0px 25px 0px;
+.button1IndexBox{
+    width: 328px;
+    margin: 0px auto 16px auto;
     background: #0057FF;
     border: 1px solid #0057FF;
     border-radius: 10px;
-    padding: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     font-size: 18px;
     line-height: 22px;
     font-weight: 500;
     text-align: center;
     color: #FFFFFF;
 }
-.button2{
-    margin: 24px 0px 25px 0px;
+.button2IndexBox{
+    width: 328px;
+    margin: 0px auto 24px auto;
     background: #FFFFFF;
     border: 1px solid #0057FF;
     border-radius: 10px;
-    padding: 15px;
-    font-size: 18px;
-    line-height: 22px;
-    font-weight: 500;
-    text-align: center;
-    color: #0057FF;
-}
-.button1Index{
-    margin: 24px 16px 25px 0px;
-    width: 260px;
-    background: #0057FF;
-    border: 1px solid #0057FF;
-    border-radius: 10px;
-    padding: 15px;
-    font-size: 18px;
-    line-height: 22px;
-    font-weight: 500;
-    text-align: center;
-    color: #FFFFFF;
-}
-.button2Index{
-    margin: 24px 0px 25px 0px;
-    width: 260px;
-    background: #FFFFFF;
-    border: 1px solid #0057FF;
-    border-radius: 10px;
-    padding: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     font-size: 18px;
     line-height: 22px;
     font-weight: 500;
@@ -67,6 +54,9 @@ body{
 }
 .wrapped{
     width: 100%;
+    height: 203px;
+    float: right;
+    object-fit: cover;
 }
 main{
     position: relative;
@@ -81,6 +71,7 @@ h1{
     padding: 25px;
     font-weight: 300;
     font-size: 48px;
+    line-height: 58px;
     text-align: center;
     color: #FFFFFF;
 }
@@ -88,34 +79,62 @@ h1{
     margin: -15px auto;
     padding: 0 0 25px;
     width: 150px;
-    font-weight: 400;
+    font-weight: 100;
     font-size: 18px;
+    line-height: 22px;
     text-align: center;
     color: #FFFFFF;
 }
-h2{
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 29px;
-    margin: 30px 0px 24px 16px;
+.widthAside{
+    width: 100%;
 }
-.backgroundAside{
+aside{
+    width: 100%;
+}
+/* .backgroundAside{
     width: 100%;
     background: #FFFFFF;
     box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
     margin: 0;
+} */
+h2{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 42px 84px 4px 16px;
+}
+.Whitespace{
+    display: none;
 }
 .profile{
+    width: 57px;
     border: 1px solid #ffffff;
     border-radius: 50px;
     float: left;
-    margin: 0px 10px;
+    margin: 0px 11px 0 16px;
+}
+.profileheaderFeed1{
+    width: 27px;
+    border: 1px solid #ffffff;
+    border-radius: 50px;
+    text-align: center;
+    margin: 8px 0px 0px 22px;
 }
 .profile1{
     border: 1px solid #ffffff;
     border-radius: 50px;
     width: 25px;
+}
+.BlokNameNickTime{
+    display: flex;
+    justify-content: space-between;
+}
+.BlokNameNick{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 32px;
 }
 .name{
     font-weight: 700;
@@ -132,9 +151,8 @@ h2{
     margin: 0px;
 }
 .time{
-    float: right;
-    margin-top: -30px;
-    margin-right: 15px;
+    margin-top: 0;
+    margin-right: 16px;
     width: 52px;
     height: 21px;
     text-align: right;
@@ -144,26 +162,32 @@ h2{
     color: #ABACB1;
 }
 .mes{
-    margin: 10px 60px 0px 85px;
+    margin: 5px 16px 0px 87px;
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
     width: 250px;
 }
+.mesHeightFL{
+    height: 16px;
+}
 .mesPhoto{
-    margin: 10px 0px 0px 85px;
+    margin: 10px 0px 0px 84px;
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
     /* width: 250px; */
 }
 .cards {
-    margin: 0;
+    width: 170px;
+    margin-left: 87px;
+    margin-top: 0;
+    margin-bottom: 0;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 50px;
+    gap: 25px;
   }
 .cards li {
     display: flex;
@@ -191,39 +215,71 @@ h2{
 .footer{
     position: relative;
     top: -40px;
-    margin-left: 5%;
-    margin-right: 5%;
 }
 .end{
+    width: 325px;
     font-weight: 700;
     font-size: 32px;
     line-height: 38px;
     text-align: center;
+    margin: 0 20px 24px 30px;
 }
+.button1Index{
+    margin: 24px 0px 16px 0px;
+    width: 328px;
+    background: #0057FF;
+    border: 1px solid #0057FF;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    text-align: center;
+    color: #FFFFFF;
+}
+.button2Index{
+    margin: 0px 0px 0px 0px;
+    width: 328px;
+    background: #FFFFFF;
+    border: 1px solid #0057FF;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    text-align: center;
+    color: #0057FF;
+}
+
 /* Feed */
 .headerFeed{
     display: block;
     background: #0057FF;
-    padding: 13px;
+    padding: 11px;
+    width: 100%;
     text-align: center;
 }
-aside{
-    width: 100%;
-}
+
 .footerFeed{
     display: block;
     width: 100%;
-    height: 32px;
+    height: 47px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
     display: flex;
-    justify-content: space-around;
-    padding-top: 12px;
+    /* justify-content: space-around; */
+    /* padding-top: 12px;
+    padding-bottom: 15px; */
+    text-align: center;
+
 }
 .blok{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100px;
 }
 .blokNavigationMes{
     position: relative;
@@ -231,9 +287,9 @@ aside{
 }
 .underline{
     position: relative;
-    top: 10px;
+    top: 12px;
     height: 3px;
-    width: 425%;
+    width: 110px;
     background: #000000;
 }
 .rectangle{
@@ -266,7 +322,7 @@ aside{
 }
 .profilInfo{
     background: #FFFFFF;
-    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
+    /* box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05); */
     margin: 0;
     height: auto;
 }
@@ -319,14 +375,21 @@ aside{
     line-height: 16px;
     color: #ABACB1;
     margin: 4px;
-    margin-left: 10px;
+    margin-left: 13px;
 }
 .InfoBlok360{
     display: block;
 }
+.InfoBlok360Margin{
+    margin-left: 14px;
+    margin-top: 20px;
+}
 .InfoBlok{
     display: flex;
     /* margin-right: 10px; */
+}
+.InfoBlokVektorMargin{
+    margin-left: 3px;
 }
 .InfoVektorBlok{
     display: flex;
@@ -350,8 +413,8 @@ aside{
     top: -6px;
 }
 .InfoIndicators{
-    width: 100%;
-    margin-left: 2.5%;
+    width: 115px;
+    margin-left: 0;
     margin-right: 0;
 }
 .InfoIndicators1{
@@ -369,11 +432,12 @@ aside{
     font-size: 12px;
     line-height: 12px;
     margin: 0;
-    padding-right: 15px;
+    padding-right: 0px;
     color: #ABACB1;
 }
 .InfoButton{
-    margin: 20px 13px 24px 13px;
+    width: 328px;
+    margin: 20px auto 24px auto;
     background: #FFFFFF;
     border: 1px solid #0057FF;
     border-radius: 5px;
@@ -536,10 +600,11 @@ textarea{
     font-size: 16px;
     line-height: 24px;
     color: #ABACB1;;
+    outline: none /*убрать рамку при вводе текста*/
   }
-.AsideColor{
+/* .AsideColor{
    height: 40px;
-}
+} */
 /* Sing in */
 .SingIn{
     background: rgba(0, 0, 0, 0.6);
@@ -563,7 +628,7 @@ textarea{
     margin: 0;
     color: #1D1E22
 }
-.SingInBlok{
+.SingInBlok1{
     display: flex;
     justify-content: space-between;
     padding-left: 18px;
@@ -716,51 +781,211 @@ textarea{
 a {
     text-decoration:none;
     color: inherit
-    }
-
-@media (min-width: 700px) {
+}
+/* Settings */
+.ColorBody{
+    background:  #edededd0;
+}
+.HeadingEdit{
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 43px;
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-bottom: 10px;
+}
+.PrifilEdit{
+    background: #ffffff;
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 360px;
+    padding-top: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 400px;
+}
+.EditInput {
+    display: flex;
+    background: #FFFFFF;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    height: 43px;
+    margin-top: 10px;
+    margin-left: 0px;
+    /* margin-right: 16px; */
+    /* width: 340px; */
+    flex-direction: column;
+}
+.EditPhoto{
+    border-radius: 100px;
+    width: 80px;
+    /* background-color:rgba(0, 0, 0, 0.169);
+    opacity: 0.7;*/  /*будет светлый*/ 
+    filter: brightness(65%);  /*темный*/
+    float: right;
+    margin-right: 0px;
+    margin-top: -22px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+.EditButton{
+   width: 100px; 
+}
+button{
+    
+    background: #0057FF;
+    border: 1px solid #0057FF;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    padding: 15px;
+    margin-top: 24px;
+    margin-left: 0px;
+    margin-bottom: 32px;
+}
+.EditText{
+    font-weight: 400;
+    font-size: 9px;
+    line-height: 11px;
+    color: #E40060;
+    margin-top: 3px;
+    margin-left: 25px;
+}
+.EditBlok{
+    display: flex;
+}
+.EditB{
+    width: auto;
+}
+.EditC{
+    width: auto;
+}
+.EditLabel{
+    font-weight: 400;
+    font-size: 9px;
+    line-height: 11px; 
+    color: #B1B1B1;
+    margin-left: 16px;
+    margin-top: 6px;
+    margin-bottom: 0px;
+}
+.EditValue{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #555555;
+    margin-bottom: 7px;
+    margin-top: 0px;
+    margin-left: 16px;
+}
+.EditColor{
+    background: #FFDEEC;
+    border: 1px solid #E40060;
+}
+.EditA{
+    height: 80px;
+}
+.EditBackground{
+    display: none;
+}
+.EditBackground360{
+    display: block;
+    width: auto;  
+    padding-top: 10px;
+    padding-bottom: 0;
+    background: #FFFFFF ;
+    border-radius: 10px;
+}
+.EditTitle{
+    font-weight: 700;
+}
+.EditTitleColor{
+    color: #0057FF;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+}
+.EditLine{
+    height: 40px;
+    width: 5px;
+    background: #0057FF;
+}
+.EditBackgroundP{
+    margin-left: 15px;
+}
+.EditVektor{
+    position: relative;
+    left: 12%;
+    bottom: -10px;
+    width: 14px;
+    float: right;
+}
+.EditTextInfo{
+    font-size: 14px;
+    line-height: 17px;
+    margin-left: 20px;
+}
+input[type=text],input[type=date],[type=email],input[type=password]{
+    width: 98%;
+    font-family: inherit;
+    outline:none;
+    border: none;
+    height: 22px;
+    color: black;
+    background: scroll;
+}
+select{
+    border: none;
+    width: 98%
+}
+@media (min-width: 1280px){
     body{
         background: #edededd0;
         width: 100%;
     }
     header{
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         width: 100%;
         background: #FFFFFF;
     }
     .box{
-        flex: 1 0 10%;
-        background-size: cover;
+       height: 640px;
     }
     .vector {
         text-align: left;
-        margin-top: 8%;
-        margin-left: 10%;
+        margin-top: 42px;
+        margin-left: 64px;
     }
     .text {
-        width: 80%;
-        margin-bottom: 10%;
+        width: 410px;
+        margin: 32px 166px 32px 64px;
+        font-size: 48px;
+        line-height: 58px;
+        font-weight: 700;
         text-align: left;
-        font-size: 400%;
-        line-height: 100%;
-        margin-left: 7%;
     }
-    .button1{
-        width: 50%;
-        margin-bottom: 4%;
+    .button1IndexBox{
+        width: 260px;
+        margin: 0 316px 16px 64px;
         font-size: 18px;
         line-height: 22px;
         font-weight: 500;
-        margin-right: 20px;
     }
-    .button2{
-        width: 50%;
+    .button2IndexBox{
+        width: 260px;
+        margin: 0 316px 138px 64px;
         font-size: 18px;
         line-height: 22px;
         font-weight: 500;
-        margin-bottom: 4%;
-        margin-left: 0;
+    }
+    .wrapped{
+        height: 640px;
+        float: right;
+        margin-left: 166px;
+        object-fit: cover;
     }
     main{
         display: flex;
@@ -771,7 +996,7 @@ a {
         border-radius: 10px;
         top: -25px;
         background-color: #0057FF;
-        width: 80%;
+        width: 960px;
         height: 274px;
     }
     .box1{
@@ -781,42 +1006,64 @@ a {
     }
 
     h1{
-        margin-top: 15%;
+        margin-top: 64px;
+        margin-bottom: 16px;
         padding: 0px;
         font-size: 72px;
+        line-height: 86px;
+        font-weight: 100;
     }
     .tx{
         margin: 0;
         padding: 0px;
         margin: auto;
         font-size: 18px;
+        font-weight: 200;
+        line-height: 22px;
     }
     h2{
         font-size: 36px;
         line-height: 43px;
-        margin-left: 10%;
+        margin-left: 0px;
         font-weight: 700;
+    }
+    .widthAside{
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
     }
     aside{
         float: left;
-        margin-left: 180px;
+        margin-left: 0px;
         margin-bottom: 15px;
-        margin-top: 25px;
-        width: 832px;
+        margin-top: 0px;
+        width: 632px;
+        background: #FFFFFF;
+        border-radius: 10px;
     }
     .profile{
+        width: 64px;
         border: 1px solid #ffffff;
         border-radius: 50px;
         float: left;
-        margin: 0px 10px;
+        margin: 0px 16px 0px 16px;
+    }
+    .BlokNameNickTime{
+        display: flex;
+        justify-content: space-between;
+        height: 24px;
+    }
+    .BlokNameNick{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 24px;
     }
     .name{
-        float: left;
         font-size: 16px;
         line-height: 24px;
-        margin-right: 16px;
+        margin-right: 10px;
         font-weight: 700;
-    
     }
     .nick{
         font-size: 16px;
@@ -828,11 +1075,26 @@ a {
         line-height: 24px;
     }
     .mes{
-        width: 70%;
+        margin: 4px 15px 0px 97px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        width: 520px;
+        text-align: justify;
+    }
+    .mesPhoto{
+        margin: 10px 0px 0px 85px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        /* width: 250px; */
+    }
+    .mesHeightFL{
+        height: 40px;
     }
     .cards {
         width: 100%;
-        padding-left: 85px;
+        padding-left: 13px;
         justify-content: start;
         gap: 10%;
     }
@@ -842,13 +1104,11 @@ a {
     .background {
         display: block;
         float: right;
-        width: 312px;
-        margin-left: 16px;
-        margin-right: 140px;
-        margin-top: 25px;
-        padding: 1%;
-        padding-bottom: 0;
-        padding-top: 0;
+        width: 280px;
+        margin-left: 10px;
+        margin-right: 0px;
+        margin-bottom: 15px;
+        padding: 8px 16px 0 16px;
         background: #FFFFFF;
         box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
         border-radius: 10px;
@@ -932,23 +1192,51 @@ a {
         text-align: center;
         clear: both;
         top: 0px;
-        width: 50%;
-        margin-left: auto;
-        margin-right: auto;
     }
     .end{
+        width: 641px;
+        margin-right: auto;
+        margin-left: auto;
         font-weight: 700;
         font-size: 48px;
         line-height: 58px;
         text-align: center;
-    }
+        margin-bottom: 0;
+    } 
     .button{
-        width: 80%;
-        margin-top: 0%;
-        margin-left: auto;
-        margin-right: auto;
         display: flex;
     }
+    .button1Index{
+        margin: 32px 16px 100px 55px;
+        margin-top: 32px;
+        margin-right: 16px;
+        width: 260px;
+        background: #0057FF;
+        border: 1px solid #0057FF;
+        border-radius: 10px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 18px;
+        line-height: 22px;
+        font-weight: 500;
+        text-align: center;
+        color: #FFFFFF;
+    }
+    .button2Index{
+        margin: 32px 16px 100px 0px;
+        width: 260px;
+        background: #FFFFFF;
+        border: 1px solid #0057FF;
+        border-radius: 10px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 18px;
+        line-height: 22px;
+        font-weight: 500;
+        text-align: center;
+        color: #0057FF;
+    }
+  
     /* Feed */
     .footerFeed{
         display: none;
@@ -969,16 +1257,29 @@ a {
         display: flex;
         justify-content: space-between;
     }
+    .profileheaderFeed1{
+        width: 48px;
+        border: 1px solid #ffffff;
+        border-radius: 50px;
+        float: left;
+        margin: 4px 16px 0px 0px;
+    }
     .blokNavigation{
         display: flex;
         flex-direction: row;
+        padding-top: 2px;
     }
     .blokNavigation2{
         align-self: center;
         margin-right: 20%;
     }
     .blok{
-        margin-left: 13px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 10px;
+        margin-left:21px ;
     }
     .texNavigationBlue{
         font-style: normal;
@@ -986,7 +1287,7 @@ a {
         font-size: 12px;
         line-height: 20px;
         color: #000000;
-        margin-left: 10px;
+        margin-left: 13px;
         margin-right: 27px;
     }
     .texNavigation{
@@ -996,21 +1297,36 @@ a {
         line-height: 20px;
         color: #B1B1B1;;
         margin-left: 7px;
+        margin-left: 13px;
         margin-right: 27px;
     }
     .underline{
         position: relative;
-        top: 18px;
+        top: 24px;
         height: 3px;
-        width: 870%;
+        width: 130px;
         background: #000000;
     }
     .blokPropile{
         display: flex;
         margin-bottom: 15px;
+        width: 100px;  
+    }
+    .AsideColor{
+        display: block;
+        width: 99%;
+        padding-top: 16px;
+        margin-top: 0px;
+        background: #FFFFFF;
+        border: 3px solid #0057FF;
+        box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
     }
     .profileBlok{
         position: relative;
+        top: -20px;
         bottom: 10px;
         border: 1px solid #ffffff;
         border-radius: 50px;
@@ -1023,6 +1339,7 @@ a {
         font-size: 18px;
         line-height: 24px;
         margin-bottom: 0;
+        /* margin-top: 10px; */
     }
     .nickBlok{
         font-style: normal;
@@ -1048,6 +1365,9 @@ a {
         margin: 0; 
         padding-right: 15px;
     }
+    .Whitespace{
+        display: block;
+    }
     .blokAside{
         display: block;
     }
@@ -1057,11 +1377,8 @@ a {
         font-size: 16px;
         line-height: 24px;
         color: #ABACB1;
-        padding-bottom: 16px;
-        padding-top: 0;
-        margin-top: 0;
-        padding-left: 16px;
-        margin-bottom: 3%;
+        padding: 21px 16px 21px 16px;
+        margin: 0;
     }
     .blokNavigationProfil{
         position: relative;
@@ -1094,7 +1411,7 @@ a {
         display: block;
         float: left;
         margin-top: 10px;
-        max-height: 90px; 
+        max-height: 80px; 
         width: 100%;
     }
     .UserInfoBlok{
@@ -1117,9 +1434,12 @@ a {
     }
     .InfoBlok{
         margin-right: 30px;
-        margin-bottom: 30px;
+        margin-bottom: 0px;
         display: flex;
         justify-content: space-between;
+    }
+    .InfoBlokWidth{
+        width: 495px;
     } 
     .NameNick{
         width: 100%;
@@ -1132,17 +1452,7 @@ a {
         margin-top: 0px;
     }
     /* Single Post */
-    .AsideColor{
-        display: block;
-        width: 99%;
-        padding-top: 16px;
-        background: #FFFFFF;
-        border: 3px solid #0057FF;
-        box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-    }
+    
     .SingleAnswer{
         display: none;
     }
@@ -1206,7 +1516,7 @@ a {
         margin-top: 10px;
         width: 95%;
         border: none;
-        height: 50px;
+        height: 70px;
         resize: none; /*черточки внизу*/
         font-family: 'Lato';
         font-style: normal;
@@ -1214,27 +1524,29 @@ a {
         font-size: 24px;
         line-height: 24px;
         color: #1D1E22;
+        outline: none /*убрать рамку при вводе текста*/
       }
-      .AsideColor{
-        margin-top: 16px;
-        height: 150px;
-     }
 
     /* Settings */
     .HeadingEdit{
         font-weight: 700;
         font-size: 36px;
         line-height: 43px;
-        margin-left: 50px;
         margin-top: 50px;
+        margin-left: 0;
     }
     .PrifilEdit{
         background: #FFFFFF;
         box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
         border-radius: 10px; 
-        width: 60%;
-        margin-left: 52px;
+        width: 632px;
         float: left;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-bottom: 0px;
     }
     .EditInput {
         display: flex;
@@ -1260,6 +1572,9 @@ a {
         margin-bottom: 24px;
         text-align: center;
     }
+    .EditButton{
+        width: 650px; 
+    }
     button{
         width: 100%;
         background: #0057FF;
@@ -1279,7 +1594,7 @@ a {
         line-height: 11px;
         color: #E40060;
         margin-top: 3px;
-        margin-left: 15px;
+        margin-left: 25px;
     }
     .EditBlok{
         display: flex;
@@ -1318,8 +1633,7 @@ a {
     .EditBackground{
         display: block;
         float: right;
-        width: 25%;  
-        margin-right: 8%;
+        width: 312px;  
         padding-top: 0;
         padding-bottom: 0;
         background: #FFFFFF;
@@ -1345,15 +1659,15 @@ a {
     }
     .EditVektor{
         position: relative;
-        left: 11%;
-        bottom: -120px;
+        left: 12%;
+        bottom: -85px;
         width: 18px;
         float: right;
     }
     .EditTextInfo{
         font-size: 14px;
         line-height: 17px;
-        margin-left: 18px;
+        margin-left: 20px;
     }
     /* Sing in */
     .SingIn{
@@ -1380,5 +1694,17 @@ a {
     .SingInHandler{
         display: none;
     }
-
+    input[type=text],input[type=date],[type=email],input[type=password]{
+        width: 98%;
+        font-family: inherit;
+        outline:none;
+        border: none;
+        height: 22px;
+        color: black;
+        background: scroll;
+    }
+    select{
+        border: none;
+        width: 98%
+    }
 }
