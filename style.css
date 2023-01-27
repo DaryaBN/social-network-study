@@ -222,7 +222,7 @@ h2{
     font-size: 32px;
     line-height: 38px;
     text-align: center;
-    margin: 0 20px 24px 30px;
+    margin: 0 auto  24px auto;
 }
 .button1Index{
     margin: 24px 0px 16px 0px;
@@ -273,6 +273,10 @@ h2{
     padding-bottom: 15px; */
     text-align: center;
 
+}
+.footerFeedMargin{
+    margin-left: auto;
+    margin-top: auto;
 }
 .blok{
     display: flex;
@@ -628,12 +632,15 @@ textarea{
     margin: 0;
     color: #1D1E22
 }
-.SingInBlok1{
+.SingInBlok{
     display: flex;
     justify-content: space-between;
     padding-left: 18px;
     padding-right: 19px;
     margin-top: 17px;
+}
+.SingInBlok1280{
+    display: none;
 }
 .SingInInput {
     display: flex;
@@ -851,10 +858,17 @@ button{
     line-height: 11px;
     color: #E40060;
     margin-top: 3px;
-    margin-left: 25px;
+    margin-left: 7px;
 }
 .EditBlok{
     display: flex;
+    justify-content: space-between;
+    width: 290px;
+}
+.EditBlok1{
+    display: flex;
+    justify-content: space-between;
+    width: 164px;
 }
 .EditB{
     width: auto;
@@ -867,7 +881,7 @@ button{
     font-size: 9px;
     line-height: 11px; 
     color: #B1B1B1;
-    margin-left: 16px;
+    margin-left: 10px;
     margin-top: 6px;
     margin-bottom: 0px;
 }
@@ -878,7 +892,7 @@ button{
     color: #555555;
     margin-bottom: 7px;
     margin-top: 0px;
-    margin-left: 16px;
+    margin-left: 8px;
 }
 .EditColor{
     background: #FFDEEC;
@@ -917,8 +931,8 @@ button{
 }
 .EditVektor{
     position: relative;
-    left: 12%;
-    bottom: -10px;
+    left: 50px;
+    bottom: -15px;
     width: 14px;
     float: right;
 }
@@ -1597,8 +1611,12 @@ select{
         margin-left: 25px;
     }
     .EditBlok{
-        display: flex;
+        display: flex; 
+        justify-content: start;
+        width: 400px;
     }
+
+   
     .EditB{
         width: 70%;
     }
@@ -1677,6 +1695,9 @@ select{
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .SingInBlok1280{
+        display: block;
     }
     .SingInBackground{
         width: 362px;
