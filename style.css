@@ -1,7 +1,21 @@
+html{
+    height: 100%;
+    width: 100%;
+}
 body{
     font-family: 'Lato', sans-serif;
     width: 100%;
+    /* height:100%; */
     margin: 0px;
+    padding-bottom: 0px;
+}
+.IndexHeaderWithe{
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+    background:#ffffff;
+    margin-left: auto;
+    margin-right: auto;
 }
 header{
     display: flex;
@@ -68,6 +82,8 @@ main{
 }
 h1{
     margin: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
     padding: 25px;
     font-weight: 300;
     font-size: 48px;
@@ -87,39 +103,44 @@ h1{
 }
 .widthAside{
     width: 100%;
+    height: 100%;
 }
 aside{
     width: 100%;
-}
-/* .backgroundAside{
-    width: 100%;
+    float: none;
+    margin-left: 0px;
+    margin-bottom: 0;
+    margin-top: 0px;
     background: #FFFFFF;
-    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-    margin: 0;
-} */
+}
 h2{
     font-weight: 700;
     font-size: 24px;
     line-height: 29px;
-    margin: 42px 84px 4px 16px;
+    margin: 35px 84px 8px 16px;
 }
 .Whitespace{
     display: none;
+}
+.BlokNews{
+    display: flex;
+}
+.BlokNewsInfoPost{
+    flex-grow: 1;
 }
 .profile{
     width: 57px;
     border: 1px solid #ffffff;
     border-radius: 50px;
     float: left;
-    margin: 0px 11px 0 16px;
+    margin: 16px 0px 0 16px;
 }
 .profileheaderFeed1{
     width: 27px;
     border: 1px solid #ffffff;
     border-radius: 50px;
-    text-align: center;
-    margin: 8px 0px 0px 22px;
+    /* text-align: center; */
+    margin: 8px 0px 0px 35px;
 }
 .profile1{
     border: 1px solid #ffffff;
@@ -129,6 +150,7 @@ h2{
 .BlokNameNickTime{
     display: flex;
     justify-content: space-between;
+    margin: 16px 16px 0 16px;
 }
 .BlokNameNick{
     display: flex;
@@ -141,7 +163,6 @@ h2{
     font-size: 14px;
     line-height: 18px;
     margin: 0px;
-
 }
 .nick{
     font-weight: 400;
@@ -152,7 +173,7 @@ h2{
 }
 .time{
     margin-top: 0;
-    margin-right: 16px;
+    margin-right: 0px;
     width: 52px;
     height: 21px;
     text-align: right;
@@ -162,11 +183,15 @@ h2{
     color: #ABACB1;
 }
 .mes{
-    margin: 5px 16px 0px 87px;
+    margin: 10px 16px 12px 16px;
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
-    width: 250px;
+    width: 260px;
+}
+.mesPostPohoto{
+    margin: 0px 16px 12px 16px;
+    width: 260px; 
 }
 .mesHeightFL{
     height: 16px;
@@ -179,35 +204,48 @@ h2{
     /* width: 250px; */
 }
 .cards {
-    width: 170px;
-    margin-left: 87px;
+    width: 190px;
+    margin-left: 16px;
     margin-top: 0;
-    margin-bottom: 0;
     padding: 0;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
+    justify-content: space-between;
+    align-items: flex-end;
   }
 .cards li {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
     gap: 10px;
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
     color: #B1B1B1;
 }
+.function{
+    height: 13px;
+    margin-top: 4px;
+}
+.a{
+    color: #B1B1B1;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+}
 .line{
-    margin: 0 0 25px;
+    margin: 0px 0 0px 0;
+    border: 1px solid #E9E9E9;
+}
+.line1{
+    margin: 16px 0 0px 0;
     border: 1px solid #E9E9E9;
 }
 .gradient{
     position: relative;
     top: -100px;
-    height: 130px;  
-    background: linear-gradient(0deg, #FFFFFF 21.87%, rgba(255, 255, 255, 0) 100%);
+    height: 110px;
+    padding-top: 0px; 
+    background: linear-gradient(0deg, #FFFFFF 13.87%, rgba(255, 255, 255, 0) 100%);
 }
 .background{
     display: none;
@@ -272,7 +310,13 @@ h2{
     /* padding-top: 12px;
     padding-bottom: 15px; */
     text-align: center;
-
+}
+.profileHeaderFeedFooter{
+    width: 27px;
+    border: 1px solid #ffffff;
+    border-radius: 50px;
+    text-align: center;
+    margin: 0px 0px 0px 0px;
 }
 .footerFeedMargin{
     margin-left: auto;
@@ -283,7 +327,8 @@ h2{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100px;
+    /* flex-grow: 1; */
+    width: 96px;
 }
 .blokNavigationMes{
     position: relative;
@@ -296,6 +341,7 @@ h2{
     width: 110px;
     background: #000000;
 }
+
 .rectangle{
     display: block;
     position: fixed;
@@ -371,6 +417,9 @@ h2{
     font-size: 16px;
     line-height: 19px;
     margin-left: 13px;
+    margin-right: 13px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 .InfoLink{
     font-style: normal;
@@ -489,8 +538,8 @@ h2{
     text-align: center;
     color: #0057FF;
     padding: 5px;
-    width: 20%;
-    margin-right: 15px;
+    width: 86px;
+    margin-right: 17px;
 }
 .FolloversReadBlue{
     float: right;
@@ -503,8 +552,8 @@ h2{
     text-align: center;
     color: #FFFFFF;
     padding: 5px;
-    width: 20%;
-    margin-right: 15px;
+    width: 86px;
+    margin-right: 17px;
 }
 .FolloverText{
     font-style: normal;
@@ -517,6 +566,21 @@ h2{
 .InfoPhotoBlok{
     display: block;
     height: 70px;
+}
+.BlokFollowers{
+    display: flex;
+}
+.BlokNameNickFollowers{
+    margin-top: 16px;
+    margin-left: 16px; 
+    flex-grow: 1;
+}
+.mesFollowers{
+    margin: 5px 0px 16px 0px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: justify;
 }
 /* Single Post */
 .SingleMes{
@@ -610,19 +674,27 @@ textarea{
    height: 40px;
 } */
 /* Sing in */
+/* .SingIn{
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%; */
+    /* height: 940px;
+    display: flex;
+    justify-content: end;
+    align-items: end; */
+/* } */
 .SingIn{
     background: rgba(0, 0, 0, 0.6);
     width: 100%;
-    height: 940px;
-    display: flex;
-    justify-content: end;
-    align-items: end;
+    height: 100%;
+    position: absolute;
 }
 .SingInBackground{
     width: 100%;
     height: 324px;
     background: #FFFFFF;
     border-radius: 10px 10px 0px 0;
+    position: absolute;
+    bottom: 0;
 }
 .HeadingSingIn{
     font-weight: 700;
@@ -711,6 +783,8 @@ textarea{
     height: 481px;
     background: #FFFFFF;
     border-radius: 10px 10px 0 0;
+    position: absolute;
+    bottom: 0;
 }
 .SingUpLabel{
     font-weight: 400;
@@ -791,19 +865,24 @@ a {
 }
 /* Settings */
 .ColorBody{
-    background:  #edededd0;
+    /* background:  #edededd0; */
+    height: 100%;
+    width: 100%;
+    position: absolute;
 }
 .HeadingEdit{
     font-weight: 700;
     font-size: 18px;
     line-height: 43px;
     margin-top: 16px;
-    margin-left: 16px;
-    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    margin-bottom: 5px;
 }
 .PrifilEdit{
     background: #ffffff;
-    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
@@ -811,7 +890,21 @@ a {
     padding-top: 3px;
     padding-left: 10px;
     padding-right: 10px;
-    margin-bottom: 400px;
+    margin-bottom: 15px;
+}
+.EditBackground360{
+    display: block;
+    width: 380px;
+    height: 255px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 3px;  
+    padding-bottom: 0;
+    background: #FFFFFF ;
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
 }
 .EditInput {
     display: flex;
@@ -860,16 +953,17 @@ button{
     margin-top: 3px;
     margin-left: 7px;
 }
+.EditBlokProfilBlok{
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+}
 .EditBlok{
     display: flex;
     justify-content: space-between;
-    width: 290px;
+    /* width: 300px; */
 }
-.EditBlok1{
-    display: flex;
-    justify-content: space-between;
-    width: 164px;
-}
+
 .EditB{
     width: auto;
 }
@@ -884,6 +978,7 @@ button{
     margin-left: 10px;
     margin-top: 6px;
     margin-bottom: 0px;
+    margin-right: 10px;
 }
 .EditValue{
     font-weight: 400;
@@ -904,13 +999,10 @@ button{
 .EditBackground{
     display: none;
 }
-.EditBackground360{
-    display: block;
-    width: auto;  
-    padding-top: 10px;
-    padding-bottom: 0;
-    background: #FFFFFF ;
-    border-radius: 10px;
+.EditBlok1{
+    display: flex;
+    justify-content: start;
+    width: 164px;
 }
 .EditTitle{
     font-weight: 700;
@@ -931,8 +1023,8 @@ button{
 }
 .EditVektor{
     position: relative;
-    left: 50px;
-    bottom: -15px;
+    left: 47px;
+    bottom: -12px;
     width: 14px;
     float: right;
 }
@@ -955,15 +1047,27 @@ select{
     width: 98%
 }
 @media (min-width: 1280px){
+    html{
+        height: auto;
+    }
     body{
         background: #edededd0;
         width: 100%;
+        padding-bottom: 53px;
     }
     header{
         display: flex;
         flex-wrap: nowrap;
-        width: 100%;
-        background: #FFFFFF;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .IndexHeaderWithe{
+        display: flex;
+        flex-wrap: nowrap;
+        width: 1280px;
+        background:#ffffff;
+        margin-left: auto;
+        margin-right: auto;
     }
     .box{
        height: 640px;
@@ -1025,7 +1129,7 @@ select{
         padding: 0px;
         font-size: 72px;
         line-height: 86px;
-        font-weight: 100;
+        font-weight: 300;
     }
     .tx{
         margin: 0;
@@ -1038,8 +1142,8 @@ select{
     h2{
         font-size: 36px;
         line-height: 43px;
-        margin-left: 0px;
         font-weight: 700;
+        margin: 30px 0px 24px 0px;
     }
     .widthAside{
         width: 960px;
@@ -1049,7 +1153,7 @@ select{
     aside{
         float: left;
         margin-left: 0px;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         margin-top: 0px;
         width: 632px;
         background: #FFFFFF;
@@ -1060,23 +1164,26 @@ select{
         border: 1px solid #ffffff;
         border-radius: 50px;
         float: left;
-        margin: 0px 16px 0px 16px;
+        margin: 16px 0px 0px 16px;
     }
     .BlokNameNickTime{
         display: flex;
         justify-content: space-between;
         height: 24px;
+        margin-left: 16px;
+        margin-top: 16px;
+        margin-left: 16px;
     }
     .BlokNameNick{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        height: 24px;
+        height: 24px;    
     }
     .name{
         font-size: 16px;
         line-height: 24px;
-        margin-right: 10px;
+        margin-right: 16px;
         font-weight: 700;
     }
     .nick{
@@ -1089,12 +1196,16 @@ select{
         line-height: 24px;
     }
     .mes{
-        margin: 4px 15px 0px 97px;
+        margin: 10px 17px 8px 16px;
         font-weight: 400;
         font-size: 16px;
         line-height: 19px;
         width: 520px;
         text-align: justify;
+    }
+    .mesPostPohoto{
+        margin: 0px 16px 12px 16px;
+        width: 520px; 
     }
     .mesPhoto{
         margin: 10px 0px 0px 85px;
@@ -1104,16 +1215,27 @@ select{
         /* width: 250px; */
     }
     .mesHeightFL{
-        height: 40px;
+        height: 16px;
     }
     .cards {
-        width: 100%;
-        padding-left: 13px;
-        justify-content: start;
-        gap: 10%;
+        width: 240px;
+        padding-left: 0px;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-left: 16px;
     }
     .cards li {
         justify-content: start;
+    }
+    .function{
+        height: 13px;
+        margin-top: 4px;
+    }
+    .a{
+        color: #B1B1B1;
+        margin-top: 0;
+        padding-top: 0;
+        margin-bottom: 0;
     }
     .background {
         display: block;
@@ -1122,7 +1244,7 @@ select{
         margin-left: 10px;
         margin-right: 0px;
         margin-bottom: 15px;
-        padding: 8px 16px 0 16px;
+        padding: 0px 16px 0 16px;
         background: #FFFFFF;
         box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
         border-radius: 10px;
@@ -1143,28 +1265,9 @@ select{
         margin-top: 13px;
         /* margin: 0; */
     }
-    .location{
-        float: left;
-        margin-top: -18px;
-    }
-    .location2{
-        float: left;
-        margin-top: -17px;
-        margin-left: 2.2px;
-    }
-    .city{
-        float: left;
-        margin-top: -18px;
-        margin-left: 8px;
-        font-weight: 400;
-        font-size: 10px;
-        line-height: 16px;
-        color: #0057FF;
-    }
     .numberOfPosts{
-        float: left;
         margin-top: -18px;
-        margin-left: 15px;
+        margin-left: 0px;
         font-weight: 400;
         font-size: 10px;
         line-height: 16px;
@@ -1174,6 +1277,7 @@ select{
         float: left;
         margin-right: 3%;
     }
+
     .nameBack{
         font-weight: 600;
         font-size: 60%;
@@ -1250,6 +1354,13 @@ select{
         text-align: center;
         color: #0057FF;
     }
+    .gradient{
+        position: relative;
+        top: 750px;
+        height: 450px;
+        padding-top: 50px; 
+        background: linear-gradient(0deg, #edededd0 75.87%, rgba(255, 255, 255, 0) 100%);
+    }
   
     /* Feed */
     .footerFeed{
@@ -1282,10 +1393,11 @@ select{
         display: flex;
         flex-direction: row;
         padding-top: 2px;
+        /* margin-left: 21px; */
+        width: 110px;
     }
     .blokNavigation2{
         align-self: center;
-        margin-right: 20%;
     }
     .blok{
         display: flex;
@@ -1302,7 +1414,7 @@ select{
         line-height: 20px;
         color: #000000;
         margin-left: 13px;
-        margin-right: 27px;
+        /* margin-right: 27px; */
     }
     .texNavigation{
         font-style: normal;
@@ -1312,19 +1424,20 @@ select{
         color: #B1B1B1;;
         margin-left: 7px;
         margin-left: 13px;
-        margin-right: 27px;
+        /* margin-right: 27px; */
     }
     .underline{
         position: relative;
         top: 24px;
+        left: 30px;
         height: 3px;
-        width: 130px;
+        width: 120px;
         background: #000000;
     }
     .blokPropile{
         display: flex;
-        margin-bottom: 15px;
-        width: 100px;  
+        justify-content: space-between;
+        margin-bottom: 24px;
     }
     .AsideColor{
         display: block;
@@ -1340,12 +1453,12 @@ select{
     }
     .profileBlok{
         position: relative;
-        top: -20px;
+        top: -10px;
+        left: -3px;
         bottom: 10px;
         border: 1px solid #ffffff;
         border-radius: 50px;
-        float: left;
-        margin-right: 10px;
+        width: 80px;
     }
     .nameBlok{
         font-style: normal;
@@ -1353,7 +1466,8 @@ select{
         font-size: 18px;
         line-height: 24px;
         margin-bottom: 0;
-        /* margin-top: 10px; */
+        margin-top: 16px;
+        margin-left: 10px;
     }
     .nickBlok{
         font-style: normal;
@@ -1362,7 +1476,13 @@ select{
         line-height: 20px;
         margin-top: 0;
         color: #ABACB1;
+        margin-left: 10px;
+        margin-bottom: 0;
+    }  
+    .BlokNewsInfoPostWhith{
+        height: 80px;
     }
+
     h5{
         font-style: normal;
         font-weight: 400;
@@ -1377,7 +1497,7 @@ select{
         line-height: 12px;
         color: #ABACB1;
         margin: 0; 
-        padding-right: 15px;
+        /* padding-right: 25px; */
     }
     .Whitespace{
         display: block;
@@ -1408,7 +1528,7 @@ select{
     .FollowersPoster950{
         display: block;
         display: flex;
-        height: 250px;
+        height: 180px;
     }
     .poster{
         border-top: 1px #FFFFFF;
@@ -1464,6 +1584,59 @@ select{
     }
     .InfoStatus{
         margin-top: 0px;
+    }
+    .BlokNameNickFollowers{
+        margin-top: 16px;
+        margin-left: 16px; 
+        flex-grow: 1;
+    }
+    .mesFollowers{
+        margin: 5px 0px 16px 0px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        width: 520px;
+        text-align: justify;
+    }
+    .FolloversRead{
+        float: right;
+        background: #FFFFFF;
+        border: 1px solid #0057FF;
+        border-radius: 5px;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 14px;
+        text-align: center;
+        color: #0057FF;
+        padding: 5px;
+        width: 140px;
+        margin-right: 17px;
+    }
+    .FolloversReadBlue{
+        float: right;
+        background:#0057FF ;
+        border: 1px solid #0057FF;
+        border-radius: 5px;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 14px;
+        text-align: center;
+        color: #FFFFFF;
+        padding: 5px;
+        width: 140px;
+        margin-right: 17px;
+    }
+    .FolloverText{
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 32px;
+        margin-left: 16px;
+        margin-top: 7px;
+        margin-bottom: 16px;
+    }
+    .BlokFollowers{
+        display: flex;
     }
     /* Single Post */
     
@@ -1548,6 +1721,14 @@ select{
         line-height: 43px;
         margin-top: 50px;
         margin-left: 0;
+        margin-bottom: 24px;
+        width: 500px;
+    }
+    .EditBackground360{
+        display: none;
+    }
+    .ColorBody{
+        background:  none;
     }
     .PrifilEdit{
         background: #FFFFFF;
@@ -1560,7 +1741,7 @@ select{
         padding-top: 0px;
         padding-left: 0px;
         padding-right: 0px;
-        margin-bottom: 0px;
+        margin-bottom: 25px;
     }
     .EditInput {
         display: flex;
@@ -1613,10 +1794,14 @@ select{
     .EditBlok{
         display: flex; 
         justify-content: start;
+        /* width: 630px; */
         width: 400px;
     }
-
-   
+    .EditBlokProfilBlok {
+        display: flex;
+        justify-content: space-between;
+        width: 600px;
+    }
     .EditB{
         width: 70%;
     }
@@ -1677,9 +1862,9 @@ select{
     }
     .EditVektor{
         position: relative;
-        left: 12%;
-        bottom: -85px;
-        width: 18px;
+        left: 77px;
+        bottom: -75px;
+        width: 25px;
         float: right;
     }
     .EditTextInfo{
@@ -1691,10 +1876,15 @@ select{
     .SingIn{
         background: rgba(0, 0, 0, 0.6);
         width: 100%;
-        height: 940px;
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
     }
     .SingInBlok1280{
         display: block;
@@ -1704,6 +1894,11 @@ select{
         height: 294px;
         background: #FFFFFF;
         border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
     }
     /* Sing up */
     .SingUpBackground{
@@ -1711,6 +1906,11 @@ select{
         height: 445px;
         background: #FFFFFF;
         border-radius: 10px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
     }
     .SingInHandler{
         display: none;

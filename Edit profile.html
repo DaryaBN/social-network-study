@@ -1,145 +1,156 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Редактировать профиль</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" type="text/css"/>
-</head>
-<body>
-    <div class="ColorBody">
-    <header>
-       <div class="headerFeed">
-              <img src="img/logoбелый.svg" alt="дельфин"/>
-       </div>
-       <div class="headerFeed1">
-        <div class="blokNavigation">
-            <a href="Feed.html"><div class="blokNavigation">
-                <div class="blok">
-                    <img  src="img/home 1лента.svg" alt="лента новостей" width="17"/>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Редактировать профиль</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+    </head>
+    <body>
+        <div class="ColorBody">
+            <header>
+                <div class="headerFeed">
+                    <a href="index.html"><img src="img/logoбелый.svg" alt="дельфин"/></a>
+                </div>
+                <div class="headerFeed1">
+                    <div class="blokNavigation">
+                        <a href="Feed.html"><div class="blokNavigation">
+                            <div class="blok">
+                                <img  src="img/home 1лента.svg" alt="лента новостей" width="17"/>     
+                            </div>
+                            <p class="texNavigation">Лента</p>    
+                        </div></a>
+                        <a href="User.html"><div class="blokNavigation">   
+                            <div class="blok">
+                                <img  src="img/user (1) 1профиль.svg"  alt="Профиль" width="19"/>
+                                <div class="blokNavigationProfil1">
+                                <img class="blokNavigationProfil" src="img/Vectorпрофиль галстук.svg" alt="уведомления" width="5"/>
+                                </div>
+                            </div>
+                            <p class="texNavigation">Профиль</p>
+                        </div></a>
+                        <a href="Edit profile.html"><div class="blokNavigation">
+                            <div class="blok">
+                                <img src="img/adjust 1настроийки.svg" alt="Настройки" width="17"/>
+                            <div class="underline"></div>
+                            </div>
+                            <p class="texNavigationBlue">Настройки</p> 
+                        </div></a>
+                    </div>
+                    <div class="blokNavigation2">
+                        <a href="index.html"><img src="img/logoсиний.svg" alt="логотоп"/></a>
+                    </div>
+                    <div class="blokNavigation3">
+                        <img class="profileheaderFeed1" src="img/image 7Александр.png" alt="пользователь"/>
+                    </div>
+                </div>
+            </header>
+            <div class="EditBackground360">  
+                <p class="EditTitle EditBackgroundP">Настройки</p>
+                <a href="Edit profile.html"><div class="EditBlok1">
+                <div class="EditLine"></div>
+                <p class="EditTitleColor">Настройки профиля</p> 
+                </div></a>
+                <a href="Change password.html"><p class="EditBackgroundP">Сменить пароль</p></a>
+                <a href="Change email.html"><p class="EditBackgroundP">Сменить e-mail</p></a>
+                <p class="EditBackgroundP">Конфиденциальность</p>
+                <p class="EditBackgroundP">Удалить профиль</p>
+            </div>
+            <div class="widthAside">
+                <p class="HeadingEdit">Редактировать профиль</p>
+                <div class="PrifilEdit"> 
+                    <img class="EditPhoto" src="img/image 7Александр.png" alt="пользователь"/>
+                    <img class="EditVektor" src="img/Vectorфотоопарат.svg" alt="вставить фото"/>
+                    <div class="EditB">
+                        <div class="EditInput">
+                            <p class="EditLabel">Ваше имя</p>
+                            <div class="EditValue"> 
+                                <input type="text" id="name" name="speaker_name" placeholder="Александр" />
+                            </div>
+                        </div>
+                        <div class="EditInput EditColor">
+                            <p class="EditLabel">Никнейм</p>
+                            <div class="EditValue"> 
+                                <input type="email" id="mail" name="speaker_email" placeholder="@burtovoy" />                
+                            </div>
+                        </div>
+                        <p class="EditText">К сожалению, этот никнейм занят</p>
+                    </div>
+                    <div class="EditC">
+                        <div class="EditInput EditA ">
+                            <p class="EditLabel">О себе</p>
+                            <div class="EditValue">
+                                <input type="text" id="info" name="info"  
+                                placeholder="Предприниматель и ментор по программированию" />
+                            </div>
+                        </div>
+                        <div class="EditInput">
+                            <p class="EditLabel">Геолокация</p>
+                            <div class="EditValue"> 
+                                <input type="text" id="address" name="address"  placeholder="Волгоград" />
+                            </div>
+                        </div>
+                        <div class="EditInput">
+                            <p class="EditLabel">Веб-сайт</p>
+                            <div class="EditValue"> 
+                                <input type="text" id="website" name="website"  placeholder="burtovoy.org" />
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="EditBlokProfilBlok">
+                        <div class="EditInput">
+                            <p class="EditLabel">День рожденья</p>
+                            <div class="EditValue"> 
+                                <input type="date" id="start" name="trip-start" 
+                                value="14.06.1946."
+                                min="1946-01-01" max="2023-12-31">                
+                            </div>
+                        </div>
+                        <div class="EditInput">
+                            <p class="EditLabel">Показывать дату рождения</p>
+                            <div class="EditValue">
+                                <select id="privacy" name="privacy">
+                                    <option value="everyone">Показывать всем</option>
+                                    <option value="nobody">Показывать никому</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="EditButton">
+                        <button>Сохранить</button>
+                    </div>
+                </div>
+                <div class="EditBackground">  
+                    <p class="EditTitle EditBackgroundP">Настройки</p>
+                    <a href="Edit profile.html"><div class="EditBlok">
+                        <div class="EditLine"></div>
+                        <p class="EditTitleColor">Настройки профиля</p> 
+                    </div></a>
+                    <a href="Change password.html"><p class="EditBackgroundP">Сменить пароль</p></a>
+                    <a href="Change email.html"><p class="EditBackgroundP">Сменить e-mail</p></a>
+                    <p class="EditBackgroundP">Конфиденциальность</p>
+                    <p class="EditBackgroundP">Удалить профиль</p>
+                </div>
+            </div>
+            <div class="footerFeed"> 
+                <div class="blok"><a href="Feed.html">
+                    <img  src="img/home 1лента.svg" alt="лента новостей"/>   
+                </a></div>
+                <div class="blok"><a href="User.html">
+                    <img  src="img/user (1) 1профиль.svg"  alt="профиль"/>
+                </a></div>
+                <div class="blok"><a href="User.html">
+                    <img  src="img/adjust 1настроийки.svg" alt="настройки"/>
                     <div class="underline"></div>
-                </div>
-                <p class="texNavigationBlue">Лента</p>    
-            </div></a>
-            <a href="User.html" ><div class="blokNavigation">   
-              <div class="blok">
-                  <img  src="img/user (1) 1профиль.svg"  alt="Профиль" width="19"/>
-                  <div class="blokNavigationProfil1">
-                    <img class="blokNavigationProfil" src="img/Vectorпрофиль галстук.svg" alt="уведомления" width="5"/>
-                  </div>
-                </div>
-              <p class="texNavigation">Профиль</p>
-          </div></a>
-          <a href="Edit profile.html"><div class="blokNavigation">
-              <div class="blok">
-                  <img src="img/adjust 1настроийки.svg" alt="Настройки" width="17"/>
-              </div>
-              <p class="texNavigation">Настройки</p> 
-          </div></a>
-        </div>
-        <div class="blokNavigation2">
-            <img src="img/logoсиний.svg" alt="логотоп"/>
-        </div>
-          <div class="blokNavigation3">
-              <img class="profileheaderFeed1" src="img/OcB0vLAYuFzV0 1дональд профиль.svg" alt="пользователь"/>
-          </div>
-      </div>
-      </header>
-      <div class="widthAside">
-      <p class="HeadingEdit">Редактировать профиль</p>
-      <div class="PrifilEdit"> 
-        <img class="EditPhoto" src="img/OcB0vLAYuFzV0 1дональд профиль.svg" alt="пользователь"/>
-        <img class="EditVektor" src="img/Vectorфотоопарат.svg" alt="вставить фото"/>
-        <div class="EditB">
-            <div class="EditInput">
-                <p class="EditLabel">Ваше имя</p>
-                <div class="EditValue"> 
-                    <input type="text" id="name" name="speaker_name" placeholder="Donald" />
+                </a></div>
+                <div class="blok">
+                    <img class="profileHeaderFeedFooter" src="img/image 7Александр.png" alt="пользователь"/>
                 </div>
             </div>
-            <div class="EditInput EditColor">
-                <p class="EditLabel">Никнейм</p>
-                <div class="EditValue"> 
-                    <input type="email" id="mail" name="speaker_email" placeholder="@donald" />                
-                </div>
-            </div>
-        <p class="EditText">К сожалению, этот никнейм занят</p>
-        </div>
-        <div class="EditC">
-            <div class="EditInput EditA ">
-                <p class="EditLabel">О себе</p>
-                <div class="EditValue">
-                    <input type="text" id="info" name="info"  
-                    placeholder="45th President Of The United States Of America" />
-                </div>
-            </div>
-            <div class="EditInput">
-                <p class="EditLabel">Геолокация</p>
-                <div class="EditValue"> 
-                    <input type="text" id="address" name="address"  placeholder="Washington, DC" />
-                </div>
-            </div>
-            <div class="EditInput">
-                <p class="EditLabel">Веб-сайт</p>
-                <div class="EditValue"> 
-                    <input type="text" id="website" name="website"  placeholder="donaldjtrump.com" />
-                </div>
-            </div> 
-        </div>
-        <div class="EditBlok">
-            <div class="EditInput">
-                <p class="EditLabel">День рожденья</p>
-                <div class="EditValue"> 
-                    <input type="date" id="start" name="trip-start" 
-                    value="14.06."
-                    min="1946-01-01" max="2023-12-31">                
-                </div>
-            </div>
-            <div class="EditInput">
-                <p class="EditLabel">Показывать дату рождения</p>
-                <div class="EditValue">
-                <select id="privacy" name="privacy">
-                    <option value="everyone">Показывать всем</option>
-                    <option value="nobody">Показывать никому</option>
-                </select>
-                </div>
-            </div>
-        </div>
-        <div class="EditButton">
-        <button>Сохранить</button>
-        </div>
-     </div>
-     <div class="EditBackground">  
-        <p class="EditTitle EditBackgroundP">Настройки</p>
-        <a href="Edit profile.html"><div class="EditBlok">
-           <div class="EditLine"></div>
-           <p class="EditTitleColor">Настройки профиля</p> 
-       </div></a>
-       <a href="Change password.html"><p class="EditBackgroundP">Сменить пароль</p></a>
-       <a href="Change email.html"><p class="EditBackgroundP">Сменить e-mail</p></a>
-       <p class="EditBackgroundP">Конфиденциальность</p>
-       <p class="EditBackgroundP">Удалить профиль</p>
-     </div>
-      </div>
-      <div class="footerFeed"> 
-        <div class="blok"><a href="Feed.html">
-          <img  src="img/home 1лента.svg" alt="лента новостей"/>   
-          <div class="underline"></div>
-        </a></div>
-        <div class="blok"><a href="User.html">
-          <img  src="img/user (1) 1профиль.svg"  alt="профиль"/>
-        </a></div>
-        <div class="blok"><a href="User.html">
-          <img  src="img/adjust 1настроийки.svg" alt="настройки"/>
-        </a></div>
-        <div>
-            <img class="profileheaderFeed1" src="img/OcB0vLAYuFzV0 1дональд профиль.svg" alt="пользователь"/>
-        </div>
-    </div>
-    </div>
+        </div>  
     </body>
-    </html>
+</html>
