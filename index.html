@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>домашняя</title>
+    <!-- <script src="index.js"></script> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
@@ -17,8 +18,8 @@
           <a href="index.html"><img src="img/Vector.svg" alt="дельфин"/></a>
         </div>
         <div class="text"> Оставайся на связи с друзьями, даже когда их нет рядом </div>
-        <a href="Sign up.html"><div class="button1IndexBox">Зарегистрироваться </div> </a>
-        <a href="Sign in.html"><div class="button2IndexBox"> Войти </div></a>
+        <button class="buttonOpen1 button1IndexBox">Зарегистрироваться </button>
+        <button class="buttonOpen2 button2IndexBox"> Войти </button>
       </div>
       <div class="box">
         <img class="wrapped" src="img/toa-heftiba-x9I-6yoXrXE-unsplash 1друзья.jpg" alt="друзья сядят у костра на природе"/>
@@ -26,15 +27,15 @@
     </div>
     <main>
       <div class="box1">
-        <h1>20</h1>
+        <h1 id="ПользователейЗарегистрировано">0</h1>
         <p class="tx">Пользователей зарегистрировано</p>
       </div>
       <div class="box1">
-        <h1>556</h1>
+        <h1 id="СообщенийНаписано">0</h1>
         <p class="tx">Сообщений написано</p>
       </div>
       <div class="box1">
-        <h1>58</h1>
+        <h1 id="НаписаноСегодня">0</h1>
         <p class="tx">Написано сегодня</p>
       </div>
     </main>
@@ -183,10 +184,55 @@
     <div class="footer footerFeedMargin"> 
       <div class="end">Зарегистрируйтесь и узнайте обо всём первым
         <div class="button">
-          <a href="Sign up.html"><div class="button1Index">Зарегистрироваться </div></a>
-          <a href="Sign in.html"><div class="button2Index"> Войти </div></a>
+          <button class="buttonOpen1 button1Index">Зарегистрироваться </button>
+          <button class=" buttonOpen2 button2Index"> Войти </button>
         </div>
       </div>
     </div>
+    <div class="modal1 SingIn">
+      <div class="SingUpBackground">
+        <div class="SingInHandler"></div>
+        <div class="SingInBlok">
+          <p class="HeadingSingIn">Регистрация</p>
+          <img class="SingInBlok1280" src="img/Vectorкрестик.svg"  alt="закрыть"/> 
+        </div>
+        <div class="SingInInput">
+          <p class="SingInLabel">Выберите никнейм</p>
+          <p class="SingInValue">@donaldjtrump</p>
+        </div>
+        <div class="SingInInput SingInColor">
+          <p class="SingInLabel">Электронная почта</p>
+          <p class="SingInValue">donald@trump</p>
+          <p class="SingInText">Адрес не валиден</p>
+        </div> 
+        <div class="SingInInput">
+          <p class="SingUpLabel">Пароль</p>
+        </div>
+        <div class="SingInInput">
+          <p class="SingUpLabel">Подтверждение пароля</p>
+        </div>
+        <a href="Feed.html"><div class="SingInButton"> Зарегистрироваться</div></a>
+      </div>
+    </div>
+    <div class="model2 SingIn">
+      <div class="SingInBackground">
+          <div class="SingInHandler"></div>
+          <div class="SingInBlok">
+              <p class="HeadingSingIn">Авторизация</p>
+              <img class="SingInBlok1280" src="img/Vectorкрестик.svg"  alt="закрыть"/>
+          </div>
+          <div class="SingInInput">
+              <p class="SingInLabel">Никнейм или адрес электронной почты</p>
+              <p class="SingInValue">@donaldjtrump</p>
+          </div>
+          <div class="SingInInput EditColor">
+              <p class="SingInLabel">Пароль</p>
+              <p class="SingInValue">*******************</p>
+              <p class="SingInText">Пароль не верный</p>
+          </div> 
+          <a href="Feed.html"><div class="SingInButton"> Зарегистрироваться</div></a>
+      </div>
+  </div>
+    <script src="index.js"></script>
   </body>
 </html>
