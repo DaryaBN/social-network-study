@@ -753,6 +753,7 @@ textarea{
     margin-left: 16px;
 }
 .SingInButton{
+    width: 350px;
     background: #0057FF;
     border: 1px solid #0057FF;
     border-radius: 10px;
@@ -762,7 +763,8 @@ textarea{
     text-align: center;
     color: #FFFFFF;
     margin: 24px 18px 16px 18px;
-    padding: 15px;  
+    padding: 15px; 
+    cursor: pointer;
 }
 .SingInText{
     font-weight: 400;

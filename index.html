@@ -190,7 +190,7 @@
       </div>
     </div>
     <div class="modal1 SingIn">
-      <div class="SingUpBackground">
+      <form class="SingUpBackground">
         <div class="SingInHandler"></div>
         <div class="SingInBlok">
           <p class="HeadingSingIn">Регистрация</p>
@@ -198,21 +198,29 @@
         </div>
         <div class="SingInInput">
           <p class="SingInLabel">Выберите никнейм</p>
-          <p class="SingInValue">@donaldjtrump</p>
+          <div class="SingInValue">
+            <input type="text" class="nickname field" placeholder="@donaldjtrump"/>
+          </div>
         </div>
-        <div class="SingInInput SingInColor">
+        <div class="SingInInput ">  <!--SingInColor -->
           <p class="SingInLabel">Электронная почта</p>
-          <p class="SingInValue">donald@trump</p>
-          <p class="SingInText">Адрес не валиден</p>
+          <div class="SingInValue">
+            <input type="email" class="email field" placeholder="donald@trump" />
+          </div>
+          <!-- <p class="SingInText">Адрес не валиден</p> -->
         </div> 
         <div class="SingInInput">
-          <p class="SingUpLabel">Пароль</p>
+          <div class="SingUpLabel">
+            <input type="password" class="password field" placeholder="Пароль" />
+          </div>
         </div>
         <div class="SingInInput">
-          <p class="SingUpLabel">Подтверждение пароля</p>
+          <div class="SingUpLabel">
+            <input type="password" class="passwordConfirmation field" placeholder="Подтверждение пароля" />
+          </div>
         </div>
-        <a href="Feed.html"><div class="SingInButton"> Зарегистрироваться</div></a>
-      </div>
+        <button type="submit" class="SingInButton"> Зарегистрироваться</button>
+      </form>
     </div>
     <div class="model2 SingIn">
       <div class="SingInBackground">
@@ -230,7 +238,7 @@
               <p class="SingInValue">*******************</p>
               <p class="SingInText">Пароль не верный</p>
           </div> 
-          <a href="Feed.html"><div class="SingInButton"> Зарегистрироваться</div></a>
+          <a href="Feed.html"><button type="submit" class="SingInButton"> Зарегистрироваться</button></a>
       </div>
   </div>
     <script src="index.js"></script>
