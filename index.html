@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>домашняя</title>
-    <!-- <script src="index.js"></script> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
@@ -27,15 +26,15 @@
     </div>
     <main>
       <div class="box1">
-        <h1 id="ПользователейЗарегистрировано">0</h1>
+        <h1 id="Registerde">0</h1>
         <p class="tx">Пользователей зарегистрировано</p>
       </div>
       <div class="box1">
-        <h1 id="СообщенийНаписано">0</h1>
+        <h1 id="WirteMsg">0</h1>
         <p class="tx">Сообщений написано</p>
       </div>
       <div class="box1">
-        <h1 id="НаписаноСегодня">0</h1>
+        <h1 id="WirteMsgTodey">0</h1>
         <p class="tx">Написано сегодня</p>
       </div>
     </main>
@@ -196,51 +195,63 @@
           <p class="HeadingSingIn">Регистрация</p>
           <img class="SingInBlok1280" src="img/Vectorкрестик.svg"  alt="закрыть"/> 
         </div>
+        <div class="SingInTextError">Поле не заполненно</div>
         <div class="SingInInput">
           <p class="SingInLabel">Выберите никнейм</p>
           <div class="SingInValue">
-            <input type="text" class="nickname field" placeholder="@donaldjtrump"/>
+            <input type="text" class="nickname" placeholder="@donaldjtrump"/>
           </div>
         </div>
-        <div class="SingInInput ">  <!--SingInColor -->
+        <div class="SingInTextError">Поле не заполненно</div>
+        <div class="SingInInput ">
           <p class="SingInLabel">Электронная почта</p>
           <div class="SingInValue">
-            <input type="email" class="email field" placeholder="donald@trump" />
-          </div>
-          <!-- <p class="SingInText">Адрес не валиден</p> -->
-        </div> 
-        <div class="SingInInput">
-          <div class="SingUpLabel">
-            <input type="password" class="password field" placeholder="Пароль" />
+            <input type="email" class="email" placeholder="donald@trump" />
           </div>
         </div>
+        <div class="SingInTextError1">Адрес не валиден</div>
+        <div class="SingInTextError">Поле не заполненно</div>
         <div class="SingInInput">
           <div class="SingUpLabel">
-            <input type="password" class="passwordConfirmation field" placeholder="Подтверждение пароля" />
+            <input type="password" class="password" placeholder="Пароль" />
+          </div>
+        </div>
+        <div class="SingInTextError1 Error1">К сожалению, пароли не совпадают</div>
+        <div class="SingInTextError">Поле не заполненно</div>
+        <div class="SingInInput">
+          <div class="SingUpLabel">
+            <input type="password" class="passwordConfirmation" placeholder="Подтверждение пароля" />
           </div>
         </div>
         <button type="submit" class="SingInButton"> Зарегистрироваться</button>
       </form>
     </div>
     <div class="model2 SingIn">
-      <div class="SingInBackground">
-          <div class="SingInHandler"></div>
-          <div class="SingInBlok">
-              <p class="HeadingSingIn">Авторизация</p>
-              <img class="SingInBlok1280" src="img/Vectorкрестик.svg"  alt="закрыть"/>
-          </div>
-          <div class="SingInInput">
+      <form class="SingInBackground">
+            <div class="SingInHandler"></div>
+            <div class="SingInBlok">
+                <p class="HeadingSingIn">Авторизация</p>
+                <img class="SingInBlok1280" src="img/Vectorкрестик.svg"  alt="закрыть"/>
+            </div>
+            <div class="SingInTextError">Поле не заполненно</div>
+            <div class="SingInInput">
               <p class="SingInLabel">Никнейм или адрес электронной почты</p>
-              <p class="SingInValue">@donaldjtrump</p>
-          </div>
-          <div class="SingInInput EditColor">
+              <div class="SingInValue">
+                <input type="text" class="nickname" placeholder="@donaldjtrump"/>
+              </div>
+            </div>
+            <div class="SingInTextError1">Hеверный адрес</div>
+            <div class="SingInTextError">Поле не заполненно</div>
+            <div class="SingInInput">
               <p class="SingInLabel">Пароль</p>
-              <p class="SingInValue">*******************</p>
-              <p class="SingInText">Пароль не верный</p>
-          </div> 
-          <a href="Feed.html"><button type="submit" class="SingInButton"> Зарегистрироваться</button></a>
-      </div>
-  </div>
+              <div class="SingInValue">
+                <input type="password" class="password" placeholder="Пароль" />
+              </div>
+            </div>
+            <div class="SingInTextError1 Error1">Неверный пароль</div>
+            <button type="submit" class="SingInButton">Войти</button>
+       </form> 
+    </div>
     <script src="index.js"></script>
   </body>
 </html>

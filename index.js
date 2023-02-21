@@ -5,7 +5,7 @@ Registerde.textContent=20
 let WirteMsg = document.querySelector("#WirteMsg")
 WirteMsg.textContent=556
 
-let НаписаноСегодня = document.querySelector("#WirteMsgTodey")
+let WirteMsgTodey = document.querySelector("#WirteMsgTodey")
 WirteMsgTodey.textContent=58
 
 const modelController =({modal, btnOpen, btnClose, btnCloseMobile}) => {
@@ -55,4 +55,119 @@ modelController({
     btnOpen: ".buttonOpen2",
     btnClose: ".SingInBlok1280",
     btnCloseMobile:".SingInHandler"
+})
+
+
+let form = document.querySelector(".SingUpBackground")
+let validateBtn = form.querySelector(".SingInButton")
+let nickname = form.querySelector(".nickname")
+let email = form.querySelector(".email")
+let password = form.querySelector(".password")
+let passwordConfirmation = form.querySelector(".passwordConfirmation")
+
+form.addEventListener("submit", function (event) {
+    event.preventDefault()
+    console.log("nickname: ", nickname.value)
+    console.log("email: ", email.value)
+    console.log("password: ", password.value)
+    console.log("passwordConfirmation: ", passwordConfirmation.value)
+
+
+    let SingInInputs = form.querySelectorAll(".SingInInput")//блок который нужно изменить
+    let error1 = form.querySelectorAll(".SingInTextError")
+    let error2 = form.querySelector(".SingInTextError1")
+    let error3 = form.querySelector(".Error1")
+
+    if (nickname.value.length <=0) {
+        error1[0].style.display = 'flex';
+        SingInInputs[0].style.cssText = `
+        background: #FFDEEC;
+        border: 1px solid #E40060;
+        `;
+    }
+    if (email.value.length <=0) {
+        error1[1].style.display = 'flex';
+        SingInInputs[1].style.cssText = `
+        background: #FFDEEC;
+        border: 1px solid #E40060;
+        `;
+    }
+    if (password.value.length <=0) {
+        error1[2].style.display = 'flex';
+        SingInInputs[2].style.cssText = `
+        background: #FFDEEC;
+        border: 1px solid #E40060;
+        `;
+    }
+    if (passwordConfirmation.value.length <=0) {
+        error1[3].style.display = 'flex';
+        SingInInputs[3].style.cssText = `
+        background: #FFDEEC;
+        border: 1px solid #E40060;
+        `;
+    }
+    if (password.value !== passwordConfirmation.value) {
+        error3.style.display = 'flex';
+        SingInInputs[2].style.cssText = `
+        background: #FFDEEC;
+        border: 1px solid #E40060;
+        `;
+        SingInInputs[3].style.cssText = `
+        background: #FFDEEC;
+        border: 1px solid #E40060;
+        `;
+    }
+    if (!email.value.includes(".ru" || ".com")){
+        error2.style.display = 'flex';
+            SingInInputs[1].style.cssText = `
+            background: #FFDEEC;
+            border: 1px solid #E40060;
+            `;
+        }
+
+})
+
+let formIn = document.querySelector(".SingInBackground")
+let nicknameIn = formIn.querySelector(".nickname")
+let passwordIn = formIn.querySelector(".password")
+let SingInButton = formIn.querySelector(".SingInButton")
+
+formIn.addEventListener("submit", function (event) {
+    event.preventDefault()
+    console.log("nickname: ", nicknameIn.value)
+    console.log("password: ", passwordIn.value)
+
+    let SingInInputs = formIn.querySelectorAll(".SingInInput")
+    let error1 = formIn.querySelectorAll(".SingInTextError")
+    let error2 = formIn.querySelector(".SingInTextError1")
+    let error3 = formIn.querySelector(".Error1")
+
+    if (nicknameIn.value.length <=0) {
+        error1[0].style.display = 'flex';
+        SingInInputs[0].style.cssText = `
+        background: #FFDEEC;
+        border: 1px solid #E40060;
+        `;
+    }
+    if (!nicknameIn.value.includes("@")){
+        error2.style.display = 'flex';
+            SingInInputs[0].style.cssText = `
+            background: #FFDEEC;
+            border: 1px solid #E40060;
+            `;
+    }
+    if (passwordIn.value.length <=0) {
+        error1[1].style.display = 'flex';
+        SingInInputs[1].style.cssText = `
+        background: #FFDEEC;
+        border: 1px solid #E40060;
+        `;
+    }
+    if (passwordIn.value.includes("1" || "0")) {
+        error3.style.display = 'flex';
+        SingInInputs[1].style.cssText = `
+        background: #FFDEEC;
+        border: 1px solid #E40060;
+        `;
+    }
 })
