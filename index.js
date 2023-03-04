@@ -4,6 +4,3 @@ Registerde.textContent=20
 
 let WirteMsg = document.querySelector("#WirteMsg")
 WirteMsg.textContent=556
-
-let WirteMsgTode = document.querySelector("#WirteMsgTodey")
-WirteMsgTodey.textContent=58
