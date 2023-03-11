@@ -1,0 +1,32 @@
+{ 
+    "pictures": [
+        {
+          "id": 1,
+          "img": "../../img/image 9Винсет Вега.png"
+        },
+        {
+            "id": 2,
+            "img":"../../img/image 5Elon Musk.png"
+        },
+        {
+            "id": 3,
+            "img": "../../img/image 7Александр.png"
+        },
+        {
+            "id":4,
+            "img":"../../img/image 8Мия Уоллес.png"
+        },
+        {
+            "id": 5,
+            "img": "../../img/Ellipse 2харб.png" 
+        },
+        {
+            "id": 6,
+            "img":"../../img/Ellipse 2матч.png"
+        },
+        {
+            "id": 7,
+            "img": "../../img/Ellipse 2мех.png"
+        }
+    ]
+}
