@@ -1,3 +1,5 @@
+import postSize from './post_size.js';
+
 let Registerde = document.querySelector('#Registerde');
 Registerde.textContent = 20;
 
@@ -171,3 +173,5 @@ async function getResponse() {
   console.log(content);
 }
 getResponse();
+
+alert(postSize('Всем привет!'));
