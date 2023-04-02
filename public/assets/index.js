@@ -165,9 +165,9 @@ formIn.addEventListener('submit', (event) => {
   }
 });
 
-async function getResponse(){
+async function getResponse() {
   let response = await fetch('/assets/data.json');
   let content = await response.json();
   console.log(content);
 }
-getResponse()
+getResponse();
