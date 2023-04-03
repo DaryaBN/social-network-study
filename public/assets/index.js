@@ -1,3 +1,5 @@
+import postSize from './post_size.js';
+
 let Registerde = document.querySelector('#Registerde');
 Registerde.textContent = 20;
 
@@ -165,12 +167,11 @@ formIn.addEventListener('submit', (event) => {
   }
 });
 
-fetch('/assets/data.json').then((data) => {
-  console.log(data.json());
-}).catch(() => {
-  console.log('Запрос не выполнен!');
-});
-// (async () => {
-//   let DB = await(await fetch('data.json')).json();
-//   console.log(DB);
-// })();
+async function getResponse() {
+  let response = await fetch('/assets/data.json');
+  let content = await response.json();
+  console.log(content);
+}
+getResponse();
+
+alert(postSize('Всем привет!'));
