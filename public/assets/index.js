@@ -1,4 +1,5 @@
 import postSize from './post_size.js';
+import replacing from './replacing.js';
 
 let Registerde = document.querySelector('#Registerde');
 Registerde.textContent = 20;
@@ -175,3 +176,5 @@ async function getResponse() {
 getResponse();
 
 alert(postSize('Всем привет!'));
+
+alert(replacing('Привет! github.com'));

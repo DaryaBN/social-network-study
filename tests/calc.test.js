@@ -1,5 +1,6 @@
 import { assert } from 'chai';
 import postSize from '../public/assets/post_size.js';
+import replacing from '../public/assets/replacing.js';
 
 describe('Функция проверки расчета размера поста', function () {
   it('без ссылок', function () {
@@ -50,6 +51,29 @@ describe('Функция проверки расчета размера пост
   it('со ссылкой без протокола дальнейщим написанием текста', function () {
     const expectedResult = 25;
     const result = postSize('Всем привет! github.org нужный сайт');
+    assert.equal(expectedResult, result);
+  });
+});
+
+describe('Функция замены ссылок', function () {
+  it('с протоколом .com', function () {
+    const expectedResult = 'Привет! <a href="https://github.com">github.com</a>';
+    const result = replacing('Привет! github.com');
+    assert.equal(expectedResult, result);
+  });
+  it('с протоколом .org', function () {
+    const expectedResult = 'Привет! <a href="https://github.org">github.org</a>';
+    const result = replacing('Привет! github.org');
+    assert.equal(expectedResult, result);
+  });
+  it('с протоколом .ru', function () {
+    const expectedResult = 'Привет! <a href="https://github.ru">github.ru</a>';
+    const result = replacing('Привет! github.ru');
+    assert.equal(expectedResult, result);
+  });
+  it('с протоколом .com и дальнейшим текстом', function () {
+    const expectedResult = 'Привет! <a href="https://github.com">github.com</a> нужный сайт';
+    const result = replacing('Привет! github.com нужный сайт');
     assert.equal(expectedResult, result);
   });
 });
