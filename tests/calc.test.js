@@ -2,6 +2,7 @@ import { assert } from 'chai';
 import postSize from '../public/assets/post_size.js';
 import replacing from '../public/assets/replacing.js';
 import time from '../public/assets/timePost.js';
+import hashtag from '../public/assets/hashtag.js';
 
 describe('Функция проверки расчета размера поста', function () {
   it('без ссылок', function () {
@@ -158,6 +159,24 @@ describe('преобразование числа во время', function () 
   it('года 2', function () {
     const expectedResult = 'более 2 лет назад';
     const result = time(1051200);
+    assert.equal(expectedResult, result);
+  });
+});
+
+describe('Подсветка хештегов', function () {
+  it('хештег', function () {
+    const expectedResult = 'Кто еще изучает <a href="/search?tag=javascript" >#javascript</a> ?';
+    const result = hashtag('Кто еще изучает #javascript ?');
+    assert.equal(expectedResult, result);
+  });
+  it('хештег начало', function () {
+    const expectedResult = '<a href="/search?tag=javascript" >#javascript</a> изучаю';
+    const result = hashtag('#javascript изучаю');
+    assert.equal(expectedResult, result);
+  });
+  it('хештег конец', function () {
+    const expectedResult = 'как вам новая песня <a href="/search?tag=linkinpark" >#linkinpark</a>';
+    const result = hashtag('как вам новая песня #linkinpark');
     assert.equal(expectedResult, result);
   });
 });
