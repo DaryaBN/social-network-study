@@ -1,5 +1,6 @@
 import postSize from './post_size.js';
 import replacing from './replacing.js';
+import time from './timePost.js';
 
 let Registerde = document.querySelector('#Registerde');
 Registerde.textContent = 20;
@@ -178,3 +179,5 @@ getResponse();
 alert(postSize('Всем привет!'));
 
 alert(replacing('Привет! github.com'));
+
+alert(time(59));
