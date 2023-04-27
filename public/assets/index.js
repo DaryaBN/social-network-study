@@ -1,5 +1,7 @@
 import postSize from './post_size.js';
 import replacing from './replacing.js';
+import time from './timePost.js';
+import hashtag from './hashtag.js';
 
 let Registerde = document.querySelector('#Registerde');
 Registerde.textContent = 20;
@@ -178,3 +180,7 @@ getResponse();
 alert(postSize('Всем привет!'));
 
 alert(replacing('Привет! github.com'));
+
+alert(time(59));
+
+alert(hashtag('Кто еще изучает #javascript ?'));

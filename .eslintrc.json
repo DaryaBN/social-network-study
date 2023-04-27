@@ -15,7 +15,7 @@
     "mocha/prefer-arrow-callback": 2,
     "linebreak-style": 0,
     "prefer-const": 0,
-    "mocha/max-top-level-suites": ["warn", {"limit": 2}]
+    "mocha/max-top-level-suites": ["warn", {"limit": 4}]
   },
   "extends": ["airbnb", "plugin:mocha/recommended"],
   "plugins": [
