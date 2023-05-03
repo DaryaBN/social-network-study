@@ -3,6 +3,7 @@ import postSize from '../public/assets/post_size.js';
 import replacing from '../public/assets/replacing.js';
 import time from '../public/assets/timePost.js';
 import hashtag from '../public/assets/hashtag.js';
+import platformFilter from '../public/assets/censorshipFilter.js';
 
 describe('Функция проверки расчета размера поста', function () {
   it('без ссылок', function () {
@@ -177,6 +178,24 @@ describe('Подсветка хештегов', function () {
   it('хештег конец', function () {
     const expectedResult = 'как вам новая песня <a href="/search?tag=linkinpark" >#linkinpark</a>';
     const result = hashtag('как вам новая песня #linkinpark');
+    assert.equal(expectedResult, result);
+  });
+});
+
+describe('Фильтр мата и цензура', function () {
+  it('одно матерное слово в тексте', function () {
+    const expectedResult = 'Да вы что?? ***** там?';
+    const result = platformFilter('Да вы что?? Охуели там?', ['охуели']);
+    assert.equal(expectedResult, result);
+  });
+  it('несколько матерных слов в тексте', function () {
+    const expectedResult = '***** как же я *****';
+    const result = platformFilter('Блять, как же я заебалась', ['блять', 'заебалась']);
+    assert.equal(expectedResult, result);
+  });
+  it('в массиве больше матерных слов, чем в тексте', function () {
+    const expectedResult = 'Да вы что?? ***** там?';
+    const result = platformFilter('Да вы что?? Охуели там?', ['охуели', 'заебалась']);
     assert.equal(expectedResult, result);
   });
 });
