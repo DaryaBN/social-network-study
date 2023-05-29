@@ -5,7 +5,7 @@ export default function replacing(post) {
   a.forEach((eltment) => {
     domain.forEach((item) => {
       if (eltment.includes(item)) {
-        a[a.indexOf(eltment)] = '<a href="https://' + eltment + '">' + eltment + '</a>';
+        a[a.indexOf(eltment)] = `<a href="https://${eltment}">${eltment}</a>`;
       }
       res = a.join(' ');
     });

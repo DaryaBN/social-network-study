@@ -3,15 +3,27 @@ import replacing from './replacing.js';
 import time from './timePost.js';
 import hashtag from './hashtag.js';
 import platformFilter from './censorshipFilter.js';
+import similar from './similar.js';
 
-let Registerde = document.querySelector('#Registerde');
-Registerde.textContent = 20;
+async function getResponse() {
+  let response = await fetch('/assets/data.json');
+  let content = await response.json();
+  let Registerde = document.querySelector('#Registerde');
+  Registerde.textContent = content.static.Registerde;
+  let WirteMsg = document.querySelector('#WirteMsg');
+  WirteMsg.textContent = content.static.WirteMsg;
+  let WirteMsgTodey = document.querySelector('#WirteMsgTodey');
+  WirteMsgTodey.textContent = content.static.WirteMsgTodey;
+}
 
-let WirteMsg = document.querySelector('#WirteMsg');
-WirteMsg.textContent = 556;
+// let Registerde = document.querySelector('#Registerde');
+// Registerde.textContent = 20;
 
-let WirteMsgTodey = document.querySelector('#WirteMsgTodey');
-WirteMsgTodey.textContent = 58;
+// let WirteMsg = document.querySelector('#WirteMsg');
+// WirteMsg.textContent = 556;
+
+// let WirteMsgTodey = document.querySelector('#WirteMsgTodey');
+// WirteMsgTodey.textContent = 58;
 
 const modelController = ({
   modal, btnOpen, btnClose, btnCloseMobile,
@@ -171,11 +183,11 @@ formIn.addEventListener('submit', (event) => {
   }
 });
 
-async function getResponse() {
-  let response = await fetch('/assets/data.json');
-  let content = await response.json();
-  console.log(content);
-}
+// async function getResponse() {
+//   let response = await fetch('/assets/data.json');
+//   let content = await response.json();
+//   console.log(content.static);
+// }
 getResponse();
 
 alert(postSize('Всем привет!'));
@@ -187,3 +199,32 @@ alert(time(59));
 alert(hashtag('Кто еще изучает #javascript ?'));
 
 alert(platformFilter('Да вы что?? Охуели там?', ['охуели']));
+
+const profile = {
+  id: 256,
+  posts: [
+    'Привет. #сегодня был на концерте группы #linkinpark',
+    'как вам новая песня #linkinpark',
+  ],
+};
+const profiles = [
+  {
+    id: 257,
+    posts: [
+      'Сегодня вышла новая версия #javascript',
+      'как вам новая версия #javascript?',
+    ],
+  },
+  {
+    id: 258,
+    posts: [
+      '#сегодня мне не понравилась новая песня #linkinpark',
+    ],
+  },
+];
+
+const count1 = 1;
+const count2 = 2;
+
+alert(similar(profile, profiles, count1));
+alert(similar(profile, profiles, count2));

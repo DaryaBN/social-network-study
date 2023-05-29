@@ -4,6 +4,7 @@ import replacing from '../public/assets/replacing.js';
 import time from '../public/assets/timePost.js';
 import hashtag from '../public/assets/hashtag.js';
 import platformFilter from '../public/assets/censorshipFilter.js';
+import similar from '../public/assets/similar.js';
 
 describe('Функция проверки расчета размера поста', function () {
   it('без ссылок', function () {
@@ -197,5 +198,54 @@ describe('Фильтр мата и цензура', function () {
     const expectedResult = 'Да вы что?? ***** там?';
     const result = platformFilter('Да вы что?? Охуели там?', ['охуели', 'заебалась']);
     assert.equal(expectedResult, result);
+  });
+});
+
+describe('Кого читать', function () {
+  const profile = {
+    id: 256,
+    posts: [
+      'Привет. #сегодня был на концерте группы #linkinpark',
+      'как вам  новая песня #linkinpark',
+    ],
+  };
+  const profiles = [
+    {
+      id: 257,
+      posts: [
+        '#сегодня вышла новая версия #javascript',
+        'как вам новая версия #javascript ?',
+      ],
+    },
+    {
+      id: 258,
+      posts: ['#сегодня мне не понравилась новая песня #linkinpark'],
+    },
+    {
+      id: 256,
+      posts: [
+        'новая песня #linkinpark',
+        'у #linkinpark #сегодня концерте',
+        'кто был на концерте группы #linkinpark',
+      ],
+    },
+  ];
+  const count1 = 1;
+  const count2 = 2;
+  const count3 = 3;
+  it('один профиль', function () {
+    const expectedResult = '256';
+    const result = similar(profile, profiles, count1);
+    assert.equal(expectedResult, result.toString());
+  });
+  it('два профиля и один без #', function () {
+    const expectedResult = '256,258';
+    const result = similar(profile, profiles, count2);
+    assert.equal(expectedResult, result.toString());
+  });
+  it('дваа профиля по большему количеству #', function () {
+    const expectedResult = '256,258,257';
+    const result = similar(profile, profiles, count3);
+    assert.equal(expectedResult, result.toString());
   });
 });
