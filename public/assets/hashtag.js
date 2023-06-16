@@ -8,7 +8,7 @@ export default function hashtag(txt) {
       b = a.indexOf(elemet);
       c = elemet.substring(1);
     }
-    a[b] = '<a href="/search?tag=' + c + '" >' + '#' + c + '</a>';
+    a[b] = `<a href="/search?tag=${c}" >#${c}</a>`;
     res = a.join(' ');
   });
   return res;
