@@ -1,5 +1,6 @@
 
-{ "static": { 
+{
+     "static": { 
         "Registerde" : 20,
         "WirteMsg" : 556,
         "WirteMsgTodey" : 58   
