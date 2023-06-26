@@ -183,11 +183,66 @@ formIn.addEventListener('submit', (event) => {
   }
 });
 
-// async function getResponse() {
-//   let response = await fetch('/assets/data.json');
-//   let content = await response.json();
-//   console.log(content.static);
-// }
+async function getRes() {
+  let response = await fetch('/assets/data.json');
+  let content = await response.json();
+  let res = await fetch('/assets/pictures.json');
+  let con = await res.json();
+  let profilePost = [];
+
+  content.lastMessages.forEach((element) => {
+    profilePost.push(element);
+  });
+
+  con.pictures.forEach((element) => {
+    profilePost.forEach((item) => {
+      let el = item;
+      if (el.id === element.id) {
+        el.img = element.img;
+      }
+    });
+  });
+
+  let blok = document.getElementsByTagName('aside');
+
+  profilePost.forEach((item) => {
+    let elements = document.createElement('div');
+    elements.innerHTML = `
+      <div class="BlokNews">
+        <div class="BlokNewsPhoto">
+          <img class="profile" src="${item.img}" alt="фото профиля"/>
+        </div>
+        <div class="BlokNewsInfoPost">
+          <div class="BlokNameNickTime">
+            <div class="BlokNameNick">
+              <p class="name">${item.name}</p>
+              <p class="nick">${item.nick}</p>
+            </div>
+            <p class="time">${item.time}</p>
+          </div>
+          <p class="mes">${item.mes}</p>
+          <ul class="cards">
+            <li>
+              <img class="function" src="../img/Vectorстрелка.svg" alt="поделиться"/>
+              <p class="a">21</p>
+            </li>
+            <li>
+              <img class="function" src="../img/Vectorнравится.svg" alt="нравиться"/>
+              <p class="a">23</p>
+            </li>
+            <li>
+              <img class="function" src="../img/Vectorскачать.svg" alt="скачать"/>
+              <p class="a">9</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="line"></div>`;
+    blok[0].append(elements);
+  });
+}
+getRes();
+
 getResponse();
 
 alert(postSize('Всем привет!'));
