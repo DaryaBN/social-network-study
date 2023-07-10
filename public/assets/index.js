@@ -1,9 +1,9 @@
-import postSize from './post_size.js';
-import replacing from './replacing.js';
-import time from './timePost.js';
-import hashtag from './hashtag.js';
-import platformFilter from './censorshipFilter.js';
-import similar from './similar.js';
+// import postSize from './post_size.js';
+// import replacing from './replacing.js';
+// import time from './timePost.js';
+// import hashtag from './hashtag.js';
+// import platformFilter from './censorshipFilter.js';
+// import similar from './similar.js';
 
 async function getResponse() {
   let response = await fetch('/assets/data.json');
@@ -15,15 +15,6 @@ async function getResponse() {
   let WirteMsgTodey = document.querySelector('#WirteMsgTodey');
   WirteMsgTodey.textContent = content.static.WirteMsgTodey;
 }
-
-// let Registerde = document.querySelector('#Registerde');
-// Registerde.textContent = 20;
-
-// let WirteMsg = document.querySelector('#WirteMsg');
-// WirteMsg.textContent = 556;
-
-// let WirteMsgTodey = document.querySelector('#WirteMsgTodey');
-// WirteMsgTodey.textContent = 58;
 
 const modelController = ({
   modal, btnOpen, btnClose, btnCloseMobile,
@@ -204,35 +195,34 @@ async function getRes() {
   });
 
   let blok = document.getElementsByTagName('aside');
-
   profilePost.forEach((item) => {
     let elements = document.createElement('div');
     elements.innerHTML = `
       <div class="BlokNews">
-        <div class="BlokNewsPhoto">
-          <img class="profile" src="${item.img}" alt="фото профиля"/>
+        <div class="BlokNewsPhoto prof">
+          <img class="profile loading" src="${item.img}" alt="фото профиля"/>
         </div>
         <div class="BlokNewsInfoPost">
           <div class="BlokNameNickTime">
             <div class="BlokNameNick">
-              <p class="name">${item.name}</p>
-              <p class="nick">${item.nick}</p>
+              <p class="name loading">${item.name}</p>
+              <p class="nick loading">${item.nick}</p>
             </div>
-            <p class="time">${item.time}</p>
+            <p class="time loading">${item.time}</p>
           </div>
-          <p class="mes">${item.mes}</p>
+          <p class="mes loading">${item.mes}</p>
           <ul class="cards">
             <li>
               <img class="function" src="../img/Vectorстрелка.svg" alt="поделиться"/>
-              <p class="a">21</p>
+              <p class="a loading">21</p>
             </li>
             <li>
               <img class="function" src="../img/Vectorнравится.svg" alt="нравиться"/>
-              <p class="a">23</p>
+              <p class="a loading">23</p>
             </li>
             <li>
               <img class="function" src="../img/Vectorскачать.svg" alt="скачать"/>
-              <p class="a">9</p>
+              <p class="a loading">9</p>
             </li>
           </ul>
         </div>
@@ -241,45 +231,86 @@ async function getRes() {
     blok[0].append(elements);
   });
 }
+
+function animation() {
+  function func() {
+    let b = document.querySelectorAll('.prof');
+    b.forEach((elem) => {
+      elem.style.cssText = `
+      opacity: 0;
+      `;
+    });
+    let a = document.querySelectorAll('.loading');
+    a.forEach((item) => {
+      item.style.cssText = `
+      display: flex;
+      color: #969696;
+      background-color: #969696;
+      `;
+    });
+  }
+  setTimeout(func, 30);
+
+  function func1() {
+    let b = document.querySelectorAll('.prof');
+    b.forEach((elem) => {
+      elem.style.cssText = `
+      opacity: 1;
+      transition: opacity 300ms ease-in-out;
+      `;
+    });
+    let a = document.querySelectorAll('.loading');
+    a.forEach((item) => {
+      item.style.cssText = `
+      display: flex;
+      visibility: visible;
+      `;
+    });
+  }
+  setTimeout(func1, 1000);
+}
+
 getRes();
 
 getResponse();
 
-alert(postSize('Всем привет!'));
+animation();
 
-alert(replacing('Привет! github.com'));
+// alert(postSize('Всем привет!'));
 
-alert(time(59));
+// alert(replacing('Привет! github.com'));
 
-alert(hashtag('Кто еще изучает #javascript ?'));
+// alert(time(59));
 
-alert(platformFilter('Да вы что?? Охуели там?', ['охуели']));
+// alert(hashtag('Кто еще изучает #javascript ?'));
 
-const profile = {
-  id: 256,
-  posts: [
-    'Привет. #сегодня был на концерте группы #linkinpark',
-    'как вам новая песня #linkinpark',
-  ],
-};
-const profiles = [
-  {
-    id: 257,
-    posts: [
-      'Сегодня вышла новая версия #javascript',
-      'как вам новая версия #javascript?',
-    ],
-  },
-  {
-    id: 258,
-    posts: [
-      '#сегодня мне не понравилась новая песня #linkinpark',
-    ],
-  },
-];
+// alert(platformFilter('Да вы что?? Охуели там?', ['охуели']));
 
-const count1 = 1;
-const count2 = 2;
+// const profile = {
+//   id: 256,
+//   posts: [
+//     'Привет. #сегодня был на концерте группы #linkinpark',
+//     'как вам новая песня #linkinpark',
+//   ],
+// };
+// const profiles = [
+//   {
+//     id: 257,
+//     posts: [
+//       'Сегодня вышла новая версия #javascript',
+//       'как вам новая версия #javascript?',
+//     ],
+//   },
+//   {
+//     id: 258,
+//     posts: [
+//       '#сегодня мне не понравилась новая песня #linkinpark',
+//     ],
+//   },
+// ];
 
-alert(similar(profile, profiles, count1));
-alert(similar(profile, profiles, count2));
+// const count1 = 1;
+// const count2 = 2;
+
+// alert(similar(profile, profiles, count1));
+// alert(similar(profile, profiles, count2));
