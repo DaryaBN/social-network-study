@@ -1,6 +1,6 @@
 // import postSize from './post_size.js';
 // import replacing from './replacing.js';
-// import time from './timePost.js';
+import time from './timePost.js';
 // import hashtag from './hashtag.js';
 // import platformFilter from './censorshipFilter.js';
 // import similar from './similar.js';
@@ -197,6 +197,11 @@ async function getRes() {
   let blok = document.getElementsByTagName('aside');
   profilePost.forEach((item) => {
     let elements = document.createElement('div');
+    let DatPublication = item.time;
+    let DatNew = new Date();
+    let milliseconds = DatNew.getTime() - new Date(DatPublication).getTime();
+    let min = Math.round(milliseconds / 60000);
+
     elements.innerHTML = `
       <div class="BlokNews">
         <div class="BlokNewsPhoto prof">
@@ -205,24 +210,24 @@ async function getRes() {
         <div class="BlokNewsInfoPost">
           <div class="BlokNameNickTime">
             <div class="BlokNameNick">
-              <p class="name loading">${item.name}</p>
-              <p class="nick loading">${item.nick}</p>
+              <p class="name ">${item.name}</p>
+              <p class="nick ">${item.nick}</p>
             </div>
-            <p class="time loading">${item.time}</p>
+            <p class="time" data-time=${item.time}>${time(min)}</p>
           </div>
-          <p class="mes loading">${item.mes}</p>
+          <p class="mes">${item.mes}</p>
           <ul class="cards">
             <li>
               <img class="function" src="../img/Vectorстрелка.svg" alt="поделиться"/>
-              <p class="a loading">21</p>
+              <p class="a">21</p>
             </li>
             <li>
               <img class="function" src="../img/Vectorнравится.svg" alt="нравиться"/>
-              <p class="a loading">23</p>
+              <p class="a">23</p>
             </li>
             <li>
               <img class="function" src="../img/Vectorскачать.svg" alt="скачать"/>
-              <p class="a loading">9</p>
+              <p class="a">9</p>
             </li>
           </ul>
         </div>
@@ -230,51 +235,41 @@ async function getRes() {
       <div class="line"></div>`;
     blok[0].append(elements);
   });
+
+  setInterval(() => {
+    let min1;
+    let blokTm = document.querySelectorAll('.time');
+    blokTm.forEach((item, index) => {
+      let DatPublication1 = blokTm[index].dataset.time;
+      let DatNew1 = new Date();
+      let milliseconds1 = DatNew1.getTime() - new Date(DatPublication1).getTime();
+      min1 = Math.round(milliseconds1 / 60000);
+      blokTm[index].innerHTML = `
+        <p class="time">${time(min1)}</p>
+      `;
+    });
+  }, 60000);
 }
 
 function animation() {
-  function func() {
-    let b = document.querySelectorAll('.prof');
-    b.forEach((elem) => {
-      elem.style.cssText = `
-      opacity: 0;
+  return new Promise((resover) => {
+    setTimeout(() => {
+      let b = document.querySelector('.animationBlok');
+      b.style.cssText = `
+        display: none;
       `;
-    });
-    let a = document.querySelectorAll('.loading');
-    a.forEach((item) => {
-      item.style.cssText = `
-      display: flex;
-      color: #969696;
-      background-color: #969696;
-      `;
-    });
-  }
-  setTimeout(func, 30);
-
-  function func1() {
-    let b = document.querySelectorAll('.prof');
-    b.forEach((elem) => {
-      elem.style.cssText = `
-      opacity: 1;
-      transition: opacity 300ms ease-in-out;
-      `;
-    });
-    let a = document.querySelectorAll('.loading');
-    a.forEach((item) => {
-      item.style.cssText = `
-      display: flex;
-      visibility: visible;
-      `;
-    });
-  }
-  setTimeout(func1, 1000);
+      resover();
+    }, 5000);
+  });
 }
-
-getRes();
 
 getResponse();
 
-animation();
+animation().then(() => {
+  getRes();
+});
+
+// setInterval(postMin(), 60000);
 
 // alert(postSize('Всем привет!'));
 
