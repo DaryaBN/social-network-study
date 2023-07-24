@@ -1,9 +1,9 @@
-import postSize from './post_size.js';
-import replacing from './replacing.js';
+// import postSize from './post_size.js';
+// import replacing from './replacing.js';
 import time from './timePost.js';
-import hashtag from './hashtag.js';
-import platformFilter from './censorshipFilter.js';
-import similar from './similar.js';
+// import hashtag from './hashtag.js';
+// import platformFilter from './censorshipFilter.js';
+// import similar from './similar.js';
 
 async function getResponse() {
   let response = await fetch('/assets/data.json');
@@ -15,15 +15,6 @@ async function getResponse() {
   let WirteMsgTodey = document.querySelector('#WirteMsgTodey');
   WirteMsgTodey.textContent = content.static.WirteMsgTodey;
 }
-
-// let Registerde = document.querySelector('#Registerde');
-// Registerde.textContent = 20;
-
-// let WirteMsg = document.querySelector('#WirteMsg');
-// WirteMsg.textContent = 556;
-
-// let WirteMsgTodey = document.querySelector('#WirteMsgTodey');
-// WirteMsgTodey.textContent = 58;
 
 const modelController = ({
   modal, btnOpen, btnClose, btnCloseMobile,
@@ -204,21 +195,25 @@ async function getRes() {
   });
 
   let blok = document.getElementsByTagName('aside');
-
   profilePost.forEach((item) => {
     let elements = document.createElement('div');
+    let DatPublication = item.time;
+    let DatNew = new Date();
+    let milliseconds = DatNew.getTime() - new Date(DatPublication).getTime();
+    let min = Math.round(milliseconds / 60000);
+
     elements.innerHTML = `
       <div class="BlokNews">
-        <div class="BlokNewsPhoto">
-          <img class="profile" src="${item.img}" alt="фото профиля"/>
+        <div class="BlokNewsPhoto prof">
+          <img class="profile loading" src="${item.img}" alt="фото профиля"/>
         </div>
         <div class="BlokNewsInfoPost">
           <div class="BlokNameNickTime">
             <div class="BlokNameNick">
-              <p class="name">${item.name}</p>
-              <p class="nick">${item.nick}</p>
+              <p class="name ">${item.name}</p>
+              <p class="nick ">${item.nick}</p>
             </div>
-            <p class="time">${item.time}</p>
+            <p class="time" data-time=${item.time}>${time(min)}</p>
           </div>
           <p class="mes">${item.mes}</p>
           <ul class="cards">
@@ -240,46 +235,77 @@ async function getRes() {
       <div class="line"></div>`;
     blok[0].append(elements);
   });
+
+  setInterval(() => {
+    let min1;
+    let blokTm = document.querySelectorAll('.time');
+    blokTm.forEach((item, index) => {
+      let DatPublication1 = blokTm[index].dataset.time;
+      let DatNew1 = new Date();
+      let milliseconds1 = DatNew1.getTime() - new Date(DatPublication1).getTime();
+      min1 = Math.round(milliseconds1 / 60000);
+      blokTm[index].innerHTML = `
+        <p class="time">${time(min1)}</p>
+      `;
+    });
+  }, 60000);
 }
-getRes();
+
+function animation() {
+  return new Promise((resover) => {
+    setTimeout(() => {
+      let b = document.querySelector('.animationBlok');
+      b.style.cssText = `
+        display: none;
+      `;
+      resover();
+    }, 5000);
+  });
+}
 
 getResponse();
 
-alert(postSize('Всем привет!'));
+animation().then(() => {
+  getRes();
+});
 
-alert(replacing('Привет! github.com'));
+// setInterval(postMin(), 60000);
 
-alert(time(59));
+// alert(postSize('Всем привет!'));
 
-alert(hashtag('Кто еще изучает #javascript ?'));
+// alert(replacing('Привет! github.com'));
 
-alert(platformFilter('Да вы что?? Охуели там?', ['охуели']));
+// alert(time(59));
 
-const profile = {
-  id: 256,
-  posts: [
-    'Привет. #сегодня был на концерте группы #linkinpark',
-    'как вам новая песня #linkinpark',
-  ],
-};
-const profiles = [
-  {
-    id: 257,
-    posts: [
-      'Сегодня вышла новая версия #javascript',
-      'как вам новая версия #javascript?',
-    ],
-  },
-  {
-    id: 258,
-    posts: [
-      '#сегодня мне не понравилась новая песня #linkinpark',
-    ],
-  },
-];
+// alert(hashtag('Кто еще изучает #javascript ?'));
 
-const count1 = 1;
-const count2 = 2;
+// alert(platformFilter('Да вы что?? Охуели там?', ['охуели']));
 
-alert(similar(profile, profiles, count1));
-alert(similar(profile, profiles, count2));
+// const profile = {
+//   id: 256,
+//   posts: [
+//     'Привет. #сегодня был на концерте группы #linkinpark',
+//     'как вам новая песня #linkinpark',
+//   ],
+// };
+// const profiles = [
+//   {
+//     id: 257,
+//     posts: [
+//       'Сегодня вышла новая версия #javascript',
+//       'как вам новая версия #javascript?',
+//     ],
+//   },
+//   {
+//     id: 258,
+//     posts: [
+//       '#сегодня мне не понравилась новая песня #linkinpark',
+//     ],
+//   },
+// ];
+
+// const count1 = 1;
+// const count2 = 2;
+
+// alert(similar(profile, profiles, count1));
+// alert(similar(profile, profiles, count2));
