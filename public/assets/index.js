@@ -235,21 +235,68 @@ async function getRes() {
       <div class="line"></div>`;
     blok[0].append(elements);
   });
-
-  setInterval(() => {
-    let min1;
-    let blokTm = document.querySelectorAll('.time');
-    blokTm.forEach((item, index) => {
-      let DatPublication1 = blokTm[index].dataset.time;
-      let DatNew1 = new Date();
-      let milliseconds1 = DatNew1.getTime() - new Date(DatPublication1).getTime();
-      min1 = Math.round(milliseconds1 / 60000);
-      blokTm[index].innerHTML = `
-        <p class="time">${time(min1)}</p>
-      `;
-    });
-  }, 60000);
 }
+
+async function AllBlocks() {
+  let response = await fetch('/assets/data.json');
+  let content = await response.json();
+  let res = await fetch('/assets/pictures.json');
+  let con = await res.json();
+  let top = [];
+  let blog = [];
+
+  content.topics.forEach((element) => {
+    top.push(element);
+  });
+  content.blogs.forEach((element) => {
+    blog.push(element);
+  });
+
+  con.pictures.forEach((element) => {
+    blog.forEach((item) => {
+      let el = item;
+      if (el.id === element.id) {
+        el.img = element.img;
+      }
+    });
+  });
+
+  let blok = document.querySelector('.topic');
+  top.forEach((item) => {
+    let elements = document.createElement('div');
+    elements.innerHTML = `
+      <h4 class="top">${item}</h4>
+      <p  class="numberOfPosts">2 941 сообщение</p>
+    `;
+    blok.append(elements);
+  });
+
+  let blok1 = document.querySelector('.blogs');
+  blog.forEach((item) => {
+    let elements = document.createElement('div');
+    elements.innerHTML = `
+      <img class="profileBack" src="${item.img}" alt="фото профиля"/>
+      <div class="read">Читать</div>
+      <p class="nameBack">${item.nameBack}</p>
+      <p class="nickBack">${item.nickBack}</p>
+    `;
+    blok1.append(elements);
+  });
+}
+
+setInterval(() => {
+  let min1;
+  let blokTm = document.querySelectorAll('.time');
+  blokTm.forEach((item, index) => {
+    let DatPublication1 = blokTm[index].dataset.time;
+    let DatNew1 = new Date();
+    let milliseconds1 = DatNew1.getTime() - new Date(DatPublication1).getTime();
+    min1 = Math.round(milliseconds1 / 60000);
+    blokTm[index].innerHTML = `
+      <p class="time">${time(min1)}</p>
+    `;
+  });
+}, 60000);
 
 function animation() {
   return new Promise((resover) => {
@@ -264,6 +311,7 @@ function animation() {
 }
 
 getResponse();
+AllBlocks();
 
 animation().then(() => {
   getRes();
