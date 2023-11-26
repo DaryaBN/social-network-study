@@ -1,3 +1,4 @@
+import { sign } from 'crypto';
 import express from 'express';
 import fs from 'fs';
 import pkg from 'pg';
@@ -19,30 +20,35 @@ app.listen(port, () => {
 
 const { Pool } = pkg;
 const pool = new Pool({
-  user: 'dolphin_production_user',
-  host: 'dpg-cjeajigcfp5c73cvvct0-a.oregon-postgres.render.com',
-  database: 'dolphin_production',
-  password: 'XbOoZZSSJYY7vSSfTfDt1vMic5qzCSe2',
+  user: 'dolphin_production1_user',
+  host: 'dpg-clcuiil4lnec73e5938g-a.oregon-postgres.render.com',
+  database: 'dolphin_production1',
+  password: 'ruqfNxeXxDFLXvdO2yDuAMSDa9Np53jZ',
   port: 5432,
   ssl: {
     rejectUnauthorized: false,
   },
 });
 
-let information = await pool.query('SELECT * from posts');
+// let information = await pool.query('SELECT * from posts');
+// console.log(information.rows)
 
-app.get('/posts', (req, res) => res.type('json').send(information.rows));
 
-app.get('/posts/:id', (req, res) => {
-  information.rows.forEach((item) => {
-    if (item.id === req.params.id) {
-      res.type('json').send(item);
-    }
-  });
-  res.send(404);
+app.get('/posts', async (req, res) => {
+  let information = await pool.query('SELECT * from posts');
+  res.type('json').send(information.rows)
 });
 
-app.post('/posts', (req, res) => {
+app.get('/posts/:id', async (request, response) => {
+  const id = parseInt(request.params.id)
+  let information = await pool.query('SELECT * FROM posts WHERE id = $1', [id]);
+  response.type('json').send(information.rows);
+});
+
+
+
+app.post('/posts', async (req, res) => {
+  let information = await pool.query('SELECT * from posts');
   let NewPost = {
     id: +(new Date()),
     name: req.body.name,
@@ -51,42 +57,78 @@ app.post('/posts', (req, res) => {
     mes: req.body.mes,
   };
   information.rows.push(NewPost);
-  // console.log(req.body)
-  res.status(201).type('json').send(NewPost);
-});
-
-app.delete('/posts/:id', (req, res) => {
-  information.rows.forEach((index) => {
-    if (information.rows[index].id === req.params.id) {
-      information.rows.slice(index, 1);
-      res.send(201);
-    }
-  });
-  console.log(req.body);
-  res.send(404);
-});
-app.post('/posts/:id', (req, res) => {
-  information.rows.forEach((index) => {
-    if (information.rows[index].id === req.params.id) {
-      information.rows[index].mes = req.body.mes;
-      res.type('json').send(information.rows);
-    }
-  });
-  res.send(404);
+  console.log(information.rows)
+  res.type('json').send(NewPost);
 });
 
 // let user = {
-//   name: 'John',
-//   surname: 'Smith'
+//   id: '6',
+//   name: 'Даша',
+//   nick: '@Darya',
+//   time: '2023-11-01T12:52:57.173Z',
+//   mes: 'Привет'
 // };
 
-// let response = await fetch('/posts', {
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'application/json;charset=utf-8'
-//   },
-//   body: JSON.stringify(user)
-// });
+//  let response = await fetch('/posts', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json;charset=utf-8'
+//     },
+//     body: JSON.stringify(user)
+//   });
+  
+//   let result = await response.json();
+//   console.log(result);
 
-// let result = await response.json();
-// alert(result.message);
+app.delete('/posts/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  let information = await pool.query('SELECT * FROM posts WHERE id = $1', [id])
+  information.rows.pop()
+  console.log(information.rows)
+  res.type('json').send(information.rows);
+})
+
+// function remove(id){
+//   fetch('/posts' + '/' + id, {
+//     method: 'DELETE'
+//   }).then(() => {
+//      console.log('removed');
+//   }).catch(err => {
+//     console.error(err)
+//   })
+// }
+// remove('1')
+
+app.post('/posts/:id', async(req, res) =>{
+  const id = parseInt(req.params.id)
+  let information = await pool.query('SELECT * FROM posts WHERE id = $1', [id])
+  information.rows[0].mes = req.body.mes
+  console.log(information.rows)
+  // let information1 = await pool.query('SELECT * from posts');
+  // console.log(information1.rows) вот тут если вызвать потом всю базу, то никаких изменений нет
+  res.type('json').send(information.rows);
+})
+
+// let user = {
+//     id: '6',
+//     name: 'Даша',
+//     nick: '@Darya',
+//     time: '2023-11-01T12:52:57.173Z',
+//     mes: 'Привет'
+//   };
+// function edit(id){
+//     let response =  fetch('/posts' + '/' + id, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       },
+//       body: JSON.stringify(user)
+//     }).then(() => {
+//       let result =  response.json();
+//         console.log(result);
+//   }).catch(err => {
+//     console.error(err)
+//   })
+// }
+//   edit('1')
+
