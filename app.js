@@ -1,4 +1,4 @@
-import { sign } from 'crypto';
+// import { sign } from 'crypto';
 import express from 'express';
 import fs from 'fs';
 import pkg from 'pg';
@@ -33,19 +33,16 @@ const pool = new Pool({
 // let information = await pool.query('SELECT * from posts');
 // console.log(information.rows)
 
-
 app.get('/posts', async (req, res) => {
   let information = await pool.query('SELECT * from posts');
-  res.type('json').send(information.rows)
+  res.type('json').send(information.rows);
 });
 
 app.get('/posts/:id', async (request, response) => {
-  const id = parseInt(request.params.id)
+  const id = Number(request.params.id);
   let information = await pool.query('SELECT * FROM posts WHERE id = $1', [id]);
   response.type('json').send(information.rows);
 });
-
-
 
 app.post('/posts', async (req, res) => {
   let information = await pool.query('SELECT * from posts');
@@ -57,7 +54,7 @@ app.post('/posts', async (req, res) => {
     mes: req.body.mes,
   };
   information.rows.push(NewPost);
-  console.log(information.rows)
+  console.log(information.rows);
   res.type('json').send(NewPost);
 });
 
@@ -76,17 +73,16 @@ app.post('/posts', async (req, res) => {
 //     },
 //     body: JSON.stringify(user)
 //   });
-  
 //   let result = await response.json();
 //   console.log(result);
 
 app.delete('/posts/:id', async (req, res) => {
-  const id = parseInt(req.params.id)
-  let information = await pool.query('SELECT * FROM posts WHERE id = $1', [id])
-  information.rows.pop()
-  console.log(information.rows)
+  const id = Number(req.params.id);
+  let information = await pool.query('SELECT * FROM posts WHERE id = $1', [id]);
+  information.rows.pop();
+  console.log(information.rows);
   res.type('json').send(information.rows);
-})
+});
 
 // function remove(id){
 //   fetch('/posts' + '/' + id, {
@@ -99,15 +95,15 @@ app.delete('/posts/:id', async (req, res) => {
 // }
 // remove('1')
 
-app.post('/posts/:id', async(req, res) =>{
-  const id = parseInt(req.params.id)
-  let information = await pool.query('SELECT * FROM posts WHERE id = $1', [id])
-  information.rows[0].mes = req.body.mes
-  console.log(information.rows)
+app.post('/posts/:id', async (req, res) => {
+  const id = Number(req.params.id);
+  let information = await pool.query('SELECT * FROM posts WHERE id = $1', [id]);
+  information.rows[0].mes = req.body.mes;
+  console.log(information.rows);
   // let information1 = await pool.query('SELECT * from posts');
   // console.log(information1.rows) вот тут если вызвать потом всю базу, то никаких изменений нет
   res.type('json').send(information.rows);
-})
+});
 
 // let user = {
 //     id: '6',
@@ -131,4 +127,3 @@ app.post('/posts/:id', async(req, res) =>{
 //   })
 // }
 //   edit('1')
-
