@@ -2,6 +2,7 @@
 import express from 'express';
 import fs from 'fs';
 import pkg from 'pg';
+import bcrypt from 'bcrypt';
 
 const app = express();
 const port = 3000;
@@ -45,17 +46,10 @@ app.get('/posts/:id', async (request, response) => {
 });
 
 app.post('/posts', async (req, res) => {
-  let information = await pool.query('SELECT * from posts');
-  let NewPost = {
-    id: +(new Date()),
-    name: req.body.name,
-    nick: req.body.nick,
-    time: new Date(),
-    mes: req.body.mes,
-  };
-  information.rows.push(NewPost);
-  console.log(information.rows);
-  res.type('json').send(NewPost);
+  let information = await pool.query(`INSERT INTO posts VALUES('${req.body.id}' , '${req.body.name}' , '${req.body.nick}' , '${req.body.time}' , '${req.body.mes}')`);
+  let information1 = await pool.query('SELECT * from posts');
+  console.log(information1.rows);
+  res.type('json').send(information.rows);
 });
 
 // let user = {
@@ -78,9 +72,9 @@ app.post('/posts', async (req, res) => {
 
 app.delete('/posts/:id', async (req, res) => {
   const id = Number(req.params.id);
-  let information = await pool.query('SELECT * FROM posts WHERE id = $1', [id]);
-  information.rows.pop();
-  console.log(information.rows);
+  let information = await pool.query('DELETE FROM posts WHERE id = $1', [id]);
+  let information1 = await pool.query('SELECT * from posts');
+  console.log(information1.rows);
   res.type('json').send(information.rows);
 });
 
@@ -97,11 +91,13 @@ app.delete('/posts/:id', async (req, res) => {
 
 app.post('/posts/:id', async (req, res) => {
   const id = Number(req.params.id);
-  let information = await pool.query('SELECT * FROM posts WHERE id = $1', [id]);
-  information.rows[0].mes = req.body.mes;
-  console.log(information.rows);
-  // let information1 = await pool.query('SELECT * from posts');
-  // console.log(information1.rows) вот тут если вызвать потом всю базу, то никаких изменений нет
+  let mes = String(req.body.mes);
+  let information = await pool.query(`
+    UPDATE posts SET mes = '${mes}'
+    WHERE id = $1;
+    `, [id]);
+  let information1 = await pool.query('SELECT * from posts');
+  console.log(information1.rows);
   res.type('json').send(information.rows);
 });
 
@@ -127,3 +123,43 @@ app.post('/posts/:id', async (req, res) => {
 //   })
 // }
 //   edit('1')
+
+app.get('/users', async (req, res) => {
+  let information = await pool.query('SELECT * from users');
+  res.type('json').send(information.rows);
+});
+
+app.post('/users', async (req, res) => {
+  let user = await pool.query(`SELECT FROM users WHERE email = '${req.body.email}'`);
+  if (user.rows.length <= 0) {
+    // пароль пользователя
+    let passwordFromUser = req.body.password;
+    // создаем соль
+    let salt = bcrypt.genSaltSync(10);
+    // шифруем пароль
+    let passwordToSave = bcrypt.hashSync(passwordFromUser, salt);
+    let information = await pool.query(`INSERT INTO users VALUES('${req.body.id}' , '${req.body.username}' , '${req.body.email}' , '${passwordToSave}')`);
+    let information1 = await pool.query('SELECT * from users');
+    console.log(information1.rows);
+    res.status(200).type('json').send(information.rows);
+  } else if (user.rows.length > 0) {
+    res.status(400);
+    console.log('error');
+  }
+});
+
+// let user = {
+//     id: '6',
+//     username: 'Даша',
+//     email: 'Darya@mail.ru',
+//     password: '12345'
+//   };
+//    let response = await fetch('/users', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       },
+//       body: JSON.stringify(user)
+//     });
+//     let result = await response.json();
+//     console.log(result);
