@@ -3,6 +3,7 @@ import express from 'express';
 import fs from 'fs';
 import pkg from 'pg';
 import bcrypt from 'bcrypt';
+import * as crypto from 'crypto';
 
 const app = express();
 const port = 3000;
@@ -39,21 +40,22 @@ app.get('/posts', async (req, res) => {
   res.type('json').send(information.rows);
 });
 
-app.get('/posts/:id', async (request, response) => {
-  const id = Number(request.params.id);
-  let information = await pool.query('SELECT * FROM posts WHERE id = $1', [id]);
+app.get('/posts/:id_user', async (request, response) => {
+  const id = Number(request.params.id_user);
+  let information = await pool.query('SELECT * FROM posts WHERE id_user = $1', [id]);
   response.type('json').send(information.rows);
 });
 
 app.post('/posts', async (req, res) => {
-  let information = await pool.query(`INSERT INTO posts VALUES('${req.body.id}' , '${req.body.name}' , '${req.body.nick}' , '${req.body.time}' , '${req.body.mes}')`);
+  let information = await pool.query(`INSERT INTO posts VALUES('${req.body.id}' , '${req.body.id_user}'  , '${req.body.name}' , '${req.body.nick}' , '${req.body.time}' , '${req.body.mes}')`);
   let information1 = await pool.query('SELECT * from posts');
   console.log(information1.rows);
   res.type('json').send(information.rows);
 });
 
 // let user = {
-//   id: '6',
+//   id: '5',
+//   id_user: '5',
 //   name: 'Даша',
 //   nick: '@Darya',
 //   time: '2023-11-01T12:52:57.173Z',
@@ -70,9 +72,9 @@ app.post('/posts', async (req, res) => {
 //   let result = await response.json();
 //   console.log(result);
 
-app.delete('/posts/:id', async (req, res) => {
-  const id = Number(req.params.id);
-  let information = await pool.query('DELETE FROM posts WHERE id = $1', [id]);
+app.delete('/posts/:id_user', async (req, res) => {
+  const id = Number(req.params.id_user);
+  let information = await pool.query('DELETE FROM posts WHERE id_user = $1', [id]);
   let information1 = await pool.query('SELECT * from posts');
   console.log(information1.rows);
   res.type('json').send(information.rows);
@@ -87,14 +89,14 @@ app.delete('/posts/:id', async (req, res) => {
 //     console.error(err)
 //   })
 // }
-// remove('1')
+// remove('5')
 
-app.post('/posts/:id', async (req, res) => {
-  const id = Number(req.params.id);
+app.post('/posts/:id_user', async (req, res) => {
+  const id = Number(req.params.id_user);
   let mes = String(req.body.mes);
   let information = await pool.query(`
     UPDATE posts SET mes = '${mes}'
-    WHERE id = $1;
+    WHERE id_user = $1;
     `, [id]);
   let information1 = await pool.query('SELECT * from posts');
   console.log(information1.rows);
@@ -102,11 +104,12 @@ app.post('/posts/:id', async (req, res) => {
 });
 
 // let user = {
-//     id: '6',
+//     id: '5',
+//     id_user: '5',
 //     name: 'Даша',
 //     nick: '@Darya',
 //     time: '2023-11-01T12:52:57.173Z',
-//     mes: 'Привет'
+//     mes: 'Пока'
 //   };
 // function edit(id){
 //     let response =  fetch('/posts' + '/' + id, {
@@ -122,7 +125,7 @@ app.post('/posts/:id', async (req, res) => {
 //     console.error(err)
 //   })
 // }
-//   edit('1')
+//   edit('5')
 
 app.get('/users', async (req, res) => {
   let information = await pool.query('SELECT * from users');
@@ -130,7 +133,7 @@ app.get('/users', async (req, res) => {
 });
 
 app.post('/users', async (req, res) => {
-  let user = await pool.query(`SELECT FROM users WHERE email = '${req.body.email}'`);
+  let user = await pool.query(`SELECT * FROM users WHERE email = '${req.body.email}'`);
   if (user.rows.length <= 0) {
     // пароль пользователя
     let passwordFromUser = req.body.password;
@@ -138,9 +141,22 @@ app.post('/users', async (req, res) => {
     let salt = bcrypt.genSaltSync(10);
     // шифруем пароль
     let passwordToSave = bcrypt.hashSync(passwordFromUser, salt);
-    let information = await pool.query(`INSERT INTO users VALUES('${req.body.id}' , '${req.body.username}' , '${req.body.email}' , '${passwordToSave}')`);
+    let information = await pool.query(`INSERT INTO users VALUES('${req.body.id}', '${req.body.id_user}' , '${req.body.username}' , '${req.body.email}' , '${passwordToSave}')`);
     let information1 = await pool.query('SELECT * from users');
     console.log(information1.rows);
+    let dat = new Date();
+    // console.log(dat)
+    let token = crypto.randomUUID();
+    // console.log(token)
+    await pool.query(`INSERT INTO sessions VALUES('${req.body.id}' , '${req.body.id_user}' , '${dat}', '${req.body.email}' , '${token}')`);
+    res.cookie('token', `'${token}'`, {
+      maxAge: 86400000,
+      secure: true,
+    });
+    res.cookie('email', `'${req.body.email}'`, {
+      maxAge: 86400000,
+      secure: true,
+    });
     res.status(200).type('json').send(information.rows);
   } else if (user.rows.length > 0) {
     res.status(400);
@@ -149,17 +165,65 @@ app.post('/users', async (req, res) => {
 });
 
 // let user = {
-//     id: '6',
-//     username: 'Даша',
-//     email: 'Darya@mail.ru',
-//     password: '12345'
-//   };
-//    let response = await fetch('/users', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json;charset=utf-8'
-//       },
-//       body: JSON.stringify(user)
-//     });
-//     let result = await response.json();
-//     console.log(result);
+//   id: '5',
+//   id_user: '5',
+//   username: 'Даша',
+//   email: 'darya@mail.ru',
+//   password: '12345'
+// };
+//   let response = await fetch('/users', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json;charset=utf-8'
+//     },
+//     body: JSON.stringify(user)
+//   });
+//   let result = await response.json();
+//   console.log(result);
+
+app.post('/login', async (req, res) => {
+  let passwordFromUser = req.body.password;
+  let user = await pool.query(`SELECT * FROM users WHERE email = '${req.body.email}'`);
+  if (bcrypt.compareSync(passwordFromUser, user.rows[0].password)) {
+    // console.log(user.rows);
+    let dateToken = await pool.query(`SELECT * FROM sessions WHERE  email = '${req.body.email}'`);
+    let a = dateToken.rows[dateToken.rows.length - 1];
+    let days = ((new Date().getTime() - new Date(a.date).getTime()) / 86400000);
+    if (Number(days) <= 1) {
+      res.status(200).type('json').send(user.rows);
+    } else if (Number(days) > 1) {
+      let dat = new Date();
+      let token = crypto.randomUUID();
+      await pool.query(`INSERT INTO sessions VALUES( '${req.body.id}' , '${req.body.id_user}' , '${dat}', '${req.body.email}' , '${token}')`);
+      res.cookie('token', `'${token}'`, {
+        maxAge: 86400000,
+        secure: true,
+      });
+      res.cookie('email', `'${req.body.email}'`, {
+        maxAge: 86400000,
+        secure: true,
+      });
+      res.status(200).type('json').send(user.rows);
+    }
+  } else {
+    res.status(400);
+    console.log('error');
+  }
+});
+
+// let user = {
+//   id: '6', должно менятся иначе на занесется в таблицу
+//   id_user: '5',
+//   username: 'Даша',
+//   email: 'darya@mail.ru',
+//   password: '12345'
+// };
+// let response = await fetch('/login', {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json;charset=utf-8'
+//   },
+//     body: JSON.stringify(user)
+//   });
+//   let result = await response.json();
+//   console.log(result);
