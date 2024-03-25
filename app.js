@@ -4,6 +4,7 @@ import fs from 'fs';
 import pkg from 'pg';
 import bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
+import cookies from 'cookie-parser';
 
 const app = express();
 const port = 3000;
@@ -11,7 +12,7 @@ const port = 3000;
 const html = fs.readFileSync('public/main.html', 'utf8');
 app.use(express.static('public'));
 app.use(express.json());
-
+app.use(cookies());
 // app.use(express.static('public'));
 
 app.get('/', (req, res) => res.type('html').send(html));
@@ -22,10 +23,10 @@ app.listen(port, () => {
 
 const { Pool } = pkg;
 const pool = new Pool({
-  user: 'dolphin_production1_user',
-  host: 'dpg-clcuiil4lnec73e5938g-a.oregon-postgres.render.com',
-  database: 'dolphin_production1',
-  password: 'ruqfNxeXxDFLXvdO2yDuAMSDa9Np53jZ',
+  user: 'dolphin_production_tsto_user',
+  host: 'dpg-cn8uctmd3nmc73dfdpug-a.oregon-postgres.render.com',
+  database: 'dolphin_production_tsto',
+  password: 'ihV4A2qOmykNlPpj6YxcFSIETtTIGnrk',
   port: 5432,
   ssl: {
     rejectUnauthorized: false,
@@ -133,6 +134,7 @@ app.get('/users', async (req, res) => {
 });
 
 app.post('/users', async (req, res) => {
+  // console.log(req.body)
   let user = await pool.query(`SELECT * FROM users WHERE email = '${req.body.email}'`);
   if (user.rows.length <= 0) {
     // пароль пользователя
@@ -148,7 +150,7 @@ app.post('/users', async (req, res) => {
     // console.log(dat)
     let token = crypto.randomUUID();
     // console.log(token)
-    await pool.query(`INSERT INTO sessions VALUES('${req.body.id}' , '${req.body.id_user}' , '${dat}', '${req.body.email}' , '${token}')`);
+    await pool.query(`INSERT INTO sessions VALUES('${req.body.id}' , '${dat}', '${req.body.email}' , '${token}')`);
     res.cookie('token', `'${token}'`, {
       maxAge: 86400000,
       secure: true,
@@ -159,8 +161,8 @@ app.post('/users', async (req, res) => {
     });
     res.status(200).type('json').send(information.rows);
   } else if (user.rows.length > 0) {
-    res.status(400);
-    console.log('error');
+    res.status(400).type('json').send('error');
+    // console.log('error');
   }
 });
 
@@ -183,6 +185,7 @@ app.post('/users', async (req, res) => {
 
 app.post('/login', async (req, res) => {
   let passwordFromUser = req.body.password;
+  // console.log(req.body.password)
   let user = await pool.query(`SELECT * FROM users WHERE email = '${req.body.email}'`);
   if (bcrypt.compareSync(passwordFromUser, user.rows[0].password)) {
     // console.log(user.rows);
@@ -194,7 +197,7 @@ app.post('/login', async (req, res) => {
     } else if (Number(days) > 1) {
       let dat = new Date();
       let token = crypto.randomUUID();
-      await pool.query(`INSERT INTO sessions VALUES( '${req.body.id}' , '${req.body.id_user}' , '${dat}', '${req.body.email}' , '${token}')`);
+      await pool.query(`INSERT INTO sessions VALUES( '${req.body.id}' , '${dat}', '${req.body.email}' , '${token}')`);
       res.cookie('token', `'${token}'`, {
         maxAge: 86400000,
         secure: true,
@@ -204,10 +207,11 @@ app.post('/login', async (req, res) => {
         secure: true,
       });
       res.status(200).type('json').send(user.rows);
+      // console.log('ok');
     }
   } else {
-    res.status(400);
-    console.log('error');
+    res.status(400).type('json').send('error');
+    // console.log('error');
   }
 });
 
@@ -227,3 +231,26 @@ app.post('/login', async (req, res) => {
 //   });
 //   let result = await response.json();
 //   console.log(result);
+
+app.post('/feed1', async (req) => {
+  try {
+    let cook = req.cookies;
+    let sess = await pool.query(`SELECT * FROM sessions WHERE token = ${cook.token}`);
+    let days = ((new Date().getTime() - new Date(sess.rows[0].date).getTime()) / 86400000);
+    //  console.log(days)
+    if (Number(days) <= 1) {
+      alert('ok');
+    } else if (Number(days) > 1) {
+      alert('error');
+    }
+  } catch (error) {
+    alert('проблемы с куки');
+  }
+});
+
+//     fetch('/feed1', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json;charset=utf-8'
+//     },
+//     });

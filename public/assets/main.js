@@ -127,6 +127,33 @@ form.addEventListener('submit', (event) => {
     background: #FFDEEC;
     border: 1px solid #E40060;
     `;
+  } else {
+    let user = {
+      id: +new Date(),
+      id_user: +new Date(),
+      username: nickname.value,
+      email: email.value,
+      password: password.value,
+    };
+    try {
+      const res = fetch('/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify(user),
+      });
+      const us = res;
+      us.then((value) => {
+        if (value.ok) {
+          window.location.replace('/Feed.html');
+        } else if (!value.ok) {
+          alert('Этот адрес электронной почты уже используется');
+        }
+      });
+    } catch (error) {
+      console.log('Возникла проблема с вашим fetch запросом: ', error.message);
+    }
   }
 });
 
@@ -136,13 +163,13 @@ let passwordIn = formIn.querySelector('.password');
 
 formIn.addEventListener('submit', (event) => {
   event.preventDefault();
-  console.log('nickname: ', nicknameIn.value);
-  console.log('password: ', passwordIn.value);
+  // console.log('nickname: ', nicknameIn.value);
+  // console.log('password: ', passwordIn.value);
 
   let SingInInputs = formIn.querySelectorAll('.SingInInput');
   let error1 = formIn.querySelectorAll('.SingInTextError');
   let error2 = formIn.querySelector('.SingInTextError1');
-  let error3 = formIn.querySelector('.Error1');
+  // let error3 = formIn.querySelector('.Error1');
 
   if (nicknameIn.value.length <= 0) {
     error1[0].style.display = 'flex';
@@ -164,13 +191,39 @@ formIn.addEventListener('submit', (event) => {
     background: #FFDEEC;
     border: 1px solid #E40060;
     `;
-  }
-  if (passwordIn.value.includes('1' || '0')) {
-    error3.style.display = 'flex';
-    SingInInputs[1].style.cssText = `
-    background: #FFDEEC;
-    border: 1px solid #E40060;
-    `;
+  // }
+  // if (passwordIn.value.includes('1' || '0')) {
+  //   error3.style.display = 'flex';
+  //   SingInInputs[1].style.cssText = `
+  //   background: #FFDEEC;
+  //   border: 1px solid #E40060;
+  //   `;
+  } else {
+    let user = {
+      id: +new Date(),
+      username: nicknameIn.value,
+      email: nicknameIn.value,
+      password: passwordIn.value,
+    };
+    try {
+      const response = fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify(user),
+      });
+      const js = response;
+      js.then((value) => {
+        if (value.ok) {
+          window.location.replace('/Feed.html');
+        } else if (!value.ok) {
+          alert('не правильно введен логин или пароль');
+        }
+      });
+    } catch (error) {
+      console.log('Возникла проблема с вашим fetch запросом: ', error.message);
+    }
   }
 });
 
