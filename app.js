@@ -185,10 +185,8 @@ app.post('/users', async (req, res) => {
 
 app.post('/login', async (req, res) => {
   let passwordFromUser = req.body.password;
-  // console.log(req.body.password)
   let user = await pool.query(`SELECT * FROM users WHERE email = '${req.body.email}'`);
   if (bcrypt.compareSync(passwordFromUser, user.rows[0].password)) {
-    // console.log(user.rows);
     let dateToken = await pool.query(`SELECT * FROM sessions WHERE  email = '${req.body.email}'`);
     let a = dateToken.rows[dateToken.rows.length - 1];
     let days = ((new Date().getTime() - new Date(a.date).getTime()) / 86400000);
@@ -207,11 +205,9 @@ app.post('/login', async (req, res) => {
         secure: true,
       });
       res.status(200).type('json').send(user.rows);
-      // console.log('ok');
     }
   } else {
     res.status(400).type('json').send('error');
-    // console.log('error');
   }
 });
 
@@ -232,25 +228,17 @@ app.post('/login', async (req, res) => {
 //   let result = await response.json();
 //   console.log(result);
 
-app.post('/feed1', async (req) => {
+app.get('/feed1', async (req, res) => {
   try {
     let cook = req.cookies;
     let sess = await pool.query(`SELECT * FROM sessions WHERE token = ${cook.token}`);
     let days = ((new Date().getTime() - new Date(sess.rows[0].date).getTime()) / 86400000);
-    //  console.log(days)
     if (Number(days) <= 1) {
-      alert('ok');
+      res.status(200).type('text').send('ok');
     } else if (Number(days) > 1) {
-      alert('error');
+      res.status(400).type('text').send('error');
     }
   } catch (error) {
-    alert('проблемы с куки');
+    res.status(400).type('text').send('проблемы с куки');
   }
 });
-
-//     fetch('/feed1', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json;charset=utf-8'
-//     },
-//     });
