@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -7,5 +8,24 @@ export default defineConfig({
     outDir: './public',
     emptyOutDir: false,
   },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './main'),
+    },
+  },
   plugins: [react()],
+  server: {
+    proxy: {
+      '/posts': 'http://localhost:3000',
+      '/posts/:id_user': 'http://localhost:3000',
+      '/users': 'http://localhost:3000',
+      '/login': 'http://localhost:3000',
+      '/feed1': 'http://localhost:3000',
+      '/Data1': 'http://localhost:3000',
+      '/DataMess': 'http://localhost:3000',
+      '/DataMessToday': 'http://localhost:3000',
+      '/top': 'http://localhost:3000',
+      '/blog': 'http://localhost:3000',
+    },
+  },
 });
