@@ -1,37 +1,44 @@
+import { useState } from "react";
+import { useEffect } from 'react';
+import DataList from "./DataList";
 import "./styles/Data.css";
 
 const Data = () => {
-    async function getResponse() {
-        let response = await fetch('/Data1');
-        let content = await response.json();
-        let Registerde = document.querySelector('#Registerde');
-        Registerde.textContent = content[0].count;
-        let responseMes = await fetch('/DataMess');
-        let contentMes = await responseMes.json();
-        let WirteMsg = document.querySelector('#WirteMsg');
-        WirteMsg.textContent = contentMes[0].count;
-        let responseMesToday = await fetch('/DataMessToday');
-        let contentMesToday = await responseMesToday.json();
-        let WirteMsgToday = document.querySelector('#WirteMsgTodey');
-        WirteMsgToday.textContent = contentMesToday;
-      }
-      getResponse()
+    let  information = [{
+        user: 0,
+        ms: 0,
+        msToday:0
+    }];
+    const [inf, setInf] = useState(information);
+    async function getInf(){
+        const users = await fetch('/Data1').then((data) => data.json());
+        const mess = await fetch('/DataMess').then((data) => data.json());
+        const messToday = await fetch('/DataMessToday').then((data) => data.json());
+        let resUsers;
+        let resMess;
+        let resToday;
+        if(Array.isArray(users)){
+            resUsers = users[0].count;
+        }else{
+            resUsers = 0;
+        }
+        if(Array.isArray(mess)){
+            resMess = mess[0].count;
+        }else{
+            resMess = 0;
+        }
+        if(Array.isArray(messToday)){
+            resToday = messToday[0].count;
+        }else{
+            resToday = 0;
+        }
+        setInf([{ user: resUsers, ms: resMess, msToday: resToday}]);
+    }
+    useEffect(() => {getInf()}, []);
+
     return(
         <>
-        <div className="DataBox">
-            <div className="boxData">
-                <h1 className="NumberData" id="Registerde">0</h1>
-                <p className="boxTextData">Пользователей зарегистрировано</p>
-            </div>
-            <div className="boxData">
-                <h1 className="NumberData" id="WirteMsg">0</h1>
-                <p className="boxTextData">Сообщений написано</p>
-            </div>
-            <div className="boxData">
-                <h1 className="NumberData" id="WirteMsgTodey">0</h1>
-                <p className="boxTextData">Написано сегодня</p>
-            </div>
-        </div>
+        <DataList dataProps={inf}/>
         </>
     )
 
