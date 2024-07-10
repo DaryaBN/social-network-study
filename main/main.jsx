@@ -1,6 +1,5 @@
 import React from 'react';
-// import ReactDOM from 'react-dom/client';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import Header from './Header.jsx';
 import Data from './Data.jsx';
