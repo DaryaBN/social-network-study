@@ -9,8 +9,8 @@ import cookies from 'cookie-parser';
 const app = express();
 const port = 3000;
 
-const html = fs.readFileSync('public/main.html', 'utf8');
-app.use(express.static('public'));
+const html = fs.readFileSync('index.html', 'utf8');
+app.use(express.static('main'));
 app.use(express.json());
 app.use(cookies());
 // app.use(express.static('public'));
@@ -23,10 +23,10 @@ app.listen(port, () => {
 
 const { Pool } = pkg;
 const pool = new Pool({
-  user: 'dolphin_production_tsto_user',
-  host: 'dpg-cn8uctmd3nmc73dfdpug-a.oregon-postgres.render.com',
-  database: 'dolphin_production_tsto',
-  password: 'ihV4A2qOmykNlPpj6YxcFSIETtTIGnrk',
+  user: 'dolphin_production1_7jgj_user',
+  host: 'dpg-cp4siq779t8c73eknfd0-a.oregon-postgres.render.com',
+  database: 'dolphin_production1_7jgj',
+  password: 'AfwNJcLhsaIDdBGWSBBxrHZ7UwcsAMCM',
   port: 5432,
   ssl: {
     rejectUnauthorized: false,
@@ -134,7 +134,6 @@ app.get('/users', async (req, res) => {
 });
 
 app.post('/users', async (req, res) => {
-  // console.log(req.body)
   let user = await pool.query(`SELECT * FROM users WHERE email = '${req.body.email}'`);
   if (user.rows.length <= 0) {
     // пароль пользователя
@@ -184,6 +183,7 @@ app.post('/users', async (req, res) => {
 //   console.log(result);
 
 app.post('/login', async (req, res) => {
+  // console.log(req.body)
   let passwordFromUser = req.body.password;
   let user = await pool.query(`SELECT * FROM users WHERE email = '${req.body.email}'`);
   if (bcrypt.compareSync(passwordFromUser, user.rows[0].password)) {
@@ -241,4 +241,28 @@ app.get('/feed1', async (req, res) => {
   } catch (error) {
     res.status(400).type('text').send('проблемы с куки');
   }
+});
+
+app.get('/Data1', async (req, res) => {
+  let user = await pool.query('SELECT COUNT (*) FROM users');
+  res.status(200).type('json').send(user.rows);
+});
+app.get('/DataMess', async (req, res) => {
+  let user = await pool.query('SELECT COUNT (*) FROM posts');
+  res.status(200).type('json').send(user.rows);
+});
+app.get('/DataMessToday', async (req, res) => {
+  let dat = new Date().toDateString();
+  let user = await pool.query('SELECT * FROM posts');
+  let r = user.rows.filter((item) => new Date(item.time).toDateString() === dat);
+  let a = String(r.length);
+  res.status(200).type('text').send(a);
+});
+app.get('/top', async (req, res) => {
+  let information = await pool.query('SELECT * from hashtag');
+  res.type('json').send(information.rows);
+});
+app.get('/blog', async (req, res) => {
+  let information = await pool.query('SELECT * from bloggers');
+  res.type('json').send(information.rows);
 });
