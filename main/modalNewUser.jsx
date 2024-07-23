@@ -80,7 +80,7 @@ const ModalNewUser = ({activeNewUser, setActiveNewUser}) => {
       && state.password.length != 0 
       && state.passworConfirmation.length != 0 
       && state.password === state.passworConfirmation
-      && state.email.includes('@') && state.email.includes('.ru' || '.com')
+      && (validationEmail(state.email) == true)
     ){
       const user = {
         username: state.name,
