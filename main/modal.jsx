@@ -49,7 +49,7 @@ const Modal = ({active, setActive}) => {
         email: state.name,
         password: state.password,
       }
-      try {
+      // try {
         const response = fetch('/login', {
           method: 'POST',
           headers: {
@@ -70,10 +70,10 @@ const Modal = ({active, setActive}) => {
           settextErrorLogin(e.target.checked);
         }
         });
-      } 
-      catch (error) {
-        console.log('Возникла проблема с вашим fetch запросом: ', error.message);
-      }
+      // } 
+      // catch (error) {
+      //   console.log('Возникла проблема с вашим fetch запросом: ', error.message);
+      // }
     }
   };
   return (

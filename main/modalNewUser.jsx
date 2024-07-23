@@ -87,7 +87,7 @@ const ModalNewUser = ({activeNewUser, setActiveNewUser}) => {
         email: state.email,
         password: state.password,
       }
-      try {
+      // try {
         const res = fetch('/users', {
           method: 'POST',
           headers: {
@@ -106,9 +106,9 @@ const ModalNewUser = ({activeNewUser, setActiveNewUser}) => {
             settextErrorLogon(e.target.checked);
           }
         });
-      } catch (error) {
-        console.log('Возникла проблема с вашим fetch запросом: ', error.message);
-      }
+      // } catch (error) {
+      //   console.log('Возникла проблема с вашим fetch запросом: ', error.message);
+      // }
     }
   };
 
