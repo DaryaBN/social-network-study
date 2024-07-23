@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cookies());
 
 // app.get('/', (req, res) => res.type('html').send(html));
-app.get('/app', (req, res) => res.type('html').send(index));
+// app.get('/app', (req, res) => res.type('html').send(index));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
