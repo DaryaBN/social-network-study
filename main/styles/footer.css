@@ -1,61 +1,61 @@
 .footerText{
-    width: 325px;
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 38px;
-    text-align: center;
-    margin: 0px auto 24px auto;
+  width: 325px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  text-align: center;
+  margin: 0px auto 24px auto;
 }
 .footerButton{
-    display: block;
+  display: block;
 }
 .footerButton1{
-    margin: 24px 0px 16px 0px;
-    width: 328px;
-    background: #0057FF;
-    border: 1px solid #0057FF;
-    border-radius: 10px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    font-size: 18px;
-    line-height: 22px;
-    font-weight: 500;
-    text-align: center;
-    color: #FFFFFF;
-    cursor: pointer;
+  margin: 24px 0px 16px 0px;
+  width: 328px;
+  background: #0057FF;
+  border: 1px solid #0057FF;
+  border-radius: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
 }
 .footerButton2{
-    margin: 0px 0px 0px 0px;
-    width: 328px;
-    background: #FFFFFF;
-    border: 1px solid #0057FF;
-    border-radius: 10px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    font-size: 18px;
-    line-height: 22px;
-    font-weight: 500;
-    text-align: center;
-    color: #0057FF;
-    cursor: pointer;
+  margin: 0px 0px 0px 0px;
+  width: 328px;
+  background: #FFFFFF;
+  border: 1px solid #0057FF;
+  border-radius: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500;
+  text-align: center;
+  color: #0057FF;
+  cursor: pointer;
 }
 @media (min-width: 1280px){
-    .footerText{
-        width: 641px;
-        margin: 0 auto 0px auto;
-        font-size: 48px;
-        line-height: 58px;
-    }
-    .footerButton{
-        display: flex;
-    }
-    .footerButton1{
-        margin: 32px 16px 100px 55px;
-        margin-right: 16px;
-        width: 260px;
-    }
-    .footerButton2{
-        margin: 32px 16px 100px 0px;
-        width: 260px;
-    }
+  .footerText{
+    width: 641px;
+    margin: 0 auto 0px auto;
+    font-size: 48px;
+    line-height: 58px;
+  }
+  .footerButton{
+    display: flex;
+  }
+  .footerButton1{
+    margin: 32px 16px 100px 55px;
+    margin-right: 16px;
+    width: 260px;
+  }
+  .footerButton2{
+    margin: 32px 16px 100px 0px;
+    width: 260px;
+  }
 }
