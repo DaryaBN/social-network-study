@@ -8,14 +8,14 @@ import cookies from 'cookie-parser';
 const app = express();
 const port = 3000;
 
-const html = fs.readFileSync('public/main_old.html', 'utf8');
-const index = fs.readFileSync('public/index.html', 'utf8');
+// const html = fs.readFileSync('public', 'utf8');
+const index = fs.readFileSync('index.html', 'utf8');
 
 app.use(express.static('public'));
 app.use(express.json());
 app.use(cookies());
 
-app.get('/', (req, res) => res.type('html').send(html));
+// app.get('/', (req, res) => res.type('html').send(html));
 app.get('/app', (req, res) => res.type('html').send(index));
 
 app.listen(port, () => {
