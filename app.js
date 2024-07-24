@@ -126,7 +126,7 @@ app.post('/login', async (req, res) => {
 });
 
 app.get('/DolphinFeed', async (req, res) => {
-  try {
+  // try {
     let cook = req.cookies;
     let sess = await pool.query(`SELECT * FROM sessions WHERE token = ${cook.token}`);
     let days = Number((new Date().getTime() - new Date(sess.rows[0].date).getTime()) / 86400000);
@@ -135,9 +135,9 @@ app.get('/DolphinFeed', async (req, res) => {
     } else if (days > 1) {
       res.status(400).type('text').send('error');
     }
-  } catch (error) {
-    res.status(400).type('text').send('проблемы с куки');
-  }
+  // } catch (error) {
+  //   res.status(400).type('text').send('проблемы с куки');
+  // }
 });
 
 app.get('/DataUsers', async (req, res) => {
