@@ -8,7 +8,7 @@ import cookies from 'cookie-parser';
 const app = express();
 const port = 3000;
 
-const index = fs.readFileSync('index.html', 'utf8');
+// const index = fs.readFileSync('index.html', 'utf8');
 
 app.use(express.static('public'));
 app.use(express.json());
