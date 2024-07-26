@@ -1,5 +1,5 @@
 import express from 'express';
-import fs from 'fs';
+// import fs from 'fs';
 import pkg from 'pg';
 import bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
@@ -8,10 +8,11 @@ import cookies from 'cookie-parser';
 const app = express();
 const port = 3000;
 
-const html = fs.readFileSync('index.html', 'utf8');
+// const index = fs.readFileSync('index.html', 'utf8');
+
+app.use(express.static('public'));
 app.use(express.json());
 app.use(cookies());
-app.use(express.static('public'));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
