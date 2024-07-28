@@ -1,62 +1,60 @@
 .DataBox{
-    position: relative;
-    top: -10px;
-    background-color: #0057FF;
-    width: 100%;
-    height: 457px;
-    margin: 0px;
+	position: relative;
+	top: -10px;
+	background-color: #0057FF;
+	width: 100%;
+	height: 457px;
+	margin: 0px;
 }
 .NumberData{
-    margin: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 25px;
-    font-weight: 300;
-    font-size: 48px;
-    line-height: 58px;
-    text-align: center;
-    color: #FFFFFF;
+	margin: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 25px;
+	font-weight: 300;
+	font-size: 48px;
+	line-height: 58px;
+	text-align: center;
+	color: #FFFFFF;
 }
 .boxTextData{
-    margin: -15px auto;
-    padding: 0 0 25px;
-    width: 150px;
-    font-weight: 100;
-    font-size: 18px;
-    line-height: 22px;
-    text-align: center;
-    color: #FFFFFF;
+	margin: -15px auto;
+	padding: 0 0 25px;
+	width: 150px;
+	font-weight: 100;
+	font-size: 18px;
+	line-height: 22px;
+	text-align: center;
+	color: #FFFFFF;
 }
 @media (min-width: 1280px){
-    .DataBox{
-        display: flex;
-        flex-wrap: wrap;
-        position: relative;
-        margin-left: auto;
-        margin-right: auto;
-        border-radius: 10px;
-        top: -25px;
-        width: 960px;
-        height: 274px;
-    }
-    .boxData{
-        flex: 1 0 10%;
-    }
-    .NumberData{
-        margin-top: 64px;
-        margin-bottom: 16px;
-        padding: 0px;
-        font-size: 72px;
-        line-height: 86px;
-        font-weight: 300;
-    }
-    .boxTextData{
-        padding: 0px;
-        margin: auto;
-        font-size: 18px;
-        font-weight: 200;
-        line-height: 22px;
-    }
-
-
+	.DataBox{
+		display: flex;
+		flex-wrap: wrap;
+		position: relative;
+		margin-left: auto;
+		margin-right: auto;
+		border-radius: 10px;
+		top: -25px;
+		width: 960px;
+		height: 274px;
+	}
+	.boxData{
+		flex: 1 0 10%;
+	}
+	.NumberData{
+		margin-top: 64px;
+		margin-bottom: 16px;
+		padding: 0px;
+		font-size: 72px;
+		line-height: 86px;
+		font-weight: 300;
+	}
+	.boxTextData{
+		padding: 0px;
+		margin: auto;
+		font-size: 18px;
+		font-weight: 200;
+		line-height: 22px;
+	}
 }

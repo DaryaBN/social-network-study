@@ -1,181 +1,180 @@
 .modal {
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: flex-end;
-    justify-content: end;;
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.5s;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: flex-end;
+	justify-content: end;;
+	opacity: 0;
+	pointer-events: none;
+	transition: 0.5s;
 }
 .modal.active {
-   opacity: 1;
-   pointer-events: all;
-   z-index: 1;
+	opacity: 1;
+	pointer-events: all;
+	z-index: 1;
 }
 .modalContent {
-    width: 100%;
-    height: 335px;
-    background: #FFFFFF;
-    border-radius: 10px;
-    position: absolute;
-    transform: scale(0.5);
-    transform: 0.4s all;
+	width: 100%;
+	height: 335px;
+	background: #FFFFFF;
+	border-radius: 10px;
+	position: absolute;
+	transform: scale(0.5);
+	transform: 0.4s all;
 }
 .modalContent {
-    width: 100%;
-    height: auto;
-    background: #FFFFFF;
-    border-radius: 10px;
-    transform: scale(0.5);
-    transform: 0.4s all;
+	width: 100%;
+	height: auto;
+	background: #FFFFFF;
+	border-radius: 10px;
+	transform: scale(0.5);
+	transform: 0.4s all;
 }
 .modalContent.active{
-    transform: scale(1);
+	transform: scale(1);
 }
 .titleClose{
-    display: block;
-    width: 50px;
-    height: 4px;
-    background: #ABACB1;
-    border-radius: 2px;
-    margin: 16px auto 32px auto;
+	display: block;
+	width: 50px;
+	height: 4px;
+	background: #ABACB1;
+	border-radius: 2px;
+	margin: 16px auto 32px auto;
 }
 .title{
-    display: flex;
-    justify-content: space-between;
-    padding-left: 18px;
-    padding-right: 19px;
-    margin-top: 17px;
+	display: flex;
+	justify-content: space-between;
+	padding-left: 18px;
+	padding-right: 19px;
+	margin-top: 17px;
 }
 .titleText{
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
-    padding: 0;
-    margin: 0;
-    color: #1D1E22;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 28px;
+	padding: 0;
+	margin: 0;
+	color: #1D1E22;
 }
 .titleIMG{
-    display: none;
-    cursor: pointer;
+	display: none;
+	cursor: pointer;
 }
 .box{
-    display: flex;
-    background: #FFFFFF;
-    border: 1px solid #DFDFDF;
-    border-radius: 10px;
-    height: 52px;
-    margin-top: 20px;
-    margin-left: 16px;
-    margin-right: 16px;
-    width: 90%;
-    flex-direction: column;
+	display: flex;
+	background: #FFFFFF;
+	border: 1px solid #DFDFDF;
+	border-radius: 10px;
+	height: 52px;
+	margin-top: 20px;
+	margin-left: 16px;
+	margin-right: 16px;
+	width: 90%;
+	flex-direction: column;
 }
 .boxText{
-    font-weight: 400;
-    font-size: 9px;
-    line-height: 11px;
-    color: #B1B1B1;
-    margin-left: 16px;
-    margin-top: 6px;
-    margin-bottom: 4px;
+	font-weight: 400;
+	font-size: 9px;
+	line-height: 11px;
+	color: #B1B1B1;
+	margin-left: 16px;
+	margin-top: 6px;
+	margin-bottom: 4px;
 }
 input[type=text],[type=password] {
-    width: 98%;
-    font-family: inherit;
-    outline: none;
-    border: none;
-    height: 22px;
-    color: black;
-    background: scroll;
+	width: 98%;
+	font-family: inherit;
+	outline: none;
+	border: none;
+	height: 22px;
+	color: black;
+	background: scroll;
 }
 .boxInput{
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-    color: #555555;
-    margin-bottom: 7px;
-    margin-top: 0px;
-    margin-left: 16px;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 22px;
+	color: #555555;
+	margin-bottom: 7px;
+	margin-top: 0px;
+	margin-left: 16px;
 }
 .button{
-    width: 350px;
-    background: #0057FF;
-    border: 1px solid #0057FF;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 22px;
-    text-align: center;
-    color: #FFFFFF;
-    margin: 24px 18px 16px 18px;
-    padding: 15px;
-    cursor: pointer;
+	width: 350px;
+	background: #0057FF;
+	border: 1px solid #0057FF;
+	border-radius: 10px;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 22px;
+	text-align: center;
+	color: #FFFFFF;
+	margin: 24px 18px 16px 18px;
+	padding: 15px;
+	cursor: pointer;
 }
 .boxError{
-    position: relative;
-    bottom: -15px;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 11px;
-    color: #E40060;
-    margin-left: 25px;
+	position: relative;
+	bottom: -15px;
+	font-weight: 400;
+	font-size: 10px;
+	line-height: 11px;
+	color: #E40060;
+	margin-left: 25px;
 }
 .borderError{
-    background: rgb(255, 222, 236);
-    border: 1px solid rgb(228, 0, 96);
+	background: rgb(255, 222, 236);
+	border: 1px solid rgb(228, 0, 96);
 }
 .emailError{
-    font-weight: 400;
-    font-size: 9px;
-    line-height: 11px;
-    color: #E40060;
-    margin-top: 2px;
-    margin-left: 5px;
+	font-weight: 400;
+	font-size: 9px;
+	line-height: 11px;
+	color: #E40060;
+	margin-top: 2px;
+	margin-left: 5px;
 }
 .passwordError{
-    font-weight: 400;
-    font-size: 9px;
-    line-height: 11px;
-    color: #E40060;
-    margin-top: 2px;
-    margin-left: 5px;
+	font-weight: 400;
+	font-size: 9px;
+	line-height: 11px;
+	color: #E40060;
+	margin-top: 2px;
+	margin-left: 5px;
 }
 .ErrorLogon{
-    position: relative;
-    text-align: center;
-    width: 300px;
-    bottom: 1px;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 11px;
-    color: #E40060;
-    margin-left: auto;
-    margin-right: auto;
+	position: relative;
+	text-align: center;
+	width: 300px;
+	bottom: 1px;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 11px;
+	color: #E40060;
+	margin-left: auto;
+	margin-right: auto;
 }
 @media (min-width: 1280px){
-    .modal {
-        align-items: center;
-        justify-content: center;
-    }
-    .modalContent {
-        width: 362px;
-        height: auto;
-    }
-    .titleIMG{
-        display: block;
-        cursor: pointer;
-    }
-    .button{
-        width: 90%;
-    }
-    .titleClose{
-        display: none;
-    }
-
+	.modal {
+		align-items: center;
+		justify-content: center;
+	}
+	.modalContent {
+		width: 362px;
+		height: auto;
+	}
+	.titleIMG{
+		display: block;
+		cursor: pointer;
+	}
+	.button{
+		width: 90%;
+	}
+	.titleClose{
+		display: none;
+	}
 }
