@@ -107,9 +107,9 @@
   display: none;
 }
 .gradient{
-  position: absolute;
-  top: 590px;
-  /* bottom: 10px; */
+  position: relative;
+  top: -110px;
+  bottom: 0;
   height: 110px;
   width: 100%;
   margin-left: auto;
@@ -269,7 +269,8 @@
   }
   .gradient{
     position: relative;
-    bottom: -495px;
+    top: 560px;
+    bottom: 0px;
     height: 110px;
     width: 970px;
   }

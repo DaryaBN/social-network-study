@@ -1,5 +1,5 @@
 export default function time(tim) {
-  let tm  = Math.round((new Date().getTime() - new Date(tim).getTime())/ 60000);
+  let tm = Math.round((new Date().getTime() - new Date(tim).getTime()) / 60000);
   let res;
   let resTime;
   if (tm < 60) {

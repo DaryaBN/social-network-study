@@ -53,8 +53,8 @@ app.post('/posts', async (req, res) => {
   let userId = User.rows[0].id_user;
   let userNick = User.rows[0].username;
   let UserInfo = await pool.query(`SELECT * FROM usersinfo WHERE user_id = '${userId}'`);
-  let userName = UserInfo.rows[0].username
-  let userTime = new Date()
+  let userName = UserInfo.rows[0].username;
+  let userTime = new Date();
   let information = await pool.query(`INSERT INTO posts (id_user, username, usernick, time, mess) VALUES ('${userId}', '${userName}', '${userNick}', '${userTime}', '${req.body.mes}')`);
   res.type('json').send(information.rows);
 });
@@ -115,7 +115,7 @@ app.post('/login', async (req, res) => {
   let user = await pool.query(`SELECT * FROM users WHERE email = '${req.body.email}'`);
   if (bcrypt.compareSync(passwordFromUser, user.rows[0].password)) {
     let dateToken = await pool.query(`SELECT * FROM sessions WHERE  email = '${req.body.email}'`);
-    if (dateToken.rows.length == 0){
+    if (dateToken.rows.length === 0) {
       let dat = new Date();
       let token = crypto.randomUUID();
       let UserInfo = await pool.query(`SELECT * FROM users WHERE email = '${req.body.email}'`);
@@ -129,7 +129,7 @@ app.post('/login', async (req, res) => {
         maxAge: 86400000,
         secure: true,
       });
-    } else if (dateToken.rows.length > 0){
+    } else if (dateToken.rows.length > 0) {
       let a = dateToken.rows[dateToken.rows.length - 1];
       let days = Number((new Date().getTime() - new Date(a.date).getTime()) / 86400000);
       if (days <= 1) {
@@ -157,8 +157,8 @@ app.post('/login', async (req, res) => {
 });
 
 app.get('/DolphinFeed', async (req, res) => {
-    let cook = req.cookies;
-    if(cook.email !== undefined ){
+  let cook = req.cookies;
+  if (cook.email !== undefined) {
     let sess = await pool.query(`SELECT * FROM sessions WHERE token = ${cook.token}`);
     let days = Number((new Date().getTime() - new Date(sess.rows[0].date).getTime()) / 86400000);
     if (days <= 1) {
@@ -166,10 +166,9 @@ app.get('/DolphinFeed', async (req, res) => {
     } else if (days > 1) {
       res.status(400).type('text').send('error');
     }
-    } else if (cook.email == undefined ) {
-      res.status(400).type('text').send('error');
-    }
-    
+  } else if (cook.email === undefined) {
+    res.status(400).type('text').send('error');
+  }
 });
 
 app.get('/DataUsers', async (req, res) => {
@@ -185,8 +184,8 @@ app.get('/DataMess', async (req, res) => {
 app.get('/DataMessToday', async (req, res) => {
   let dat = new Date().toDateString();
   let user = await pool.query('SELECT * FROM posts');
-  let r = user.rows.filter((item) => new Date(item.time).toDateString() == dat);
-  let a = String(r.length)
+  let r = user.rows.filter((item) => new Date(item.time).toDateString() === dat);
+  let a = String(r.length);
   res.type('text').send(a);
 });
 
@@ -204,7 +203,7 @@ app.get('/feedUser', async (req, res) => {
   let cook = req.cookies;
   let cookEmail = cook.email;
   let user = await pool.query(`SELECT * FROM users WHERE email = ${cookEmail}`);
-  let userID = String(user.rows[0].id_user)
+  let userID = String(user.rows[0].id_user);
   let userInfo = await pool.query(`SELECT * FROM usersinfo WHERE user_id = '${userID}'`);
   res.type('json').send(userInfo.rows);
 });
