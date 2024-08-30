@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import './styles/modal.css';
-import validationEmail from './functions/validationEmail.js';
+import '../styles/modal.css';
+import validationEmail from '../functions/validationEmail.js';
 
 const ModalNewUser = ({activeNewUser, setActiveNewUser}) => {
   const [state, setState] = useState({
@@ -98,7 +98,7 @@ const ModalNewUser = ({activeNewUser, setActiveNewUser}) => {
         const us = res;
         us.then((value) => {
           if (value.ok) {
-            window.location.replace('/Feed.html');
+            window.location.replace('/feed');
             setErrorColorEmail(true);
             settextErrorLogon(true);
           } else if (!value.ok) {

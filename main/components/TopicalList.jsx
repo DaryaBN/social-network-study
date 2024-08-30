@@ -1,9 +1,9 @@
-import "./styles/PostsBlog.css";
+import "../styles/PostsBlog.css";
 const TopicalList = ({TopProps}) => {
   const InfoTopical = TopProps.map((item) => (
     <div  className="topic" key={item.id}>
-      <h4 className="topText">{item.hashtagName}</h4>
-      <p  className="topNumber">{item.hashtagLot} сообщение</p> 
+      <h4 className="topText">{item.hashtagname}</h4>
+      <p  className="topNumber">{item.hashtaglot} сообщение</p> 
     </div>
   ))
   const InfoTopicalQuantity = [

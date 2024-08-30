@@ -26,6 +26,7 @@ export default defineConfig({
       '/DataMessToday': 'http://localhost:3000',
       '/top': 'http://localhost:3000',
       '/blog': 'http://localhost:3000',
+      '/feedUser': 'http://localhost:3000',
     },
   },
 });

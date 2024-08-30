@@ -1,5 +1,5 @@
-import "./styles/PostsBlog.css";
-import time from './functions/PostTime.js'
+import "../styles/PostsBlog.css";
+import time from '../functions/PostTime.js'
 
 const PostList = ({ PostsProps }) => {
   const Info = PostsProps.map((item) => (
@@ -11,12 +11,12 @@ const PostList = ({ PostsProps }) => {
         <div className="PostInfo">
           <div className="InfoData">
             <div className="InfoName">
-              <p className="UserName"> {item.name}</p>
-              <p className="UserNick">{item.nick}</p>
+              <p className="UserName"> {item.username}</p>
+              <p className="UserNick">{item.usernick}</p>
             </div>
             <p className="PostTime">{time(item.time)}</p>
           </div>
-          <p className="PostText">{item.mes}</p>
+          <p className="PostText">{item.mess}</p>
           <ul className="PostLike">
             <li>
               <img className="LikeIMG" src="../img/Vectorстрелка.svg" alt="поделиться"/>

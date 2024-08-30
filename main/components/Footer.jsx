@@ -1,4 +1,4 @@
-import "./styles/footer.css";
+import "../styles/footer.css";
 import Modal from "./modal.jsx";
 import ModalNewUser from "./modalNewUser.jsx";
 import { useState } from "react";

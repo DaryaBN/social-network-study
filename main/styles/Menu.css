@@ -1,0 +1,157 @@
+.menuWidth{
+  position:fixed;
+  bottom:0;
+  width: 100%;
+  height: 40px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+  padding: 7px 7px 7px 0px;
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+.menuNavigation{
+  display: flex;
+  flex-direction: row;
+  padding-top: 2px;
+}
+.menuLogo{
+  display: none;
+  align-self: center;
+}
+.menuUser{
+  width: 30px;
+  border: 1px solid #ffffff;
+  border-radius: 50px;
+  float: left;
+  margin: 0px 30px 0px 0px;
+}
+.Navigation{
+  display: flex;
+  flex-direction: row;
+  padding-top: 2px;
+  width: 150px;
+}
+.NavigationBlok{
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.colorTextMenu{
+  display: none;
+}
+.colorBlue{
+  display: none;
+}
+.IMGnavigation{
+  width: 22px;
+}
+.underlineFeed{
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 50px;
+  height: 4px;
+  width: 100px;
+  background: #000000;
+}
+.underlineProfile{
+  display: block;
+  position: absolute;
+  left: 100px;
+  top: 50px;
+  height: 4px;
+  width: 110px;
+  background: #000000;
+}
+.underlineSettings{
+  display: block;
+  position: absolute;
+  left: 200px;
+  top: 50px;
+  height: 4px;
+  width: 110px;
+  background: #000000;
+}
+.underlineNone{
+  display: none;
+}
+
+@media (min-width: 1280px){ 
+  .menuWidth{
+    position: static;
+    width: auto;
+    height: 53px;
+    padding: 7px 7px 7px 0px;
+    margin-bottom: 0px;
+  }
+  .menuNavigation{
+    display: flex;
+    flex-direction: row;
+    padding-top: 2px;
+  }
+  .menuLogo{
+    display: block;
+    align-self: center;
+  }
+  .menuUser{
+    width: 48px;
+    float: left;
+    margin: 0px 16px 0px 0px;
+  }
+  .Navigation{
+    display: flex;
+    flex-direction: row;
+    padding-top: 2px;
+    width: 110px;
+  }
+  .NavigationBlok{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+    width: 110px;
+    margin-left: 21px;
+    margin-right: 0px;
+  }
+  .colorTextMenu{
+    display: block;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: #B1B1B1;
+    margin: 10px 0px 0px 7px;
+  }
+  .colorBlue{
+    display: block;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: #0057FF;
+    margin: 10px 0px 0px 7px;
+  }
+  .IMGnavigation{
+    width: 18px;
+  }
+  .underlineFeed{
+    left: 2px;
+    top: 65px;
+    height: 3px;
+    width: 100px;
+  }
+  .underlineProfile{
+    left: 90px;
+    top: 65px;
+    height: 3px;
+    width: 110px;
+  }
+  .underlineSettings{
+    left: 190px;
+    top: 65px;
+    height: 3px;
+    width: 110px;
+  }
+}

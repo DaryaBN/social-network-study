@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import postSize from '../public/assets/post_size.js';
+import postSize from '../main/functions/post_size.js';
 import replacing from '../public/assets/replacing.js';
 import time from '../public/assets/timePost.js';
 import hashtag from '../public/assets/hashtag.js';

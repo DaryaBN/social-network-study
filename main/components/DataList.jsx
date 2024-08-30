@@ -1,4 +1,4 @@
-import "./styles/Data.css";
+import "../styles/Data.css";
 
 const DataList = ({ dataProps }) => {
   const DataInformation = dataProps.map((item) => (
