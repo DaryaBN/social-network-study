@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "render-postbuild": "npm install --prefix frontend --production=false && cd /opt/render/project/src/frontend && npm run build"
   },
   "repository": {
     "type": "git",
@@ -25,8 +26,7 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.6",
-    "mocha": "^10.2.0",
-    "vite": "^5.2.10"
+    "mocha": "^10.2.0"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.2.1",
