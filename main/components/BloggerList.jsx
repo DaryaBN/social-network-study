@@ -1,4 +1,4 @@
-import "./styles/PostsBlog.css";
+import "../styles/PostsBlog.css";
 const BloggersList = ({BlogProps}) => {
   const InfoBloggers = BlogProps.map((item) => (
     <div  className="blogs" key={item.id}>

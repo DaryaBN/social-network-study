@@ -6,7 +6,7 @@
   margin-left: auto;
   margin-right: auto;
 }
-.box{
+.boxHeaderWithe{
   width: 100%;
 }
 .vector {
@@ -36,6 +36,7 @@
   line-height: 22px;
   font-weight: 500;
   color: #FFFFFF;
+  cursor: pointer;
 }
 .button2IndexBox{
   width: 328px;
@@ -50,6 +51,7 @@
   line-height: 22px;
   font-weight: 500;
   color: #0057FF;
+  cursor: pointer;
 }
 .wrapped{
   min-width: 100%;
@@ -62,11 +64,12 @@
     display: flex;
     flex-wrap: nowrap;
     width: 1280px;
+    height: 640px;
     background:#ffffff;
     margin-left: auto;
     margin-right: auto;
   }
-  .box{
+  .boxHeaderWithe{
     height: 640px;
   }
   .vector {

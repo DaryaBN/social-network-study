@@ -1,6 +1,6 @@
-import styles from "@/styles/Header.module.css";
-import Modal from "@/modal.jsx";
-import ModalNewUser from "@/modalNewUser.jsx";
+import "../styles/HeaderModule.css"
+import Modal from "./modal.jsx";
+import ModalNewUser from "./modalNewUser.jsx";
 import { useState } from "react";
 
 const Header = () => {
@@ -9,22 +9,22 @@ const Header = () => {
   return (
     <div>
     <header>
-      <div className={styles.IndexHeaderWithe}>
-        <div className={styles.box}>
+      <div className="IndexHeaderWithe">
+        <div className="boxHeaderWithe">
           <img
-            className={styles.vector}
+            className="vector"
             src="/img/Vector.svg"
             alt="логотип"
           />
-          <p className={styles.text}>
+          <p className="text">
             Оставайся на связи с друзьями, даже когда их нет рядом
           </p>
-          <button className={styles.button1IndexBox}onClick={() => setModalNewUserActive(true)}>Зарегистрироваться</button>
-          <button className={styles.button2IndexBox} onClick={() => setModalActive(true)}> Войти </button>
+          <button className="button1IndexBox" onClick={() => setModalNewUserActive(true)}>Зарегистрироваться</button>
+          <button className="button2IndexBox" onClick={() => setModalActive(true)}> Войти </button>
         </div>
-        <div className={styles.box}>
+        <div className="boxHeaderWithe">
           <img
-            className={styles.wrapped}
+            className="wrapped"
             src="/img/toa-heftiba-x9I-6yoXrXE-unsplash 1друзья.jpg"
             alt="логотип"
           />

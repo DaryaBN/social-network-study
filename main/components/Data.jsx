@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from 'react';
 import DataList from "./DataList";
-import "./styles/Data.css";
+import "../styles/Data.css";
 
 const Data = () => {
   let information = [{
@@ -27,8 +27,8 @@ async function getInf(){
   }else{
     resMess = 0;
   }
-  if(Array.isArray(messToday)){
-    resToday = messToday[0].count;
+  if(messToday > 0){
+    resToday = messToday;
   }else{
     resToday = 0;
   }
