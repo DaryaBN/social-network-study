@@ -2,11 +2,17 @@ import "../styles/feedPosts.css"
 import { useState } from "react";
 import { useEffect } from 'react';
 import postSize from "../functions/post_size.js";
-import ModalPostetd from './feedModalPosted.jsx'
+import ModalPostetd from './feedModalPosted.jsx';
+import { Widget } from '@uploadcare/react-widget';
 
 const FeedNewPost = () =>{
 	const [border, setBorder] = useState("PostWriteSizeColor PostWriteSize");
-  const [modalPosted, setModalPosted] = useState(false)
+  const [modalPosted, setModalPosted] = useState(false);
+
+  const [imgUrl, setImgUrl] = useState('');
+  const handleFileUpload = (fileInfo) => {
+    setImgUrl(fileInfo.cdnUrl);
+  };
 
   const [NewPost, setNewPost] = useState({
     post: ""
@@ -39,6 +45,7 @@ const FeedNewPost = () =>{
     e.preventDefault();
 	const postMes = {
 		mes: NewPost.post,
+    img: imgUrl
 	}
   setModalPosted(true)
 		if(sizePost <= 123){
@@ -77,7 +84,10 @@ const FeedNewPost = () =>{
 					</div>
 					<div className="PostWriteButton">
 						<div className="PostWriteButtonPhoto">
-							<img src="img/Vectorфото синий.svg" alt="добавить фото"/>
+							<Widget
+							publicKey="af13cab7ba4d80ad78a2"
+							onChange={(fileInfo) => handleFileUpload(fileInfo)}
+							/>
 						</div>
 						<div className="PostWriteButtonSend">
 							<div className={border}>123</div>

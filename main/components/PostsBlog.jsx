@@ -49,7 +49,6 @@ const PostsBlog = () => {
           </div>
         </div>
       </div>
-      <div className="gradient"></div>
     </>
   )
 }

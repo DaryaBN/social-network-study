@@ -4,7 +4,7 @@ const FeedUser = ({UserProps}) =>{
 		<div className="LogicUser" key={item.id}>
 			<div className="UserProfile">
 				<div className="UserProfilePhoto">
-					<img className="ProfilePhoto" src="img/image 8Мия Уоллес.png" alt="пользователь" width="80"/>
+					<img className="ProfilePhoto" src={item.photo} alt="пользователь"/>
 				</div>
 				<div className="UserProfileInfo">
 					<p className="ProfileInfoName">{item.username}</p>

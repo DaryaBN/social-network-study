@@ -28,12 +28,12 @@ const pool = new Pool({
 });
 
 app.get('/posts', async (req, res) => {
-  let information = await pool.query('SELECT * from posts ORDER BY id DESC');
+  let information = await pool.query('SELECT ps.*, photo FROM posts ps, usersinfo if WHERE ps.id_user = if.user_id  ORDER BY id DESC');
   res.type('json').send(information.rows);
 });
 
 app.get('/postsHome', async (req, res) => {
-  let information = await pool.query('SELECT * from posts ORDER BY id DESC LIMIT 5');
+  let information = await pool.query('SELECT ps.*, photo FROM posts ps, usersinfo if WHERE ps.id_user = if.user_id  ORDER BY id DESC LIMIT 5');
   res.type('json').send(information.rows);
 });
 
@@ -52,7 +52,7 @@ app.post('/posts', async (req, res) => {
   let UserInfo = await pool.query(`SELECT * FROM usersinfo WHERE user_id = '${userId}'`);
   let userName = UserInfo.rows[0].username;
   let userTime = new Date();
-  let information = await pool.query(`INSERT INTO posts (id_user, username, usernick, time, mess) VALUES ('${userId}', '${userName}', '${userNick}', '${userTime}', '${req.body.mes}')`);
+  let information = await pool.query(`INSERT INTO posts (id_user, username, usernick, time, mess, img) VALUES ('${userId}', '${userName}', '${userNick}', '${userTime}', '${req.body.mes}', '${req.body.img}')`);
   res.type('json').send(information.rows);
 });
 
