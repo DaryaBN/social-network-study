@@ -1,7 +1,8 @@
-// import { useState } from 'react'
-import '../styles/Menu.css'
+import '../styles/Menu.css';
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useEffect } from 'react';
+import MenuPhoto from './feedMenuPhoto';
 
 const Menu = () => {
   const[feedClick, setFeedClick] = useState(false);
@@ -11,6 +12,13 @@ const Menu = () => {
   const[lineProfile, setLineProfile] = useState(true);
   const[lineSettings, setLineSettings] = useState(true);
 
+  const userPhoto =[];
+  const[photo, setPhoto] = useState(userPhoto);
+  async function getUserPhoto(){
+    const resPhoto = await fetch('/feedUser').then((data) => data.json());
+    setPhoto(resPhoto)
+  }
+  useEffect(() => {getUserPhoto()}, []);
 
   return(
   <>
@@ -37,9 +45,7 @@ const Menu = () => {
       <div className="menuLogo">
         <img src="img/logoсиний.svg" alt="логотоп"/>
       </div>
-      <div className="menuUser">
-        <img className ="menuUser" src="img/image 8Мия Уоллес.png" alt="пользователь"/>
-      </div>
+      <MenuPhoto PhotoProps={photo}/>
     </div>
   </>
   )

@@ -19,6 +19,8 @@
   border-radius: 50px;
   float: left;
   margin: 16px 0px 0 16px;
+  background-size: cover;
+  object-fit:cover;
 }
 .InfoData{
   display: flex;
@@ -61,6 +63,11 @@
   font-size: 16px;
   line-height: 19px;
   width: 260px;
+}
+.postImg{
+  margin: 10px 17px 15px 0px;
+  width: 260px;
+  border-radius: 20px;
 }
 .PostLike{
   width: 180px;
@@ -105,17 +112,6 @@
 }
 .logicBlok2{
   display: none;
-}
-.gradient{
-  position: relative;
-  top: -110px;
-  bottom: 0;
-  height: 110px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  filter: blur(0.5rem);
-  background: linear-gradient(0deg, #eae9e9e6 53.87%, rgba(208, 208, 208, 0.18) 100%);
 }
 .color{
   background-color: #ABACB1;
@@ -198,7 +194,10 @@
   .PostText{
     margin: 10px 17px 15px 16px;
     width: 520px;
-    text-align: justify;
+  }
+  .postImg{
+    margin: 10px 17px 15px 16px;
+    width: 500px;
   }
   .PostLike{
     width: 240px;
@@ -266,13 +265,6 @@
     line-height: 16px;
     color: #ABACB1;
     padding-bottom: 5%;
-  }
-  .gradient{
-    position: relative;
-    top: 560px;
-    bottom: 0px;
-    height: 110px;
-    width: 970px;
   }
   .color{
     background-color: #ABACB1;

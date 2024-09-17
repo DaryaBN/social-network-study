@@ -1,8 +1,8 @@
-import Menu from "../components/feedMenu";
+// import Menu from "../components/feedMenu";
 function ProfilePage() {
     return (
       <>
-        <Menu />
+        {/* <Menu /> */}
         <div>
           <h1>Profile page</h1>
           <p>This is a placeholder for the Profile page.</p>

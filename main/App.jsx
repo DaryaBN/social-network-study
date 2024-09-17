@@ -10,21 +10,24 @@ import UserFollowersPage from './routes/UserFollowersPage';
 import PasswordSettingsPage from './routes/PasswordSettingsPage';
 import ProfileSettingsPage from './routes/ProfileSettingsPage';
 import EmailSettings from './routes/EmailSettingsPage';
+import Layout from '@/components/Layout'
 
 const TodoApp = () => {
   return (
     <Routes>
       <Route path="" element={<Home />} />
-      <Route path="/feed" element={<FeedPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/profile/:id" element={<UserProfilePage />} />
-      <Route path="/following" element={<FollowingPage />} />
-      <Route path="/followers" element={<FollowersPage />} />
-      <Route path="/profile/:id/following" element={<UserFollowingPage />} />
-      <Route path="/profile/:id/followers" element={<UserFollowersPage />} />
-      <Route path="/settings/profile" element={<ProfileSettingsPage />} />
-      <Route path="/settings/password" element={<PasswordSettingsPage />} />
-      <Route path="/settings/email" element={<EmailSettings />} />
+      <Route path="/" element={<Layout />}>
+        <Route path="/feed" element={<FeedPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile/:id" element={<UserProfilePage />} />
+        <Route path="/following" element={<FollowingPage />} />
+        <Route path="/followers" element={<FollowersPage />} />
+        <Route path="/profile/:id/following" element={<UserFollowingPage />} />
+        <Route path="/profile/:id/followers" element={<UserFollowersPage />} />
+        <Route path="/settings/profile" element={<ProfileSettingsPage />} />
+        <Route path="/settings/password" element={<PasswordSettingsPage />} />
+        <Route path="/settings/email" element={<EmailSettings />} />
+      </Route>
     </Routes>
   );
 };
