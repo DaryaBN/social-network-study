@@ -54,7 +54,7 @@ const FeedNewPost = () =>{
 			});
 			setBorder("PostWriteSizeColor PostWriteSize")
 			try {
-				const res = fetch('/posts', {
+				fetch('/posts', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json;charset=utf-8',
@@ -65,7 +65,7 @@ const FeedNewPost = () =>{
         answerText: "Ваш пост успешно опубликован"
       })
 			} catch (error) {
-        console.log('Возникла проблема с вашим fetch запросом: ', error.message);
+				next(err);
       }
 		} else {
       setAnswer({

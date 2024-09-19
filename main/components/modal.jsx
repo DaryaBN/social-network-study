@@ -72,7 +72,7 @@ const Modal = ({active, setActive}) => {
         });
       } 
       catch (error) {
-        console.log('Возникла проблема с вашим fetch запросом: ', error.message);
+        next(err);
       }
     }
   };
