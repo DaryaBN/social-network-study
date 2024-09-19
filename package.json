@@ -18,6 +18,9 @@
     "url": "https://github.com/DaryaBN/social-network-study/issues"
   },
   "homepage": "https://github.com/DaryaBN/social-network-study#readme",
+  "optionalDependencies": {
+    "fsevents": "*"
+ },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
     "chai": "^4.3.7",
