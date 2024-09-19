@@ -53,21 +53,25 @@ const FeedNewPost = () =>{
 			  post: ""
 			});
 			setBorder("PostWriteSizeColor PostWriteSize")
-			try {
-				fetch('/posts', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json;charset=utf-8',
-					},
-					body: JSON.stringify(postMes),
-				});
-      setAnswer({
-        answerText: "Ваш пост успешно опубликован"
-      })
-			} catch (error) {
-				next(err);
-      }
-		} else {
+			let res = fetch('/posts', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json;charset=utf-8',
+				},
+				body: JSON.stringify(postMes),
+			});
+			res.then((value) => {
+				if (value.ok) { 
+					setAnswer({
+						answerText: "Ваш пост успешно опубликован"
+      		})
+				} else if (!value.ok){
+					setAnswer({
+						answerText: "Недопустимое количество символов"
+					})
+				}
+			})
+		} else if (sizePost > 123) {
       setAnswer({
         answerText: "Недопустимое количество символов"
       })
