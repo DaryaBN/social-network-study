@@ -19,30 +19,23 @@ const FeedPosts = () => {
   async function getUserName(){
     const resName = await fetch('/feedUser').then((data) => data.json());
     setName(resName)
-  }
-
-  const postContent = [];
-  const [posts, setPosts] = useState(postContent);
-  async function getPosts() {
-    const res = await fetch('/posts').then((data) => data.json());
-    setPosts(res);
-  }
-
+  };
+  
   const postTopical = [];
   const [topical, setTopical] = useState(postTopical);
   async function getPostsTopical() {
     const resTop = await fetch('/top').then((data) => data.json());
     setTopical(resTop)
-  }
+  };
 
   const postBlogger = [];
   const [blogger, setBloggers] = useState(postBlogger);
   async function getPostsBloggers() {
     const resBlog = await fetch('/blog').then((data) => data.json());
     setBloggers(resBlog)
-  }
+  };
 
-  useEffect(() => {getPosts(), getPostsTopical(), getPostsBloggers(), getUserName()}, []);
+  useEffect(() => {getPostsTopical(), getPostsBloggers(), getUserName()}, []);
  
   return (
     <> 
@@ -57,7 +50,7 @@ const FeedPosts = () => {
             <img src="img/logoбелый.svg" alt="дельфин"/>
           </div>
           <div className="LogicBlok1">
-            <PostList PostsProps={posts} />
+            <PostList />  
           </div>
           <div className="rectangle" onClick={() => setWirteOpen(true)}>
             <img src="img/Vectorнаписать.svg" alt="перо"/>

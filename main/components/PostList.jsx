@@ -1,8 +1,20 @@
 import "../styles/PostsBlog.css";
-import time from '../functions/PostTime.js'
+import time from '../functions/PostTime.js';
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from 'react';
+import { postContent } from "../../store/postsSlice.js";
 
-const PostList = ({ PostsProps}) => {
-  const Info = PostsProps.map((item) => (
+const PostList = () => {
+  const {status, error} = useSelector (state => state.counter);
+  const todos = useSelector(state => state.counter.posts);
+
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(postContent());
+  },[dispatch]);
+
+  const Info = todos.map((item) => (
     <div className="PostListClass" key={item.id}>
       <div className="PostLogic">
         <div className="PostPoto">
@@ -77,15 +89,20 @@ const PostList = ({ PostsProps}) => {
       <div className="line"></div>
     </div>
   ));
-  if (PostsProps.length == 0){
+  if (status === "loading"){
     return (
     <>
       {InfoColor}
     </>
-  )} else {
+  )} else if (status === "resolved") {
     return (
       <>
         {Info}
+      </>
+  )} else if (error) {
+    return (
+      <>
+        <h2> An error occured: {error}</h2>
       </>
     )
   }

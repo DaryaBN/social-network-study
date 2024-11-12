@@ -6,12 +6,6 @@ import BloggersList from "./BloggerList.jsx";
 import { useEffect } from 'react';
 
 const PostsBlog = () => {
-  const postContent = [];
-  const [posts, setPosts] = useState(postContent);
-  async function getPosts() {
-    const res = await fetch('/postsHome').then((data) => data.json())
-    setPosts(res);
-  }
 
   const postTopical = [];
   const [topical, setTopical] = useState(postTopical);
@@ -27,7 +21,7 @@ const PostsBlog = () => {
     setBloggers(resBlog)
   }
 
-  useEffect(() => {getPosts(), getPostsTopical(), getPostsBloggers()}, []);
+  useEffect(() => { getPostsTopical(), getPostsBloggers()}, []);
  
   return (
     <>
@@ -35,7 +29,7 @@ const PostsBlog = () => {
         <h2 className="TitleMess">Последние сообщения</h2>
         <div className="Left">
           <div className="LogicBlok1">
-            <PostList PostsProps={posts} />
+            <PostList />
           </div>
         </div>
         <div className="Right">

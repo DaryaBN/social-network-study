@@ -1,5 +1,4 @@
 import FeedPosts from '../components/feedPosts.jsx';
-// import Menu from "../components/feedMenu";
 import Home from './HomePage.jsx';
 import { useState } from "react";
 import { useEffect } from 'react';
@@ -12,21 +11,20 @@ const FeedPage = () => {
   setFeedStstus(cook)
   }
   useEffect(() => {loadFeed()}, []);
-  
-  if(feedStstus == "ok"){
+
+  // if(feedStstus == "ok"){
     return (
           <>
-            {/* <Menu /> */}
             <FeedPosts />
           </>
         );
-      } else if (feedStstus == 'error'){
-        return (
-          <>
-           <Home />
-          </>
-        );
-      }
+      // } else if (feedStstus == 'error'){
+      //   return (
+      //     <>
+          
+      //     </>
+      //   );
+      // }
 
 };
 
