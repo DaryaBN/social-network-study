@@ -87,28 +87,24 @@ const ModalNewUser = ({activeNewUser, setActiveNewUser}) => {
         email: state.email,
         password: state.password,
       }
-      try {
-        const res = fetch('/users', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8',
-          },
-          body: JSON.stringify(user),
-        });
-        const us = res;
-        us.then((value) => {
-          if (value.ok) {
-            window.location.replace('/feed');
-            setErrorColorEmail(true);
-            settextErrorLogon(true);
-          } else if (!value.ok) {
-            setErrorColorEmail(false);
-            settextErrorLogon(e.target.checked);
-          }
-        });
-      } catch (error) {
-        console.log('Возникла проблема с вашим fetch запросом: ', error.message);
-      }
+      const res = fetch('/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify(user),
+      });
+      const us = res;
+      us.then((value) => {
+        if (value.ok) {
+          window.location.replace('/feed');
+          setErrorColorEmail(true);
+          settextErrorLogon(true);
+        } else if (!value.ok) {
+          setErrorColorEmail(false);
+          settextErrorLogon(e.target.checked);
+        }
+      });
     }
   };
 

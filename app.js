@@ -17,10 +17,10 @@ app.listen(port, () => {
 
 const { Pool } = pkg;
 const pool = new Pool({
-  user: 'dolphin_production_q8vx_user',
-  host: 'dpg-cr262ao8fa8c73a1lveg-a.oregon-postgres.render.com',
-  database: 'dolphin_production_q8vx',
-  password: 'jmO0W8sMyQGOK6fPYCM8gCoN0aePpicx',
+  user: 'dolphin_productionnew_user',
+  host: 'dpg-csb83v68ii6s7383sk8g-a.oregon-postgres.render.com',
+  database: 'dolphin_productionnew',
+  password: 'msi4Y2ifcqCuiysmvgAuVP5jcz2Jm1KE',
   port: 5432,
   ssl: {
     rejectUnauthorized: false,
@@ -33,7 +33,7 @@ app.get('/posts', async (req, res) => {
 });
 
 app.get('/postsHome', async (req, res) => {
-  let information = await pool.query('SELECT ps.*, photo FROM posts ps, usersinfo if WHERE ps.id_user = if.user_id  ORDER BY id DESC LIMIT 5');
+  let information = await pool.query('SELECT ps.*, photo FROM posts ps, usersinfo if WHERE ps.id_user = if.user_id  ORDER BY id DESC LIMIT 1');
   res.type('json').send(information.rows);
 });
 
@@ -93,6 +93,7 @@ app.post('/users', async (req, res) => {
     let dat = new Date();
     let token = crypto.randomUUID();
     await pool.query(`INSERT INTO sessions (id_user, date, email, token) VALUES ('${userId}', '${dat}', '${req.body.email}' , '${token}')`);
+    await pool.query(`INSERT INTO usersinfo (user_id, username, usernick) VALUES ('${userId}', '${req.body.username}', '${req.body.username}')`);
     res.cookie('token', `'${token}'`, {
       maxAge: 86400000,
       secure: true,

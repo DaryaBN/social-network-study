@@ -49,17 +49,16 @@ const Modal = ({active, setActive}) => {
         email: state.name,
         password: state.password,
       }
-      try {
-        const response = fetch('/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8',
-        },
-          body: JSON.stringify(user),
-        });
-        const js = response;
-        js.then((value) => {
-          if (value.ok) { 
+      const response = fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+      },
+        body: JSON.stringify(user),
+      });
+      const js = response;
+      js.then((value) => {
+        if (value.ok) { 
           window.location.replace('/feed');
           setErrorColorName(true);
           setErrorColorPassword(true);
@@ -69,11 +68,7 @@ const Modal = ({active, setActive}) => {
           setErrorColorPassword(false);
           settextErrorLogin(e.target.checked);
         }
-        });
-      } 
-      catch (error) {
-        console.log('Возникла проблема с вашим fetch запросом: ', error.message);
-      }
+      });
     }
   };
   return (

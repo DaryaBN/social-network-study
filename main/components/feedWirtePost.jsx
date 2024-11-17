@@ -4,8 +4,13 @@ import { useEffect } from 'react';
 import postSize from "../functions/post_size.js";
 import ModalPostetd from './feedModalPosted.jsx';
 import { Widget } from '@uploadcare/react-widget';
+import { useSelector, useDispatch } from "react-redux";
+import { NewPostContent } from "../../store/postsSlice.js";
 
-const FeedNewPost = () =>{
+const FeedNewPost = () => {
+	const dispatch = useDispatch();
+	const {status, error} = useSelector (state => state.counter);
+
 	const [border, setBorder] = useState("PostWriteSizeColor PostWriteSize");
   const [modalPosted, setModalPosted] = useState(false);
 
@@ -20,9 +25,11 @@ const FeedNewPost = () =>{
 
   let text = [{
     answerText: ""
-  }]
-  const [answer, setAnswer] = useState(text)
-	let sizePost = Number(postSize(NewPost.post))
+  }];
+
+  const [answer, setAnswer] = useState(text);
+
+	let sizePost = Number(postSize(NewPost.post));
 
   const handleChangeNewPost = (e) => {
     setNewPost({
@@ -41,33 +48,65 @@ const FeedNewPost = () =>{
 			setBorder("PostWriteSizeColor4 PostWriteSize")
 		}	
   };
+
   const handleSubmitNewPost = (e) => {
     e.preventDefault();
-	const postMes = {
-		mes: NewPost.post,
-    img: imgUrl
-	}
-  setModalPosted(true)
-		if(sizePost <= 123){
+		const tx = NewPost.post;
+		const im = String(imgUrl);
+		setModalPosted(true)
+		if(sizePost <= 123){	
 			setNewPost({
 			  post: ""
 			});
-			setBorder("PostWriteSizeColor PostWriteSize")
-			try {
-				const res = fetch('/posts', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json;charset=utf-8',
-					},
-					body: JSON.stringify(postMes),
-				});
-      setAnswer({
-        answerText: "Ваш пост успешно опубликован"
-      })
-			} catch (error) {
-        console.log('Возникла проблема с вашим fetch запросом: ', error.message);
-      }
-		} else {
+			setBorder("PostWriteSizeColor PostWriteSize");
+			
+		  dispatch(NewPostContent({tx,im}));
+
+			if (status === "resolved") {
+				setAnswer({
+					answerText: "Ваш пост успешно опубликован"
+				})
+			} else if (status === "rejected") {
+				setAnswer({
+					answerText: {error}
+				})
+			} 
+
+
+
+
+			// let res = fetch('/posts', {
+			// 	method: 'POST',
+			// 	headers: {
+			// 		'Content-Type': 'application/json;charset=utf-8',
+			// 	},
+			// 	body: JSON.stringify(postMes),
+			// });
+			// res.then((value) => {
+			// if (status === "resolved") {
+			// 	setAnswer({
+			// 		answerText: "Ваш пост успешно опубликован"
+			// 	})
+			// 	} else if (status === "rejected") {
+			// 		setAnswer({
+			// 			answerText: {error}
+			// 		})
+			// 	} else {
+			// 		setAnswer({
+			// 			answerText: ''
+			// 		})
+			// 	}
+				// if (value.ok) { 
+				// 	setAnswer({
+				// 		answerText: "Ваш пост успешно опубликован"
+      	// 	})
+				// } else if (!value.ok){
+				// 	setAnswer({
+				// 		answerText: "Недопустимое количество символов"
+				// 	})
+				// }
+			// })
+		} else if (sizePost > 123) {
       setAnswer({
         answerText: "Недопустимое количество символов"
       })
@@ -92,6 +131,7 @@ const FeedNewPost = () =>{
 						<div className="PostWriteButtonSend">
 							<div className={border}>123</div>
 							<button type="submit" className="PostWriteSend">Отправить</button>
+							 {/*  */}
 						</div>
 					</div>
 				</form>
