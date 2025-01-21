@@ -28,6 +28,7 @@ export default defineConfig({
       '/top': 'http://localhost:3000',
       '/blog': 'http://localhost:3000',
       '/feedUser': 'http://localhost:3000',
+      '/userInfo': 'http://localhost:3000',
     },
   },
 });

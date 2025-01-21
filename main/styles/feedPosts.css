@@ -198,8 +198,9 @@ textarea {
     position: relative;
     top: -10px;
     left: -3px;
-    bottom: 10px;  
+    bottom: 10px;
     width: 80px;
+    height: 80px;  
   }
   .ProfilePhoto{
     border-radius: 50px;
@@ -208,6 +209,7 @@ textarea {
     background-size: cover;
     object-fit:cover;
     border: 1px solid #ffffff;
+    background: #0057FF;
   }
   .UserProfileInfo{
     flex-grow: 1;

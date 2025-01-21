@@ -2,6 +2,7 @@ import { useState } from 'react';
 import '../styles/modal.css';
 import validationEmail from '../functions/validationEmail.js';
 
+
 const Modal = ({active, setActive}) => {
   const [state, setState] = useState({
     name: "",

@@ -21,6 +21,7 @@ const ModalNewUser = ({activeNewUser, setActiveNewUser}) => {
   const [errorColorPassworConfirmation, setErrorColorPassworConfirmation] = useState(true);
   const [passwordError, setpasswordError] = useState(true)
   const [emailErrorBlok, setEmailError] = useState(true)
+  const [nameErrorBlok, setNameError] = useState(true)
 
   const handleChange = (e) => {
     setState({
@@ -34,8 +35,12 @@ const ModalNewUser = ({activeNewUser, setActiveNewUser}) => {
     if(state.name.length == 0){
       settextErrorBoxName(e.target.checked)
       setErrorColorName(false)
-    } else if (state.name.length != 0){
+    } else if (!state.name[0].includes('@')){
+      setNameError(e.target.checked)
+      setErrorColorName(false)
+    } else if (state.name.length != 0 && (state.name[0].includes('@'))){
       settextErrorBoxName(true)
+      setNameError(true)
       setErrorColorName(true)
     }
     if(state.email.length == 0){
@@ -125,6 +130,7 @@ const ModalNewUser = ({activeNewUser, setActiveNewUser}) => {
               <div className="boxInput">
                 <input name="name" type="text" value={state.name} placeholder="@donaldjtrump" onChange={handleChange}/>
               </div>
+              <div className= "emailError">{nameErrorBlok ? '' : 'Никнейм не валиден'}</div>
             </label>
             <div className= "boxError">{textErrorBoxEmail ? '' : 'Поле не заполненно'}</div>
             <label className= {errorColorEmail ? "box" : "box borderError"}>

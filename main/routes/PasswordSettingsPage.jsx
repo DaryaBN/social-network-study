@@ -1,4 +1,5 @@
 function PasswordSettingsPage() {
+  console.log('hello')
     return (
       <div>
         <h1>Password settings page</h1>

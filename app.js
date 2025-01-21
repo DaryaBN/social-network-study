@@ -17,10 +17,10 @@ app.listen(port, () => {
 
 const { Pool } = pkg;
 const pool = new Pool({
-  user: 'dolphin_productionnew_user',
-  host: 'dpg-csb83v68ii6s7383sk8g-a.oregon-postgres.render.com',
-  database: 'dolphin_productionnew',
-  password: 'msi4Y2ifcqCuiysmvgAuVP5jcz2Jm1KE',
+  user: 'postgres.wjhzxmxjdymabaosjlyh',
+  host: 'aws-0-eu-central-1.pooler.supabase.com',
+  database: 'postgres',
+  password: 'yYM_Y9xxNjux@d.',
   port: 5432,
   ssl: {
     rejectUnauthorized: false,
@@ -47,7 +47,7 @@ app.post('/posts', async (req, res) => {
   let cook = req.cookies;
   let cookEmail = cook.email;
   let User = await pool.query(`SELECT * FROM users WHERE email = ${cookEmail}`);
-  let userId = User.rows[0].id_user;
+  let userId = User.rows[0].id;
   let userNick = User.rows[0].username;
   let UserInfo = await pool.query(`SELECT * FROM usersinfo WHERE user_id = '${userId}'`);
   let userName = UserInfo.rows[0].username;
@@ -89,11 +89,12 @@ app.post('/users', async (req, res) => {
     let passwordToSave = bcrypt.hashSync(passwordFromUser, salt);
     let information = await pool.query(`INSERT INTO users (username, email, password) VALUES ('${req.body.username}' , '${req.body.email}' , '${passwordToSave}')`);
     let UserInfo = await pool.query(`SELECT * FROM users WHERE email = '${req.body.email}'`);
-    let userId = UserInfo.rows[0].id_user;
+    let userId = UserInfo.rows[0].id;
     let dat = new Date();
     let token = crypto.randomUUID();
+    let nameUser = req.body.username.substring(1);
     await pool.query(`INSERT INTO sessions (id_user, date, email, token) VALUES ('${userId}', '${dat}', '${req.body.email}' , '${token}')`);
-    await pool.query(`INSERT INTO usersinfo (user_id, username, usernick) VALUES ('${userId}', '${req.body.username}', '${req.body.username}')`);
+    await pool.query(`INSERT INTO usersinfo (user_id, username, usernick) VALUES ('${userId}', '${nameUser}', '${req.body.username}')`);
     res.cookie('token', `'${token}'`, {
       maxAge: 86400000,
       secure: true,
@@ -201,7 +202,36 @@ app.get('/feedUser', async (req, res) => {
   let cook = req.cookies;
   let cookEmail = cook.email;
   let user = await pool.query(`SELECT * FROM users WHERE email = ${cookEmail}`);
-  let userID = String(user.rows[0].id_user);
+  let userID = String(user.rows[0].id);
   let userInfo = await pool.query(`SELECT * FROM usersinfo WHERE user_id = '${userID}'`);
   res.type('json').send(userInfo.rows);
+});
+
+app.post('/userInfo', async (req, res) => {
+  let cook = req.cookies;
+  let cookEmail = cook.email;
+  let user = await pool.query(`SELECT * FROM users WHERE email = ${cookEmail}`);
+  let userID = String(user.rows[0].id);
+  let inf = req.body;
+  /* eslint-disable no-restricted-syntax */
+  for (let key in inf) {
+    if (key === 'usernick') {
+      /* eslint-disable no-await-in-loop */
+      let nick = await pool.query(`SELECT * FROM usersinfo WHERE usernick = '${inf.usernick}'`);
+      if (nick.rows.length === 0) {
+        /* eslint-disable no-await-in-loop */
+        await pool.query(`UPDATE usersinfo SET ${key} = '${inf[key]}'  WHERE user_id = '${userID}'`);
+        res.status(200).type('text').send('Данные успешно изменены');
+        return;
+      } if (nick.rows.length > 0) {
+        res.status(200).type('text').send('Данный никнейм уже используется');
+        return;
+      }
+    } else if (key !== 'usernick') {
+      /* eslint-disable no-await-in-loop */
+      await pool.query(`UPDATE usersinfo SET ${key} = '${inf[key]}'  WHERE user_id = '${userID}'`);
+      res.status(200).type('json').send('Данные успешно изменены');
+      return;
+    }
+  }
 });
