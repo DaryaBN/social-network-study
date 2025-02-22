@@ -84,13 +84,13 @@ app.get('/users', async (req, res) => {
 app.post('/users', async (req, res) => {
   let user = await pool.query(`SELECT * FROM users WHERE email = '${req.body.email}'`);
   if (user.rows.length <= 0) {
+    let dat = new Date();
     let passwordFromUser = req.body.password;
     let salt = bcrypt.genSaltSync(10);
     let passwordToSave = bcrypt.hashSync(passwordFromUser, salt);
-    let information = await pool.query(`INSERT INTO users (username, email, password) VALUES ('${req.body.username}' , '${req.body.email}' , '${passwordToSave}')`);
+    let information = await pool.query(`INSERT INTO users (username, email, password, dataNewPassword) VALUES ('${req.body.username}' , '${req.body.email}' , '${passwordToSave}' , '${dat}')`);
     let UserInfo = await pool.query(`SELECT * FROM users WHERE email = '${req.body.email}'`);
     let userId = UserInfo.rows[0].id;
-    let dat = new Date();
     let token = crypto.randomUUID();
     let nameUser = req.body.username.substring(1);
     await pool.query(`INSERT INTO sessions (id_user, date, email, token) VALUES ('${userId}', '${dat}', '${req.body.email}' , '${token}')`);
@@ -118,7 +118,7 @@ app.post('/login', async (req, res) => {
       let dat = new Date();
       let token = crypto.randomUUID();
       let UserInfo = await pool.query(`SELECT * FROM users WHERE email = '${req.body.email}'`);
-      let userId = UserInfo.rows[0].id_user;
+      let userId = UserInfo.rows[0].id;
       await pool.query(`INSERT INTO sessions (id_user, date, email, token) VALUES ('${userId}', '${dat}', '${req.body.email}' , '${token}')`);
       res.cookie('token', `'${token}'`, {
         maxAge: 86400000,
@@ -128,16 +128,17 @@ app.post('/login', async (req, res) => {
         maxAge: 86400000,
         secure: true,
       });
+      res.status(200).type('json').send(UserInfo.rows);
     } else if (dateToken.rows.length > 0) {
       let a = dateToken.rows[dateToken.rows.length - 1];
       let days = Number((new Date().getTime() - new Date(a.date).getTime()) / 86400000);
-      if (days <= 1) {
+      if (days <= 1 && dateToken.rows.email === req.body.email) {
         res.status(200).type('json').send(user.rows);
       } else if (days > 1) {
         let dat = new Date();
         let token = crypto.randomUUID();
         let UserInfo = await pool.query(`SELECT * FROM users WHERE email = '${req.body.email}'`);
-        let userId = UserInfo.rows[0].id_user;
+        let userId = UserInfo.rows[0].id;
         await pool.query(`INSERT INTO sessions (id_user, date, email, token) VALUES ('${userId}', '${dat}', '${req.body.email}' , '${token}')`);
         res.cookie('token', `'${token}'`, {
           maxAge: 86400000,
@@ -147,7 +148,7 @@ app.post('/login', async (req, res) => {
           maxAge: 86400000,
           secure: true,
         });
-        res.status(200).type('json').send(user.rows);
+        res.status(200).type('json').send(UserInfo.rows);
       }
     }
   } else {
@@ -233,5 +234,76 @@ app.post('/userInfo', async (req, res) => {
       res.status(200).type('json').send('Данные успешно изменены');
       return;
     }
+  }
+});
+
+app.post('/settingsOldPassword', async (req, res) => {
+  let cook = req.cookies;
+  let cookEmail = cook.email;
+  let user = await pool.query(`SELECT * FROM users WHERE email = ${cookEmail}`);
+  let oldPass = req.body.oldPassword;
+  if (bcrypt.compareSync(oldPass, user.rows[0].password)) {
+    res.status(200).type('text').send('ok');
+  } else {
+    res.status(400).type('text').send('error');
+  }
+});
+
+app.post('/settingsNewPassword', async (req, res) => {
+  let cook = req.cookies;
+  let cookEmail = cook.email;
+  let user = await pool.query(`SELECT * FROM users WHERE email = ${cookEmail}`);
+  let newPass = req.body.newPassword;
+  let datPass = user.rows[0].datanewpassword;
+  let dat = new Date();
+  let days = Number((new Date().getTime() - new Date(datPass).getTime()) / 86400000);
+  if (bcrypt.compareSync(newPass, user.rows[0].password) === true) {
+    res.status(200).type('text').send('новый пароль не должен совпадать со старым');
+  } else if (bcrypt.compareSync(newPass, user.rows[0].password) === false) {
+    if (newPass.length >= 7 && days > 1) {
+      let salt = bcrypt.genSaltSync(10);
+      let passwordToSave = bcrypt.hashSync(newPass, salt);
+      await pool.query(`UPDATE users SET password = '${passwordToSave}', datanewpassword = '${dat}'  WHERE email = ${cookEmail}`);
+      res.status(200).type('text').send('Пароль успешно изменен');
+    } else if (newPass.length < 7) {
+      res.status(200).type('text').send('количесво символов должно быть не менее 7');
+    } else if (days < 1) {
+      res.status(200).type('text').send('пароль нельзя менять чаще, чем один раз в сутки');
+    }
+  }
+});
+
+app.post('/settingsEmail', async (req, res) => {
+  let cook = req.cookies;
+  let cookEmail = cook.email;
+  let user = await pool.query(`SELECT * FROM users WHERE email = ${cookEmail}`);
+  let pass = req.body.password;
+  let ID = user.rows[0].id;
+  if (bcrypt.compareSync(pass, user.rows[0].password)) {
+    if (String(req.body.email) !== user.rows[0].email) {
+      let us = await pool.query(`SELECT * FROM users WHERE email = '${req.body.email}'`);
+      if (us.rows.length <= 0) {
+        await pool.query(`UPDATE users SET email = '${req.body.email}' WHERE users.id = '${ID}'`);
+        await pool.query(`UPDATE sessions SET email = '${req.body.email}' WHERE id_user = '${ID}'`);
+        let token = crypto.randomUUID();
+        res.cookie('token', `'${token}'`, {
+          maxAge: 86400000,
+          secure: true,
+        });
+        res.cookie('email', `'${req.body.email}'`, {
+          maxAge: 86400000,
+          secure: true,
+        });
+        let dat = new Date();
+        await pool.query(`INSERT INTO sessions (id_user, date, email, token) VALUES ('${ID}', '${dat}', '${req.body.email}' , '${token}')`);
+        res.status(200).type('text').send('Email успешно изменен');
+      } else if (us.rows.length > 0) {
+        res.status(200).type('text').send('Этот адрес электронной почты уже используется');
+      }
+    } else if (String(req.body.email) === user.rows[0].email) {
+      res.status(200).type('text').send('Новый email не должен совпадать с текущим email');
+    }
+  } else {
+    res.status(400).type('text').send('неверный пароль');
   }
 });

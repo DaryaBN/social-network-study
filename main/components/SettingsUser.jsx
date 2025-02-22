@@ -34,10 +34,10 @@ const UserSettings = () => {
     usernick: "",
     photo: "",
     info: "",
-		address: "",
-		website: "",
-		birthday: "",
-		privacy: "",
+	address: "",
+	website: "",
+	birthday: "",
+	privacy: "",
   });
 
 	const handleChange = (e) => {

@@ -6,7 +6,7 @@ import MenuPhoto from './feedMenuPhoto';
 
 const Menu = () => {
   const[feedClick, setFeedClick] = useState(true);
-  console.log(feedClick)
+  // console.log(feedClick)
   const[profileClick, setProfileClick] = useState(true);
   const[settingslick, setSettingsClick] = useState(true);
   const[lineFeed, setLineFeed] = useState(true);
