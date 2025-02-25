@@ -29,6 +29,9 @@ export default defineConfig({
       '/blog': 'http://localhost:3000',
       '/feedUser': 'http://localhost:3000',
       '/userInfo': 'http://localhost:3000',
+      '/settingsOldPassword': 'http://localhost:3000',
+      '/settingsNewPassword': 'http://localhost:3000',
+      '/settingsEmail': 'http://localhost:3000',
     },
   },
 });

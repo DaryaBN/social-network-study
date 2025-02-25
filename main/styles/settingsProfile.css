@@ -125,5 +125,11 @@
 		width: 5px;
 		background: #0057FF;
 	}
+	.password{
+		font-size: 20px;
+		color: #068525;
+		margin-left: 10px;
+		font-weight: 500;
+	}
 
 }
