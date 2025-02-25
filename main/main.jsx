@@ -10,11 +10,11 @@ const domContainer = document.getElementById('root');
 const root = ReactDOM.createRoot(domContainer);
 root.render(
   <Provider store={store}>
-    <React.StrictMode>
+    {/* <React.StrictMode> */}
       <Router>
         <TodoApp />
       </Router>
-    </React.StrictMode>
+    {/* </React.StrictMode> */}
   </Provider>
 );
 

@@ -71,41 +71,6 @@ const FeedNewPost = () => {
 					answerText: {error}
 				})
 			} 
-
-
-
-
-			// let res = fetch('/posts', {
-			// 	method: 'POST',
-			// 	headers: {
-			// 		'Content-Type': 'application/json;charset=utf-8',
-			// 	},
-			// 	body: JSON.stringify(postMes),
-			// });
-			// res.then((value) => {
-			// if (status === "resolved") {
-			// 	setAnswer({
-			// 		answerText: "Ваш пост успешно опубликован"
-			// 	})
-			// 	} else if (status === "rejected") {
-			// 		setAnswer({
-			// 			answerText: {error}
-			// 		})
-			// 	} else {
-			// 		setAnswer({
-			// 			answerText: ''
-			// 		})
-			// 	}
-				// if (value.ok) { 
-				// 	setAnswer({
-				// 		answerText: "Ваш пост успешно опубликован"
-      	// 	})
-				// } else if (!value.ok){
-				// 	setAnswer({
-				// 		answerText: "Недопустимое количество символов"
-				// 	})
-				// }
-			// })
 		} else if (sizePost > 123) {
       setAnswer({
         answerText: "Недопустимое количество символов"
@@ -115,31 +80,30 @@ const FeedNewPost = () => {
 
 	return (
 		<>
-		<div className="LogicPostWrite">
-			<div className ="PostWriteBox">
-				<form onSubmit={handleSubmitNewPost}>
-					<div className="PostWriteText">
-						<textarea name="post" value={NewPost.post} onChange={handleChangeNewPost}/>
-					</div>
-					<div className="PostWriteButton">
-						<div className="PostWriteButtonPhoto">
-							<Widget
-							publicKey="af13cab7ba4d80ad78a2"
-							onChange={(fileInfo) => handleFileUpload(fileInfo)}
-							/>
+			<div className="LogicPostWrite">
+				<div className ="PostWriteBox">
+					<form onSubmit={handleSubmitNewPost}>
+						<div className="PostWriteText">
+							<textarea name="post" value={NewPost.post} onChange={handleChangeNewPost}/>
 						</div>
-						<div className="PostWriteButtonSend">
-							<div className={border}>123</div>
-							<button type="submit" className="PostWriteSend">Отправить</button>
-							 {/*  */}
+						<div className="PostWriteButton">
+							<div className="PostWriteButtonPhoto">
+								<Widget
+								publicKey="af13cab7ba4d80ad78a2"
+								onChange={(fileInfo) => handleFileUpload(fileInfo)}
+								/>
+							</div>
+							<div className="PostWriteButtonSend">
+								<div className={border}>123</div>
+								<button type="submit" className="PostWriteSend">Отправить</button>
+								{/*  */}
+							</div>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
-		</div>
-    <ModalPostetd textProps = {answer} activePosted = {modalPosted} setActivePosted = {setModalPosted}/>
+			<ModalPostetd textProps = {answer} activePosted = {modalPosted} setActivePosted = {setModalPosted}/>
 		</>
 	)
-
 }
 export default FeedNewPost
