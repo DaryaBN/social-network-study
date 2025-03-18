@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
@@ -32,6 +31,8 @@ export default defineConfig({
       '/settingsOldPassword': 'http://localhost:3000',
       '/settingsNewPassword': 'http://localhost:3000',
       '/settingsEmail': 'http://localhost:3000',
+      '/UserPosts': 'http://localhost:3000',
+      '/NumberUserPosts': 'http://localhost:3000',
     },
   },
 });

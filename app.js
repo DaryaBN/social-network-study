@@ -3,9 +3,15 @@ import pkg from 'pg';
 import bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
 import cookies from 'cookie-parser';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 const app = express();
 const port = 3000;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -14,6 +20,7 @@ app.use(cookies());
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
 
 const { Pool } = pkg;
 const pool = new Pool({
@@ -25,6 +32,10 @@ const pool = new Pool({
   ssl: {
     rejectUnauthorized: false,
   },
+});
+
+app.get('/feed', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.get('/posts', async (req, res) => {
@@ -39,7 +50,7 @@ app.get('/postsHome', async (req, res) => {
 
 app.get('/posts/:id_user', async (request, response) => {
   const id = Number(request.params.id_user);
-  let information = await pool.query('SELECT * FROM posts WHERE id_user = $1', [id]);
+  let information = await pool.query(`SELECT * FROM posts WHERE id_user = ${id}`);
   response.type('json').send(information.rows);
 });
 
@@ -58,9 +69,7 @@ app.post('/posts', async (req, res) => {
 
 app.delete('/posts/:id_user', async (req, res) => {
   const id = Number(req.params.id_user);
-  let information = await pool.query('DELETE FROM posts WHERE id_user = $1', [id]);
-  let information1 = await pool.query('SELECT * from posts');
-  console.log(information1.rows);
+  let information = await pool.query( `DELETE FROM posts WHERE id_user = ${id}`);
   res.type('json').send(information.rows);
 });
 
@@ -69,8 +78,8 @@ app.post('/posts/:id_user', async (req, res) => {
   let mes = String(req.body.mes);
   let information = await pool.query(`
     UPDATE posts SET mes = '${mes}'
-    WHERE id_user = $1;
-    `, [id]);
+    WHERE id_user = ${id};
+    `);
   let information1 = await pool.query('SELECT * from posts');
   console.log(information1.rows);
   res.type('json').send(information.rows);
@@ -214,13 +223,10 @@ app.post('/userInfo', async (req, res) => {
   let user = await pool.query(`SELECT * FROM users WHERE email = ${cookEmail}`);
   let userID = String(user.rows[0].id);
   let inf = req.body;
-  /* eslint-disable no-restricted-syntax */
   for (let key in inf) {
     if (key === 'usernick') {
-      /* eslint-disable no-await-in-loop */
       let nick = await pool.query(`SELECT * FROM usersinfo WHERE usernick = '${inf.usernick}'`);
       if (nick.rows.length === 0) {
-        /* eslint-disable no-await-in-loop */
         await pool.query(`UPDATE usersinfo SET ${key} = '${inf[key]}'  WHERE user_id = '${userID}'`);
         res.status(200).type('text').send('Данные успешно изменены');
         return;
@@ -229,7 +235,6 @@ app.post('/userInfo', async (req, res) => {
         return;
       }
     } else if (key !== 'usernick') {
-      /* eslint-disable no-await-in-loop */
       await pool.query(`UPDATE usersinfo SET ${key} = '${inf[key]}'  WHERE user_id = '${userID}'`);
       res.status(200).type('json').send('Данные успешно изменены');
       return;
@@ -306,4 +311,22 @@ app.post('/settingsEmail', async (req, res) => {
   } else {
     res.status(400).type('text').send('неверный пароль');
   }
+});
+
+app.get('/UserPosts', async (req, res) => {
+  let cook = req.cookies;
+  let cookEmail = cook.email;
+  let user = await pool.query(`SELECT * FROM users WHERE email = ${cookEmail}`);
+  let id = user.rows[0].id;
+  let information = await pool.query(`SELECT ps.*, photo FROM posts ps, usersinfo if WHERE ps.id_user = if.user_id AND ps.id_user = '${id}' ORDER BY id DESC`);
+  res.type('json').send(information.rows);
+});
+
+app.get('/NumberUserPosts', async (req, res) => {
+  let cook = req.cookies;
+  let cookEmail = cook.email;
+  let user = await pool.query(`SELECT * FROM users WHERE email = ${cookEmail}`);
+  let id = user.rows[0].id;
+  let information = await pool.query(`SELECT COUNT (*) FROM posts WHERE id_user = '${id}'`);
+  res.status(200).type('json').send(information.rows);
 });

@@ -5,14 +5,6 @@ import { useEffect } from 'react';
 import MenuPhoto from './feedMenuPhoto';
 
 const Menu = () => {
-  const[feedClick, setFeedClick] = useState(true);
-  // console.log(feedClick)
-  const[profileClick, setProfileClick] = useState(true);
-  const[settingslick, setSettingsClick] = useState(true);
-  const[lineFeed, setLineFeed] = useState(true);
-  const[lineProfile, setLineProfile] = useState(true);
-  const[lineSettings, setLineSettings] = useState(true);
-
   const userPhoto =[];
   const[photo, setPhoto] = useState(userPhoto);
   async function getUserPhoto(){
@@ -21,27 +13,26 @@ const Menu = () => {
   }
   useEffect(() => {getUserPhoto()}, []);
 
-
   return(
   <>
     <div className="menuWidth">
       <nav className="menuNavigation">
         <div className="Navigation" >
-          <NavLink to='/feed' className="NavigationBlok" onClick={() => {setFeedClick(false);setLineFeed(false);}} >
-            <img className='IMGnavigation' src="../img/home 1лента.svg" alt="лента новостей" width="17"/>
-            <div className= {feedClick ? "colorTextMenu" : "colorBlue" }>Лента </div>
-            <div className= {lineFeed ? "underlineNone" : "underlineFeed"}></div>
-          </NavLink>
-          <NavLink to='/profile' className="NavigationBlok" onClick={() => {setProfileClick(false);setLineProfile(false);}}>
-            <img className='IMGnavigation'  src="../img/user (1) 1профиль.svg"  alt="Профиль" width="19"/>
-            <div className= {profileClick ? "colorTextMenu" : "colorBlue" }>Профиль</div>
-            <div className={lineProfile ? "underlineNone" : "underlineProfile" }></div>
-          </NavLink>
-          <NavLink to='/settings/profile' className="NavigationBlok" onClick={() => {setSettingsClick(false);setLineSettings(false);}}>
-            <img  className='IMGnavigation' src="../img/adjust 1настроийки.svg" alt="Настройки" width="17"/>
-            <div className= {settingslick ? "colorTextMenu" : "colorBlue" }>Настройки</div>
-            <div className={lineSettings ? "underlineNone" : "underlineSettings"}></div>
-          </NavLink>
+           <div className="NavigationBlok" >
+           <NavLink to='/feed'><img className='IMGnavigation' src="../img/home 1лента.svg" alt="лента новостей" width="17"/></NavLink>
+            <NavLink to='/feed'  className={({ isActive }) => isActive ? "colorBlue "  : "colorTextMenu" }>Лента</NavLink>
+            <NavLink to='/feed' className={({ isActive }) => isActive ? "underlineFeed" : "underlineNone"}></NavLink>
+          </div>
+          <div className="NavigationBlok" >
+          <NavLink to='/profile'><img className='IMGnavigation'  src="../img/user (1) 1профиль.svg"  alt="Профиль" width="19"/></NavLink>
+            <NavLink to='/profile' className={({ isActive }) => isActive ? "colorBlue "  : "colorTextMenu"}>Профиль</NavLink>
+            <NavLink to='/profile' className={({ isActive }) => isActive ? "underlineProfile" : "underlineNone"}></NavLink>
+          </div>
+          <div className="NavigationBlok" >
+          <NavLink to='/settings/profile'><img  className='IMGnavigation' src="../img/adjust 1настроийки.svg" alt="Настройки" width="17"/></NavLink>
+            <NavLink to='/settings/profile' className={({ isActive }) => isActive ? "colorBlue "  : "colorTextMenu"}>Настройки</NavLink>
+            <NavLink to='/settings/profile' className={({ isActive }) => isActive ? "underlineSettings" : "underlineNone"}></NavLink>
+          </div>
         </div>
       </nav>
       <div className="menuLogo">

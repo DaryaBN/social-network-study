@@ -1,13 +1,13 @@
 export default function similar(profile, profiles, count1) {
-  let objProfile = {};
+  const objProfile = {};
   let elemProfile = [];
   let quantity = 1;
-  let meaning = 0;
+  const meaning = 0;
   let keyObj = [];
   let prof = [];
-  let elemProfiles = [];
-  let sum = 0;
-  let res = [];
+  const elemProfiles = [];
+  const sum = 0;
+  const res = [];
   let keys;
 
   elemProfile = profile.posts

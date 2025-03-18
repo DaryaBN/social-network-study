@@ -2,7 +2,7 @@ export default function hashtag(txt) {
   let b;
   let c;
   let res;
-  let a = txt.split(' ');
+  const a = txt.split(' ');
   a.forEach((elemet) => {
     if (elemet.includes('#')) {
       b = a.indexOf(elemet);

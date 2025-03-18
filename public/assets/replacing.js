@@ -1,7 +1,7 @@
 export default function replacing(post) {
-  let domain = ['.org', '.com', '.ru'];
+  const domain = ['.org', '.com', '.ru'];
   let res;
-  let a = post.split(' ');
+  const a = post.split(' ');
   a.forEach((eltment) => {
     domain.forEach((item) => {
       if (eltment.includes(item)) {

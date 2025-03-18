@@ -59,11 +59,11 @@ const EmailComponent = () => {
 					if (value.ok) {
 						const func = async () => {
 							const result = await value.text();
-							if(result === 'email успешно изменен'){
+							if(result === 'Email успешно изменен'){
 								settextNewEmail(result);	
 								settextErrorEmail(' ');
 								seterrorColorEmail(true);								
-							} else if (result !== 'email успешно изменен'){
+							} else if (result !== 'Email успешно изменен'){
 								settextErrorEmail(result);
 								seterrorColorEmail(false);
 							}
