@@ -83,6 +83,12 @@
 .underlineNone{
   display: none;
 }
+.newsFeed{
+  width: 17px;
+}
+.Profile{
+  width: 19px;
+}
 
 @media (min-width: 1280px){ 
   .menuWidth{
