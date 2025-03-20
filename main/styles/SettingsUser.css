@@ -16,8 +16,8 @@
 	border-radius: 10px;
 	height: 52px;
 	margin-top: 24px;
-	margin-left: 16px;
-	margin-right: 16px;
+	margin-left: 0px;
+	margin-right: 0px;
 	width: 100%;
 	flex-direction: column;
 }
@@ -55,10 +55,7 @@ select {
 .EditPhoto {
 	border-radius: 100px;
 	filter: brightness(65%);
-	margin-right: 22px;
-	margin-top: 24px;
-	margin-bottom: 24px;
-	/* text-align: center; */
+  margin: 24px 0px 24px 24px;
 	background-color: #0057FF;
 	width: 130px;
 	height: 130px;
@@ -68,7 +65,7 @@ select {
 .EditVektor {
 	position: relative;
 	left: 28px;
-	bottom: -75px;
+	bottom: 10px;
 	width: 25px;
 	float: left;
 }
@@ -77,20 +74,17 @@ select {
 	justify-content: space-between;
 }
 .SettingsInform{
-	padding-right: 30px;
+	padding-right: 0px;
 }
 .SettingsButton{
-	width: 100%;
+  width: 180px;
 	background: #0057FF;
 	border: 1px solid #0057FF;
 	border-radius: 10px;
 	color: white;
-	font-size: 18px;
-	width: 25%;
+	font-size: 15px;
 	padding: 15px;
-	margin-top: 24px;
-	margin-left: 16px;
-	margin-bottom: 32px;
+  margin: 24px 16px 32px 0px;
 	cursor: pointer;
 }
 .TextNickError{
@@ -107,5 +101,108 @@ select {
 }
 
 @media (min-width: 1280px){
-
+  .SettingsNameNickPhoto{
+    display: flex;
+    justify-content: space-between;
+  }
+  .SettingsNameNick{
+    float: left;
+    width: 60%;
+  }
+  .SettingsPhoto{
+    float: right;
+  }
+  .EditInput{
+    display: flex;
+    background: #FFFFFF;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    height: 52px;
+    margin-top: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
+    width: 100%;
+    flex-direction: column;
+  }
+  input[type=text], input[type=date], [type=email], input[type=password], input [type=date] {
+    width: 98%;
+    font-family: inherit;
+    outline: none;
+    border: none;
+    height: 22px;
+    color: black;
+    background: scroll;
+  }
+  select {
+    border: none;
+    width: 98%;
+  }
+  .EditLabel {
+    font-weight: 400;
+    font-size: 9px;
+    line-height: 11px;
+    color: #B1B1B1;
+    margin-left: 16px;
+    margin-top: 6px;
+    margin-bottom: 4px;
+  }
+  .EditValue {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #555555;
+    margin-bottom: 7px;
+    margin-top: 0px;
+    margin-left: 16px;
+  }
+  .EditPhoto {
+    border-radius: 100px;
+    filter: brightness(65%);
+    margin: 24px 22px 24px 0px;
+    background-color: #0057FF;
+    width: 130px;
+    height: 130px;
+    background-size: cover;
+    object-fit: cover;
+  }
+  .EditVektor {
+    position: relative;
+    left: 28px;
+    bottom: -75px;
+    width: 25px;
+    float: left;
+  }
+  .SettingsBirthday {
+    display: flex;
+    justify-content: space-between;
+  }
+  .SettingsInform{
+    padding-right: 30px;
+  }
+  .SettingsButton{
+    width: 100%;
+    background: #0057FF;
+    border: 1px solid #0057FF;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    width: 25%;
+    padding: 15px;
+    margin-top: 24px;
+    margin-left: 16px;
+    margin-bottom: 32px;
+    cursor: pointer;
+  }
+  .TextNickError{
+    font-weight: 400;
+    font-size: 9px;
+    line-height: 11px;
+    color: #E40060;
+    margin-top: 2px;
+    margin-left: 5px;
+  }
+  .EditInputError{
+    background: rgb(255, 222, 236);
+    border: 1px solid rgb(228, 0, 96);
+  }
 }

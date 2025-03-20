@@ -1,55 +1,55 @@
 import "../styles/PostsBlog.css";
-import time from '../functions/PostTime.js';
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
-import { postContent } from "../../store/postsSlice.js";
+import { userContent } from "../../store/userPosts.js";
+import time from '../functions/PostTime.js';
 
-const PostList = () => {
-  const {status, error} = useSelector (state => state.counter);
-  const todos = useSelector(state => state.counter.posts);
+const UserPosts = () => {
+	const {status, error} = useSelector (state => state.userPost);
+	const posts = useSelector(state => state.userPost.posts);
+	const dispatch = useDispatch();
+		
+	useEffect(() => {
+		dispatch(userContent());
+	},[dispatch]);
+	
+	const PostsUser = posts.map((item) =>(
+		<div className="PostListClass" key={item.id}>
+		<div className="PostLogic">
+			<div className="PostPoto">
+				<img className ="PotoUser" src={item.photo}/>
+			</div>
+			<div className="PostInfo">
+				<div className="InfoData">
+					<div className="InfoName">
+						<p className="UserName"> {item.username}</p>
+						<p className="UserNick">{item.usernick}</p>
+					</div>
+					<p className="PostTime">{time(item.time)}</p>
+				</div>
+				<p className="PostText">{item.mess}
+					<img className="postImg"src={item.img} /></p>
+				<ul className="PostLike">
+					<li>
+						<img className="LikeIMG" src="../img/Vectorстрелка.svg" alt="поделиться"/>
+						<p className="LikeText">21</p>
+					</li>
+					<li>
+						<img className="LikeIMG" src="../img/Vectorнравится.svg" alt="нравиться"/>
+						<p className="LikeText">23</p>
+					</li>
+					<li>
+						<img className="LikeIMG" src="../img/Vectorскачать.svg" alt="скачать"/>
+						<p className="LikeText">9</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div className="line"></div>
+	</div>
+	))
 
-  const dispatch = useDispatch();
-  
-  useEffect(() => {
-    dispatch(postContent());
-  },[dispatch]);
-
-  const Info = todos.map((item) => (
-    <div className="PostListClass" key={item.id}>
-      <div className="PostLogic">
-        <div className="PostPoto">
-          <img className ="PotoUser" src={item.photo}/>
-        </div>
-        <div className="PostInfo">
-          <div className="InfoData">
-            <div className="InfoName">
-              <p className="UserName"> {item.username}</p>
-              <p className="UserNick">{item.usernick}</p>
-            </div>
-            <p className="PostTime">{time(item.time)}</p>
-          </div>
-          <p className="PostText">{item.mess}
-           <img className="postImg"src={item.img} /></p>
-          <ul className="PostLike">
-            <li>
-              <img className="LikeIMG" src="../img/Vectorстрелка.svg" alt="поделиться"/>
-              <p className="LikeText">21</p>
-            </li>
-            <li>
-              <img className="LikeIMG" src="../img/Vectorнравится.svg" alt="нравиться"/>
-              <p className="LikeText">23</p>
-            </li>
-            <li>
-              <img className="LikeIMG" src="../img/Vectorскачать.svg" alt="скачать"/>
-              <p className="LikeText">9</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div className="line"></div>
-    </div>
-  ));
-  const InfoQuantity = [
+	const InfoQuantity = [
     {id: "1"},
     {id: "2"},
     {id: "3"},
@@ -89,7 +89,8 @@ const PostList = () => {
       <div className="line"></div>
     </div>
   ));
-  if (status === "loading"){
+
+	if (status === "loading"){
     return (
     <>
       {InfoColor}
@@ -97,7 +98,7 @@ const PostList = () => {
   )} else if (status === "resolved") {
     return (
       <>
-        {Info}
+        {PostsUser}
         <div className="br"></div>
       </>
   )} else if (error) {
@@ -109,4 +110,4 @@ const PostList = () => {
   }
 }
 
-export default PostList
+export default UserPosts

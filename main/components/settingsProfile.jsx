@@ -4,6 +4,7 @@ import UserSettings from "./SettingsUser";
 
 const Settings = () => {
 	return(
+		<>
 		<div className="SettingsWidth">
 			<p className="SettingsTitle">Редактировать профиль</p> 
 			<div className="Settingsleft">
@@ -13,6 +14,8 @@ const Settings = () => {
 				<MenuSettings />
 			</div>
 		</div>
+		<div className="brSett"></div>
+		</>
 	)
 }
 export default Settings

@@ -18,26 +18,20 @@ const MenuSettings = () => {
 			<nav className="SettingsNavigationNAV">
 				<div className="SettingsNavigation" >
 					<p className="EditTitleSettings">Настройки</p>
-
-					<NavLink to='/settings/profile' className={"SettingsBlock"} onClick={() => {setProfileSettings(false);setPChangePassword(true);setChangeEmail(true);   setLineProfileSettings(false); setLineChangePassword(true); setLineChangeEmail(true);}} >
-						<div className= {lineProfileSettings ? "lineNoneSettings" : "lineBlueProfile"}></div>
-						<div className= {ProfileSettings ? "colorTextSettings" : "colorBlueSettings" }>Настройки профиля</div>
-					</NavLink>
-
-					<NavLink to='/settings/password' className={"SettingsBlock"} onClick={() => {setProfileSettings(true);setPChangePassword(false);setChangeEmail(true);     setLineProfileSettings(true); setLineChangePassword(false); setLineChangeEmail(true);}}>
-						<div className={lineChangePassword ? "lineNoneSettings" : "lineBlueProfile" }></div>
-						<div className= {ChangePassword ? "colorTextSettings" : "colorBlueSettings" }>Сменить пароль</div>
-					</NavLink>
-
-
-					<NavLink to='/settings/email' className={"SettingsBlock"} onClick={() => {setProfileSettings(true);setPChangePassword(true);setChangeEmail(false);        setLineProfileSettings(true); setLineChangePassword(true); setLineChangeEmail(false);}}>
-						<div className={lineChangeEmail ? "lineNoneSettings" : "lineBlueProfile"}></div>
-						<div className= {ChangeEmail ? "colorTextSettings" : "colorBlueSettings" }>Сменить e-mail</div>
-					</NavLink>
-
-						<div className="colorTextSettings SettingsBlock">Конфиденциальность</div>
-						
-						<div className="colorTextSettings SettingsBlock">Удалить профиль</div>
+					<div className={"SettingsBlock"}>
+            <NavLink to='/settings/profile'  className={({ isActive }) => isActive ? "lineBlueProfile"  : "lineNoneSettings" }></NavLink>
+            <NavLink to='/settings/profile'  className={({ isActive }) => isActive ? "colorBlueSettings" : "colorTextSettings"}>Настройки профиля</NavLink>
+          </div>
+					<div className={"SettingsBlock"}>
+            <NavLink to='/settings/password'  className={({ isActive }) => isActive ? "lineBlueProfile"  : "lineNoneSettings" }></NavLink>
+            <NavLink to='/settings/password'  className={({ isActive }) => isActive ? "colorBlueSettings" : "colorTextSettings"}>Сменить пароль</NavLink>
+          </div>
+					<div className={"SettingsBlock"}>
+            <NavLink to='/settings/email'  className={({ isActive }) => isActive ? "lineBlueProfile"  : "lineNoneSettings" }></NavLink>
+            <NavLink to='/settings/email'  className={({ isActive }) => isActive ? "colorBlueSettings" : "colorTextSettings"}>Сменить e-mail</NavLink>
+          </div>
+					<div className="colorTextSettings SettingsBlock">Конфиденциальность</div>
+					<div className="colorTextSettings SettingsBlock">Удалить профиль</div>
 				</div>
 			</nav>
 		</>

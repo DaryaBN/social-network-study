@@ -134,6 +134,13 @@
 .Right{
   float: none;
 }
+.br{
+	display: block;
+	height: 100px;
+}
+.brUserPage{
+  display: none;
+}
 @media (min-width: 1280px){
   .TitleMess{
     font-size: 36px;
@@ -284,5 +291,12 @@
   }
   .Right{
     float: right;
+  }
+  .br{
+    display: none;
+  }
+  .brUserPage{
+    display: block;
+    height: 20px;
   }
 }

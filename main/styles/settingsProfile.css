@@ -70,6 +70,10 @@
 	width: 5px;
 	background: #0057FF;
 }
+.brSett{
+	display: block;
+	height: 300px;
+}
 
 @media (min-width: 1280px){
 	.SettingsWidth{
@@ -130,6 +134,9 @@
 		color: #068525;
 		margin-left: 10px;
 		font-weight: 500;
+	}
+	.brSett{
+		display: none;
 	}
 
 }

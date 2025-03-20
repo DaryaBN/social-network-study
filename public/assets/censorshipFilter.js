@@ -1,7 +1,7 @@
 export default function platformFilter(arg1, arg2) {
   let res;
-  let a = arg2;
-  let b = arg1.split(' ');
+  const a = arg2;
+  const b = arg1.split(' ');
   let c;
   b.forEach((eltment) => {
     a.forEach((item) => {

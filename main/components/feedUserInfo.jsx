@@ -1,5 +1,16 @@
 import "../styles/feedPosts.css"
+import { UserInfoPost } from "../../store/userInfoNumber.js";
+import { Widget } from '@uploadcare/react-widget';
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from 'react';
+
 const FeedUser = ({UserProps}) =>{
+	const userNumer = useSelector(state => state.infoNumber.informationUser);
+	const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(UserInfoPost());
+  },[dispatch]);
+
 	const UserInf = UserProps.map((item) => (
 		<div className="LogicUser" key={item.id}>
 			<div className="UserProfile">
@@ -13,7 +24,7 @@ const FeedUser = ({UserProps}) =>{
 			</div>
 			<div className="UserProfileBox">
 				<div className="BoxInfo">
-					<h5>45K</h5>
+					<h5>{userNumer[0].post}</h5>
 					<p className="BoxInfoText">Сообщений</p>
 				</div>
 				<div className="BoxInfo">   
