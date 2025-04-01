@@ -1,24 +1,43 @@
 import "../styles/User.css"
 import { userInfo } from "../../store/profileSett.js"
 import { UserInfoPost } from "../../store/userInfoNumber.js";
+import { someUserInfo } from "../../store/profileSett.js";
 import { Widget } from '@uploadcare/react-widget';
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, NavLink } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { someUserInfoPost } from "../../store/userInfoNumber.js";
 
 const UserInfo = () => {
+	const dispatch = useDispatch();
+	const location = useLocation();
+	const params = useParams();
+  const id = params.id;
+
 	const user = useSelector(state => state.info.user);
 	const {status, error} = useSelector (state => state.info);
-	const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(userInfo());
-  },[dispatch]);
- 
 	const userNumer = useSelector(state => state.infoNumber.informationUser);
-  useEffect(() => {
-    dispatch(UserInfoPost());
-  },[dispatch]);
+ 
+	const [buttonSetting, setbuttonSetting ] = useState(true)
+	const [buttonRead, setbuttonRead ] = useState(true)
+
+	useEffect(() => {
+    if (location.pathname !== '/profile') {
+			setbuttonSetting(false)
+			setbuttonRead(true)
+     dispatch(someUserInfo({ id }));
+		 dispatch(someUserInfoPost({ id }));
+    } else if(location.pathname === '/profile'){
+			setbuttonRead(false)
+			setbuttonSetting(true)
+			dispatch(userInfo());
+			dispatch(UserInfoPost());
+		}
+  }, [dispatch, location.pathname]);
+
 
 	const UserPageInfo = user.map((item) => (
 		<div key={item.id}>
@@ -39,9 +58,10 @@ const UserInfo = () => {
 						<div className="DataBlokText">Читателей</div>
 					</div>
 						<div className="DataBlok">
-							<div className="InfoButton">
+							<div className={buttonSetting ? "InfoButton" : "none"}>
 							<NavLink to='/settings/profile'>Редактировать профиль</NavLink>
 							</div>
+							<div className={buttonRead ? "ReadButt" : "none"}>Читать</div>
 						</div>
 				</div>
 				<div className="positionUserInfo">
@@ -87,9 +107,10 @@ const UserInfo = () => {
 							<div className="DataBlokText">Читателей</div>
 						</div>
 					</div>
-					<div className="InfoButtonMob">
+					<div className={buttonSetting ? "InfoButtonMob" : "none"}>
 						<NavLink to='/settings/profile'>Редактировать профиль</NavLink>
 					</div>
+					<div className={buttonRead ? "InfoButtonMob" : "none"}>Читать</div>
 				</div>
 			</div>
 		</div>

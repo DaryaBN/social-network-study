@@ -33,6 +33,9 @@ export default defineConfig({
       '/settingsEmail': 'http://localhost:3000',
       '/UserPosts': 'http://localhost:3000',
       '/NumberUserPosts': 'http://localhost:3000',
+      '/someUserPost': 'http://localhost:3000',
+      '/someUserInfo': 'http://localhost:3000',
+      '/someNumberUserPosts': 'http://localhost:3000',
     },
   },
 });

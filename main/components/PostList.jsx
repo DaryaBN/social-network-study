@@ -3,6 +3,10 @@ import time from '../functions/PostTime.js';
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 import { postContent } from "../../store/postsSlice.js";
+import { Link, NavLink } from "react-router-dom";
+import { someUserContent } from "../../store/userPosts.js";
+import { someUserInfo } from "../../store/profileSett.js";
+import { useNavigate } from 'react-router-dom';
 
 const PostList = () => {
   const {status, error} = useSelector (state => state.counter);
@@ -14,17 +18,24 @@ const PostList = () => {
     dispatch(postContent());
   },[dispatch]);
 
+
+  const navigate = useNavigate();
+
+  function resID(id){
+    navigate(`/profile/:${id}`);
+  }
+
   const Info = todos.map((item) => (
     <div className="PostListClass" key={item.id}>
       <div className="PostLogic">
-        <div className="PostPoto">
-          <img className ="PotoUser" src={item.photo}/>
+        <div className="PostPoto" onClick={() => resID(item.id_user)}>
+        <img className ="PotoUser" src={item.photo}/>
         </div>
         <div className="PostInfo">
           <div className="InfoData">
-            <div className="InfoName">
-              <p className="UserName"> {item.username}</p>
-              <p className="UserNick">{item.usernick}</p>
+            <div className="InfoName" onClick={() => resID(item.id_user)}>
+             <p className="UserName"> {item.username}</p>
+             <p className="UserNick">{item.usernick}</p>
             </div>
             <p className="PostTime">{time(item.time)}</p>
           </div>

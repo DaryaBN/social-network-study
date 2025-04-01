@@ -11,6 +11,7 @@ const ProfilePage = ()=> {
   const cook = await fetch('/DolphinFeed').then((data) => data.text());
   setFeedStstus(cook)
   }
+  
   useEffect(() => {loadFeed()}, []);
 
   if(feedStstus == "ok"){

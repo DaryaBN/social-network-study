@@ -2,16 +2,28 @@ import "../styles/PostsBlog.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 import { userContent } from "../../store/userPosts.js";
+import { someUserContent } from "../../store/userPosts.js";
 import time from '../functions/PostTime.js';
+import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const UserPosts = () => {
+  const dispatch = useDispatch();
+	const location = useLocation();
+	const params = useParams();
+  const id = params.id;
+
+  const posts = useSelector(state => state.userPost.posts);
 	const {status, error} = useSelector (state => state.userPost);
-	const posts = useSelector(state => state.userPost.posts);
-	const dispatch = useDispatch();
-		
-	useEffect(() => {
-		dispatch(userContent());
-	},[dispatch]);
+	
+
+  useEffect(() => {
+    if (location.pathname !== '/profile') {
+      dispatch(someUserContent({ id }));
+    } else if(location.pathname === '/profile'){
+      dispatch(userContent());
+    }
+  }, [dispatch, location.pathname]);
 	
 	const PostsUser = posts.map((item) =>(
 		<div className="PostListClass" key={item.id}>

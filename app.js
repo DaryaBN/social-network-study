@@ -330,3 +330,21 @@ app.get('/NumberUserPosts', async (req, res) => {
   let information = await pool.query(`SELECT COUNT (*) FROM posts WHERE id_user = '${id}'`);
   res.status(200).type('json').send(information.rows);
 });
+
+app.post('/someUserPost', async (req, res) => {
+  let id = req.body.id.substring(1);
+  let information = await pool.query(`SELECT ps.*, photo FROM posts ps, usersinfo if WHERE ps.id_user = if.user_id AND ps.id_user = '${id}' ORDER BY id DESC`);
+  res.status(200).type('json').send(information.rows);
+});
+
+app.post('/someUserInfo', async (req, res) => {
+  let id = req.body.id.substring(1);
+  let userInfo = await pool.query(`SELECT * FROM usersinfo WHERE user_id = '${id}'`);
+  res.type('json').send(userInfo.rows);
+});
+
+app.post('/someNumberUserPosts', async (req, res) => {
+  let id = req.body.id.substring(1);
+  let information = await pool.query(`SELECT COUNT (*) FROM posts WHERE id_user = '${id}'`);
+  res.status(200).type('json').send(information.rows);
+});

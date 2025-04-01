@@ -1,10 +1,32 @@
+import User from "../components/UserPage.jsx";
+import Menu from "../components/feedMenu";
+import Home from './HomePage.jsx';
+import { useState } from "react";
+import { useEffect } from 'react';
+
 function UserProfilePage() {
-    return (
-      <div>
-        <h1>User profile page</h1>
-        <p>This is a placeholder for the User profile page.</p>
-      </div>
-    );
-  }
-  
-  export default UserProfilePage;
+let feedResult = [{}];
+const [feedStstus, setFeedStstus] = useState(feedResult)
+async function loadFeed(){
+const cook = await fetch('/DolphinFeed').then((data) => data.text());
+setFeedStstus(cook)
+}
+
+useEffect(() => {loadFeed()}, []);
+
+if(feedStstus == "ok"){
+  return (
+    <>
+      <Menu />
+      <User />
+    </>
+  );
+} else if (feedStstus == 'error'){
+  return (
+    <>
+      <Home />
+    </>
+  );
+}
+}
+export default UserProfilePage;
