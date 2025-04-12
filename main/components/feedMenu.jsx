@@ -19,17 +19,17 @@ const Menu = () => {
       <nav className="menuNavigation">
         <div className="Navigation" >
            <div className="NavigationBlok" >
-           <NavLink to='/feed'><img className='IMGnavigation' src="../img/home 1лента.svg" alt="лента новостей" width="17"/></NavLink>
+           <NavLink to='/feed'><img className='IMGnavigation newsFeed' src="../img/home 1лента.svg" alt="лента новостей" /></NavLink>
             <NavLink to='/feed'  className={({ isActive }) => isActive ? "colorBlue "  : "colorTextMenu" }>Лента</NavLink>
             <NavLink to='/feed' className={({ isActive }) => isActive ? "underlineFeed" : "underlineNone"}></NavLink>
           </div>
           <div className="NavigationBlok" >
-          <NavLink to='/profile'><img className='IMGnavigation'  src="../img/user (1) 1профиль.svg"  alt="Профиль" width="19"/></NavLink>
+          <NavLink to='/profile'><img className='IMGnavigation Profile'  src="../img/user (1) 1профиль.svg"  alt="Профиль" /></NavLink>
             <NavLink to='/profile' className={({ isActive }) => isActive ? "colorBlue "  : "colorTextMenu"}>Профиль</NavLink>
             <NavLink to='/profile' className={({ isActive }) => isActive ? "underlineProfile" : "underlineNone"}></NavLink>
           </div>
           <div className="NavigationBlok" >
-          <NavLink to='/settings/profile'><img  className='IMGnavigation' src="../img/adjust 1настроийки.svg" alt="Настройки" width="17"/></NavLink>
+          <NavLink to='/settings/profile'><img  className='IMGnavigation newsFeed' src="../img/adjust 1настроийки.svg" alt="Настройки"/></NavLink>
             <NavLink to='/settings/profile' className={({ isActive }) => isActive ? "colorBlue "  : "colorTextMenu"}>Настройки</NavLink>
             <NavLink to='/settings/profile' className={({ isActive }) => isActive ? "underlineSettings" : "underlineNone"}></NavLink>
           </div>

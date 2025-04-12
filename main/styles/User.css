@@ -145,6 +145,9 @@
 	color: #0057FF;
 	cursor: pointer;
 }
+.ReadButt{
+	display: none;
+}
 a {
 	color: #0057FF;
 }
@@ -291,5 +294,20 @@ a {
 	}
 	.positionUserInfo{
 		bottom: 30px;
+	}
+	.ReadButt{
+		display: block;
+		width: 100px;
+		margin: 0px 10px 0px 0px;
+		background: #FFFFFF;
+		border: 1px solid #0057FF;
+		border-radius: 5px;
+		padding: 15px;
+		font-size: 14px;
+		line-height: 14px;
+		font-weight: 700;
+		text-align: center;
+		color: #0057FF;
+		cursor: pointer;
 	}
 }

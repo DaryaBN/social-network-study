@@ -2,7 +2,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const userContent = createAsyncThunk(
-	'userPostSlice/postContent',
+	'userPostSlice/userPostContent',
 	async function (_, { rejectWithValue }) {
 		try {
 			const response = await fetch('/UserPosts');
@@ -16,6 +16,30 @@ export const userContent = createAsyncThunk(
 		}
 	},
 );
+
+export const someUserContent = createAsyncThunk(
+	'userPostSlice/somePostContent',
+	async function (someUser, { rejectWithValue, dispatch }) {
+		try {
+			let response = await fetch('/someUserPost', {
+				method: 'POST',
+				headers: {
+				  'Content-Type': 'application/json;charset=utf-8',
+				},
+				body: JSON.stringify(someUser),
+			  });
+			if (response.ok) {
+				const data = await response.json()
+				return data
+			} else if (!response.ok){
+				throw new Error("Can add task. Server error.")
+			}
+		} catch (error) {
+			return rejectWithValue(error.message)
+		}
+	},
+);
+
 
 const userPostSlice = createSlice({
   name: 'userPost',
@@ -34,9 +58,21 @@ const userPostSlice = createSlice({
 			state.posts = action.payload;
 		});
 		builder.addCase(userContent.rejected, (state, action) => {
-      state.status = 'rejected';
-      state.error = action.payload;
-    });
+			state.status = 'rejected';
+			state.error = action.payload;
+		});
+		builder.addCase(someUserContent.pending, (state) => {
+			state.status = 'loading';
+			state.error = null;
+		});
+		builder.addCase(someUserContent.fulfilled, (state, action) => {
+			state.status = 'resolved';
+			state.posts = action.payload;
+		});
+		builder.addCase(someUserContent.rejected, (state, action) => {
+			state.status = 'rejected';
+			state.error = action.payload;
+		});
 	},
 });
 
