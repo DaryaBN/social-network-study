@@ -9,7 +9,7 @@ export const UserInfoPost = createAsyncThunk(
 				throw new Error('Server Error!');
 			}
 			const data = await response.json();
-			return data[0].count;
+			return data;
 		} catch (error) {
 			return rejectWithValue(error.message)
 		}
@@ -29,7 +29,7 @@ export const someUserInfoPost = createAsyncThunk(
 			  });
 			if (response.ok) {
 				const data = await response.json()
-				return data[0].count;
+				return data;
 			} else if (!response.ok){
 				throw new Error("Can add task. Server error.")
 			}
@@ -62,7 +62,9 @@ const userInfoNumberSlice = createSlice({
         });
         builder.addCase(UserInfoPost.fulfilled, (state, action) => {
             state.status = 'resolved';
-            state.informationUser[0].post = action.payload;
+            state.informationUser[0].post = action.payload.post;
+			state.informationUser[0].follower = action.payload.subscribers;
+			state.informationUser[0].following = action.payload.subscriptions;
         });
         builder.addCase(someUserInfoPost.pending, (state, action) => {
             state.status = 'loading';
@@ -70,7 +72,9 @@ const userInfoNumberSlice = createSlice({
         });
         builder.addCase(someUserInfoPost.fulfilled, (state, action) => {
             state.status = 'resolved';
-						state.informationUser[0].post = action.payload;
+			state.informationUser[0].post = action.payload.post;
+			state.informationUser[0].follower = action.payload.subscribers;
+			state.informationUser[0].following = action.payload.subscriptions;
         });
         builder.addCase(UserInfoPost.rejected, setError);
         builder.addCase(someUserInfoPost.rejected, setError);

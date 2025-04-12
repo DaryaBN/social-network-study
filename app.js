@@ -39,8 +39,25 @@ app.get('/feed', (req, res) => {
 });
 
 app.get('/posts', async (req, res) => {
-  let information = await pool.query('SELECT ps.*, photo FROM posts ps, usersinfo if WHERE ps.id_user = if.user_id  ORDER BY id DESC');
-  res.type('json').send(information.rows);
+  let followerEmail = req.cookies.email;
+  let user = await pool.query(`SELECT * FROM users WHERE email = ${followerEmail}`);
+  let followerId = user.rows[0].id;
+  let userID = await pool.query(`SELECT * FROM subscriptions WHERE follower_id = '${followerId}'`);
+  let userIDarray = userID.rows.map((item) => item.user_id);
+  if (userIDarray.length > 0) {
+    const placeholders = userIDarray.map((_, index) => `$${index + 1}`).join(', ');
+    let information = await pool.query(`
+      SELECT ps.*, ui.photo 
+      FROM posts ps 
+      JOIN usersinfo ui ON ps.id_user = ui.user_id 
+      WHERE ui.user_id IN (${placeholders}) 
+      ORDER BY ps.id DESC
+    `,userIDarray);
+    res.type('json').send(information.rows);
+  } else {
+    let information = [];
+    res.type('json').send(information);
+  }
 });
 
 app.get('/postsHome', async (req, res) => {
@@ -327,8 +344,15 @@ app.get('/NumberUserPosts', async (req, res) => {
   let cookEmail = cook.email;
   let user = await pool.query(`SELECT * FROM users WHERE email = ${cookEmail}`);
   let id = user.rows[0].id;
-  let information = await pool.query(`SELECT COUNT (*) FROM posts WHERE id_user = '${id}'`);
-  res.status(200).type('json').send(information.rows);
+  let post = await pool.query(`SELECT COUNT (*) FROM posts WHERE id_user = '${id}'`);
+  let subscriptions = await pool.query(`SELECT COUNT (*) FROM subscriptions WHERE follower_id = '${id}'`);
+  let subscribers = await pool.query(`SELECT COUNT (*) FROM subscriptions WHERE user_id = '${id}'`);
+  let number = {
+    post: post.rows[0].count,
+    subscriptions: subscriptions.rows[0].count,
+    subscribers: subscribers.rows[0].count,
+  };
+  res.status(200).type('json').send(number);
 });
 
 app.post('/someUserPost', async (req, res) => {
@@ -345,6 +369,41 @@ app.post('/someUserInfo', async (req, res) => {
 
 app.post('/someNumberUserPosts', async (req, res) => {
   let id = req.body.id.substring(1);
-  let information = await pool.query(`SELECT COUNT (*) FROM posts WHERE id_user = '${id}'`);
-  res.status(200).type('json').send(information.rows);
+  let post = await pool.query(`SELECT COUNT (*) FROM posts WHERE id_user = '${id}'`);
+  let subscriptions = await pool.query(`SELECT COUNT (*) FROM subscriptions WHERE follower_id = '${id}'`);
+  let subscribers = await pool.query(`SELECT COUNT (*) FROM subscriptions WHERE user_id = '${id}'`);
+  let number = {
+    post: post.rows[0].count,
+    subscriptions: subscriptions.rows[0].count,
+    subscribers: subscribers.rows[0].count,
+  };
+  res.status(200).type('json').send(number);
+});
+
+app.post('/subscription', async (req, res) => {
+  let followerEmail = req.cookies.email;
+  let user = await pool.query(`SELECT * FROM users WHERE email = ${followerEmail}`);
+  let followerId = user.rows[0].id;
+  let userId = req.body.id.substring(1);
+  let subscribeFrom = await pool.query(`SELECT * FROM subscriptions WHERE follower_id = '${followerId}'  AND user_id = '${userId}'`);
+  if(subscribeFrom.rows.length === 0) {
+    await pool.query(`INSERT INTO subscriptions (follower_id, user_id) VALUES ('${followerId}', '${userId}')`);
+    res.status(200).type('text').send('читаю');
+  } else if(subscribeFrom.rows.length > 0) {
+    await pool.query(`DELETE FROM subscriptions WHERE follower_id = '${followerId}' AND user_id = '${userId}'`);
+    res.status(200).type('text').send('читать');
+  }
+});
+
+app.post('/subscriptionNow', async (req, res) => {
+  let followerEmail = req.cookies.email;
+  let user = await pool.query(`SELECT * FROM users WHERE email = ${followerEmail}`);
+  let followerId = user.rows[0].id;
+  let userId = req.body.id.substring(1);
+  let subscribeFrom = await pool.query(`SELECT * FROM subscriptions WHERE follower_id = '${followerId}'  AND user_id = '${userId}'`);
+  if(subscribeFrom.rows.length === 0) {
+    res.status(200).type('text').send('читать');
+  } else if(subscribeFrom.rows.length > 0) {
+    res.status(200).type('text').send('читаю');
+  }
 });

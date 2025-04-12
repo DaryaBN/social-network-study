@@ -28,11 +28,11 @@ const FeedUser = ({UserProps}) =>{
 					<p className="BoxInfoText">Сообщений</p>
 				</div>
 				<div className="BoxInfo">   
-					<h5>28</h5>
+					<h5>{userNumer[0].following}</h5>
 					<p className="BoxInfoText">Читаемых</p>
 				</div>
 				<div className="BoxInfo"> 
-					<h5>118</h5>
+					<h5>{userNumer[0].follower}</h5>
 					<p className="BoxInfoText">Читателей</p>
 				</div>
 			</div>
