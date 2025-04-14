@@ -36,6 +36,8 @@ export default defineConfig({
       '/someUserPost': 'http://localhost:3000',
       '/someUserInfo': 'http://localhost:3000',
       '/someNumberUserPosts': 'http://localhost:3000',
+      '/subscription': 'http://localhost:3000',
+      '/subscriptionNow': 'http://localhost:3000',
     },
   },
 });

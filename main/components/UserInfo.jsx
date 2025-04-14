@@ -23,13 +23,44 @@ const UserInfo = () => {
  
 	const [buttonSetting, setbuttonSetting ] = useState(true)
 	const [buttonRead, setbuttonRead ] = useState(true)
+	const [isSuccess, setIsSuccess] = useState(false);
+
+	function subscribeButtun() {
+		async function subscribeButtunId(){
+			return await fetch('/subscriptionNow', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json;charset=utf-8',
+				},
+				body: JSON.stringify({ id }),
+			});	
+		}
+		const res = subscribeButtunId();
+		res.then((value) => {
+			if (value.ok) {
+				const func = async () => {
+					const result = await value.text();
+					if(result === 'читаю'){
+						setIsSuccess(true);			
+					} else if (result === 'читать'){
+						setIsSuccess(false);
+					}
+				}
+				func();
+			} else if (!value.ok) {
+				console.log('error')
+			}
+		});
+	}
 
 	useEffect(() => {
     if (location.pathname !== '/profile') {
 			setbuttonSetting(false)
 			setbuttonRead(true)
-     dispatch(someUserInfo({ id }));
-		 dispatch(someUserInfoPost({ id }));
+			dispatch(someUserInfo({ id }));
+			dispatch(someUserInfoPost({ id }));
+			subscribeButtun()
+
     } else if(location.pathname === '/profile'){
 			setbuttonRead(false)
 			setbuttonSetting(true)
@@ -37,6 +68,35 @@ const UserInfo = () => {
 			dispatch(UserInfoPost());
 		}
   }, [dispatch, location.pathname]);
+
+	function subscribeId() {
+		async function subscribe(){
+			return await fetch('/subscription', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json;charset=utf-8',
+				},
+				body: JSON.stringify({ id }),
+			});
+		}
+		const res = subscribe();
+		res.then((value) => {
+			if (value.ok) {
+				const answer = async () => {
+					const result = await value.text();
+					if(result === 'читаю'){
+						setIsSuccess(true);			
+					} else if (result === 'читать'){
+						setIsSuccess(false);
+					}
+				}
+				answer();
+			} else if (!value.ok) {
+				console.log('error')
+			}
+		})
+	}
+	// subscribeId()
 
 
 	const UserPageInfo = user.map((item) => (
@@ -50,18 +110,18 @@ const UserInfo = () => {
 						<div className="DataBlokText">Сообщений</div>
 					</div>
 					<div className="DataBlok">
-						<div className="DataBlokNumbers">28</div>
+						<div className="DataBlokNumbers">{userNumer[0].following}</div>
 						<div className="DataBlokText">Читаемых</div>
 					</div>
 					<div className="DataBlok">
-						<div className="DataBlokNumbers">188</div>
+						<div className="DataBlokNumbers">{userNumer[0].follower}</div>
 						<div className="DataBlokText">Читателей</div>
 					</div>
 						<div className="DataBlok">
 							<div className={buttonSetting ? "InfoButton" : "none"}>
 							<NavLink to='/settings/profile'>Редактировать профиль</NavLink>
 							</div>
-							<div className={buttonRead ? "ReadButt" : "none"}>Читать</div>
+							<div className={buttonRead ? (isSuccess ? "ButtonColor" : " ReadButt") : "none"} onClick={() => subscribeId()}>{isSuccess ? 'Читаю' : 'Читать'}</div>
 						</div>
 				</div>
 				<div className="positionUserInfo">
