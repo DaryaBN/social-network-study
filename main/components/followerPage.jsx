@@ -4,10 +4,18 @@ import { useEffect } from 'react';
 import TopicalList from "./TopicalList.jsx";
 import BloggersList from "./BloggerList.jsx";
 import UserInfo from "./UserInfo.jsx";
-import UserPosts from "./userPosts.jsx";
+import Subscribers from "./followersList.jsx";
+import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-const User = () => {
-	const postTopical = [];
+const Folover = () =>{
+	const location = useLocation();
+	const params = useParams();
+	const id = params.id;
+
+	const [folloverText, setFolloverText] = useState(true)
+
+  const postTopical = [];
 	const [topical, setTopical] = useState(postTopical);
 	async function getPostsTopical() {
 		const resTop = await fetch('/top').then((data) => data.json());
@@ -23,6 +31,14 @@ const User = () => {
 
 	useEffect(() => {getPostsTopical(), getPostsBloggers()}, []);
 
+	useEffect(() => {
+		if (location.pathname === '/followers' || location.pathname === `/profile/${id}/followers`) {
+				setFolloverText(true);
+		} else if (location.pathname === '/following' || location.pathname === `/profile/${id}/following`) {
+				setFolloverText(false);
+		}
+}, [location.pathname, id]);
+
   return (
 		<>
 			<div className="Indent"></div>
@@ -36,7 +52,8 @@ const User = () => {
           </div>
 					<div className="brUserPage"></div>
 					<div className="LogicBlok1">
-             <UserPosts />
+					<p className="folloverTitle">{folloverText ? 'Подписчики' : 'Подписки'}</p> 
+            <Subscribers />
           </div>
 				</div>
 				<div className="Right">
@@ -52,5 +69,6 @@ const User = () => {
 			</div>
 		</>
   )
-}
-export default User
+};
+
+export default Folover

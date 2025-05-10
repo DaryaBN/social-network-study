@@ -3,27 +3,28 @@ import time from '../functions/PostTime.js';
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 import { postContent } from "../../store/postsSlice.js";
-import { Link, NavLink } from "react-router-dom";
-import { someUserContent } from "../../store/userPosts.js";
-import { someUserInfo } from "../../store/profileSett.js";
+import { newsFeed } from "../../store/postsSlice.js";
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const PostList = () => {
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const {status, error} = useSelector (state => state.counter);
   const todos = useSelector(state => state.counter.posts);
-
-  const dispatch = useDispatch();
-  
-  useEffect(() => {
-    dispatch(postContent());
-  },[dispatch]);
-
-
-  const navigate = useNavigate();
 
   function resID(id){
     navigate(`/profile/:${id}`);
   }
+  useEffect(() => {
+      if(location.pathname === '/feed'){
+        dispatch(newsFeed());
+      } else if (location.pathname !== '/feed'){
+        dispatch(postContent());
+      }
+    }, [dispatch, location.pathname]);
 
   const Info = todos.map((item) => (
     <div className="PostListClass" key={item.id}>

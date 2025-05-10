@@ -38,6 +38,11 @@ export default defineConfig({
       '/someNumberUserPosts': 'http://localhost:3000',
       '/subscription': 'http://localhost:3000',
       '/subscriptionNow': 'http://localhost:3000',
+      '/newsFeed': 'http://localhost:3000',
+      '/userFollowers': 'http://localhost:3000',
+      '/userFollowing': 'http://localhost:3000',
+      '/someUserFollowers': 'http://localhost:3000',
+      '/someUserFollowing': 'http://localhost:3000',
     },
   },
 });
