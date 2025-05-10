@@ -39,25 +39,8 @@ app.get('/feed', (req, res) => {
 });
 
 app.get('/posts', async (req, res) => {
-  let followerEmail = req.cookies.email;
-  let user = await pool.query(`SELECT * FROM users WHERE email = ${followerEmail}`);
-  let followerId = user.rows[0].id;
-  let userID = await pool.query(`SELECT * FROM subscriptions WHERE follower_id = '${followerId}'`);
-  let userIDarray = userID.rows.map((item) => item.user_id);
-  if (userIDarray.length > 0) {
-    const placeholders = userIDarray.map((_, index) => `$${index + 1}`).join(', ');
-    let information = await pool.query(`
-      SELECT ps.*, ui.photo 
-      FROM posts ps 
-      JOIN usersinfo ui ON ps.id_user = ui.user_id 
-      WHERE ui.user_id IN (${placeholders}) 
-      ORDER BY ps.id DESC
-    `,userIDarray);
-    res.type('json').send(information.rows);
-  } else {
-    let information = [];
-    res.type('json').send(information);
-  }
+  let information = await pool.query('SELECT ps.*, photo FROM posts ps, usersinfo if WHERE ps.id_user = if.user_id  ORDER BY id DESC');
+  res.type('json').send(information.rows);
 });
 
 app.get('/postsHome', async (req, res) => {
@@ -384,7 +367,7 @@ app.post('/subscription', async (req, res) => {
   let followerEmail = req.cookies.email;
   let user = await pool.query(`SELECT * FROM users WHERE email = ${followerEmail}`);
   let followerId = user.rows[0].id;
-  let userId = req.body.id.substring(1);
+  let userId = req.body.user_id;
   let subscribeFrom = await pool.query(`SELECT * FROM subscriptions WHERE follower_id = '${followerId}'  AND user_id = '${userId}'`);
   if(subscribeFrom.rows.length === 0) {
     await pool.query(`INSERT INTO subscriptions (follower_id, user_id) VALUES ('${followerId}', '${userId}')`);
@@ -405,5 +388,89 @@ app.post('/subscriptionNow', async (req, res) => {
     res.status(200).type('text').send('читать');
   } else if(subscribeFrom.rows.length > 0) {
     res.status(200).type('text').send('читаю');
+  }
+});
+
+app.get('/newsFeed', async (req, res) => {
+  let followerEmail = req.cookies.email;
+  let user = await pool.query(`SELECT * FROM users WHERE email = ${followerEmail}`);
+  let followerId = user.rows[0].id;
+  let userID = await pool.query(`SELECT * FROM subscriptions WHERE follower_id = '${followerId}'`);
+  let userIDarray = userID.rows.map((item) => item.user_id);
+  if (userIDarray.length > 0) {
+    const placeholders = userIDarray.map((_, index) => `$${index + 1}`).join(', ');
+    let information = await pool.query(`
+      SELECT ps.*, ui.photo 
+      FROM posts ps 
+      JOIN usersinfo ui ON ps.id_user = ui.user_id 
+      WHERE ui.user_id IN (${placeholders}) 
+      ORDER BY ps.id DESC
+    `,userIDarray);
+    res.type('json').send(information.rows);
+  } else {
+    let information = [];
+    res.type('json').send(information);
+  }
+});
+
+app.get('/userFollowing', async (req, res) => {
+  let emailCook = req.cookies.email;
+  let email = emailCook.replace(/'/g, '').trim();
+  let user = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+  let id = user.rows[0].id;
+  let arrayFollovers = await pool.query('SELECT user_id FROM subscriptions WHERE follower_id = $1', [id]);
+  let arrayIDFollovers = arrayFollovers.rows.map(row => row.user_id );
+  if (arrayIDFollovers.length > 0) {
+    const placeholders = arrayIDFollovers.map((_, index) => `$${index + 1}`).join(', ');
+    let information = await pool.query(`SELECT * FROM usersinfo WHERE user_id IN (${placeholders}) `,arrayIDFollovers);
+    res.type('json').send(information.rows);
+  } else {
+    let information = [];
+    res.type('json').send(information);
+  }
+});
+
+app.get('/userFollowers', async (req, res) => {
+  let emailCook = req.cookies.email;
+  let email = emailCook.replace(/'/g, '').trim();
+  let user = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+  let id = user.rows[0].id;
+  let arrayFollovers = await pool.query('SELECT follower_id FROM subscriptions WHERE user_id = $1', [id]);
+  let arrayIDFollovers = arrayFollovers.rows.map(row => row.follower_id );
+  if (arrayIDFollovers.length > 0) {
+    const placeholders = arrayIDFollovers.map((_, index) => `$${index + 1}`).join(', ');
+    let information = await pool.query(`SELECT * FROM usersinfo WHERE user_id IN (${placeholders}) `,arrayIDFollovers);
+    res.type('json').send(information.rows);
+  } else {
+    let information = [];
+    res.type('json').send(information);
+  }
+});
+
+app.post('/someUserFollowing', async (req, res) => {
+  let id = req.body.id.substring(1);;
+  let arrayFollovers = await pool.query('SELECT user_id FROM subscriptions WHERE follower_id = $1', [id]);
+  let arrayIDFollovers = arrayFollovers.rows.map(row => row.user_id );
+  if (arrayIDFollovers.length > 0) {
+    const placeholders = arrayIDFollovers.map((_, index) => `$${index + 1}`).join(', ');
+    let information = await pool.query(`SELECT * FROM usersinfo WHERE user_id IN (${placeholders}) `,arrayIDFollovers);
+    res.type('json').send(information.rows);
+  } else {
+    let information = [];
+    res.type('json').send(information);
+  }
+});
+
+app.post('/someUserFollowers', async (req, res) => {
+  let id = req.body.id.substring(1);;
+  let arrayFollovers = await pool.query('SELECT follower_id FROM subscriptions WHERE user_id = $1', [id]);
+  let arrayIDFollovers = arrayFollovers.rows.map(row => row.follower_id );
+  if (arrayIDFollovers.length > 0) {
+    const placeholders = arrayIDFollovers.map((_, index) => `$${index + 1}`).join(', ');
+    let information = await pool.query(`SELECT * FROM usersinfo WHERE user_id IN (${placeholders}) `,arrayIDFollovers);
+    res.type('json').send(information.rows);
+  } else {
+    let information = [];
+    res.type('json').send(information);
   }
 });

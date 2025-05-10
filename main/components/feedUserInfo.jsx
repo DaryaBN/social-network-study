@@ -3,6 +3,7 @@ import { UserInfoPost } from "../../store/userInfoNumber.js";
 import { Widget } from '@uploadcare/react-widget';
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
+import { Link, NavLink } from "react-router-dom";
 
 const FeedUser = ({UserProps}) =>{
 	const userNumer = useSelector(state => state.infoNumber.informationUser);
@@ -27,13 +28,17 @@ const FeedUser = ({UserProps}) =>{
 					<h5>{userNumer[0].post}</h5>
 					<p className="BoxInfoText">Сообщений</p>
 				</div>
-				<div className="BoxInfo">   
-					<h5>{userNumer[0].following}</h5>
-					<p className="BoxInfoText">Читаемых</p>
-				</div>
 				<div className="BoxInfo"> 
-					<h5>{userNumer[0].follower}</h5>
-					<p className="BoxInfoText">Читателей</p>
+					<NavLink to='/following'>  
+						<h5>{userNumer[0].following}</h5>
+						<p className="BoxInfoText">Читаемых</p>
+					</NavLink>
+				</div>
+				<div className="BoxInfo">
+					<NavLink to='/followers'>
+						<h5>{userNumer[0].follower}</h5>
+						<p className="BoxInfoText">Читателей</p>
+					</NavLink>
 				</div>
 			</div>
 		</div> 

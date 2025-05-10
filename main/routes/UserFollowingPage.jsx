@@ -1,10 +1,33 @@
-function UserFollowingPage() {
-    return (
-      <div>
-        <h1>User following page</h1>
-        <p>This is a placeholder for the User following page.</p>
-      </div>
-    );
+import Folover from "../components/followerPage.jsx";
+import Menu from "../components/feedMenu";
+import Home from './HomePage.jsx';
+import { useState } from "react";
+import { useEffect } from 'react';
+
+const UserFollowingPage = ()=> {
+  let feedResult = [{}];
+  const [feedStstus, setFeedStstus] = useState(feedResult)
+  async function loadFeed(){
+  const cook = await fetch('/DolphinFeed').then((data) => data.text());
+  setFeedStstus(cook)
   }
   
-  export default UserFollowingPage;
+  useEffect(() => {loadFeed()}, []);
+
+  if(feedStstus == "ok"){
+    return (
+      <>
+        <Menu />
+        <Folover />
+      </>
+    );
+  } else if (feedStstus == 'error'){
+    return (
+      <>
+        <Home />
+      </>
+    );
+  }
+};
+  
+export default UserFollowingPage;

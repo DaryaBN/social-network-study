@@ -47,13 +47,13 @@ const FeedPosts = () => {
             <FeedNewPost /> 
           </div>
           <div className="headerFeed">
-            <img src="img/logoбелый.svg" alt="дельфин"/>
+            <img src="/img/logoбелый.svg" alt="дельфин"/>
           </div>
           <div className="LogicBlok1">
             <PostList />  
           </div>
           <div className="rectangle" onClick={() => setWirteOpen(true)}>
-            <img src="img/Vectorнаписать.svg" alt="перо"/>
+            <img src="/img/Vectorнаписать.svg" alt="перо"/>
           </div>
         </div>
         <div className="Right">
