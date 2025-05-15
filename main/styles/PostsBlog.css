@@ -141,6 +141,15 @@
 .brUserPage{
   display: none;
 }
+.folloverTitle{
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 32px;
+  margin-left: 16px;
+  margin-top: 7px;
+  margin-bottom: 16px;
+}
 @media (min-width: 1280px){
   .TitleMess{
     font-size: 36px;
@@ -299,4 +308,13 @@
     display: block;
     height: 20px;
   }
+  .folloverTitle{
+		font-style: normal;
+		font-weight: 600;
+		font-size: 18px;
+		line-height: 32px;
+		margin-left: 16px;
+		margin-top: 7px;
+		margin-bottom: 16px;
+	}
 }

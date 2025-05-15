@@ -80,7 +80,7 @@ const Modal = ({active, setActive}) => {
             <div className="titleClose" onClick={() => setActive(false)}></div>
             <div className="title">
                 <h1 className="titleText">Авторизация</h1>
-                <img className="titleIMG" src="../img/Vectorкрестик.svg"  alt="закрыть" onClick={() => setActive(false)}/>
+                <img className="titleIMG" src="/img/Vectorкрестик.svg"  alt="закрыть" onClick={() => setActive(false)}/>
             </div>
             <div className= "ErrorLogon">{textErrorLogin ? '' : 'Неверно введен логин или пароль'}</div>
             <div className= "boxError">{textErrorName ? '' : 'Поле не заполненно'}</div>

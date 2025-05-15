@@ -43,15 +43,15 @@ const UserPosts = () => {
 					<img className="postImg"src={item.img} /></p>
 				<ul className="PostLike">
 					<li>
-						<img className="LikeIMG" src="../img/Vectorстрелка.svg" alt="поделиться"/>
+						<img className="LikeIMG" src="/img/Vectorстрелка.svg" alt="поделиться"/>
 						<p className="LikeText">21</p>
 					</li>
 					<li>
-						<img className="LikeIMG" src="../img/Vectorнравится.svg" alt="нравиться"/>
+						<img className="LikeIMG" src="/img/Vectorнравится.svg" alt="нравиться"/>
 						<p className="LikeText">23</p>
 					</li>
 					<li>
-						<img className="LikeIMG" src="../img/Vectorскачать.svg" alt="скачать"/>
+						<img className="LikeIMG" src="/img/Vectorскачать.svg" alt="скачать"/>
 						<p className="LikeText">9</p>
 					</li>
 				</ul>
@@ -84,15 +84,15 @@ const UserPosts = () => {
           <p className="PostText color colorHeight2"></p>
           <ul className="PostLike">
             <li>
-              <img className="LikeIMG" src="../img/Vectorстрелка.svg" alt="поделиться"/>
+              <img className="LikeIMG" src="/img/Vectorстрелка.svg" alt="поделиться"/>
               <p className="LikeText color colorHeight colorWidth"></p>
             </li>
             <li>
-              <img className="LikeIMG" src="../img/Vectorнравится.svg" alt="нравиться"/>
+              <img className="LikeIMG" src="/img/Vectorнравится.svg" alt="нравиться"/>
               <p className="LikeText color colorHeight colorWidth"></p>
             </li>
             <li>
-              <img className="LikeIMG" src="../img/Vectorскачать.svg" alt="скачать"/>
+              <img className="LikeIMG" src="/img/Vectorскачать.svg" alt="скачать"/>
               <p className="LikeText color colorHeight colorWidth"></p>
             </li>
           </ul>

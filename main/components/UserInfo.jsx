@@ -2,14 +2,14 @@ import "../styles/User.css"
 import { userInfo } from "../../store/profileSett.js"
 import { UserInfoPost } from "../../store/userInfoNumber.js";
 import { someUserInfo } from "../../store/profileSett.js";
-import { Widget } from '@uploadcare/react-widget';
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { someUserInfoPost } from "../../store/userInfoNumber.js";
+import { useNavigate } from 'react-router-dom';
 
 const UserInfo = () => {
 	const dispatch = useDispatch();
@@ -54,29 +54,30 @@ const UserInfo = () => {
 	}
 
 	useEffect(() => {
-    if (location.pathname !== '/profile') {
+		if(location.pathname === '/profile' || location.pathname === '/followers' || location.pathname === '/following'){
+			setbuttonRead(false)
+			setbuttonSetting(true)
+			dispatch(userInfo());
+			dispatch(UserInfoPost());
+		} else if (location.pathname !== '/profile' && location.pathname !== '/followers'&& location.pathname !== '/following'){
 			setbuttonSetting(false)
 			setbuttonRead(true)
 			dispatch(someUserInfo({ id }));
 			dispatch(someUserInfoPost({ id }));
 			subscribeButtun()
 
-    } else if(location.pathname === '/profile'){
-			setbuttonRead(false)
-			setbuttonSetting(true)
-			dispatch(userInfo());
-			dispatch(UserInfoPost());
-		}
+    }
   }, [dispatch, location.pathname]);
 
 	function subscribeId() {
+		let user_id = id.substring(1)
 		async function subscribe(){
 			return await fetch('/subscription', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json;charset=utf-8',
 				},
-				body: JSON.stringify({ id }),
+				body: JSON.stringify({ user_id }),
 			});
 		}
 		const res = subscribe();
@@ -96,8 +97,24 @@ const UserInfo = () => {
 			}
 		})
 	}
-	// subscribeId()
 
+	const navigate = useNavigate();
+
+	const following = () => {
+		if (location.pathname !== '/profile' && location.pathname !== '/followers' && location.pathname !== '/following') {
+			navigate(`/profile/${id}/following`);
+    } else if(location.pathname === '/profile' || location.pathname === '/followers' || location.pathname === '/following'){
+			navigate('/following');
+		}
+	};
+
+	const followers = () => {
+		if (location.pathname !== '/profile' && location.pathname !== '/followers' && location.pathname !== '/following') {
+			navigate(`/profile/${id}/followers`);
+    } else if(location.pathname === '/profile' || location.pathname === '/followers' || location.pathname === '/following'){
+			navigate('/followers');
+		}
+	};
 
 	const UserPageInfo = user.map((item) => (
 		<div key={item.id}>
@@ -109,11 +126,11 @@ const UserInfo = () => {
 						<div className="DataBlokNumbers">{userNumer[0].post}</div>
 						<div className="DataBlokText">Сообщений</div>
 					</div>
-					<div className="DataBlok">
+					<div className="DataBlok" onClick={following}>
 						<div className="DataBlokNumbers">{userNumer[0].following}</div>
 						<div className="DataBlokText">Читаемых</div>
 					</div>
-					<div className="DataBlok">
+					<div className="DataBlok" onClick={followers}>
 						<div className="DataBlokNumbers">{userNumer[0].follower}</div>
 						<div className="DataBlokText">Читателей</div>
 					</div>
@@ -133,22 +150,22 @@ const UserInfo = () => {
 					<div className="UserInfoElse">
 						<div className={item.address ? "Else" : "Else none"}>
 							<div className="ElseVector">
-								<img className="VectorPlace0" src="../img/Vectorместо серый.svg"></img>
-								<img className="VectorPlace1" src="../img/Vectorкруг.svg"></img>
+								<img className="VectorPlace0" src="/img/Vectorместо серый.svg"></img>
+								<img className="VectorPlace1" src="/img/Vectorкруг.svg"></img>
 							</div>
 							<div className="ElseText">{item.address}</div>
 						</div>
 						<div className={item.website ? "Else" : "Else none"}>
 							<div className="ElseVector">
-								<img className="VectorLink0" src="img/Vectorлевй угол.svg"/>
-								<img className="VectorLink1" src="img/Vectorцентр палка.svg"/>
-								<img className="VectorLink2" src="img/Vectorправый угол.svg"/>
+								<img className="VectorLink0" src="/img/Vectorлевй угол.svg"/>
+								<img className="VectorLink1" src="/img/Vectorцентр палка.svg"/>
+								<img className="VectorLink2" src="/img/Vectorправый угол.svg"/>
 							</div>
 							<div className="ElseText">{item.website}</div>
 						</div>
 						<div className={item.birthday ? "Else" : "Else none"}>
 							<div className="ElseVector">
-							<img  src="img/Vectorкалендарь.svg" width={15}/>
+							<img  src="/img/Vectorкалендарь.svg" width={15}/>
 							</div>
 							<div className="ElseText">День рождения {item.birthday}</div>
 						</div>					
@@ -158,19 +175,19 @@ const UserInfo = () => {
 							<div className="DataBlokNumbers">{userNumer[0].post}</div>
 							<div className="DataBlokText">Сообщений</div>
 						</div>
-						<div className="DataBlok">
-							<div className="DataBlokNumbers">28</div>
+						<div className="DataBlok" onClick={following}>
+							<div className="DataBlokNumbers">{userNumer[0].following}</div>
 							<div className="DataBlokText">Читаемых</div>
 						</div>
-						<div className="DataBlok">
-							<div className="DataBlokNumbers">188</div>
+						<div className="DataBlok"onClick={followers}>
+							<div className="DataBlokNumbers" >{userNumer[0].follower}</div>
 							<div className="DataBlokText">Читателей</div>
 						</div>
 					</div>
 					<div className={buttonSetting ? "InfoButtonMob" : "none"}>
 						<NavLink to='/settings/profile'>Редактировать профиль</NavLink>
 					</div>
-					<div className={buttonRead ? "InfoButtonMob" : "none"}>Читать</div>
+					<div className={buttonRead ? (isSuccess ? "ButtonColorMob" : "InfoButtonMob") : "none"} onClick={() => subscribeId()}>{isSuccess ? 'Читаю' : 'Читать'}</div>
 				</div>
 			</div>
 		</div>

@@ -159,7 +159,7 @@ a {
 	position: relative;
 	bottom: 40px;
 }
-.ButtonColor{
+.ButtonColorMob{
 	background: #0057FF;
 	display: block;
 	margin: 13px;
@@ -172,6 +172,9 @@ a {
 	text-align: center;
 	color: #FFFFFF;;
 	cursor: pointer;
+}
+.ButtonColor{
+	display: none;
 }
 
 @media (min-width: 1280px){
@@ -325,6 +328,7 @@ a {
 		cursor: pointer;
 	}
 	.ButtonColor{
+		display: block;
 		background: #0057FF;
 		color: #FFFFFF;
 		width: 100px;
@@ -337,5 +341,8 @@ a {
 		font-weight: 700;
 		text-align: center;
 		cursor: pointer;
+	}
+	.ButtonColorMob{
+		display: none;
 	}
 }

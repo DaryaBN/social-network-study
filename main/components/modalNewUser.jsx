@@ -121,7 +121,7 @@ const ModalNewUser = ({activeNewUser, setActiveNewUser}) => {
             <div className="titleClose" onClick={() => setActiveNewUser(false)}></div>
             <div className="title">
               <h1 className="titleText">Регистрация</h1>
-              <img className="titleIMG" src="../img/Vectorкрестик.svg"  alt="закрыть" onClick={() => setActiveNewUser(false)}/>
+              <img className="titleIMG" src="/img/Vectorкрестик.svg"  alt="закрыть" onClick={() => setActiveNewUser(false)}/>
             </div>
             <div className= "ErrorLogon">{textErrorLogon ? '' : 'Этот адрес электронной почты уже используется'}</div>
             <div className= "boxError">{textErrorBoxName ? '' : 'Поле не заполненно'}</div>
