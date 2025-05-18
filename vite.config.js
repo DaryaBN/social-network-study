@@ -25,7 +25,6 @@ export default defineConfig({
       '/DataMess': 'http://localhost:3000',
       '/DataMessToday': 'http://localhost:3000',
       '/top': 'http://localhost:3000',
-      '/blog': 'http://localhost:3000',
       '/feedUser': 'http://localhost:3000',
       '/userInfo': 'http://localhost:3000',
       '/settingsOldPassword': 'http://localhost:3000',
@@ -43,6 +42,7 @@ export default defineConfig({
       '/userFollowing': 'http://localhost:3000',
       '/someUserFollowers': 'http://localhost:3000',
       '/someUserFollowing': 'http://localhost:3000',
+      '/recommendations': 'http://localhost:3000',
     },
   },
 });

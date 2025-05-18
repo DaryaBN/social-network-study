@@ -173,10 +173,10 @@ app.get('/DolphinFeed', async (req, res) => {
     if (days <= 1) {
       res.status(200).type('text').send('ok');
     } else if (days > 1) {
-      res.status(400).type('text').send('error');
+      res.status(200).type('text').send('error');
     }
   } else if (cook.email === undefined) {
-    res.status(400).type('text').send('error');
+    res.status(200).type('text').send('error');
   }
 });
 
@@ -199,12 +199,7 @@ app.get('/DataMessToday', async (req, res) => {
 });
 
 app.get('/top', async (req, res) => {
-  let information = await pool.query('SELECT * from hashtag');
-  res.type('json').send(information.rows);
-});
-
-app.get('/blog', async (req, res) => {
-  let information = await pool.query('SELECT * from bloggers');
+  let information = await pool.query('SELECT * FROM hashtag ORDER BY CAST(hashtaglot AS INT) DESC LIMIT 5');
   res.type('json').send(information.rows);
 });
 
@@ -472,5 +467,17 @@ app.post('/someUserFollowers', async (req, res) => {
   } else {
     let information = [];
     res.type('json').send(information);
+  }
+});
+
+app.get('/recommendations', async (req, res) => {
+  let recom = await pool.query('SELECT user_id, COUNT(*) AS count FROM subscriptions GROUP BY user_id ORDER BY count DESC LIMIT 3');
+  let arrayRecom = recom.rows.map((item) => item.user_id);
+  if(arrayRecom.length > 0){
+    let arrayRecomId = arrayRecom.map((_, index) => `$${index + 1}`).join(', ');
+    let UsersRecom = await pool.query(`SELECT id, user_id, username, usernick, photo FROM usersinfo WHERE user_id IN (${arrayRecomId})`, arrayRecom);
+    res.type('json').send(UsersRecom.rows);
+  } else {
+    res.type('json').send([]);
   }
 });

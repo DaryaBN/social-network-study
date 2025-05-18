@@ -20,22 +20,8 @@ const FeedPosts = () => {
     const resName = await fetch('/feedUser').then((data) => data.json());
     setName(resName)
   };
-  
-  const postTopical = [];
-  const [topical, setTopical] = useState(postTopical);
-  async function getPostsTopical() {
-    const resTop = await fetch('/top').then((data) => data.json());
-    setTopical(resTop)
-  };
 
-  const postBlogger = [];
-  const [blogger, setBloggers] = useState(postBlogger);
-  async function getPostsBloggers() {
-    const resBlog = await fetch('/blog').then((data) => data.json());
-    setBloggers(resBlog)
-  };
-
-  useEffect(() => {getPostsTopical(), getPostsBloggers(), getUserName()}, []);
+  useEffect(() => { getUserName() }, []);
  
   return (
     <> 
@@ -60,11 +46,11 @@ const FeedPosts = () => {
           <FeedUser UserProps={name} />
           <div className="logicBlok2">
             <p className="postTitle">Актуальные темы</p>
-            <TopicalList TopProps={topical} />
+            <TopicalList />
           </div>
           <div className="logicBlok2">
             <p className="postTitle">Интересные блогеры</p>
-            <BloggersList BlogProps={blogger} />
+            <BloggersList /> 
           </div>
         </div>
       </div>

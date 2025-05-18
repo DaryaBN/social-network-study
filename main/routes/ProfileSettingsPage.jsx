@@ -1,8 +1,8 @@
 import Settings from "../components/settingsProfile";
 import Menu from "../components/feedMenu";
-import Home from './HomePage.jsx';
 import { useState } from "react";
 import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 
 function ProfileSettingsPage() {
 
@@ -24,7 +24,7 @@ function ProfileSettingsPage() {
   } else if (feedStstus == 'error'){
     return (
       <>
-        <Home />
+        <Navigate to="/" replace />
       </>
     );
   }
