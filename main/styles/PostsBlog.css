@@ -252,7 +252,7 @@
     margin-right: 3%;
     width: 48px;
     height: 48px;
-    background-color: red;
+    background-color: #0057FF;;
     border-radius: 50px;
   }
   .blogRead{
@@ -268,6 +268,10 @@
     width: 20%;
     padding: 5px;
     margin-top: 2%;
+  }
+  .blogReadColor{
+    background: #0057FF;
+    color: #FFFFFF;
   }
   .blogName{
     font-weight: 600;

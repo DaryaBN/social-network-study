@@ -1,8 +1,8 @@
 import User from "../components/UserPage.jsx";
 import Menu from "../components/feedMenu";
-import Home from './HomePage.jsx';
 import { useState } from "react";
 import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 
 const ProfilePage = ()=> {
   let feedResult = [{}];
@@ -24,7 +24,7 @@ const ProfilePage = ()=> {
   } else if (feedStstus == 'error'){
     return (
       <>
-        <Home />
+       <Navigate to="/" replace />
       </>
     );
   }

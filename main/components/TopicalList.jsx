@@ -1,6 +1,17 @@
 import "../styles/PostsBlog.css";
-const TopicalList = ({TopProps}) => {
-  const InfoTopical = TopProps.map((item) => (
+import { hashtagApp } from "../../store/relevant";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from 'react';
+
+const TopicalList = () => {
+  const dispatch = useDispatch();
+  const top = useSelector(state => state.hashtag.hashtagTop);
+	const {status, error} = useSelector (state => state.hashtag);
+  useEffect(() => {
+    dispatch(hashtagApp());
+  },[dispatch]);
+
+  const InfoTopical = top.map((item) => (
     <div  className="topic" key={item.id}>
       <h4 className="topText">{item.hashtagname}</h4>
       <p  className="topNumber">{item.hashtaglot} сообщение</p> 
@@ -19,18 +30,23 @@ const TopicalList = ({TopProps}) => {
       <p  className="topNumber color colorHeight colorWidth2"></p> 
     </div>
   ))
-  if(TopProps == 0){
-  return(
+  if (status === "loading"){
+    return (
     <>
       {InfoTopicalColor}
     </>
-  )}else {
-    return(
+  )} else if (status === "resolved") {
+    return (
       <>
         {InfoTopical}
       </>
+  )} else if (error) {
+    return (
+      <>
+        <h2> An error occured: {error}</h2>
+      </>
     )
-  }
+	}
 }
 
 export default TopicalList

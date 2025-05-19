@@ -1,8 +1,8 @@
 import FeedPosts from '../components/feedPosts.jsx';
 import Menu from "../components/feedMenu";
-import Home from './HomePage.jsx';
 import { useState } from "react";
 import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 
 const FeedPage = () => {
   let feedResult = [{}];
@@ -12,6 +12,7 @@ const FeedPage = () => {
   setFeedStstus(cook)
   }
   useEffect(() => {loadFeed()}, []);
+  console.log(feedStstus)
 
   if(feedStstus == "ok"){
     return (
@@ -23,7 +24,7 @@ const FeedPage = () => {
   } else if (feedStstus == 'error'){
     return (
       <>
-        <Home />
+      <Navigate to="/" replace />
       </>
     );
   }
