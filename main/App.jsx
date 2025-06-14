@@ -10,6 +10,7 @@ import UserFollowersPage from './routes/UserFollowersPage';
 import PasswordSettingsPage from './routes/PasswordSettingsPage';
 import ProfileSettingsPage from './routes/ProfileSettingsPage';
 import EmailSettings from './routes/EmailSettingsPage';
+import HashtagPage from './routes/HashtagPage';
 // import Layout from '@/components/Layout'
 
 const TodoApp = () => {
@@ -27,6 +28,7 @@ const TodoApp = () => {
         <Route path="/settings/profile" element={<ProfileSettingsPage />} />
         <Route path="/settings/password" element={<PasswordSettingsPage />} />
         <Route path="/settings/email" element={<EmailSettings />} />
+        <Route path="/hashtag/:hashtag" element={<HashtagPage />} />
       {/* </Route> */}
     </Routes>
   );

@@ -6,11 +6,15 @@ import { postContent } from "../../store/postsSlice.js";
 import { newsFeed } from "../../store/postsSlice.js";
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import hasht from "../functions/hashtag.jsx";
+import { postHashtag } from "../../store/postsSlice.js";
+import { useParams } from 'react-router-dom';
 
 const PostList = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { hashtag } = useParams();
 
   const {status, error} = useSelector (state => state.counter);
   const todos = useSelector(state => state.counter.posts);
@@ -19,12 +23,20 @@ const PostList = () => {
     navigate(`/profile/:${id}`);
   }
   useEffect(() => {
-      if(location.pathname === '/feed'){
-        dispatch(newsFeed());
-      } else if (location.pathname !== '/feed'){
-        dispatch(postContent());
-      }
-    }, [dispatch, location.pathname]);
+    if(location.pathname === '/feed'){
+      dispatch(newsFeed());
+    } else if (location.pathname === '/'){
+      dispatch(postContent());
+    }else if (hashtag) {
+      let h = hashtag.substring(1)
+      dispatch(postHashtag({h}));
+    }
+  }, [dispatch, location.pathname, hashtag]);
+
+  const handleHashtagClick = (tag) => {
+    navigate(`/hashtag/:${tag}`);
+  };
+
 
   const Info = todos.map((item) => (
     <div className="PostListClass" key={item.id}>
@@ -40,7 +52,7 @@ const PostList = () => {
             </div>
             <p className="PostTime">{time(item.time)}</p>
           </div>
-          <p className="PostText">{item.mess}
+          <p className="PostText">{hasht(item.mess, handleHashtagClick)}
            <img className="postImg"src={item.img} /></p>
           <ul className="PostLike">
             <li>

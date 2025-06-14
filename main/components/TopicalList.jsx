@@ -2,18 +2,26 @@ import "../styles/PostsBlog.css";
 import { hashtagApp } from "../../store/relevant";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const TopicalList = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const top = useSelector(state => state.hashtag.hashtagTop);
 	const {status, error} = useSelector (state => state.hashtag);
   useEffect(() => {
     dispatch(hashtagApp());
   },[dispatch]);
 
+  function NameHashtag(hashtag){
+    let h = hashtag.substring(1);
+    navigate(`/hashtag/:${h}`);
+  }
+
   const InfoTopical = top.map((item) => (
     <div  className="topic" key={item.id}>
-      <h4 className="topText">{item.hashtagname}</h4>
+      <h4 className="topText" onClick={() => NameHashtag(item.hashtagname)}>{item.hashtagname}</h4>
       <p  className="topNumber">{item.hashtaglot} сообщение</p> 
     </div>
   ))
