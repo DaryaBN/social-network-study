@@ -9,6 +9,9 @@ import { useLocation } from 'react-router-dom';
 import hasht from "../functions/hashtag.jsx";
 import { postHashtag } from "../../store/postsSlice.js";
 import { useParams } from 'react-router-dom';
+import { postMyLike } from "../../store/likesPost.js";
+import { resultLike } from "../../store/likesPost.js";
+import { NumberLikePost } from "../../store/likesPost.js";
 
 const PostList = () => {
   const location = useLocation();
@@ -18,6 +21,9 @@ const PostList = () => {
 
   const {status, error} = useSelector (state => state.counter);
   const todos = useSelector(state => state.counter.posts);
+
+  // const {status, error} = useSelector (state => state.postLikes);
+  // const todosLikes = useSelector(state => state.counter.likesNumer);
 
   function resID(id){
     navigate(`/profile/:${id}`);
@@ -36,6 +42,15 @@ const PostList = () => {
   const handleHashtagClick = (tag) => {
     navigate(`/hashtag/:${tag}`);
   };
+
+  function like(idPost){
+    if(location.pathname === '/feed'){
+
+
+    }else if (location.pathname === '/'){
+     console.log('необходимо войти в систему')
+    }
+  }
 
 
   const Info = todos.map((item) => (
@@ -61,7 +76,7 @@ const PostList = () => {
             </li>
             <li>
               <img className="LikeIMG" src="../img/Vectorнравится.svg" alt="нравиться"/>
-              <p className="LikeText">23</p>
+              <p className="LikeText" onClick={() => like(item.id)}>23</p>
             </li>
             <li>
               <img className="LikeIMG" src="../img/Vectorскачать.svg" alt="скачать"/>

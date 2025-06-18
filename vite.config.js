@@ -46,6 +46,9 @@ export default defineConfig({
       '/hashtagWords': 'http://localhost:3000',
       '/hashtagPosts': 'http://localhost:3000',
       '/myId': 'http://localhost:3000',
+      '/deleteANDputLike': 'http://localhost:3000',
+      '/myLike': 'http://localhost:3000',
+      '/LikePost': 'http://localhost:3000',
     },
   },
 });
