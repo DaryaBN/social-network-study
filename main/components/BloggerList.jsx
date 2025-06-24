@@ -8,10 +8,10 @@ import { useNavigate } from 'react-router-dom';
 const BloggersList = () => {
   const dispatch = useDispatch();
 	const navigate = useNavigate();
+
   const user = useSelector(state => state.recommendations.recommendationsUser);
 	const {status, error} = useSelector (state => state.recommendations);
   const [isSuccess, setIsSuccess] = useState({});
-
   
   let feedResult = [{}];
   const [feedStatus, setFeedStstus] = useState(feedResult)
@@ -92,7 +92,7 @@ const BloggersList = () => {
 
   const InfoBloggers = user.map((item) => (
     <div className="blogs" key={item.id}>
-      <div className="blogIMG" src={item.photo} onClick={() => resID(item.user_id)}></div>
+      <img className="blogIMG" src={item.photo} onClick={() => resID(item.user_id)}/>
       <div className={isSuccess[item.user_id] ? "blogRead blogReadColor" : "blogRead"} onClick={() => subscribeId(item.user_id)} >{isSuccess[item.user_id] ? 'Читаю' : 'Читать'}</div>
       <p className="blogName" onClick={() => resID(item.user_id)}>{item.username}</p>
       <p className="blogNick" onClick={() => resID(item.user_id)}>{item.usernick}</p>

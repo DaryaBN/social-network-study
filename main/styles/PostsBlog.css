@@ -254,6 +254,8 @@
     height: 48px;
     background-color: #0057FF;;
     border-radius: 50px;
+    background-size: cover;
+	  object-fit: cover;
   }
   .blogRead{
     float: right;

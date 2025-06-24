@@ -1,10 +1,10 @@
-import FeedPosts from '../components/feedPosts.jsx';
 import Menu from "../components/feedMenu";
 import { useState } from "react";
 import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
+import HashtagsPage from "../components/hashtagsPage";
 
-const FeedPage = () => {
+const HashtagPage = () => {
   let feedResult = [{}];
   const [feedStstus, setFeedStstus] = useState(feedResult)
   async function loadFeed(){
@@ -17,7 +17,7 @@ const FeedPage = () => {
     return (
       <>
         <Menu />
-        <FeedPosts />
+        <HashtagsPage />
       </>
     );
   } else if (feedStstus == 'error'){
@@ -29,4 +29,4 @@ const FeedPage = () => {
   }
 };
 
-export default FeedPage;
+export default HashtagPage;

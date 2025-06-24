@@ -32,6 +32,29 @@ export const newsFeed = createAsyncThunk(
   },
 );
 
+export const postHashtag = createAsyncThunk(
+  'counter/hashtag',
+  async function ({ h },{ rejectWithValue }) {
+    try {
+      let response = await fetch('/hashtagPosts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify({ hashtagt: h }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      } else if (!response.ok){
+        throw new Error('Can add task. Server error.');
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
 export const NewPostContent = createAsyncThunk(
   'counter/NewPostContent',
   async function ({ tx,im },{ rejectWithValue, dispatch }) {
@@ -72,6 +95,11 @@ const counterSlice = createSlice({
     status: null,
     error: null,
   },
+  reducers: {
+    addPosts(state, action) {
+      state.posts.unshift(action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(postContent.pending, (state) => {
       state.status = 'loading';
@@ -96,9 +124,18 @@ const counterSlice = createSlice({
       state.status = 'resolved';
       state.posts = action.payload;
     });
+    builder.addCase(postHashtag.pending, (state) => {
+      state.status = 'loading';
+      state.error = null;
+    });
+    builder.addCase(postHashtag.fulfilled, (state, action) => {
+      state.status = 'resolved';
+      state.posts = action.payload;
+    });
     builder.addCase(postContent.rejected, setError);
     builder.addCase(NewPostContent.rejected, setError);
     builder.addCase(newsFeed.rejected, setError);
+    builder.addCase(postHashtag.rejected, setError);
   },
 });
 

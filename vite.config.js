@@ -43,6 +43,9 @@ export default defineConfig({
       '/someUserFollowers': 'http://localhost:3000',
       '/someUserFollowing': 'http://localhost:3000',
       '/recommendations': 'http://localhost:3000',
+      '/hashtagWords': 'http://localhost:3000',
+      '/hashtagPosts': 'http://localhost:3000',
+      '/myId': 'http://localhost:3000',
     },
   },
 });

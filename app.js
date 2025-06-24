@@ -393,6 +393,7 @@ app.get('/newsFeed', async (req, res) => {
   let userID = await pool.query(`SELECT * FROM subscriptions WHERE follower_id = '${followerId}'`);
   let userIDarray = userID.rows.map((item) => item.user_id);
   if (userIDarray.length > 0) {
+    userIDarray.push(followerId);
     const placeholders = userIDarray.map((_, index) => `$${index + 1}`).join(', ');
     let information = await pool.query(`
       SELECT ps.*, ui.photo 
@@ -471,13 +472,64 @@ app.post('/someUserFollowers', async (req, res) => {
 });
 
 app.get('/recommendations', async (req, res) => {
-  let recom = await pool.query('SELECT user_id, COUNT(*) AS count FROM subscriptions GROUP BY user_id ORDER BY count DESC LIMIT 3');
-  let arrayRecom = recom.rows.map((item) => item.user_id);
-  if(arrayRecom.length > 0){
-    let arrayRecomId = arrayRecom.map((_, index) => `$${index + 1}`).join(', ');
-    let UsersRecom = await pool.query(`SELECT id, user_id, username, usernick, photo FROM usersinfo WHERE user_id IN (${arrayRecomId})`, arrayRecom);
-    res.type('json').send(UsersRecom.rows);
+  if(req.cookies.email){
+    let cookEmail = req.cookies.email;
+    let user = await pool.query(`SELECT * FROM users WHERE email = ${cookEmail}`);
+    let excludedUserId = user.rows[0].id;
+    let recom = await pool.query('SELECT user_id, COUNT(*) AS count FROM subscriptions WHERE user_id != $1 GROUP BY user_id ORDER BY count DESC LIMIT 3', [excludedUserId]);
+    let arrayRecom = recom.rows.map((item) => item.user_id);
+    if(arrayRecom.length > 0){
+      let arrayRecomId = arrayRecom.map((_, index) => `$${index + 1}`).join(', ');
+      let UsersRecom = await pool.query(`SELECT id, user_id, username, usernick, photo FROM usersinfo WHERE user_id IN (${arrayRecomId})`, arrayRecom);
+      res.type('json').send(UsersRecom.rows);
+    } else {
+      res.type('json').send([]);
+    }
   } else {
-    res.type('json').send([]);
+    let recom = await pool.query('SELECT user_id, COUNT(*) AS count FROM subscriptions GROUP BY user_id ORDER BY count DESC LIMIT 3');
+    let arrayRecom = recom.rows.map((item) => item.user_id);
+    if(arrayRecom.length > 0){
+      let arrayRecomId = arrayRecom.map((_, index) => `$${index + 1}`).join(', ');
+      let UsersRecom = await pool.query(`SELECT id, user_id, username, usernick, photo FROM usersinfo WHERE user_id IN (${arrayRecomId})`, arrayRecom);
+      res.type('json').send(UsersRecom.rows);
+    } else {
+      res.type('json').send([]);
+    }
   }
+});
+
+app.post('/hashtagWords', async (req, res) => {
+  let hashtag = req.body;
+  let arrayHashtag = hashtag.map((_, index) => `$${index + 1}`).join(', ');
+  let  hashtagTabl = await pool.query(`SELECT * FROM hashtag WHERE hashtagname IN (${arrayHashtag})`, hashtag );
+  if(hashtagTabl.rows.length > 0){
+    await pool.query(`UPDATE hashtag SET hashtaglot = CAST(CAST(hashtaglot AS INTEGER) + 1 AS CHARACTER VARYING) WHERE hashtagname IN (${arrayHashtag})`, hashtag);
+    res.status(200).type('text').send('OK');
+  } else {
+    const insertPlaceholders = hashtag.map((_, i) => `($${i + 1}, '1')`).join(', ');
+    await pool.query(`INSERT INTO hashtag (hashtagname, hashtaglot) VALUES ${insertPlaceholders}`, hashtag);
+    res.status(200).type('text').send('OK');
+  }
+});
+
+app.post('/hashtagPosts', async (req, res) => {
+  let hashtag = req.body.hashtagt;
+  const searchPattern = `%#${hashtag}%`;
+  try {
+    const result = await pool.query(
+      'SELECT ps.*, photo  FROM posts ps, usersinfo if WHERE  ps.id_user = if.user_id AND mess ILIKE $1 ORDER BY id DESC',
+      [searchPattern],
+    );
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Ошибка при поиске');
+  }
+});
+
+app.get('/myId', async (req, res) => {
+  let emailCook = req.cookies.email;
+  let email = emailCook.replace(/'/g, '').trim();
+  let user = await pool.query('SELECT id FROM users WHERE email = $1', [email]);
+  res.status(200).json(user.rows);
 });

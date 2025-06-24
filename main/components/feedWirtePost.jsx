@@ -59,8 +59,35 @@ const FeedNewPost = () => {
 			  post: ""
 			});
 			setBorder("PostWriteSizeColor PostWriteSize");
-			
-		  dispatch(NewPostContent({tx,im}));
+
+			async function hashtag(textHashtag) {
+  			let hashtagWords = textHashtag
+					.split(' ')
+					.filter((item) => item.includes('#'));
+				if (hashtagWords.length > 0) {
+					try {
+						const response = await fetch('/hashtagWords', {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json;charset=utf-8',
+							},
+							body: JSON.stringify(hashtagWords),
+						});
+
+						if (!response.ok) {
+							const errorText = await response.text();
+							console.error('Ошибка при отправке хештегов:', errorText);
+						} else {
+							console.log('Хештеги успешно отправлены');
+						}
+					} catch (error) {
+						console.error('Ошибка при выполнении fetch:', error);
+					}
+				}
+			}
+
+			dispatch(NewPostContent({ tx,im }));
+      hashtag(tx);
 
 			if (status === "resolved") {
 				setAnswer({
@@ -96,7 +123,6 @@ const FeedNewPost = () => {
 							<div className="PostWriteButtonSend">
 								<div className={border}>123</div>
 								<button type="submit" className="PostWriteSend">Отправить</button>
-								{/*  */}
 							</div>
 						</div>
 					</form>

@@ -22,8 +22,15 @@ const Subscribers = () =>{
 	const {status, error} = useSelector (state => state.follovers);
 
 	const [isSuccess, setIsSuccess] = useState({});
+	const [myId, setMyId] = useState(null);
 
-  
+	async function fetchMyId(){
+  const json = await fetch('/myId').then((data) => data.json());
+	let jsonId = json[0].id.toString()
+	setMyId(jsonId);
+  }
+  useEffect(() => {fetchMyId()}, []);
+ 
 	const fetchData = async () => {
 		try {
 			const subscriptionsResponse = await fetch('/userFollowing');
@@ -39,8 +46,6 @@ const Subscribers = () =>{
 			console.error('Ошибка при получении данных:', error);
 		}
 	};
-
-	// fetchData();
  
 	useEffect(() => {
 		fetchData();
@@ -90,13 +95,15 @@ const Subscribers = () =>{
   const Info = user.map((item) => (
 		<div  key={item.id}>
 		<div className="followerLogic">
-			<div className="followePhoto" onClick={() => resID(item.user_id)} src={item.photo}></div>
+			<img className="followePhoto" onClick={() => resID(item.user_id)} src={item.photo}/>
 			<div className="folloverInfo">
 				<div className="folloverName" onClick={() => resID(item.user_id)}>{item.username}</div>
 				<div className="folloverNick" onClick={() => resID(item.user_id)}>{item.usernick}</div>
 				<div className="folloverStstus">{item.info}</div>
 			</div>
-			<div className={isSuccess[item.user_id] ? "folloverButtun folloverButtunColor" : "folloverButtun"} onClick={() => subscribeId(item.user_id)}>{isSuccess[item.user_id] ? 'Читаю' : 'Читать'}</div>
+			{ myId !== item.user_id && (
+				<div className={isSuccess[item.user_id] ? "folloverButtun folloverButtunColor" : "folloverButtun"} onClick={() => subscribeId(item.user_id)}>{isSuccess[item.user_id] ? 'Читаю' : 'Читать'}</div>
+			)}
 		</div>
 		<div className="line"></div>
     </div>
