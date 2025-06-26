@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const postMyLike = createAsyncThunk(
   'postLikes/postMyLike',
-  async function (_, { rejectWithValue }) {
+  async function ({ id }, { rejectWithValue }) {
     try {
       let response = await fetch('/myLike', {
         method: 'POST',
@@ -15,7 +15,7 @@ export const postMyLike = createAsyncThunk(
         throw new Error('Server Error!');
       }
       const data = await response.text();
-      return data;
+      return { id, data };
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -24,7 +24,7 @@ export const postMyLike = createAsyncThunk(
 
 export const resultLike = createAsyncThunk(
   'postLikes/resultLike',
-  async function ({ id },{ rejectWithValue }) {
+  async function ({ id },{ rejectWithValue, dispatch }) {
     try {
       let response = await fetch('/deleteANDputLike', {
         method: 'POST',
@@ -35,7 +35,7 @@ export const resultLike = createAsyncThunk(
       });
       if (response.ok) {
         const data = await response.text();
-        return data;
+        dispatch(toggleLike({ id, data }));
       } else if (!response.ok){
         throw new Error('Can add task. Server error.');
       }
@@ -58,7 +58,7 @@ export const NumberLikePost = createAsyncThunk(
       });
       if (response.ok) {
         const data = await response.json();
-        return data[0];
+        return { id, count: data };
       } else if (!response.ok){
         throw new Error('Can add task. Server error.');
       }
@@ -76,17 +76,27 @@ const setError = (state, action) => {
 const LikesSlice = createSlice({
   name: 'postLikes',
   initialState: {
-    likesNumer: 0,   //колличесвко лайков
-    likesStatus: false,  //стоит ли лайк
+    likesData: {},
     status: null,
     error: null,
   },
   reducers: {
-    setLikes(state, action) {
-      state.likesNumer = action.payload;
-    },
-    setIsLiked(state, action) {
-      state.likesStatus = action.payload;
+    toggleLike(state, action) {
+      const { id } = action.payload;
+      if (!state.likesData[id]) {
+        state.likesData[id] = {
+          likesNumber: 0,
+          likesStatus: false,
+        };
+      }
+      const current = state.likesData[id];
+      if (current.likesStatus) {
+        current.likesStatus = false;
+        current.likesNumber -= 1;
+      } else {
+        current.likesStatus = true;
+        current.likesNumber += 1;
+      }
     },
   },
   extraReducers: (builder) => {
@@ -96,26 +106,33 @@ const LikesSlice = createSlice({
     });
     builder.addCase(postMyLike.fulfilled, (state, action) => {
       state.status = 'resolved';
-      if (action.likesStatus === 'yes') {
-          state.isLiked = true;
-        } else if (action.payload === 'no') {
-          state.likesStatus = false;
+      const { id, data } = action.payload;
+      if (!state.likesData[id]) {
+        if (data === 'yes') {
+          state.likesData[id] = {
+            likesNumber: 0,
+            likesStatus: true,
+          };
+        } else if (data === 'no') {
+          state.likesData[id] = {
+            likesNumber: 0,
+            likesStatus: false,
+          };
         }
+      } else {
+        if (data === 'yes') {
+          state.likesData[id].likesStatus = true;
+        } else if (data === 'no') {
+          state.likesData[id].likesStatus = false;
+        };
+      }
     });
     builder.addCase(resultLike.pending, (state) => {
       state.status = 'loading';
       state.error = null;
     });
-    builder.addCase(resultLike.fulfilled, async (state, action) => {
+    builder.addCase(resultLike.fulfilled, (state) => {
       state.status = 'resolved';
-        if (action.payload === 'yes') {
-          state.likesStatus = true;
-        } else if (action.payload === 'no') {
-          state.likesStatus = false;
-        }
-        const response = await fetch('/LikePost', { method: 'POST', body: JSON.stringify({ idPost }) });
-        const countData = await response.json();
-        state.likesNumer = countData[0];
     });
     builder.addCase(NumberLikePost.pending, (state) => {
       state.status = 'loading';
@@ -123,7 +140,15 @@ const LikesSlice = createSlice({
     });
     builder.addCase(NumberLikePost.fulfilled, (state, action) => {
       state.status = 'resolved';
-      state.likesNumer = action.payload;
+      const { id, count } = action.payload;
+      if (!state.likesData[id]) {
+        state.likesData[id] = {
+          likesNumber: count,
+          likesStatus: false,
+        };
+      } else {
+        state.likesData[id].likesNumber = count;
+      }
     });
     builder.addCase(postMyLike.rejected, setError);
     builder.addCase(resultLike.rejected, setError);
@@ -131,6 +156,5 @@ const LikesSlice = createSlice({
   },
 });
 
-export const { setLikes, setIsLiked } = LikesSlice.actions;
-
+export const { toggleLike } = LikesSlice.actions;
 export const likesReducer =  LikesSlice.reducer;

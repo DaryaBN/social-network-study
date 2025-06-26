@@ -9,9 +9,7 @@ import { useLocation } from 'react-router-dom';
 import hasht from "../functions/hashtag.jsx";
 import { postHashtag } from "../../store/postsSlice.js";
 import { useParams } from 'react-router-dom';
-import { postMyLike } from "../../store/likesPost.js";
-import { resultLike } from "../../store/likesPost.js";
-import { NumberLikePost } from "../../store/likesPost.js";
+import PostLikes from './PostLikes';
 
 const PostList = () => {
   const location = useLocation();
@@ -19,15 +17,14 @@ const PostList = () => {
   const navigate = useNavigate();
   const { hashtag } = useParams();
 
-  const {status, error} = useSelector (state => state.counter);
-  const todos = useSelector(state => state.counter.posts);
-
-  // const {status, error} = useSelector (state => state.postLikes);
-  // const todosLikes = useSelector(state => state.counter.likesNumer);
+  const counterStatus = useSelector((state) => state.counter.status);
+  const counterError = useSelector((state) => state.counter.error);
+  const todos = useSelector((state) => state.counter.posts);
 
   function resID(id){
     navigate(`/profile/:${id}`);
   }
+
   useEffect(() => {
     if(location.pathname === '/feed'){
       dispatch(newsFeed());
@@ -42,16 +39,6 @@ const PostList = () => {
   const handleHashtagClick = (tag) => {
     navigate(`/hashtag/:${tag}`);
   };
-
-  function like(idPost){
-    if(location.pathname === '/feed'){
-
-
-    }else if (location.pathname === '/'){
-     console.log('необходимо войти в систему')
-    }
-  }
-
 
   const Info = todos.map((item) => (
     <div className="PostListClass" key={item.id}>
@@ -75,8 +62,7 @@ const PostList = () => {
               <p className="LikeText">21</p>
             </li>
             <li>
-              <img className="LikeIMG" src="../img/Vectorнравится.svg" alt="нравиться"/>
-              <p className="LikeText" onClick={() => like(item.id)}>23</p>
+               <PostLikes postId={item.id} />
             </li>
             <li>
               <img className="LikeIMG" src="../img/Vectorскачать.svg" alt="скачать"/>
@@ -128,18 +114,18 @@ const PostList = () => {
       <div className="line"></div>
     </div>
   ));
-  if (status === "loading"){
+  if (counterStatus === "loading"){
     return (
     <>
       {InfoColor}
     </>
-  )} else if (status === "resolved") {
+  )} else if (counterStatus === "resolved") {
     return (
       <>
         {Info}
         <div className="br"></div>
       </>
-  )} else if (error) {
+  )} else if (counterError) {
     return (
       <>
         <h2> An error occured: {error}</h2>

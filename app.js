@@ -535,37 +535,43 @@ app.get('/myId', async (req, res) => {
 });
 
 app.post('/deleteANDputLike', async (req, res) => {
-  let idPost = req.body.idPost
+  let idPost = req.body.idPost;
   let emailCook = req.cookies.email;
   let email = emailCook.replace(/'/g, '').trim();
   let user = await pool.query('SELECT id FROM users WHERE email = $1', [email]);
   let idUser = user.rows[0].id;
-  let likeAnswer = await pool.query(`SELECT id FROM likes WHERE user_id = $1 AND post_id = $2`, [idUser, idPost]); //стоит ли лайк
-  if(likeAnswer.length > 0){
-    await pool.query(`DELETE FROM likes WHERE user_id = $1 AND post_id = $2`, [idUser, idPost]);   //удалаем лайк
+  let likeAnswer = await pool.query('SELECT id FROM likes WHERE user_id = $1 AND post_id = $2', [idUser, idPost]); //стоит ли лайк
+  if(likeAnswer.rows.length > 0){
+    await pool.query('DELETE FROM likes WHERE user_id = $1 AND post_id = $2', [idUser, idPost]);   //удалаем лайк
     res.status(200).type('text').send('no');
-  } else if (likeAnswer.length < 0) {
-    await pool.query(`INSERT INTO likes (user_id, post_id) VALUES ($1, $2)`, [idUser, idPost]);
+  } else if (likeAnswer.rows.length <= 0) {
+    await pool.query('INSERT INTO likes (user_id, post_id) VALUES ($1, $2)', [idUser, idPost]);
     res.status(200).type('text').send('yes'); //ставим лайк
   }
-})
+});
 
 app.post('/myLike', async (req, res) => {
-  let idPost = req.body.idPost
+  let idPost = req.body.idPost;
   let emailCook = req.cookies.email;
   let email = emailCook.replace(/'/g, '').trim();
   let user = await pool.query('SELECT id FROM users WHERE email = $1', [email]);
   let idUser = user.rows[0].id;
-  let likeAnswer = await pool.query(`SELECT id FROM likes WHERE user_id = $1 AND post_id = $2`, [idUser, idPost]); //стоит ли лайк
-  if(likeAnswer.length > 0){
+  let likeAnswer = await pool.query('SELECT id FROM likes WHERE user_id = $1 AND post_id = $2', [idUser, idPost]); //стоит ли лайк
+  if(likeAnswer.rows.length > 0){
     res.status(200).type('text').send('yes');
-  } else if (likeAnswer.length < 0) {
+  } else if (likeAnswer.rows.length <= 0) {
     res.status(200).type('text').send('no');
   }
-})
+});
 
 app.post('/LikePost', async (req, res) => {
-  let idPost = req.body.idPost
-  let likeAnswerResult = await pool.query(`SELECT COUNT(*) AS count FROM post_likes WHERE post_id = $1`, [idPost]); //колличество лайков 
-  res.status(200).send(likeAnswerResult.rows[0].count);
-})
+  let idPost = req.body.idPost;
+  const postResult = await pool.query('SELECT 1 FROM likes WHERE post_id = $1', [idPost]);
+  if (postResult.rowCount === 0) {
+    return res.status(200).send('0');
+  } else {
+    let likeAnswerResult = await pool.query('SELECT COUNT(*) AS count FROM likes WHERE post_id = $1', [idPost]); //колличество лайков
+    const count = likeAnswerResult.rows[0].count;
+    res.status(200).send(count);
+  }
+});

@@ -88,10 +88,24 @@
   line-height: 24px;
   color: #B1B1B1;
 }
+.LikeVecktor{
+  justify-content: start;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #B1B1B1;
+}
 .LikeIMG{
   height: 13px;
-  margin-top: 4px;
+  margin-top: 5px;
 }
+.LikeIMGfilter{
+  filter: brightness(1) invert(1) sepia(1) saturate(9) hue-rotate(-50deg);
+}
+
 .LikeText{
   color: #B1B1B1;
   margin-top: 0;
