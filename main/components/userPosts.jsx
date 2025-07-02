@@ -6,24 +6,37 @@ import { someUserContent } from "../../store/userPosts.js";
 import time from '../functions/PostTime.js';
 import { useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import PostLikes from './PostLikes';
+import { postHashtag } from "../../store/postsSlice.js";
+import hasht from "../functions/hashtag.jsx";
+import { useNavigate } from 'react-router-dom';
 
 const UserPosts = () => {
   const dispatch = useDispatch();
 	const location = useLocation();
+  const navigate = useNavigate();
 	const params = useParams();
   const id = params.id;
+  const { hashtag } = useParams();
 
   const posts = useSelector(state => state.userPost.posts);
 	const {status, error} = useSelector (state => state.userPost);
 	
-
   useEffect(() => {
-    if (location.pathname !== '/profile') {
+    if (location.pathname !== '/profile' && !hashtag) {
       dispatch(someUserContent({ id }));
     } else if(location.pathname === '/profile'){
       dispatch(userContent());
+    } else if (hashtag) {
+      let h = hashtag.substring(1)
+      dispatch(postHashtag({h}));
     }
-  }, [dispatch, location.pathname]);
+  }, [dispatch, location.pathname, hashtag]);
+
+  const handleHashtagClick = (tag) => {
+    navigate(`/hashtag/:${tag}`);
+  };
+
 	
 	const PostsUser = posts.map((item) =>(
 		<div className="PostListClass" key={item.id}>
@@ -39,7 +52,7 @@ const UserPosts = () => {
 					</div>
 					<p className="PostTime">{time(item.time)}</p>
 				</div>
-				<p className="PostText">{item.mess}
+				<p className="PostText">{hasht(item.mess, handleHashtagClick)}
 					<img className="postImg"src={item.img} /></p>
 				<ul className="PostLike">
 					<li>
@@ -47,8 +60,7 @@ const UserPosts = () => {
 						<p className="LikeText">21</p>
 					</li>
 					<li>
-						<img className="LikeIMG" src="/img/Vectorнравится.svg" alt="нравиться"/>
-						<p className="LikeText">23</p>
+            <PostLikes postId={item.id} />
 					</li>
 					<li>
 						<img className="LikeIMG" src="/img/Vectorскачать.svg" alt="скачать"/>
