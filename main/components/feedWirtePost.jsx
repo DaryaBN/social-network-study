@@ -9,10 +9,12 @@ import { NewPostContent } from "../../store/postsSlice.js";
 
 const FeedNewPost = () => {
 	const dispatch = useDispatch();
-	const {status, error} = useSelector (state => state.counter);
+	// const {status, error} = useSelector (state => state.counter);
 
 	const [border, setBorder] = useState("PostWriteSizeColor PostWriteSize");
-  const [modalPosted, setModalPosted] = useState(false);
+	const initialNumber = 123;
+  const [currentNumber, setCurrentNumber] = useState(initialNumber);
+  // const [modalPosted, setModalPosted] = useState(false);
 
   const [imgUrl, setImgUrl] = useState('');
   const handleFileUpload = (fileInfo) => {
@@ -23,11 +25,11 @@ const FeedNewPost = () => {
     post: ""
   });
 
-  let text = [{
-    answerText: ""
-  }];
+  // let text = [{
+  //   answerText: ""
+  // }];
 
-  const [answer, setAnswer] = useState(text);
+  // const [answer, setAnswer] = useState(text);
 
 	let sizePost = Number(postSize(NewPost.post));
 
@@ -36,6 +38,8 @@ const FeedNewPost = () => {
       ...NewPost,
       [e.target.name]: e.target.value
     });
+		const newNumber = initialNumber - sizePost;
+		setCurrentNumber(newNumber >= 0 ? newNumber : 0);
 		if(sizePost <= 1) {
 		setBorder("PostWriteSizeColor PostWriteSize")
 		} else if(sizePost > 1 && sizePost <= 30){
@@ -53,17 +57,29 @@ const FeedNewPost = () => {
     e.preventDefault();
 		const tx = NewPost.post;
 		const im = String(imgUrl);
-		setModalPosted(true)
+		// setModalPosted(true)
 		if(sizePost <= 123){	
 			setNewPost({
 			  post: ""
 			});
 			setBorder("PostWriteSizeColor PostWriteSize");
+			setCurrentNumber(123)
 
 			async function hashtag(textHashtag) {
-  			let hashtagWords = textHashtag
+  			let hashtagWords;
+				let hashtagWordsText = textHashtag
 					.split(' ')
 					.filter((item) => item.includes('#'));
+				const parts = textHashtag.split('#');
+				const countHashes = parts.length - 1;
+				if (countHashes !== hashtagWordsText.length) {
+					const hashtagWordsParts = parts
+						.map((word) => word.trim())
+						.filter((word) => word.length > 0);
+					hashtagWords = hashtagWordsParts.map((tag) => `#${tag}`);
+				} else {
+					hashtagWords = hashtagWordsText;
+				}
 				if (hashtagWords.length > 0) {
 					try {
 						const response = await fetch('/hashtagWords', {
@@ -89,19 +105,20 @@ const FeedNewPost = () => {
 			dispatch(NewPostContent({ tx,im }));
       hashtag(tx);
 
-			if (status === "resolved") {
-				setAnswer({
-					answerText: "Ваш пост успешно опубликован"
-				})
-			} else if (status === "rejected") {
-				setAnswer({
-					answerText: {error}
-				})
-			} 
+			// if (status === "resolved") {
+			// 	setAnswer({
+			// 		answerText: "Ваш пост успешно опубликован"
+			// 	})
+			// } else if (status === "rejected") {
+			// 	setAnswer({
+			// 		answerText: {error}
+			// 	})
+			// } 
 		} else if (sizePost > 123) {
-      setAnswer({
-        answerText: "Недопустимое количество символов"
-      })
+			console.log("Недопустимое количество символов")
+      // setAnswer({
+      //   answerText: "Недопустимое количество символов"
+      // })
 		}
   };
 
@@ -121,14 +138,14 @@ const FeedNewPost = () => {
 								/>
 							</div>
 							<div className="PostWriteButtonSend">
-								<div className={border}>123</div>
+								<div className={border}>{currentNumber}</div>
 								<button type="submit" className="PostWriteSend">Отправить</button>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
-			<ModalPostetd textProps = {answer} activePosted = {modalPosted} setActivePosted = {setModalPosted}/>
+			{/* <ModalPostetd textProps = {answer} activePosted = {modalPosted} setActivePosted = {setModalPosted}/> */}
 		</>
 	)
 }

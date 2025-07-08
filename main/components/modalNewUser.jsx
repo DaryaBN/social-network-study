@@ -85,6 +85,7 @@ const ModalNewUser = ({activeNewUser, setActiveNewUser}) => {
       && state.password.length != 0 
       && state.passworConfirmation.length != 0 
       && state.password === state.passworConfirmation
+      && state.name[0].includes('@')
       && (validationEmail(state.email) == true)
     ){
       const user = {

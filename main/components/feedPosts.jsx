@@ -12,7 +12,11 @@ import OpenWirtePosts from "./feedWirtePostOpen.jsx";
 
 
 const FeedPosts = () => {
-  const[wirteOpen, setWirteOpen] = useState(false)
+  const[wirteOpen, setWirteOpen] = useState(false);
+  const[wirteOpenWeb, setWirteOpenWeb] = useState(false);
+   const toggleWrite = () => {
+    setWirteOpenWeb(prev => !prev);
+  };
 
   const userName =[];
   const[name, setName] = useState(userName);
@@ -28,10 +32,14 @@ const FeedPosts = () => {
       <div className="Indent"></div>
       <div className="Logic">
         <div className="Left">
-          <FeedTextPost NameProps={name} />
-          <div className="newPostWirte">
+          <div onClick={toggleWrite} style={{ cursor: 'pointer' }}>
+            <FeedTextPost NameProps={name} />
+          </div>
+          {wirteOpenWeb && (
+            <div className="newPostWirte">
             <FeedNewPost /> 
           </div>
+          )}
           <div className="headerFeed">
             <img src="/img/logoбелый.svg" alt="дельфин"/>
           </div>
