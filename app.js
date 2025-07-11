@@ -392,21 +392,16 @@ app.get('/newsFeed', async (req, res) => {
   let followerId = user.rows[0].id;
   let userID = await pool.query(`SELECT * FROM subscriptions WHERE follower_id = '${followerId}'`);
   let userIDarray = userID.rows.map((item) => item.user_id);
-  if (userIDarray.length > 0) {
-    userIDarray.push(followerId);
-    const placeholders = userIDarray.map((_, index) => `$${index + 1}`).join(', ');
-    let information = await pool.query(`
-      SELECT ps.*, ui.photo 
-      FROM posts ps 
-      JOIN usersinfo ui ON ps.id_user = ui.user_id 
-      WHERE ui.user_id IN (${placeholders}) 
-      ORDER BY ps.id DESC
-    `,userIDarray);
-    res.type('json').send(information.rows);
-  } else {
-    let information = [];
-    res.type('json').send(information);
-  }
+  userIDarray.push(followerId);
+  const placeholders = userIDarray.map((_, index) => `$${index + 1}`).join(', ');
+  let information = await pool.query(`
+    SELECT ps.*, ui.photo 
+    FROM posts ps 
+    JOIN usersinfo ui ON ps.id_user = ui.user_id 
+    WHERE ui.user_id IN (${placeholders}) 
+    ORDER BY ps.id DESC
+  `,userIDarray);
+  res.type('json').send(information.rows);
 });
 
 app.get('/userFollowing', async (req, res) => {

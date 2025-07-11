@@ -1,7 +1,7 @@
 import "../styles/PostsBlog.css";
 import time from '../functions/PostTime.js';
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { postContent } from "../../store/postsSlice.js";
 import { newsFeed } from "../../store/postsSlice.js";
 import { useNavigate } from 'react-router-dom';
@@ -21,6 +21,14 @@ const PostList = () => {
   const counterError = useSelector((state) => state.counter.error);
   const todos = useSelector((state) => state.counter.posts);
 
+  const [currentTime, setCurrentTime] = useState(Date.now());
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTime(Date.now());
+    }, 60000);
+    return () => clearInterval(intervalId);
+  }, []);
+
   function resID(id){
     navigate(`/profile/:${id}`);
   }
@@ -37,6 +45,7 @@ const PostList = () => {
   }, [dispatch, location.pathname, hashtag]);
 
   const handleHashtagClick = (tag) => {
+    console.log(tag)
     navigate(`/hashtag/:${tag}`);
   };
 
@@ -52,7 +61,7 @@ const PostList = () => {
              <p className="UserName"> {item.username}</p>
              <p className="UserNick">{item.usernick}</p>
             </div>
-            <p className="PostTime">{time(item.time)}</p>
+            <p className="PostTime">{time(item.time, currentTime)}</p>
           </div>
           <p className="PostText">{hasht(item.mess, handleHashtagClick)}
            <img className="postImg"src={item.img} /></p>
