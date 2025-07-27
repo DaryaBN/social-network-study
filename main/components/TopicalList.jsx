@@ -9,6 +9,7 @@ const TopicalList = () => {
   const navigate = useNavigate();
 
   const top = useSelector(state => state.hashtag.hashtagTop);
+  
 	const {status, error} = useSelector (state => state.hashtag);
   useEffect(() => {
     dispatch(hashtagApp());
@@ -21,7 +22,7 @@ const TopicalList = () => {
 
   const InfoTopical = top.map((item) => (
     <div  className="topic" key={item.id}>
-      <h4 className="topText" onClick={() => NameHashtag(item.hashtagname)}>{item.hashtagname}</h4>
+      <h4 className="topText" onClick={() => NameHashtag(item.hashtagname)} style={{ cursor: 'pointer' }}>{item.hashtagname}</h4>
       <p  className="topNumber">{item.hashtaglot} сообщение</p> 
     </div>
   ))

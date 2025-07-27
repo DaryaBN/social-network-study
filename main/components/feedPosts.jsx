@@ -14,8 +14,15 @@ import OpenWirtePosts from "./feedWirtePostOpen.jsx";
 const FeedPosts = () => {
   const[wirteOpen, setWirteOpen] = useState(false);
   const[wirteOpenWeb, setWirteOpenWeb] = useState(false);
-   const toggleWrite = () => {
-    setWirteOpenWeb(prev => !prev);
+  const toggleWrite = () => {
+    if(!wirteOpenWeb) {
+      setWirteOpenWeb(true);
+    }else {
+      setWirteOpenWeb(false);
+    }
+  };
+  const closePostWindow = () => {
+    setWirteOpenWeb(false);
   };
 
   const userName =[];
@@ -33,12 +40,12 @@ const FeedPosts = () => {
       <div className="Logic">
         <div className="Left">
           <div onClick={toggleWrite} style={{ cursor: 'pointer' }}>
-            <FeedTextPost NameProps={name} />
+            {!wirteOpenWeb && <FeedTextPost NameProps={name} />}
           </div>
           {wirteOpenWeb && (
             <div className="newPostWirte">
-            <FeedNewPost /> 
-          </div>
+              <FeedNewPost onClose={closePostWindow}/>
+            </div>
           )}
           <div className="headerFeed">
             <img src="/img/logoбелый.svg" alt="дельфин"/>
@@ -46,7 +53,7 @@ const FeedPosts = () => {
           <div className="LogicBlok1">
             <PostList />  
           </div>
-          <div className="rectangle" onClick={() => setWirteOpen(true)}>
+          <div className="rectangle" onClick={() => setWirteOpen(true)} style={{ cursor: 'pointer' }}>
             <img src="/img/Vectorнаписать.svg" alt="перо"/>
           </div>
         </div>

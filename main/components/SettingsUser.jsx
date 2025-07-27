@@ -15,6 +15,9 @@ const UserSettings = () => {
     dispatch(userInfo());
   },[dispatch]);
 
+	const [loading, setLoading] = useState(true);
+  const [visible, setVisible] = useState(false);
+
 	const [imgUrl, setImgUrl] = useState('');
 	const handleFileUpload = (fileInfo) => {
 		setImgUrl(fileInfo.cdnUrl);
@@ -34,11 +37,11 @@ const UserSettings = () => {
     usernick: "",
     photo: "",
     info: "",
-	address: "",
-	website: "",
-	birthday: "",
-	privacy: "",
-  });
+		address: "",
+		website: "",
+		birthday: "",
+		privacy: "",
+		});
 
 	const handleChange = (e) => {
     setInformation({
@@ -48,6 +51,7 @@ const UserSettings = () => {
   };
 
 	const handleSubmit = (e) => {
+		setLoading(false);
     e.preventDefault();
 		if((information.usernick.length > 0 && (!information.usernick[0].includes('@')))){
 			settextErrorBoxNick(e.target.checked)
@@ -65,7 +69,6 @@ const UserSettings = () => {
 			birthday: birthday,
 			privacy: selected,
 			}
-			console.log(userData.birthday)
 			const userInf = {};
 			for (let key in userData) {
 					if(userData[key].length > 0){
@@ -73,19 +76,11 @@ const UserSettings = () => {
 					}
 			}
 			dispatch(correctionUserInfo(userInf));
+			setLoading(true);
+			setVisible(true);
+			setTimeout(() => setVisible(false), 3000);
 		} 
 	}
-	if (status === "resolved" && text === "Данный никнейм уже используется") {
-		text
-	} else if(status === "resolved" && text === "Данные успешно изменены"){
-		return (
-			<>
-      	<h2>{text}</h2>
-    	</>
-		)
-	} else if (status === "rejected") {
-		console.log({error})
-	} 
 
 	const EditProfile = user.map((item) => (
 		<div  key={item.id}>
@@ -104,11 +99,10 @@ const UserSettings = () => {
 									<input type="text"  name="usernick" value={information.usernick} placeholder={item.usernick} onChange={handleChange}/>                
 								</div>
 								<div className= "TextNickError">{textErrorBoxNick ? '' : 'Никнейм не валиден'}</div>
-								<div className= "TextNickError">{text}</div>
 						</div>
 					</div>
 					<div className="SettingsPhoto">
-						<img className="EditPhoto" src={item.photo} />
+						<img className="EditPhoto" src= {imgUrl || item.photo} />
 						<div className="EditVektor">
 							<Widget
 								publicKey="af13cab7ba4d80ad78a2"
@@ -162,8 +156,18 @@ const UserSettings = () => {
 					</div>
 				</div>
 				<div className="EditButton">
-					<button className="SettingsButton">Сохранить</button>
+					<button className="SettingsButton" style={{ cursor: 'pointer' }}>
+						<div className={loading ? "" : "spinner"}>{loading ? "Сохранить" : ""}</div>
+					</button>
 				</div>
+				{visible && (
+        <div className={`SettingsResult show ${
+						text === "Данный никнейм уже используется" ? "SettingsResultRed" : 
+						text === "Данные успешно изменены" ? "SettingsResultGreen" : ""
+					}`}>
+          {text}
+        </div>
+				)}
 			</form>
 		</div>
 	));

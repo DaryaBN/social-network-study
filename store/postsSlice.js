@@ -97,7 +97,7 @@ const counterSlice = createSlice({
   },
   reducers: {
     addPosts(state, action) {
-      state.posts.unshift(action.payload);
+      state.posts = [action.payload, ...state.posts];
     },
   },
   extraReducers: (builder) => {

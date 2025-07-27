@@ -2,7 +2,10 @@ export default function time(tim, currentTime) {
   const tm = Math.round((currentTime - new Date(tim).getTime()) / 60000);
   let res;
   let resTime;
-  if (tm < 60) {
+  if (tm <= 0) {
+    resTime = 'только что';
+  }
+  if (tm > 0  && tm < 60) {
     res = tm.toString();
     if (res === '1') {
       resTime = `${res} минуту назад`;

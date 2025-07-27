@@ -24,6 +24,7 @@ const UserInfo = () => {
 	const [buttonSetting, setbuttonSetting ] = useState(true)
 	const [buttonRead, setbuttonRead ] = useState(true)
 	const [isSuccess, setIsSuccess] = useState(false);
+	const [loading, setLoading] = useState(true);
 
 	function subscribeButtun() {
 		async function subscribeButtunId(){
@@ -70,6 +71,7 @@ const UserInfo = () => {
   }, [dispatch, location.pathname]);
 
 	function subscribeId() {
+		setLoading(false);
 		let user_id = id.substring(1)
 		async function subscribe(){
 			return await fetch('/subscription', {
@@ -90,8 +92,10 @@ const UserInfo = () => {
 					} else if (result === 'читать'){
 						setIsSuccess(false);
 					}
+					dispatch(someUserInfoPost({ id }));
 				}
 				answer();
+				setLoading(true);
 			} else if (!value.ok) {
 				console.log('error')
 			}
@@ -122,23 +126,27 @@ const UserInfo = () => {
 			<div className="UserData">
 				<img className="UserDataPhoto" src={item.photo} />
 				<div className="UserDataBlok">
-					<div className="DataBlok">
-						<div className="DataBlokNumbers">{userNumer[0].post}</div>
-						<div className="DataBlokText">Сообщений</div>
-					</div>
-					<div className="DataBlok" onClick={following}>
-						<div className="DataBlokNumbers">{userNumer[0].following}</div>
-						<div className="DataBlokText">Читаемых</div>
-					</div>
-					<div className="DataBlok" onClick={followers}>
-						<div className="DataBlokNumbers">{userNumer[0].follower}</div>
-						<div className="DataBlokText">Читателей</div>
+					<div className="UserDataBlokInf">
+						<div className="DataBlok">
+							<div className="DataBlokNumbers">{userNumer[0].post}</div>
+							<div className="DataBlokText">Сообщений</div>
+						</div>
+						<div className="DataBlok" onClick={following} style={{ cursor: 'pointer' }}>
+							<div className="DataBlokNumbers">{userNumer[0].following}</div>
+							<div className="DataBlokText">Читаемых</div>
+						</div>
+						<div className="DataBlok" onClick={followers} style={{ cursor: 'pointer' }}>
+							<div className="DataBlokNumbers">{userNumer[0].follower}</div>
+							<div className="DataBlokText">Читателей</div>
+						</div>
 					</div>
 						<div className="DataBlok">
-							<div className={buttonSetting ? "InfoButton" : "none"}>
+							<div className={buttonSetting ? "InfoButton" : "none"} style={{ cursor: 'pointer' }}>
 							<NavLink to='/settings/profile'>Редактировать профиль</NavLink>
 							</div>
-							<div className={buttonRead ? (isSuccess ? "ButtonColor" : " ReadButt") : "none"} onClick={() => subscribeId()}>{isSuccess ? 'Читаю' : 'Читать'}</div>
+							<div className= {buttonRead ? (isSuccess ? "ButtonColor" : " ReadButt") : "none"} onClick={() => subscribeId()} style={{ cursor: 'pointer' }}>
+								<div className={loading ? "" : "spinner"}>{loading ? (isSuccess ? 'Читаю' : 'Читать') : ""}</div>
+							</div>
 						</div>
 				</div>
 				<div className="positionUserInfo">
@@ -165,7 +173,7 @@ const UserInfo = () => {
 						</div>
 						<div className={item.birthday ? "Else" : "Else none"}>
 							<div className="ElseVector">
-							<img  src="/img/Vectorкалендарь.svg" width={15}/>
+							<img className="VectorBirthday"  src="/img/Vectorкалендарь.svg"/>
 							</div>
 							<div className="ElseText">День рождения {item.birthday}</div>
 						</div>					
@@ -175,19 +183,21 @@ const UserInfo = () => {
 							<div className="DataBlokNumbers">{userNumer[0].post}</div>
 							<div className="DataBlokText">Сообщений</div>
 						</div>
-						<div className="DataBlok" onClick={following}>
+						<div className="DataBlok" onClick={following} style={{ cursor: 'pointer' }}>
 							<div className="DataBlokNumbers">{userNumer[0].following}</div>
 							<div className="DataBlokText">Читаемых</div>
 						</div>
-						<div className="DataBlok"onClick={followers}>
+						<div className="DataBlok"onClick={followers} style={{ cursor: 'pointer' }}>
 							<div className="DataBlokNumbers" >{userNumer[0].follower}</div>
 							<div className="DataBlokText">Читателей</div>
 						</div>
 					</div>
-					<div className={buttonSetting ? "InfoButtonMob" : "none"}>
+					<div className={buttonSetting ? "InfoButtonMob" : "none"} style={{ cursor: 'pointer' }}>
 						<NavLink to='/settings/profile'>Редактировать профиль</NavLink>
 					</div>
-					<div className={buttonRead ? (isSuccess ? "ButtonColorMob" : "InfoButtonMob") : "none"} onClick={() => subscribeId()}>{isSuccess ? 'Читаю' : 'Читать'}</div>
+					<div className= {buttonRead ? (isSuccess ? "ButtonColorMob" : "InfoButtonMob") : "none"} onClick={() => subscribeId()} style={{ cursor: 'pointer' }}>
+							<div className={loading ? "" : "spinner"}>{loading ? (isSuccess ? 'Читаю' : 'Читать') : ""}</div>
+					</div>
 				</div>
 			</div>
 		</div>

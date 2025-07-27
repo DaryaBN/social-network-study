@@ -19,9 +19,11 @@ const ModalNewUser = ({activeNewUser, setActiveNewUser}) => {
   const [errorColorEmail, setErrorColorEmail] = useState(true);
   const [errorColorPassword, setErrorColorPassword] = useState(true);
   const [errorColorPassworConfirmation, setErrorColorPassworConfirmation] = useState(true);
-  const [passwordError, setpasswordError] = useState(true)
-  const [emailErrorBlok, setEmailError] = useState(true)
-  const [nameErrorBlok, setNameError] = useState(true)
+  const [passwordError, setpasswordError] = useState(true);
+  const [emailErrorBlok, setEmailError] = useState(true);
+  const [nameErrorBlok, setNameError] = useState(true);
+
+  const [loading, setLoading] = useState(true);
 
   const handleChange = (e) => {
     setState({
@@ -88,6 +90,7 @@ const ModalNewUser = ({activeNewUser, setActiveNewUser}) => {
       && state.name[0].includes('@')
       && (validationEmail(state.email) == true)
     ){
+      setLoading(false);
       const user = {
         username: state.name,
         email: state.email,
@@ -106,9 +109,11 @@ const ModalNewUser = ({activeNewUser, setActiveNewUser}) => {
           window.location.replace('/feed');
           setErrorColorEmail(true);
           settextErrorLogon(true);
+          setLoading(true);
         } else if (!value.ok) {
           setErrorColorEmail(false);
           settextErrorLogon(e.target.checked);
+          setLoading(true);
         }
       });
     }
@@ -156,7 +161,9 @@ const ModalNewUser = ({activeNewUser, setActiveNewUser}) => {
               </div>
               <div className= "emailError">{passwordError ? '' : 'К сожалению, пароли не совпадают'}</div>
             </label>
-            <button type="submit" className="button">Зарегистрироваться</button>
+             <button type="submit" className="button">
+              <p className={loading ? "buttonText" : "spinner"}></p>{loading ? "Зарегистрироваться" : ""}
+            </button>
           </form> 
         </div>
       </div>

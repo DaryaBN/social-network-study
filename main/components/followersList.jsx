@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { UserInfoPost } from "../../store/userInfoNumber.js";
 
 const Subscribers = () =>{
 	const dispatch = useDispatch();
@@ -80,6 +81,7 @@ const Subscribers = () =>{
 						[user_id]: result === 'читаю',
 				}));
 				}
+				dispatch(UserInfoPost());
 				answer();
 			} else if (!value.ok) {
 				console.log('error')
@@ -95,14 +97,14 @@ const Subscribers = () =>{
   const Info = user.map((item) => (
 		<div  key={item.id}>
 		<div className="followerLogic">
-			<img className="followePhoto" onClick={() => resID(item.user_id)} src={item.photo}/>
+			<img className="followePhoto" onClick={() => resID(item.user_id)} style={{ cursor: 'pointer' }} src={item.photo}/>
 			<div className="folloverInfo">
-				<div className="folloverName" onClick={() => resID(item.user_id)}>{item.username}</div>
-				<div className="folloverNick" onClick={() => resID(item.user_id)}>{item.usernick}</div>
+				<div className="folloverName" onClick={() => resID(item.user_id)} style={{ cursor: 'pointer' }}>{item.username}</div>
+				<div className="folloverNick" onClick={() => resID(item.user_id)} style={{ cursor: 'pointer' }}>{item.usernick}</div>
 				<div className="folloverStstus">{item.info}</div>
 			</div>
 			{ myId !== item.user_id && (
-				<div className={isSuccess[item.user_id] ? "folloverButtun folloverButtunColor" : "folloverButtun"} onClick={() => subscribeId(item.user_id)}>{isSuccess[item.user_id] ? 'Читаю' : 'Читать'}</div>
+				<div className={isSuccess[item.user_id] ? "folloverButtun folloverButtunColor" : "folloverButtun"} onClick={() => subscribeId(item.user_id)} style={{ cursor: 'pointer' }}>{isSuccess[item.user_id] ? 'Читаю' : 'Читать'}</div>
 			)}
 		</div>
 		<div className="line"></div>

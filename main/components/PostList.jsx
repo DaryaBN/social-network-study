@@ -10,6 +10,7 @@ import hasht from "../functions/hashtag.jsx";
 import { postHashtag } from "../../store/postsSlice.js";
 import { useParams } from 'react-router-dom';
 import PostLikes from './PostLikes';
+import { NewPostContent } from "../../store/postsSlice.js";
 
 const PostList = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const PostList = () => {
   const counterStatus = useSelector((state) => state.counter.status);
   const counterError = useSelector((state) => state.counter.error);
   const todos = useSelector((state) => state.counter.posts);
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
 
   const [currentTime, setCurrentTime] = useState(Date.now());
   useEffect(() => {
@@ -34,6 +36,7 @@ const PostList = () => {
   }
 
   useEffect(() => {
+    // dispatch(NewPostContent())
     if(location.pathname === '/feed'){
       dispatch(newsFeed());
     } else if (location.pathname === '/'){
@@ -42,6 +45,8 @@ const PostList = () => {
       let h = hashtag.substring(1)
       dispatch(postHashtag({h}));
     }
+    dispatch(NewPostContent());
+    setIsInitialLoading(false);
   }, [dispatch, location.pathname, hashtag]);
 
   const handleHashtagClick = (tag) => {
@@ -52,12 +57,12 @@ const PostList = () => {
   const Info = todos.map((item) => (
     <div className="PostListClass" key={item.id}>
       <div className="PostLogic">
-        <div className="PostPoto" onClick={() => resID(item.id_user)}>
+        <div className="PostPoto" onClick={() => resID(item.id_user)} style={{ cursor: 'pointer' }}>
         <img className ="PotoUser" src={item.photo}/>
         </div>
         <div className="PostInfo">
           <div className="InfoData">
-            <div className="InfoName" onClick={() => resID(item.id_user)}>
+            <div className="InfoName" onClick={() => resID(item.id_user)} style={{ cursor: 'pointer' }}>
              <p className="UserName"> {item.username}</p>
              <p className="UserNick">{item.usernick}</p>
             </div>
@@ -68,14 +73,14 @@ const PostList = () => {
           <ul className="PostLike">
             <li>
               <img className="LikeIMG" src="../img/Vectorстрелка.svg" alt="поделиться"/>
-              <p className="LikeText">21</p>
+              <p className="LikeText">0</p>
             </li>
             <li>
                <PostLikes postId={item.id} />
             </li>
             <li>
               <img className="LikeIMG" src="../img/Vectorскачать.svg" alt="скачать"/>
-              <p className="LikeText">9</p>
+              <p className="LikeText">0</p>
             </li>
           </ul>
         </div>
@@ -123,7 +128,7 @@ const PostList = () => {
       <div className="line"></div>
     </div>
   ));
-  if (counterStatus === "loading"){
+  if (counterStatus === "loading" && isInitialLoading){
     return (
     <>
       {InfoColor}

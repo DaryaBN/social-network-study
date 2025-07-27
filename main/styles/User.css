@@ -48,7 +48,8 @@
 	color: #ABACB1;
 }
 .UserNameNick{
-	width: 100%;
+	width: 300px;
+	margin-left: 16px;
 }
 .NameUser{
 	font-style: normal;
@@ -56,7 +57,6 @@
 	font-size: 24px;
 	line-height: 24px;
 	margin: 0;
-	margin-left: 13px;
 }
 .NickUser{
 	font-style: normal;
@@ -65,29 +65,28 @@
 	line-height: 20px;
 	color: #ABACB1;
 	margin-top: 0px;
-	margin-left: 13px;
 }
 .InfoUser{
 	font-style: normal;
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 19px;
-	margin: 15px 13px 15px 13px;
+	margin: 15px 13px 15px 16px;
 }
 .UserInfoElse{
 	display: flex;
 	flex-direction: column;
-	margin: 4px;
+	margin: 16px auto 0px 16px;
 }
 .Else{
 	margin-right: 30px;
-	margin-bottom: 0px;
+	margin-bottom: 10px;
 	display: flex;
 }
 .ElseVector{
 	display: flex;
 	width: 10px;
-	margin-left: 3px;
+	margin-right: 6px;
 }
 .ElseText{
 	font-style: normal;
@@ -95,38 +94,36 @@
 	font-size: 16px;
 	line-height: 16px;
 	color: #ABACB1;
-	margin: 4px;
-	margin-left: 13px;
 	display: flex;
 }
 .VectorPlace0{
-	position: relative;
-	left: 10px;
 	bottom: 0px;
-	width: 11px;
+	width: 8.9px;
 }
 .VectorPlace1{
 	position: relative;
-	right: 0px;
+	right: 6.8px;
 	bottom: 3px;
-	width: 8px;
+	width: 5px;
 }
 .VectorLink0{
 	position: relative;
-	left: 6.2px;
 	top: 4.5px;
-	width: 10px;
+	width: 7px;
 }
 .VectorLink1{
 	position: relative;
-	top: 1px;
-	left: 0px;
-	width: 7px;
+	top: 2px;
+	right: 3px;
+	width: 4px;
 }
 .VectorLink2{
 	position: relative;
-	right: 6.7px;
-	width: 10px;
+	right: 6px;
+	width: 7px;
+}
+.VectorBirthday{
+	width: 13px;
 }
 .none{
 	display: none;
@@ -157,7 +154,6 @@ a {
 }
 .positionUserInfo{
 	position: relative;
-	bottom: 40px;
 }
 .ButtonColorMob{
 	background: #0057FF;
@@ -188,8 +184,8 @@ a {
 	}
 	.UserDataBlok{
 		display: block;
-		margin-top: 10px;
-		margin-bottom: 0px;
+		margin: 17px 16px 0px 0px;
+		padding-left: 11px;
 		display: flex;
 		justify-content: space-between;
 	}
@@ -216,6 +212,8 @@ a {
 	.UserNameNick{
     display: flex;
 		bottom: 40px;
+		margin-left: 16px;
+		width: 500px;
 	}
 	.NameUser{
 		font-style: normal;
@@ -223,10 +221,10 @@ a {
     font-size: 24px;
     line-height: 24px;
     margin: 0;
-    margin-left: 13px;
 	}
 	.NickUser{
     margin-top: 5px;
+		margin-left: 14px;
 	}
 	.InfoUser{
 		bottom: 30px;
@@ -234,15 +232,15 @@ a {
 	.UserInfoElse{
 		display: flex;
 		flex-direction: row;
-		margin: 0px;
+		margin: 16px auto 0px 16px;
 	}
 	.Else{
 		justify-content: space-between;
+		margin-bottom: 0px;
 	}
 	.ElseVector{
 		display: flex;
     width: 10px;
-		margin-left: 3px;
 	}
 	.ElseText{
 		font-style: normal;
@@ -250,45 +248,45 @@ a {
     font-size: 16px;
     line-height: 16px;
     color: #ABACB1;
-    margin: 4px;
-    margin-left: 13px;
 		display: flex;
+		margin-left: 4px;
 	}
 	.VectorPlace0{
 		position: relative;
-    left: 10px;
     bottom: 0px;
 		width: 11px;
 	}
 	.VectorPlace1{
 		position: relative;
-    right: 0px;
-    bottom: 3px;
+		right: 7.5px;
+		bottom: 3px;
 		width: 8px;
 	}
 	.VectorLink0{
 		position: relative;
-    left: 6.2px;
 		top: 4.5px;
 		width: 10px;
 	}
 	.VectorLink1{
 		position: relative;
-    top: 1px;
-		left: 0px;
+		top: 2px;
+		right: 6px;
 		width: 7px;
 	}
 	.VectorLink2{
 		position: relative;
-		right: 6.7px;
+		right: 12px;
 		width: 10px;
+	}
+	.VectorBirthday{
+		width: 15px;
 	}
 	.none{
 		display: none;
 	}
 	.InfoButton{
-		width: 150px;
-    margin: 0px 10px 0px 0px;
+		width: 120px;
+    margin: 0px 0px 0px 0px;
     background: #FFFFFF;
     border: 1px solid #0057FF;
     border-radius: 5px;
@@ -310,7 +308,7 @@ a {
 		display: none;
 	}
 	.positionUserInfo{
-		bottom: 30px;
+		margin: 80px 0px 20px 0px;
 	}
 	.ReadButt{
 		display: block;
@@ -344,5 +342,10 @@ a {
 	}
 	.ButtonColorMob{
 		display: none;
+	}
+	.UserDataBlokInf{
+		display: flex;
+		width: 280px;
+		justify-content: space-between;
 	}
 }

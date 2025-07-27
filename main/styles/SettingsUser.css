@@ -99,6 +99,36 @@ select {
 	background: rgb(255, 222, 236);
 	border: 1px solid rgb(228, 0, 96);
 }
+.uploadcare--widget__text {
+  box-sizing: border-box;
+  display: inline-block;
+  margin-right: 0;
+  padding: 0;
+  margin: 0px 0 50px 15px;
+  white-space: wrap;
+}
+.SettingsResult{
+    position: fixed;
+    padding: 20px;
+    bottom: 10%;
+    right: 20px;
+    background-color: #4BB543;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    color: #DFDFDF;
+    font-size: 18px;
+  }
+  .SettingsResult.show {
+    opacity: 1;
+  }
+  .SettingsResultRed{
+    background-color: rgb(112, 10, 10)
+  }
+  .SettingsResultGreen{
+    background-color: #107509;
+  }
 
 @media (min-width: 1280px){
   .SettingsNameNickPhoto{
@@ -204,5 +234,38 @@ select {
   .EditInputError{
     background: rgb(255, 222, 236);
     border: 1px solid rgb(228, 0, 96);
+  }
+  .SettingsResult{
+    position: fixed;
+    padding: 20px;
+    bottom: 5%;
+    right: 20px;
+    background-color: #4BB543;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    color: #DFDFDF;
+    font-size: 18px;
+  }
+  .SettingsResult.show {
+    opacity: 1;
+  }
+  .SettingsResultRed{
+    background-color: rgb(112, 10, 10)
+  }
+  .SettingsResultGreen{
+    background-color: #107509;
+  }
+  .EditVektorText{
+    width: 50px;
+  }
+  .uploadcare--widget__text {
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: 0;
+    padding: 0;
+    margin: 0px 0 0px 15px;
+    white-space: wrap;
   }
 }

@@ -1,5 +1,27 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+export const hashtagPush = createAsyncThunk(
+  'hashtag/hashtagPush',
+  async function ({ hashtagWords },{ rejectWithValue , dispatch }) {
+    try {
+      let response = await fetch('/hashtagWords', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify(hashtagWords),
+      });
+      if (response.ok) {
+        dispatch(hashtagApp());
+      } else if (!response.ok){
+        throw new Error('Can add task. Server error.');
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
 export const hashtagApp = createAsyncThunk(
   'hashtag/hashtagApp',
   async function (_, { rejectWithValue }) {

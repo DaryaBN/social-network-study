@@ -33,7 +33,7 @@ const PostLikes = ({ postId }) => {
 }
 
   return (
-    <div className="LikeVecktor" onClick={() => like()}>
+    <div className="LikeVecktor" onClick={() => like()} style={{ cursor: 'pointer' }}>
       <img className={likesData?.likesStatus ? "LikeIMGfilter" : "LikeIMG"} src="../img/Vectorнравится.svg" alt="нравиться"/>
       <p className="LikeText" >{likesData?.likesNumber ?? 0}</p>
     </div>

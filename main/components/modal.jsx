@@ -16,6 +16,8 @@ const Modal = ({active, setActive}) => {
   const [errorColorName, setErrorColorName] = useState(true);
   const [errorColorPassword, setErrorColorPassword] = useState(true);
 
+  const [loading, setLoading] = useState(true);
+
   const handleChange = (e) => {
     setState({
       ...state,
@@ -46,31 +48,34 @@ const Modal = ({active, setActive}) => {
         settextErrorPassword(true)
       }
       if(state.name.length != 0 && (validationEmail(state.name) == true) && state.password.length != 0) {
-      const user ={
-        email: state.name,
-        password: state.password,
-      }
-      const response = fetch('/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-      },
-        body: JSON.stringify(user),
-      });
-      const js = response;
-      js.then((value) => {
-        if (value.ok) { 
-          window.location.replace('/feed');
-          setErrorColorName(true);
-          setErrorColorPassword(true);
-          settextErrorLogin(true);
-        } else if (!value.ok) {
-          setErrorColorName(false);
-          setErrorColorPassword(false);
-          settextErrorLogin(e.target.checked);
+        setLoading(false);
+        const user ={
+          email: state.name,
+          password: state.password,
         }
-      });
-    }
+        const response = fetch('/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+        },
+          body: JSON.stringify(user),
+        });
+        const js = response;
+        js.then((value) => {
+          if (value.ok) { 
+            window.location.replace('/feed');
+            setErrorColorName(true);
+            setErrorColorPassword(true);
+            settextErrorLogin(true);
+            setLoading(true);
+          } else if (!value.ok) {
+            setLoading(true);
+            setErrorColorName(false);
+            setErrorColorPassword(false);
+            settextErrorLogin(e.target.checked);
+          }
+        });
+      }
   };
   return (
     <>
@@ -98,7 +103,9 @@ const Modal = ({active, setActive}) => {
                 <input name="password"  type="password" value={state.password} placeholder="Пароль" onChange={handleChange}/>
               </div>
             </label>
-            <button type="submit" className="button">Войти</button>
+            <button type="submit" className="button">
+              <p className={loading ? "buttonText" : "spinner"}></p>{loading ? "Войти" : ""}
+            </button>
           </form> 
         </div>
       </div>
