@@ -6,6 +6,9 @@ const SettingsPassword = () => {
 	return(
 		<div className="SettingsWidth">
 			<p className="SettingsTitle">Сменить пароль</p> 
+			<div className="SettingsMobile-menu">
+				<MenuSettings />
+			</div> 
 			<div className="Settingsleft">
 				<PasswordComponent />
 			</div>

@@ -20,11 +20,15 @@ const PasswordComponent = () => {
 	const [errorColorOldPass, setErrorColorOldPass] = useState(true);
 	const [textErrorNewPass, settextErrorNewPass] = useState(true);
 	const [errorColorNewPass, setErrorColorNewPass] = useState(true);
-	const [textErrorOldNewPass, settextErrorOldNewPass] = useState('');
 	const [textNewPass, settextNewPass] = useState('');
+
+	const [loading, setLoading] = useState(true);
+	const [visible, setVisible] = useState(false);
+
 
 
 	const handleSubmit = (e) => {
+		setLoading(false);
     e.preventDefault();
 		const oldPass = {
 			oldPassword: pass.oldPassword,
@@ -65,11 +69,16 @@ const PasswordComponent = () => {
 									const result = await value.text();
 									if(result === 'Пароль успешно изменен'){
 										settextNewPass(result);	
-										settextErrorOldNewPass(' ');
-										setErrorColorNewPass(true);								
+										setErrorColorNewPass(true);
+										setLoading(true);
+										setVisible(true);
+										setTimeout(() => setVisible(false), 3000);				
 									} else if (result !== 'Пароль успешно изменен'){
-										settextErrorOldNewPass(result);
+										settextNewPass(result);	
 										setErrorColorNewPass(false);
+										setLoading(true);
+										setVisible(true);
+										setTimeout(() => setVisible(false), 3000);
 									}
 								};
 								func();
@@ -78,10 +87,12 @@ const PasswordComponent = () => {
 					} else if (pass.newPassword !== pass.newPasswordTwo){
 						settextErrorNewPass(false);
           	setErrorColorNewPass(false);
+						setLoading(true);
 					}
         } else if (!value.ok) {
           settextErrorOldPass(false);
           setErrorColorOldPass(false);
+					setLoading(true);
         }
       });
 	}
@@ -90,7 +101,6 @@ const PasswordComponent = () => {
 	<>
 		<form onSubmit={handleSubmit}>
 			<div className="SettingsInform">
-				<div className="password">{textNewPass}</div>
 			<div className={errorColorOldPass ? "EditInput" : "EditInput EditInputError"}>
 					<p className="EditLabel">Старый пароль</p>
 					<div className="EditValue">
@@ -104,7 +114,6 @@ const PasswordComponent = () => {
 					<div className="EditValue"> 
 						<input type="text" name="newPassword" value={pass.newPassword}  onChange={handleChange}/>
 					</div>
-					<div className= "TextNickError">{textErrorOldNewPass}</div>
 				</div>
 				<div className={errorColorNewPass ? "EditInput" : "EditInput EditInputError"}>
 					<p className="EditLabel">Новый пароль еще раз</p>
@@ -115,8 +124,18 @@ const PasswordComponent = () => {
 				</div> 
 			</div>
 			<div className="EditButton">
-				<button className="SettingsButton">Сохранить</button>
+				<button className="SettingsButton" style={{ cursor: 'pointer' }}>
+					<div className={loading ? "" : "spinner"}>{loading ? "Сохранить" : ""}</div>
+				</button>
 			</div>
+			{visible && (
+        <div className={`SettingsResult show ${
+						textNewPass  !== 'Пароль успешно изменен'? "SettingsResultRed" : 
+						textNewPass  === 'Пароль успешно изменен' ? "SettingsResultGreen" : ""
+					}`}>
+          {textNewPass}
+        </div>
+				)}
 		</form>
 	</>
 	)

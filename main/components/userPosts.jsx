@@ -57,14 +57,14 @@ const UserPosts = () => {
 				<ul className="PostLike">
 					<li>
 						<img className="LikeIMG" src="/img/Vectorстрелка.svg" alt="поделиться"/>
-						<p className="LikeText">21</p>
+						<p className="LikeText">0</p>
 					</li>
 					<li>
             <PostLikes postId={item.id} />
 					</li>
 					<li>
 						<img className="LikeIMG" src="/img/Vectorскачать.svg" alt="скачать"/>
-						<p className="LikeText">9</p>
+						<p className="LikeText">0</p>
 					</li>
 				</ul>
 			</div>

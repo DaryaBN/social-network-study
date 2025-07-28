@@ -5,7 +5,10 @@ import EmailComponent from "./settingsEmailCompanents";
 const SettingsEmail = () => {
 	return(
 		<div className="SettingsWidth">
-			<p className="SettingsTitle">Сменить e-mail</p> 
+			<p className="SettingsTitle">Сменить e-mail</p>
+			<div className="SettingsMobile-menu">
+				<MenuSettings />
+			</div>  
 			<div className="Settingsleft">
 				<EmailComponent />
 			</div>

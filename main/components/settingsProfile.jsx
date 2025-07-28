@@ -6,7 +6,10 @@ const Settings = () => {
 	return(
 		<>
 		<div className="SettingsWidth">
-			<p className="SettingsTitle">Редактировать профиль</p> 
+			<p className="SettingsTitle">Редактировать профиль</p>
+			<div className="SettingsMobile-menu">
+				<MenuSettings />
+			</div> 
 			<div className="Settingsleft">
 				<UserSettings />
 			</div>

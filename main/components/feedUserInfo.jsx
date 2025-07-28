@@ -28,13 +28,13 @@ const FeedUser = ({UserProps}) =>{
 					<h5>{userNumer[0].post}</h5>
 					<p className="BoxInfoText">Сообщений</p>
 				</div>
-				<div className="BoxInfo"> 
+				<div className="BoxInfo" style={{ cursor: 'pointer' }}> 
 					<NavLink to='/following'>  
 						<h5>{userNumer[0].following}</h5>
 						<p className="BoxInfoText">Читаемых</p>
 					</NavLink>
 				</div>
-				<div className="BoxInfo">
+				<div className="BoxInfo" style={{ cursor: 'pointer' }}>
 					<NavLink to='/followers'>
 						<h5>{userNumer[0].follower}</h5>
 						<p className="BoxInfoText">Читателей</p>

@@ -17,6 +17,7 @@
     background: #edededd0;
     width: 100%;
     margin: 0px;
+    cursor: default;
   }
   @media (min-width: 1280px){
   :root {

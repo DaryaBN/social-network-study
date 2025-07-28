@@ -1,3 +1,13 @@
+.desktop-menu{
+	display: none;
+}
+.mobile-menu{
+	display: block;
+}
+.SettingsMobile-menu{
+	display: block;
+	margin: 20px;
+}
 .SettingsWidth{
 	width: 100%;
 	height: 100%;
@@ -6,21 +16,27 @@
 	background: #ffffff;
 	box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.15);
 	border-radius: 10px;
-	margin-left: auto;
-	margin-right: auto;
 	width: 90%;
 	padding-top: 3px;
 	padding-left: 10px;
 	padding-right: 10px;
-	margin-bottom: 35px;
+	margin: 80px auto 20px auto;
 }
 .SettingsRight{
-	display: block;
-	float: right;
+	display: none;
+	/* float: right;
 	margin-right: 10px;
 	width: 312px;
 	padding-top: 0;
 	padding-bottom: 0;
+	background: #FFFFFF;
+	box-shadow: 0px 5px 30px rgb(0 0 0 / 5%);
+	border-radius: 10px; */
+}
+.SettingsNavigationMob{
+	margin-right: 10px;
+	width: 312px;
+	padding: 2px;
 	background: #FFFFFF;
 	box-shadow: 0px 5px 30px rgb(0 0 0 / 5%);
 	border-radius: 10px;
@@ -74,8 +90,24 @@
 	display: block;
 	height: 300px;
 }
+.burger{
+	background: #0057FF;
+	border: 1px solid #0057FF;
+	border-radius: 10px;
+	color: white;
+	font-size: 15px;
+	padding: 10px;
+	position: absolute;
+	right: 5%;
+}
 
 @media (min-width: 1280px){
+	.desktop-menu{
+		display: block;
+	}
+	.mobile-menu{
+		display: none;
+	}
 	.SettingsWidth{
 		width: 960px;
 		margin-left: auto;
@@ -87,6 +119,7 @@
 		padding-top: 0px;
 		padding-left: 0px;
 		padding-right: 0px;
+		margin: 0px auto 20px auto;
 	}
 	.SettingsRight{
 		display: block;
@@ -136,6 +169,9 @@
 		font-weight: 500;
 	}
 	.brSett{
+		display: none;
+	}
+	.SettingsMobile-menu{
 		display: none;
 	}
 

@@ -7,6 +7,9 @@ const EmailComponent = () => {
 			email: "",
 			password:"",
 		});
+
+		const [loading, setLoading] = useState(true);
+		const [visible, setVisible] = useState(false);
 	
 		const handleChange = (e) => {
 			setEmail({
@@ -19,25 +22,29 @@ const EmailComponent = () => {
 		const [errorColorPass, setErrorColorPass] = useState(true);
 		const [textErrorValdation, settextErrorValdation] = useState(true);
 		const [textErrorLenght, settextErrorLenght] = useState(true);
-		const [textErrorEmail, settextErrorEmail] = useState('');
 		const [errorColorEmail, seterrorColorEmail] = useState(true);
 		const [textNewEmail, settextNewEmail] = useState('');
 	
 	
 		const handleSubmit = (e) => {
+			setLoading(false);
 			if(usersEmail.email.length == 0){
 				settextErrorLenght(false)
 				seterrorColorEmail(false)
+				setLoading(true)
 			} else if (usersEmail.email.length != 0){
 				settextErrorLenght(true)
 				seterrorColorEmail(true)
+				setLoading(true)
 			}
 			if(validationEmail(usersEmail.email) == false){
 				settextErrorValdation(false)
 				seterrorColorEmail(false)
+				setLoading(true)
 			} else if (validationEmail(usersEmail.email) == true){
 				settextErrorValdation(true)
 				seterrorColorEmail(true)
+				setLoading(true)
 			}
 			if (usersEmail.email.length != 0 && (validationEmail(usersEmail.email) == true)){
 			e.preventDefault();
@@ -61,17 +68,23 @@ const EmailComponent = () => {
 							const result = await value.text();
 							if(result === 'Email успешно изменен'){
 								settextNewEmail(result);	
-								settextErrorEmail(' ');
-								seterrorColorEmail(true);								
+								seterrorColorEmail(true);
+								setLoading(true);	
+								setVisible(true);
+								setTimeout(() => setVisible(false), 3000);						
 							} else if (result !== 'Email успешно изменен'){
-								settextErrorEmail(result);
+								settextNewEmail(result);	
 								seterrorColorEmail(false);
+								setLoading(true);
+								setVisible(true);
+								setTimeout(() => setVisible(false), 3000);
 							}
 						};
 						func();
 					} else if (!value.ok) {
 						settextErrorPass(false);
 						setErrorColorPass(false);
+						setLoading(true);
 					}
 				});
 			}
@@ -81,7 +94,6 @@ const EmailComponent = () => {
 		<>
 			<form onSubmit={handleSubmit}>
 				<div className="SettingsInform">
-					<div className="password">{textNewEmail}</div>
 				<div className={errorColorEmail ? "EditInput" : "EditInput EditInputError"}>
 						<p className="EditLabel">Новая электронная почта</p>
 						<div className="EditValue">
@@ -89,7 +101,6 @@ const EmailComponent = () => {
 						</div>
 						<div className= "TextNickError">{textErrorValdation ? '' : 'Адрес не валиден'}</div>
 						<div className= "TextNickError">{textErrorLenght ? '' : 'Поле не заполненно'}</div>
-						<div className= "TextNickError">{textErrorEmail}</div>
 					</div>
 					<div className={errorColorPass ? "EditInput" : "EditInput EditInputError"}>
 						<p className="EditLabel">Пароль для подтвеждения</p>
@@ -100,8 +111,18 @@ const EmailComponent = () => {
 					</div>
 				</div>
 				<div className="EditButton">
-					<button className="SettingsButton">Сохранить</button>
+					<button className="SettingsButton" style={{ cursor: 'pointer' }}>
+						<div className={loading ? "" : "spinner"}>{loading ? "Сохранить" : ""}</div>
+					</button>
 				</div>
+				{visible && (
+        <div className={`SettingsResult show ${
+						textNewEmail !== "Email успешно изменен" ? "SettingsResultRed" : 
+						textNewEmail === "Email успешно изменен" ? "SettingsResultGreen" : ""
+					}`}>
+          {textNewEmail}
+        </div>
+				)}
 			</form>
 		</>
 	)

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { UserInfoPost } from "../../store/userInfoNumber";
 
 const BloggersList = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const BloggersList = () => {
   const user = useSelector(state => state.recommendations.recommendationsUser);
 	const {status, error} = useSelector (state => state.recommendations);
   const [isSuccess, setIsSuccess] = useState({});
+  const [loading, setLoading] = useState(true);
   
   let feedResult = [{}];
   const [feedStatus, setFeedStstus] = useState(feedResult)
@@ -59,6 +61,7 @@ const BloggersList = () => {
 
   function subscribeId(user_id) {
     if(feedStatus === "ok"){
+      setLoading(prev => ({ ...prev, [user_id]: false }));
 		async function subscribe(){
 			return await fetch('/subscription', {
 				method: 'POST',
@@ -77,8 +80,10 @@ const BloggersList = () => {
 						...prevStatus,
 						[user_id]: result === 'читаю',
 				}));
+        dispatch(UserInfoPost());
 				}
 				answer();
+        setLoading(prev => ({ ...prev, [user_id]: true }));
 			} else if (!value.ok) {
 				console.log('error')
 			}
@@ -92,10 +97,12 @@ const BloggersList = () => {
 
   const InfoBloggers = user.map((item) => (
     <div className="blogs" key={item.id}>
-      <img className="blogIMG" src={item.photo} onClick={() => resID(item.user_id)}/>
-      <div className={isSuccess[item.user_id] ? "blogRead blogReadColor" : "blogRead"} onClick={() => subscribeId(item.user_id)} >{isSuccess[item.user_id] ? 'Читаю' : 'Читать'}</div>
-      <p className="blogName" onClick={() => resID(item.user_id)}>{item.username}</p>
-      <p className="blogNick" onClick={() => resID(item.user_id)}>{item.usernick}</p>
+      <img className="blogIMG" src={item.photo} onClick={() => resID(item.user_id)} style={{ cursor: 'pointer' }}/>
+      <div className= {isSuccess[item.user_id] ? "blogRead blogReadColor" : "blogRead"} onClick={() => subscribeId(item.user_id)} style={{ cursor: 'pointer' }}>
+        <div className={loading ? "" : "spinner"}>{loading ? (isSuccess[item.user_id] ? 'Читаю' : 'Читать') : ""}</div>
+      </div>
+      <p className="blogName" onClick={() => resID(item.user_id)} style={{ cursor: 'pointer' }}>{item.username}</p>
+      <p className="blogNick" onClick={() => resID(item.user_id)} style={{ cursor: 'pointer' }}>{item.usernick}</p>
     </div>
   ));
   const InfoBloggersQuantity = [

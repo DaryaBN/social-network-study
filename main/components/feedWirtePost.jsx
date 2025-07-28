@@ -6,15 +6,18 @@ import ModalPostetd from './feedModalPosted.jsx';
 import { Widget } from '@uploadcare/react-widget';
 import { useSelector, useDispatch } from "react-redux";
 import { NewPostContent } from "../../store/postsSlice.js";
+import { UserInfoPost } from "../../store/userInfoNumber.js";
+import { hashtagPush } from "../../store/relevant.js";
 
-const FeedNewPost = () => {
+const FeedNewPost = (props) => {
 	const dispatch = useDispatch();
-	// const {status, error} = useSelector (state => state.counter);
 
 	const [border, setBorder] = useState("PostWriteSizeColor PostWriteSize");
 	const initialNumber = 123;
   const [currentNumber, setCurrentNumber] = useState(initialNumber);
-  // const [modalPosted, setModalPosted] = useState(false);
+
+	const [loading, setLoading] = useState(true);
+
 
   const [imgUrl, setImgUrl] = useState('');
   const handleFileUpload = (fileInfo) => {
@@ -25,12 +28,6 @@ const FeedNewPost = () => {
     post: ""
   });
 
-  // let text = [{
-  //   answerText: ""
-  // }];
-
-  // const [answer, setAnswer] = useState(text);
-
 	let sizePost = Number(postSize(NewPost.post));
 
   const handleChangeNewPost = (e) => {
@@ -39,7 +36,7 @@ const FeedNewPost = () => {
       [e.target.name]: e.target.value
     });
 		const newNumber = initialNumber - sizePost;
-		setCurrentNumber(newNumber >= 0 ? newNumber : 0);
+		setCurrentNumber(newNumber);
 		if(sizePost <= 1) {
 		setBorder("PostWriteSizeColor PostWriteSize")
 		} else if(sizePost > 1 && sizePost <= 30){
@@ -50,6 +47,8 @@ const FeedNewPost = () => {
 			setBorder("PostWriteSizeColor3 PostWriteSize")
 		}else if(sizePost > 91 && sizePost <= 123){
 			setBorder("PostWriteSizeColor4 PostWriteSize")
+		}else if(sizePost > 123){
+			setBorder("PostWriteSizeColorRed PostWriteSize")
 		}	
   };
 
@@ -57,13 +56,13 @@ const FeedNewPost = () => {
     e.preventDefault();
 		const tx = NewPost.post;
 		const im = String(imgUrl);
-		// setModalPosted(true)
+		setLoading(false);
 		if(sizePost <= 123){	
 			setNewPost({
 			  post: ""
 			});
 			setBorder("PostWriteSizeColor PostWriteSize");
-			setCurrentNumber(123)
+			setCurrentNumber(123);
 
 			async function hashtag(textHashtag) {
   			let hashtagWords;
@@ -81,44 +80,21 @@ const FeedNewPost = () => {
 					hashtagWords = hashtagWordsText;
 				}
 				if (hashtagWords.length > 0) {
-					try {
-						const response = await fetch('/hashtagWords', {
-							method: 'POST',
-							headers: {
-								'Content-Type': 'application/json;charset=utf-8',
-							},
-							body: JSON.stringify(hashtagWords),
-						});
-
-						if (!response.ok) {
-							const errorText = await response.text();
-							console.error('Ошибка при отправке хештегов:', errorText);
-						} else {
-							console.log('Хештеги успешно отправлены');
-						}
-					} catch (error) {
-						console.error('Ошибка при выполнении fetch:', error);
-					}
+					dispatch(hashtagPush({hashtagWords}))
 				}
 			}
-
-			dispatch(NewPostContent({ tx,im }));
+				dispatch(NewPostContent({ tx,im })).then(() => {
+				dispatch(UserInfoPost());
+				if (props.onClose) {
+					props.onClose();
+				}
+			});
       hashtag(tx);
-
-			// if (status === "resolved") {
-			// 	setAnswer({
-			// 		answerText: "Ваш пост успешно опубликован"
-			// 	})
-			// } else if (status === "rejected") {
-			// 	setAnswer({
-			// 		answerText: {error}
-			// 	})
-			// } 
+			setLoading(true);
+			
 		} else if (sizePost > 123) {
+			setLoading(true);
 			console.log("Недопустимое количество символов")
-      // setAnswer({
-      //   answerText: "Недопустимое количество символов"
-      // })
 		}
   };
 
@@ -139,13 +115,14 @@ const FeedNewPost = () => {
 							</div>
 							<div className="PostWriteButtonSend">
 								<div className={border}>{currentNumber}</div>
-								<button type="submit" className="PostWriteSend">Отправить</button>
+								<button type="submit" className={`PostWriteSend ${sizePost > 123 ? 'disabled' : ''}`} disabled={sizePost > 123} style={{ cursor: 'pointer' }}>
+									<p className={loading ? "PostWriteSendText" : "spinnerPost"}>{loading ? "Отправить" : ""}</p>
+									</button>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
-			{/* <ModalPostetd textProps = {answer} activePosted = {modalPosted} setActivePosted = {setModalPosted}/> */}
 		</>
 	)
 }

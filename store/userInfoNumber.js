@@ -48,37 +48,37 @@ const userInfoNumberSlice = createSlice({
   name: 'infoNumber',
   initialState: {
     informationUser : [{
-        post: 0,
-        follower: 0,
-        following:0
-        }],
+			post: 0,
+			follower: 0,
+			following:0
+		}],
     status: null,
     error: null,
   },
   extraReducers: (builder) => {
-        builder.addCase(UserInfoPost.pending, (state) => {
-            state.status = 'loading';
-            state.error = null;
-        });
-        builder.addCase(UserInfoPost.fulfilled, (state, action) => {
-            state.status = 'resolved';
-            state.informationUser[0].post = action.payload.post;
-			state.informationUser[0].follower = action.payload.subscribers;
-			state.informationUser[0].following = action.payload.subscriptions;
-        });
-        builder.addCase(someUserInfoPost.pending, (state, action) => {
-            state.status = 'loading';
-            state.error = null;
-        });
-        builder.addCase(someUserInfoPost.fulfilled, (state, action) => {
-            state.status = 'resolved';
+		builder.addCase(UserInfoPost.pending, (state) => {
+			state.status = 'loading';
+			state.error = null;
+		});
+		builder.addCase(UserInfoPost.fulfilled, (state, action) => {
+			state.status = 'resolved';
 			state.informationUser[0].post = action.payload.post;
 			state.informationUser[0].follower = action.payload.subscribers;
 			state.informationUser[0].following = action.payload.subscriptions;
-        });
-        builder.addCase(UserInfoPost.rejected, setError);
-        builder.addCase(someUserInfoPost.rejected, setError);
-    },
+		});
+		builder.addCase(someUserInfoPost.pending, (state, action) => {
+			state.status = 'loading';
+			state.error = null;
+		});
+		builder.addCase(someUserInfoPost.fulfilled, (state, action) => {
+			state.status = 'resolved';
+			state.informationUser[0].post = action.payload.post;
+			state.informationUser[0].follower = action.payload.subscribers;
+			state.informationUser[0].following = action.payload.subscriptions;
+		});
+		builder.addCase(UserInfoPost.rejected, setError);
+		builder.addCase(someUserInfoPost.rejected, setError);
+	},
 });
 
 
