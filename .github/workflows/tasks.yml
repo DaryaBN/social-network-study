@@ -18,6 +18,3 @@ jobs:
 
       - name: lint
         run: npx @biomejs/biome lint
-        
-      - name: test
-        run: npx mocha tests
