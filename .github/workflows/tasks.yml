@@ -17,7 +17,7 @@ jobs:
         run: npm install
 
       - name: lint
-        run: npx eslint .
+        run: npx @biomejs/biome lint
         
       - name: test
         run: npx mocha tests
