@@ -1,26 +1,25 @@
 import "../styles/PostsBlog.css";
-import TopicalList from "./TopicalList.jsx";
+import { useParams } from "react-router-dom";
 import BloggersList from "./BloggerList.jsx";
 import PostList from "./PostList.jsx";
-import { useParams } from 'react-router-dom';
+import TopicalList from "./TopicalList.jsx";
 
-
-const HashtagsPage = () =>{
+const HashtagsPage = () => {
 	const { hashtag } = useParams();
-	let titleHashtag = hashtag.substring(1)
+	const titleHashtag = hashtag.substring(1);
 
-  return (
+	return (
 		<>
 			<div className="Indent"></div>
 			<div className="headerFeed">
-         <img src="/img/logoбелый.svg" alt="дельфин"/>
-      </div>
+				<img src="/img/logoбелый.svg" alt="дельфин" />
+			</div>
 			<div className="Logic">
 				<div className="Left">
-					<p className="folloverTitle">#{titleHashtag}</p> 
+					<p className="folloverTitle">#{titleHashtag}</p>
 					<div className="LogicBlok1">
-            <PostList />
-          </div>
+						<PostList />
+					</div>
 				</div>
 				<div className="Right">
 					<div className="logicBlok2">
@@ -34,7 +33,7 @@ const HashtagsPage = () =>{
 				</div>
 			</div>
 		</>
-  )
+	);
 };
 
-export default HashtagsPage
+export default HashtagsPage;

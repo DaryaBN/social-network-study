@@ -1,33 +1,29 @@
-import SettingsEmail from "../components/settingsEmail.jsx";
+import { useCallback, useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import Menu from "../components/feedMenu";
-import { useState } from "react";
-import { useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import SettingsEmail from "../components/settingsEmail.jsx";
 
-function EmailSettings()  {
+function EmailSettings() {
+	const feedResult = [{}];
+	const [feedStstus, setFeedStstus] = useState(feedResult);
+	const loadFeed = useCallback(async () => {
+		const cook = await fetch("/DolphinFeed").then((data) => data.text());
+		setFeedStstus(cook);
+	}, []);
+	useEffect(() => {
+		loadFeed();
+	}, [loadFeed]);
 
-  let feedResult = [{}];
-  const [feedStstus, setFeedStstus] = useState(feedResult)
-  async function loadFeed(){
-  const cook = await fetch('/DolphinFeed').then((data) => data.text());
-  setFeedStstus(cook)
-  }
-  useEffect(() => {loadFeed()}, []);
+	if (feedStstus === "ok") {
+		return (
+			<>
+				<Menu />
+				<SettingsEmail />
+			</>
+		);
+	} else if (feedStstus === "error") {
+		return <Navigate to="/" replace />;
+	}
+}
 
-  if(feedStstus == "ok"){
-    return (
-      <>
-        <Menu />
-        <SettingsEmail />
-      </>
-    );
-  } else if (feedStstus == 'error'){
-    return (
-      <>
-        <Navigate to="/" replace />
-      </>
-    );
-  }
-};
-  
-  export default EmailSettings;
+export default EmailSettings;

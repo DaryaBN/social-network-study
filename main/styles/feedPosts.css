@@ -1,306 +1,298 @@
-.LogicGreeting{
-  display: none;
+.LogicGreeting {
+	display: none;
 }
-.newPostWirte{
-  display: none
+.newPostWirte {
+	display: none;
 }
-.LogicUser{
-  display: none;
+.LogicUser {
+	display: none;
 }
-.headerFeed{
-  display: block;
-  background: #0057FF;
-  padding: 11px;
-  text-align: center;
+.headerFeed {
+	display: block;
+	background: #0057ff;
+	padding: 11px;
+	text-align: center;
 }
-.rectangle{
-  display: block;
-  position: fixed;
-  bottom: 70px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 64px;
-  height: 64px;
-  background: #0057FF;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 33px;
-  cursor: pointer;
+.rectangle {
+	position: fixed;
+	bottom: 70px;
+	right: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 64px;
+	height: 64px;
+	background: #0057ff;
+	box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+	border-radius: 33px;
+	cursor: pointer;
 }
-.LogicPostWrite{
-  margin: 60px 10px 0px 10px;
-  width: auto;
-  background: #FFFFFF;
-  border-radius: 10px;
+.LogicPostWrite {
+	margin: 60px 10px 0px 10px;
+	width: auto;
+	background: #ffffff;
+	border-radius: 10px;
 }
 .PostWriteBox {
-  padding-top: 16px;
-  margin-top: 0px;
-  background: #FFFFFF;
-  border: 3px solid #0057FF;
-  box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
+	padding-top: 16px;
+	margin-top: 0px;
+	background: #ffffff;
+	border: 3px solid #0057ff;
+	box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
 }
 textarea {
-  margin-top: 10px;
-  width: 95%;
-  border: none;
-  height: 90px;
-  resize: none;
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 24px;
-  color: #1D1E22;
-  outline: none /*убрать рамку при вводе текста*/;
+	margin-top: 10px;
+	width: 95%;
+	border: none;
+	height: 90px;
+	resize: none;
+	font-family: "Lato", Arial, sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 24px;
+	color: #1d1e22;
+	outline: none /*убрать рамку при вводе текста*/;
 }
-.PostWriteText{
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 24px;
-  margin-top: 0;
-  margin-left: 5px;
-  margin-right: 5px;
+.PostWriteText {
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 24px;
+	margin-top: 0;
+	margin-left: 5px;
+	margin-right: 5px;
 }
-.PostWriteButton{
-  display: flex;
-  justify-content: space-between;
+.PostWriteButton {
+	display: flex;
+	justify-content: space-between;
 }
-.PostWriteButtonPhoto{
-  margin: auto 5px auto 10px;
+.PostWriteButtonPhoto {
+	margin: auto 5px auto 10px;
 }
-.PostWriteButtonSend{
-  display: flex;
+.PostWriteButtonSend {
+	display: flex;
 }
-.PostWriteSize{
-  border: 4px solid;
-  border-radius: 100px;
-  width: 30px;
-  height: 23px;
-  margin: auto 2px auto 10px;
-  padding: 3px 3px 7px 3px;
-  text-align: center;
-  color: #0057FF;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
+.PostWriteSize {
+	border: 4px solid;
+	border-radius: 100px;
+	width: 30px;
+	height: 23px;
+	margin: auto 2px auto 10px;
+	padding: 3px 3px 7px 3px;
+	text-align: center;
+	color: #0057ff;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 24px;
 }
-.PostWriteSizeColor{
-  border-color: #DFDFDF #DFDFDF #DFDFDF #DFDFDF;
+.PostWriteSizeColor {
+	border-color: #dfdfdf #dfdfdf #dfdfdf #dfdfdf;
 }
-.PostWriteSizeColor1{
-  border-color: #DFDFDF #0057FF #DFDFDF #DFDFDF;
+.PostWriteSizeColor1 {
+	border-color: #dfdfdf #0057ff #dfdfdf #dfdfdf;
 }
-.PostWriteSizeColor2{
-  border-color: #DFDFDF #0057FF #0057FF #DFDFDF;
+.PostWriteSizeColor2 {
+	border-color: #dfdfdf #0057ff #0057ff #dfdfdf;
 }
-.PostWriteSizeColor3{
-  border-color: #DFDFDF #0057FF #0057FF #0057FF;
+.PostWriteSizeColor3 {
+	border-color: #dfdfdf #0057ff #0057ff #0057ff;
 }
-.PostWriteSizeColor4{
-  border-color:#0057FF #0057FF #0057FF #0057FF;
+.PostWriteSizeColor4 {
+	border-color: #0057ff #0057ff #0057ff #0057ff;
 }
-.PostWriteSizeColorRed{
-  border-color: red;
-  color: red;
+.PostWriteSizeColorRed {
+	border-color: red;
+	color: red;
 }
-.PostWriteSend{
-  background: #0057FF;
-  border: 1px solid #0057FF;
-  border-radius: 8px;
-  margin: auto 5px auto 10px;
-  padding: 9.5px;
-  width: 130px;
-  color: #FFFFFF;
-  text-align: center;
-  cursor: pointer;
+.PostWriteSend {
+	background: #0057ff;
+	border: 1px solid #0057ff;
+	border-radius: 8px;
+	margin: auto 5px auto 10px;
+	padding: 9.5px;
+	width: 130px;
+	color: #ffffff;
+	text-align: center;
+	cursor: pointer;
 }
 .PostWriteSend.disabled {
-  background-color: #ccc;
-  color: #999;
-  cursor: not-allowed;
-  opacity: 0.6;
+	background-color: #ccc;
+	color: #999;
+	cursor: not-allowed;
+	opacity: 0.6;
 }
-.textPosted{
-  text-align: center;
-  font-size: 20px;
+.textPosted {
+	text-align: center;
+	font-size: 20px;
 }
 .spinnerPost {
-  width: 8px;
-  height: 8px;
-  border: 4px solid #ccc;
-  border-top-color: #333;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+	width: 8px;
+	height: 8px;
+	border: 4px solid #ccc;
+	border-top-color: #333;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
 	margin: 0px auto 0px auto;
 }
-.PostWriteSendText{
-  padding: 0;
-  margin: 0;
+.PostWriteSendText {
+	padding: 0;
+	margin: 0;
 }
 
-@media (min-width: 1280px){
-  .Indent{
-    width: 100%;
-    height: 30px;
-  } 
-  .LogicGreeting{
-    display: block;
-    padding: 21px 16px 21px 16px;
-    margin: 0;
-    margin-left: 0px;
-    margin-bottom: 20px;
-    margin-top: 0px;
-    width: 600px;
-    background: #FFFFFF;
-    border-radius: 10px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    color: #ABACB1;
-  }
-  .newPostWirte{
-    display: block
-  }
-  .LogicPostWrite{
-    margin: 0px 0px 20px 0px;
-    width: 632px;
-    background: #FFFFFF;
-    border-radius: 10px;
-  }
-  .PostWriteBox {
-    padding-top: 16px;
-    margin-top: 0px;
-    background: #FFFFFF;
-    border: 3px solid #0057FF;
-    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-  }
-  .PostWriteText{
-    font-size: 24px;
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-  textarea {
-    height: 70px;
-    font-size: 24px;
-  }
-  .PostWriteSend{
-    margin: auto 10px 10px 5px;
-    padding: 14px;
-    width: 220px;
-  }
-  .PostWriteSize{
-    margin: auto 10px 10px 5px;
-    padding: 5px 3px 7px 3px;
-  }
-  .LogicUser{
-    display: block;
-    width: 280px;
-    margin-left: 10px;
-    margin-right: 0px;
-    margin-bottom: 15px;
-    padding: 0px 16px 5px 16px;
-    background: #FFFFFF;
-    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-  }
-  .UserProfile{
-    display: flex;
-    height: 80px;
-  }
-  .UserProfilePhoto{
-    position: relative;
-    top: -10px;
-    left: -3px;
-    bottom: 10px;
-    width: 80px;
-    height: 80px;  
-  }
-  .ProfilePhoto{
-    border-radius: 50px;
-    width: 80px;
-    height: 80px;
-    background-size: cover;
-    object-fit:cover;
-    border: 1px solid #ffffff;
-    background: #0057FF;
-  }
-  .UserProfileInfo{
-    flex-grow: 1;
-  }
-  .ProfileInfoName{
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 24px;
-    margin-bottom: 0;
-    margin-top: 16px;
-    margin-left: 10px;
-  }
-  .ProfileInfoNick{
-    font-style: normal;
-    font-weight: 300;
-    font-size: 12px;
-    line-height: 20px;
-    margin-top: 0;
-    color: #ABACB1;
-    margin-left: 10px;
-    margin-bottom: 0;font-style: normal;
-    font-weight: 300;
-    font-size: 12px;
-    line-height: 20px;
-    margin-top: 0;
-    color: #ABACB1;
-    margin-left: 10px;
-    margin-bottom: 0;
-  }
-  .UserProfileBox{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 24px;
-  }
-  .BoxInfo{
-    flex: 1 0 10%;
-  }
-  h5 {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 28px;
-    margin: 0;
-    color: black;
-  }
-  .BoxInfoText{
-    font-style: normal;
-    font-weight: 300;
-    font-size: 12px;
-    line-height: 12px;
-    color: #ABACB1;
-    margin: 0;
-  }
-  .Left{
-    float: left;
-  }
-  .Right{
-    float: right;
-  }
-  .textPosted{
-    text-align: center;
-    font-size: 25px;
-  }
-  .headerFeed{
-    display: none;
-  }
-  .rectangle{
-    display: none;
-  }
+@media (min-width: 1280px) {
+	.Indent {
+		width: 100%;
+		height: 30px;
+	}
+	.LogicGreeting {
+		display: block;
+		padding: 21px 16px 21px 16px;
+		margin: 0;
+		margin-left: 0px;
+		margin-bottom: 20px;
+		margin-top: 0px;
+		width: 600px;
+		background: #ffffff;
+		border-radius: 10px;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 24px;
+		color: #abacb1;
+	}
+	.newPostWirte {
+		display: block;
+	}
+	.LogicPostWrite {
+		margin: 0px 0px 20px 0px;
+		width: 632px;
+		background: #ffffff;
+		border-radius: 10px;
+	}
+	.PostWriteBox {
+		padding-top: 16px;
+		margin-top: 0px;
+		background: #ffffff;
+		border: 3px solid #0057ff;
+		box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+	}
+	.PostWriteText {
+		font-size: 24px;
+		margin-left: 16px;
+		margin-right: 16px;
+	}
+	textarea {
+		height: 70px;
+		font-size: 24px;
+	}
+	.PostWriteSend {
+		margin: auto 10px 10px 5px;
+		padding: 14px;
+		width: 220px;
+	}
+	.PostWriteSize {
+		margin: auto 10px 10px 5px;
+		padding: 5px 3px 7px 3px;
+	}
+	.LogicUser {
+		display: block;
+		width: 280px;
+		margin-left: 10px;
+		margin-right: 0px;
+		margin-bottom: 15px;
+		padding: 0px 16px 5px 16px;
+		background: #ffffff;
+		box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.05);
+		border-radius: 10px;
+	}
+	.UserProfile {
+		display: flex;
+		height: 80px;
+	}
+	.UserProfilePhoto {
+		position: relative;
+		top: -10px;
+		left: -3px;
+		bottom: 10px;
+		width: 80px;
+		height: 80px;
+	}
+	.ProfilePhoto {
+		border-radius: 50px;
+		width: 80px;
+		height: 80px;
+		background-size: cover;
+		object-fit: cover;
+		border: 1px solid #ffffff;
+		background-color: #0057ff;
+	}
+	.UserProfileInfo {
+		flex-grow: 1;
+	}
+	.ProfileInfoName {
+		font-style: normal;
+		font-weight: 700;
+		font-size: 18px;
+		line-height: 24px;
+		margin-bottom: 0;
+		margin-top: 16px;
+		margin-left: 10px;
+	}
+	.ProfileInfoNick {
+		font-style: normal;
+		font-weight: 300;
+		font-size: 12px;
+		line-height: 20px;
+		margin-top: 0;
+		color: #abacb1;
+		margin-left: 10px;
+		margin-bottom: 0;
+	}
+	.UserProfileBox {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 24px;
+	}
+	.BoxInfo {
+		flex: 1 0 10%;
+	}
+	h5 {
+		font-style: normal;
+		font-weight: 400;
+		font-size: 22px;
+		line-height: 28px;
+		margin: 0;
+		color: black;
+	}
+	.BoxInfoText {
+		font-style: normal;
+		font-weight: 300;
+		font-size: 12px;
+		line-height: 12px;
+		color: #abacb1;
+		margin: 0;
+	}
+	.Left {
+		float: left;
+	}
+	.Right {
+		float: right;
+	}
+	.textPosted {
+		text-align: center;
+		font-size: 25px;
+	}
+	.headerFeed {
+		display: none;
+	}
+	.rectangle {
+		display: none;
+	}
 }

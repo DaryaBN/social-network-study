@@ -7,7 +7,7 @@
 	left: 0;
 	display: flex;
 	align-items: flex-end;
-	justify-content: end;;
+	justify-content: end;
 	opacity: 0;
 	pointer-events: none;
 	transition: 0.5s;
@@ -20,54 +20,54 @@
 .modalContent {
 	width: 100%;
 	height: 335px;
-	background: #FFFFFF;
+	background: #ffffff;
 	border-radius: 10px;
 	position: absolute;
 	transform: scale(0.5);
-	transform: 0.4s all;
+	transition: 0.4s all;
 }
 .modalContent {
 	width: 100%;
 	height: auto;
-	background: #FFFFFF;
+	background: #ffffff;
 	border-radius: 10px;
 	transform: scale(0.5);
-	transform: 0.4s all;
+	transition: 0.4s all;
 }
-.modalContent.active{
+.modalContent.active {
 	transform: scale(1);
 }
-.titleClose{
+.titleClose {
 	display: block;
 	width: 50px;
 	height: 4px;
-	background: #ABACB1;
+	background: #abacb1;
 	border-radius: 2px;
 	margin: 16px auto 32px auto;
 }
-.title{
+.title {
 	display: flex;
 	justify-content: space-between;
 	padding-left: 18px;
 	padding-right: 19px;
 	margin-top: 17px;
 }
-.titleText{
+.titleText {
 	font-weight: 700;
 	font-size: 24px;
 	line-height: 28px;
 	padding: 0;
 	margin: 0;
-	color: #1D1E22;
+	color: #1d1e22;
 }
-.titleIMG{
+.titleIMG {
 	display: none;
 	cursor: pointer;
 }
-.box{
+.box {
 	display: flex;
-	background: #FFFFFF;
-	border: 1px solid #DFDFDF;
+	background: #ffffff;
+	border: 1px solid #dfdfdf;
 	border-radius: 10px;
 	height: 52px;
 	margin-top: 20px;
@@ -76,16 +76,17 @@
 	width: 90%;
 	flex-direction: column;
 }
-.boxText{
+.boxText {
 	font-weight: 400;
 	font-size: 9px;
 	line-height: 11px;
-	color: #B1B1B1;
+	color: #b1b1b1;
 	margin-left: 16px;
 	margin-top: 6px;
 	margin-bottom: 4px;
 }
-input[type=text],[type=password] {
+input[type="text"],
+[type="password"] {
 	width: 98%;
 	font-family: inherit;
 	outline: none;
@@ -94,7 +95,7 @@ input[type=text],[type=password] {
 	color: black;
 	background: scroll;
 }
-.boxInput{
+.boxInput {
 	font-weight: 400;
 	font-size: 18px;
 	line-height: 22px;
@@ -103,50 +104,50 @@ input[type=text],[type=password] {
 	margin-top: 0px;
 	margin-left: 16px;
 }
-.button{
+.button {
 	width: 350px;
-	background: #0057FF;
-	border: 1px solid #0057FF;
+	background: #0057ff;
+	border: 1px solid #0057ff;
 	border-radius: 10px;
 	font-weight: 700;
 	font-size: 18px;
 	line-height: 22px;
 	text-align: center;
-	color: #FFFFFF;
+	color: #ffffff;
 	margin: 24px 18px 16px 18px;
 	padding: 15px;
 	cursor: pointer;
 }
-.boxError{
+.boxError {
 	position: relative;
 	bottom: -15px;
 	font-weight: 400;
 	font-size: 10px;
 	line-height: 11px;
-	color: #E40060;
+	color: #e40060;
 	margin-left: 25px;
 }
-.borderError{
+.borderError {
 	background: rgb(255, 222, 236);
 	border: 1px solid rgb(228, 0, 96);
 }
-.emailError{
+.emailError {
 	font-weight: 400;
 	font-size: 9px;
 	line-height: 11px;
-	color: #E40060;
+	color: #e40060;
 	margin-top: 2px;
 	margin-left: 5px;
 }
-.passwordError{
+.passwordError {
 	font-weight: 400;
 	font-size: 9px;
 	line-height: 11px;
-	color: #E40060;
+	color: #e40060;
 	margin-top: 2px;
 	margin-left: 5px;
 }
-.ErrorLogon{
+.ErrorLogon {
 	position: relative;
 	text-align: center;
 	width: 300px;
@@ -154,17 +155,17 @@ input[type=text],[type=password] {
 	font-weight: 400;
 	font-size: 12px;
 	line-height: 11px;
-	color: #E40060;
+	color: #e40060;
 	margin-left: auto;
 	margin-right: auto;
 }
 .spinner {
-  width: 10px;
-  height: 10px;
-  border: 4px solid #ccc;
-  border-top-color: #333;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+	width: 10px;
+	height: 10px;
+	border: 4px solid #ccc;
+	border-top-color: #333;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
 	margin: 4px auto 4px auto;
 }
 .buttonText {
@@ -172,10 +173,14 @@ input[type=text],[type=password] {
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
-@media (min-width: 1280px){
+@media (min-width: 1280px) {
 	.modal {
 		align-items: center;
 		justify-content: center;
@@ -184,14 +189,14 @@ input[type=text],[type=password] {
 		width: 362px;
 		height: auto;
 	}
-	.titleIMG{
+	.titleIMG {
 		display: block;
 		cursor: pointer;
 	}
-	.button{
+	.button {
 		width: 90%;
 	}
-	.titleClose{
+	.titleClose {
 		display: none;
 	}
 }

@@ -1,18 +1,18 @@
-.SettingsNameNickPhoto{
-  display: flex;
+.SettingsNameNickPhoto {
+	display: flex;
 	justify-content: space-between;
 }
-.SettingsNameNick{
-  float: left;
+.SettingsNameNick {
+	float: left;
 	width: 60%;
 }
-.SettingsPhoto{
-  float: right;
+.SettingsPhoto {
+	float: right;
 }
-.EditInput{
+.EditInput {
 	display: flex;
-	background: #FFFFFF;
-	border: 1px solid #DFDFDF;
+	background: #ffffff;
+	border: 1px solid #dfdfdf;
 	border-radius: 10px;
 	height: 52px;
 	margin-top: 24px;
@@ -21,7 +21,11 @@
 	width: 100%;
 	flex-direction: column;
 }
-input[type=text], input[type=date], [type=email], input[type=password], input [type=date] {
+input[type="text"],
+input[type="date"],
+[type="email"],
+input[type="password"],
+input [type="date"] {
 	width: 98%;
 	font-family: inherit;
 	outline: none;
@@ -38,7 +42,7 @@ select {
 	font-weight: 400;
 	font-size: 9px;
 	line-height: 11px;
-	color: #B1B1B1;
+	color: #b1b1b1;
 	margin-left: 16px;
 	margin-top: 6px;
 	margin-bottom: 4px;
@@ -55,12 +59,12 @@ select {
 .EditPhoto {
 	border-radius: 100px;
 	filter: brightness(65%);
-  margin: 24px 0px 24px 24px;
-	background-color: #0057FF;
+	margin: 24px 0px 24px 24px;
+	background-color: #0057ff;
 	width: 130px;
 	height: 130px;
 	background-size: cover;
-    object-fit: cover;
+	object-fit: cover;
 }
 .EditVektor {
 	position: relative;
@@ -73,199 +77,200 @@ select {
 	display: flex;
 	justify-content: space-between;
 }
-.SettingsInform{
+.SettingsInform {
 	padding-right: 0px;
 }
-.SettingsButton{
-  width: 180px;
-	background: #0057FF;
-	border: 1px solid #0057FF;
+.SettingsButton {
+	width: 180px;
+	background: #0057ff;
+	border: 1px solid #0057ff;
 	border-radius: 10px;
 	color: white;
 	font-size: 15px;
 	padding: 15px;
-  margin: 24px 16px 32px 0px;
+	margin: 24px 16px 32px 0px;
 	cursor: pointer;
 }
-.TextNickError{
+.TextNickError {
 	font-weight: 400;
 	font-size: 9px;
 	line-height: 11px;
-	color: #E40060;
+	color: #e40060;
 	margin-top: 2px;
 	margin-left: 5px;
 }
-.EditInputError{
+.EditInputError {
 	background: rgb(255, 222, 236);
 	border: 1px solid rgb(228, 0, 96);
 }
 .uploadcare--widget__text {
-  box-sizing: border-box;
-  display: inline-block;
-  margin-right: 0;
-  padding: 0;
-  margin: 0px 0 50px 15px;
-  white-space: wrap;
+	box-sizing: border-box;
+	display: inline-block;
+	padding: 0;
+	margin: 0px 0 50px 15px;
+	white-space: wrap;
 }
-.SettingsResult{
-    position: fixed;
-    padding: 20px;
-    bottom: 10%;
-    right: 20px;
-    background-color: #4BB543;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    border-radius: 10px;
-    transition: opacity 0.3s ease;
-    opacity: 0;
-    color: #DFDFDF;
-    font-size: 18px;
-  }
-  .SettingsResult.show {
-    opacity: 1;
-  }
-  .SettingsResultRed{
-    background-color: rgb(112, 10, 10)
-  }
-  .SettingsResultGreen{
-    background-color: #107509;
-  }
+.SettingsResult {
+	position: fixed;
+	padding: 20px;
+	bottom: 10%;
+	right: 20px;
+	background-color: #4bb543;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	transition: opacity 0.3s ease;
+	opacity: 0;
+	color: #dfdfdf;
+	font-size: 18px;
+}
+.SettingsResult.show {
+	opacity: 1;
+}
+.SettingsResultRed {
+	background-color: rgb(112, 10, 10);
+}
+.SettingsResultGreen {
+	background-color: #107509;
+}
 
-@media (min-width: 1280px){
-  .SettingsNameNickPhoto{
-    display: flex;
-    justify-content: space-between;
-  }
-  .SettingsNameNick{
-    float: left;
-    width: 60%;
-  }
-  .SettingsPhoto{
-    float: right;
-  }
-  .EditInput{
-    display: flex;
-    background: #FFFFFF;
-    border: 1px solid #DFDFDF;
-    border-radius: 10px;
-    height: 52px;
-    margin-top: 24px;
-    margin-left: 16px;
-    margin-right: 16px;
-    width: 100%;
-    flex-direction: column;
-  }
-  input[type=text], input[type=date], [type=email], input[type=password], input [type=date] {
-    width: 98%;
-    font-family: inherit;
-    outline: none;
-    border: none;
-    height: 22px;
-    color: black;
-    background: scroll;
-  }
-  select {
-    border: none;
-    width: 98%;
-  }
-  .EditLabel {
-    font-weight: 400;
-    font-size: 9px;
-    line-height: 11px;
-    color: #B1B1B1;
-    margin-left: 16px;
-    margin-top: 6px;
-    margin-bottom: 4px;
-  }
-  .EditValue {
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-    color: #555555;
-    margin-bottom: 7px;
-    margin-top: 0px;
-    margin-left: 16px;
-  }
-  .EditPhoto {
-    border-radius: 100px;
-    filter: brightness(65%);
-    margin: 24px 22px 24px 0px;
-    background-color: #0057FF;
-    width: 130px;
-    height: 130px;
-    background-size: cover;
-    object-fit: cover;
-  }
-  .EditVektor {
-    position: relative;
-    left: 28px;
-    bottom: -75px;
-    width: 25px;
-    float: left;
-  }
-  .SettingsBirthday {
-    display: flex;
-    justify-content: space-between;
-  }
-  .SettingsInform{
-    padding-right: 30px;
-  }
-  .SettingsButton{
-    width: 100%;
-    background: #0057FF;
-    border: 1px solid #0057FF;
-    border-radius: 10px;
-    color: white;
-    font-size: 18px;
-    width: 25%;
-    padding: 15px;
-    margin-top: 24px;
-    margin-left: 16px;
-    margin-bottom: 32px;
-    cursor: pointer;
-  }
-  .TextNickError{
-    font-weight: 400;
-    font-size: 9px;
-    line-height: 11px;
-    color: #E40060;
-    margin-top: 2px;
-    margin-left: 5px;
-  }
-  .EditInputError{
-    background: rgb(255, 222, 236);
-    border: 1px solid rgb(228, 0, 96);
-  }
-  .SettingsResult{
-    position: fixed;
-    padding: 20px;
-    bottom: 5%;
-    right: 20px;
-    background-color: #4BB543;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    border-radius: 10px;
-    transition: opacity 0.3s ease;
-    opacity: 0;
-    color: #DFDFDF;
-    font-size: 18px;
-  }
-  .SettingsResult.show {
-    opacity: 1;
-  }
-  .SettingsResultRed{
-    background-color: rgb(112, 10, 10)
-  }
-  .SettingsResultGreen{
-    background-color: #107509;
-  }
-  .EditVektorText{
-    width: 50px;
-  }
-  .uploadcare--widget__text {
-    box-sizing: border-box;
-    display: inline-block;
-    margin-right: 0;
-    padding: 0;
-    margin: 0px 0 0px 15px;
-    white-space: wrap;
-  }
+@media (min-width: 1280px) {
+	.SettingsNameNickPhoto {
+		display: flex;
+		justify-content: space-between;
+	}
+	.SettingsNameNick {
+		float: left;
+		width: 60%;
+	}
+	.SettingsPhoto {
+		float: right;
+	}
+	.EditInput {
+		display: flex;
+		background: #ffffff;
+		border: 1px solid #dfdfdf;
+		border-radius: 10px;
+		height: 52px;
+		margin-top: 24px;
+		margin-left: 16px;
+		margin-right: 16px;
+		width: 100%;
+		flex-direction: column;
+	}
+	input[type="text"],
+	input[type="date"],
+	[type="email"],
+	input[type="password"],
+	input [type="date"] {
+		width: 98%;
+		font-family: inherit;
+		outline: none;
+		border: none;
+		height: 22px;
+		color: black;
+		background: scroll;
+	}
+	select {
+		border: none;
+		width: 98%;
+	}
+	.EditLabel {
+		font-weight: 400;
+		font-size: 9px;
+		line-height: 11px;
+		color: #b1b1b1;
+		margin-left: 16px;
+		margin-top: 6px;
+		margin-bottom: 4px;
+	}
+	.EditValue {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 22px;
+		color: #555555;
+		margin-bottom: 7px;
+		margin-top: 0px;
+		margin-left: 16px;
+	}
+	.EditPhoto {
+		border-radius: 100px;
+		filter: brightness(65%);
+		margin: 24px 22px 24px 0px;
+		background-color: #0057ff;
+		width: 130px;
+		height: 130px;
+		background-size: cover;
+		object-fit: cover;
+	}
+	.EditVektor {
+		position: relative;
+		left: 28px;
+		bottom: -75px;
+		width: 25px;
+		float: left;
+	}
+	.SettingsBirthday {
+		display: flex;
+		justify-content: space-between;
+	}
+	.SettingsInform {
+		padding-right: 30px;
+	}
+	.SettingsButton {
+		background: #0057ff;
+		border: 1px solid #0057ff;
+		border-radius: 10px;
+		color: white;
+		font-size: 18px;
+		width: 25%;
+		padding: 15px;
+		margin-top: 24px;
+		margin-left: 16px;
+		margin-bottom: 32px;
+		cursor: pointer;
+	}
+	.TextNickError {
+		font-weight: 400;
+		font-size: 9px;
+		line-height: 11px;
+		color: #e40060;
+		margin-top: 2px;
+		margin-left: 5px;
+	}
+	.EditInputError {
+		background: rgb(255, 222, 236);
+		border: 1px solid rgb(228, 0, 96);
+	}
+	.SettingsResult {
+		position: fixed;
+		padding: 20px;
+		bottom: 5%;
+		right: 20px;
+		background-color: #4bb543;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+		border-radius: 10px;
+		transition: opacity 0.3s ease;
+		opacity: 0;
+		color: #dfdfdf;
+		font-size: 18px;
+	}
+	.SettingsResult.show {
+		opacity: 1;
+	}
+	.SettingsResultRed {
+		background-color: rgb(112, 10, 10);
+	}
+	.SettingsResultGreen {
+		background-color: #107509;
+	}
+	.EditVektorText {
+		width: 50px;
+	}
+	.uploadcare--widget__text {
+		box-sizing: border-box;
+		display: inline-block;
+		padding: 0;
+		margin: 0px 0 0px 15px;
+		white-space: wrap;
+	}
 }

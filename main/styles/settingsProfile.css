@@ -1,18 +1,18 @@
-.desktop-menu{
+.desktop-menu {
 	display: none;
 }
-.mobile-menu{
+.mobile-menu {
 	display: block;
 }
-.SettingsMobile-menu{
+.SettingsMobile-menu {
 	display: block;
 	margin: 20px;
 }
-.SettingsWidth{
+.SettingsWidth {
 	width: 100%;
 	height: 100%;
 }
-.Settingsleft{
+.Settingsleft {
 	background: #ffffff;
 	box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.15);
 	border-radius: 10px;
@@ -22,7 +22,7 @@
 	padding-right: 10px;
 	margin: 80px auto 20px auto;
 }
-.SettingsRight{
+.SettingsRight {
 	display: none;
 	/* float: right;
 	margin-right: 10px;
@@ -33,15 +33,15 @@
 	box-shadow: 0px 5px 30px rgb(0 0 0 / 5%);
 	border-radius: 10px; */
 }
-.SettingsNavigationMob{
+.SettingsNavigationMob {
 	margin-right: 10px;
 	width: 312px;
 	padding: 2px;
-	background: #FFFFFF;
+	background: #ffffff;
 	box-shadow: 0px 5px 30px rgb(0 0 0 / 5%);
 	border-radius: 10px;
 }
-.SettingsTitle{
+.SettingsTitle {
 	font-weight: 700;
 	font-size: 20px;
 	line-height: 43px;
@@ -51,17 +51,17 @@
 	width: 250px;
 	margin-bottom: 5px;
 }
-.SettingsBlock{
+.SettingsBlock {
 	display: flex;
 	flex-direction: row;
 }
-.EditTitleSettings{
+.EditTitleSettings {
 	font-weight: 700;
 	font-size: 15px;
 	margin-left: 10px;
 	margin-bottom: 20px;
 }
-.colorTextSettings{
+.colorTextSettings {
 	display: block;
 	font-style: normal;
 	font-weight: 400;
@@ -70,29 +70,29 @@
 	color: #000000;
 	margin: 5px 0px 10px 10px;
 }
-.colorBlueSettings{
-	color: #0057FF;
+.colorBlueSettings {
+	color: #0057ff;
 	margin-top: auto;
 	margin-bottom: auto;
 	margin-left: 5px;
 	font-size: 13px;
 }
-.lineNoneSettings{
-  display: none;
+.lineNoneSettings {
+	display: none;
 }
-.lineBlueProfile{
+.lineBlueProfile {
 	display: block;
 	height: 40px;
 	width: 5px;
-	background: #0057FF;
+	background: #0057ff;
 }
-.brSett{
+.brSett {
 	display: block;
 	height: 300px;
 }
-.burger{
-	background: #0057FF;
-	border: 1px solid #0057FF;
+.burger {
+	background: #0057ff;
+	border: 1px solid #0057ff;
 	border-radius: 10px;
 	color: white;
 	font-size: 15px;
@@ -101,19 +101,19 @@
 	right: 5%;
 }
 
-@media (min-width: 1280px){
-	.desktop-menu{
+@media (min-width: 1280px) {
+	.desktop-menu {
 		display: block;
 	}
-	.mobile-menu{
+	.mobile-menu {
 		display: none;
 	}
-	.SettingsWidth{
+	.SettingsWidth {
 		width: 960px;
 		margin-left: auto;
 		margin-right: auto;
 	}
-	.Settingsleft{
+	.Settingsleft {
 		width: 632px;
 		float: left;
 		padding-top: 0px;
@@ -121,18 +121,18 @@
 		padding-right: 0px;
 		margin: 0px auto 20px auto;
 	}
-	.SettingsRight{
+	.SettingsRight {
 		display: block;
 		float: right;
 		width: 312px;
 		padding-top: 0;
 		padding-bottom: 0;
 		margin-right: 0px;
-		background: #FFFFFF;
+		background: #ffffff;
 		box-shadow: 0px 5px 30px rgb(0 0 0 / 5%);
 		border-radius: 10px;
 	}
-	.SettingsTitle{
+	.SettingsTitle {
 		font-weight: 700;
 		font-size: 36px;
 		line-height: 43px;
@@ -141,38 +141,37 @@
 		margin-bottom: 24px;
 		width: 500px;
 	}
-	.EditTitleSettings{
+	.EditTitleSettings {
 		font-size: 18px;
 		margin-left: 15px;
 	}
-	.colorTextSettings{
+	.colorTextSettings {
 		font-size: 15px;
 		margin: 10px 0px 15px 15px;
 	}
-	.colorBlueSettings{
+	.colorBlueSettings {
 		margin-left: 10px;
 		font-size: 15px;
 	}
-	.lineNoneSettings{
+	.lineNoneSettings {
 		display: none;
 	}
-	.lineBlueProfile{
+	.lineBlueProfile {
 		display: block;
 		height: 40px;
 		width: 5px;
-		background: #0057FF;
+		background: #0057ff;
 	}
-	.password{
+	.password {
 		font-size: 20px;
 		color: #068525;
 		margin-left: 10px;
 		font-weight: 500;
 	}
-	.brSett{
+	.brSett {
 		display: none;
 	}
-	.SettingsMobile-menu{
+	.SettingsMobile-menu {
 		display: none;
 	}
-
 }

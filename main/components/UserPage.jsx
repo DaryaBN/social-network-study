@@ -1,26 +1,25 @@
 import "../styles/PostsBlog.css";
-import TopicalList from "./TopicalList.jsx";
 import BloggersList from "./BloggerList.jsx";
+import TopicalList from "./TopicalList.jsx";
 import UserInfo from "./UserInfo.jsx";
 import UserPosts from "./userPosts.jsx";
 
 const User = () => {
-
-  return (
+	return (
 		<>
 			<div className="Indent"></div>
 			<div className="headerFeed">
-         <img src="/img/logoбелый.svg" alt="дельфин"/>
-      </div>
+				<img src="/img/logoбелый.svg" alt="дельфин" />
+			</div>
 			<div className="Logic">
 				<div className="Left">
 					<div className="LogicBlok1">
-            <UserInfo />
-          </div>
+						<UserInfo />
+					</div>
 					<div className="brUserPage"></div>
 					<div className="LogicBlok1">
-             <UserPosts />
-          </div>
+						<UserPosts />
+					</div>
 				</div>
 				<div className="Right">
 					<div className="logicBlok2">
@@ -34,6 +33,6 @@ const User = () => {
 				</div>
 			</div>
 		</>
-  )
-}
-export default User
+	);
+};
+export default User;
