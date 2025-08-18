@@ -16,12 +16,10 @@ const FeedUser = ({ UserProps }) => {
 			<div className="UserProfile">
 				<div className="UserProfilePhoto">
 					{item.photo ? (
-						<img
-							className="ProfilePhoto" src={item.photo} alt="user"
-						/>
-						) : (
-							<div className="ProfilePhoto"></div>
-						)}
+						<img className="ProfilePhoto" src={item.photo} alt="user" />
+					) : (
+						<div className="ProfilePhoto"></div>
+					)}
 				</div>
 				<div className="UserProfileInfo">
 					<p className="ProfileInfoName">{item.username}</p>

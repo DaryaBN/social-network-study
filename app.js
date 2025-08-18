@@ -145,7 +145,10 @@ app.post("/login", async (req, res) => {
 	const user = await pool.query(
 		`SELECT * FROM users WHERE email = '${req.body.email}'`,
 	);
-	if (user.rows.length > 0 && bcrypt.compareSync(passwordFromUser, user.rows[0].password)) {
+	if (
+		user.rows.length > 0 &&
+		bcrypt.compareSync(passwordFromUser, user.rows[0].password)
+	) {
 		const dateToken = await pool.query(
 			`SELECT * FROM sessions WHERE  email = '${req.body.email}'`,
 		);

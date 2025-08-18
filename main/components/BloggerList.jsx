@@ -97,18 +97,18 @@ const BloggersList = () => {
 	const InfoBloggers = user.map((item) => (
 		<div className="blogs" key={item.id}>
 			{item.photo ? (
-			<img
-				className="blogIMG"
-				src={item.photo}
-				onClick={() => resID(item.user_id)}
-				onKeyDown={(e) => {
-					if (e.key === "Enter" || e.key === " ") {
-						resID(item.user_id);
-					}
-				}}
-				style={{ cursor: "pointer" }}
-				alt="user"
-			/>
+				<img
+					className="blogIMG"
+					src={item.photo}
+					onClick={() => resID(item.user_id)}
+					onKeyDown={(e) => {
+						if (e.key === "Enter" || e.key === " ") {
+							resID(item.user_id);
+						}
+					}}
+					style={{ cursor: "pointer" }}
+					alt="user"
+				/>
 			) : (
 				<div
 					className="blogIMG"

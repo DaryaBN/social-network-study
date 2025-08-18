@@ -142,11 +142,9 @@ const UserInfo = () => {
 			<div className="poster"></div>
 			<div className="UserData">
 				{item.photo ? (
-					<img
-						className="UserDataPhoto" src={item.photo} alt="user" 
-					/>
-					) : (
-						<div className="UserDataPhoto"></div>
+					<img className="UserDataPhoto" src={item.photo} alt="user" />
+				) : (
+					<div className="UserDataPhoto"></div>
 				)}
 				<div className="UserDataBlok">
 					<div className="UserDataBlokInf">

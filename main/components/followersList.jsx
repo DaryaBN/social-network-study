@@ -99,29 +99,29 @@ const Subscribers = () => {
 			<div className="followerLogic">
 				{item.photo ? (
 					<img
-							className="followePhoto"
-							onClick={() => resID(item.user_id)}
-							onKeyDown={(e) => {
-								if (e.key === "Enter" || e.key === " ") {
-									resID(item.user_id);
-								}
-							}}
-							style={{ cursor: "pointer" }}
-							src={item.photo}
-							alt="user"
-						/>
-					) : (
-						<div
-							className="followePhoto"
-							onClick={() => resID(item.user_id)}
-							onKeyDown={(e) => {
-								if (e.key === "Enter" || e.key === " ") {
-									resID(item.user_id);
-								}
-							}}
-							style={{ cursor: "pointer" }}
-						></div>
-					)}
+						className="followePhoto"
+						onClick={() => resID(item.user_id)}
+						onKeyDown={(e) => {
+							if (e.key === "Enter" || e.key === " ") {
+								resID(item.user_id);
+							}
+						}}
+						style={{ cursor: "pointer" }}
+						src={item.photo}
+						alt="user"
+					/>
+				) : (
+					<div
+						className="followePhoto"
+						onClick={() => resID(item.user_id)}
+						onKeyDown={(e) => {
+							if (e.key === "Enter" || e.key === " ") {
+								resID(item.user_id);
+							}
+						}}
+						style={{ cursor: "pointer" }}
+					></div>
+				)}
 				<div className="folloverInfo">
 					<div
 						className="folloverName"

@@ -66,11 +66,9 @@ const PostList = () => {
 					style={{ cursor: "pointer" }}
 				>
 					{item.photo ? (
-						<img
-							className="PotoUser" src={item.photo} alt="user"
-						/>
-						) : (
-							<div className="PotoUser"></div>
+						<img className="PotoUser" src={item.photo} alt="user" />
+					) : (
+						<div className="PotoUser"></div>
 					)}
 				</div>
 				<div className="PostInfo">
@@ -92,9 +90,7 @@ const PostList = () => {
 					</div>
 					<p className="PostText">
 						{hasht(item.mess, handleHashtagClick)}
-						{item.img && (
-							<img className="postImg" src={item.img} alt="img" />
-						)}
+						{item.img && <img className="postImg" src={item.img} alt="img" />}
 					</p>
 					<ul className="PostLike">
 						<li>
