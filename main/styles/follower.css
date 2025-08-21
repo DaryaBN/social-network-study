@@ -1,10 +1,10 @@
-.followerLogic{
+.followerLogic {
 	display: flex;
 }
-.followePhoto{ 
+.followePhoto {
 	width: 57px;
 	height: 57px;
-	background: #0057FF;
+	background: #0057ff;
 	border: 1px solid #ffffff;
 	border-radius: 50px;
 	float: left;
@@ -12,65 +12,64 @@
 	background-size: cover;
 	object-fit: cover;
 }
-.folloverName{
+.folloverName {
 	font-weight: 700;
 	font-size: 14px;
 	line-height: 24px;
 	margin: 10px 0px 0px 0px;
 }
-.folloverNick{
+.folloverNick {
 	font-weight: 400;
 	line-height: 18px;
-	color: #ABACB1;
+	color: #abacb1;
 	font-size: 14px;
 	margin: 0px 0px 0px 0px;
 }
-.folloverStstus{
+.folloverStstus {
 	margin: 5px 0px 15px 0px;
 	width: auto;
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 19px;
 }
-.folloverButtun{
+.folloverButtun {
 	width: 86px;
 	margin: auto 17px auto auto;
-	background: #FFFFFF;
-	border: 1px solid #0057FF;
+	background: #ffffff;
+	border: 1px solid #0057ff;
 	border-radius: 5px;
 	padding: 5px;
 	font-size: 14px;
 	line-height: 14px;
 	font-weight: 700;
 	text-align: center;
-	color: #0057FF;
+	color: #0057ff;
 	cursor: pointer;
 }
-.folloverButtunColor{
-	background: #0057FF;
-	color: #FFFFFF;
+.folloverButtunColor {
+	background: #0057ff;
+	color: #ffffff;
 }
-@media (min-width: 1280px){
-	.followePhoto{ 
+@media (min-width: 1280px) {
+	.followePhoto {
 		margin: 16px 0px 0 16px;
 	}
-	.folloverName{
+	.folloverName {
 		font-size: 16px;
 		margin: 10px 0px 0px 16px;
 	}
-	.folloverNick{
+	.folloverNick {
 		font-size: 16px;
 		line-height: 24px;
 		margin: 0px 0px 0px 16px;
 	}
-	.folloverStstus{
+	.folloverStstus {
 		margin: 10px 17px 15px 16px;
 		width: 350px;
 		min-height: 10px;
 	}
-	.folloverButtun{
+	.folloverButtun {
 		width: 140px;
 		margin: auto;
 	}
-
 }

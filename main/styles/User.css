@@ -1,16 +1,16 @@
-.poster{
+.poster {
 	height: 180px;
-	background: #0057FF;
+	background: #0057ff;
 }
-.UserData{
+.UserData {
 	display: block;
 	width: 100%;
-	background: #FFFFFF;
+	background: #ffffff;
 	border-radius: 0px 0px 10px 10px;
 	padding-bottom: 5px;
 }
-.UserDataPhoto{
-	border: 4px solid #FFFFFF;
+.UserDataPhoto {
+	border: 4px solid #ffffff;
 	border-radius: 60px;
 	position: relative;
 	bottom: 55px;
@@ -18,19 +18,18 @@
 	height: 110px;
 	width: 110px;
 	object-fit: cover;
-	background: #0057FF;
+	background: #0057ff;
 }
-.UserDataBlok{
+.UserDataBlok {
 	display: none;
 }
-.UserDataBlokMob{
-	display: block;
+.UserDataBlokMob {
 	margin: 20px 14px 20px 14px;
 	display: flex;
 	justify-content: space-between;
 	width: 300px;
 }
-.DataBlokNumbers{
+.DataBlokNumbers {
 	font-style: normal;
 	font-weight: 400;
 	font-size: 22px;
@@ -38,300 +37,299 @@
 	margin-bottom: 0;
 	margin-top: 0px;
 }
-.DataBlokText{
+.DataBlokText {
 	font-style: normal;
 	font-weight: 300;
 	font-size: 12px;
 	line-height: 12px;
 	margin: 0;
 	padding-right: 0px;
-	color: #ABACB1;
+	color: #abacb1;
 }
-.UserNameNick{
+.UserNameNick {
 	width: 300px;
 	margin-left: 16px;
 }
-.NameUser{
+.NameUser {
 	font-style: normal;
 	font-weight: 700;
 	font-size: 24px;
 	line-height: 24px;
 	margin: 0;
 }
-.NickUser{
+.NickUser {
 	font-style: normal;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 20px;
-	color: #ABACB1;
+	color: #abacb1;
 	margin-top: 0px;
 }
-.InfoUser{
+.InfoUser {
 	font-style: normal;
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 19px;
 	margin: 15px 13px 15px 16px;
 }
-.UserInfoElse{
+.UserInfoElse {
 	display: flex;
 	flex-direction: column;
 	margin: 16px auto 0px 16px;
 }
-.Else{
+.Else {
 	margin-right: 30px;
 	margin-bottom: 10px;
 	display: flex;
 }
-.ElseVector{
+.ElseVector {
 	display: flex;
 	width: 10px;
 	margin-right: 6px;
 }
-.ElseText{
+.ElseText {
 	font-style: normal;
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 16px;
-	color: #ABACB1;
+	color: #abacb1;
 	display: flex;
 }
-.VectorPlace0{
+.VectorPlace0 {
 	bottom: 0px;
 	width: 8.9px;
 }
-.VectorPlace1{
+.VectorPlace1 {
 	position: relative;
 	right: 6.8px;
 	bottom: 3px;
 	width: 5px;
 }
-.VectorLink0{
+.VectorLink0 {
 	position: relative;
 	top: 4.5px;
 	width: 7px;
 }
-.VectorLink1{
+.VectorLink1 {
 	position: relative;
 	top: 2px;
 	right: 3px;
 	width: 4px;
 }
-.VectorLink2{
+.VectorLink2 {
 	position: relative;
 	right: 6px;
 	width: 7px;
 }
-.VectorBirthday{
+.VectorBirthday {
 	width: 13px;
 }
-.none{
+.none {
 	display: none;
 }
-.InfoButtonMob{
+.InfoButtonMob {
 	display: block;
 	margin: 13px;
-	background: #FFFFFF;
-	border: 1px solid #0057FF;
+	background: #ffffff;
+	border: 1px solid #0057ff;
 	border-radius: 5px;
 	padding: 14px;
 	font-size: 14px;
 	line-height: 14px;
 	font-weight: 700;
 	text-align: center;
-	color: #0057FF;
+	color: #0057ff;
 	cursor: pointer;
 }
-.ReadButt{
+.ReadButt {
 	display: none;
 }
 a {
-	color: #0057FF;
+	color: #0057ff;
 }
-.br{
+.br {
 	display: block;
 	height: 100px;
 }
-.positionUserInfo{
+.positionUserInfo {
 	position: relative;
 }
-.ButtonColorMob{
-	background: #0057FF;
+.ButtonColorMob {
+	background: #0057ff;
 	display: block;
 	margin: 13px;
-	border: 1px solid #0057FF;
+	border: 1px solid #0057ff;
 	border-radius: 5px;
 	padding: 14px;
 	font-size: 14px;
 	line-height: 14px;
 	font-weight: 700;
 	text-align: center;
-	color: #FFFFFF;;
+	color: #ffffff;
 	cursor: pointer;
 }
-.ButtonColor{
+.ButtonColor {
 	display: none;
 }
 
-@media (min-width: 1280px){
-	.poster{
+@media (min-width: 1280px) {
+	.poster {
 		display: flex;
-		border-radius: 10px 10px 0px 0px; 
+		border-radius: 10px 10px 0px 0px;
 	}
-	.UserDataPhoto{
+	.UserDataPhoto {
 		display: flex;
 		float: left;
 	}
-	.UserDataBlok{
-		display: block;
+	.UserDataBlok {
 		margin: 17px 16px 0px 0px;
 		padding-left: 11px;
 		display: flex;
 		justify-content: space-between;
 	}
-	.UserDataBlokMob{
+	.UserDataBlokMob {
 		display: none;
 	}
-	.DataBlokNumbers{
+	.DataBlokNumbers {
 		font-style: normal;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 28px;
-    margin-bottom: 0;
-    margin-top: 0px;
+		font-weight: 400;
+		font-size: 22px;
+		line-height: 28px;
+		margin-bottom: 0;
+		margin-top: 0px;
 	}
-	.DataBlokText{
+	.DataBlokText {
 		font-style: normal;
-    font-weight: 300;
-    font-size: 12px;
-    line-height: 12px;
-    margin: 0;
-    padding-right: 0px;
-    color: #ABACB1;
+		font-weight: 300;
+		font-size: 12px;
+		line-height: 12px;
+		margin: 0;
+		padding-right: 0px;
+		color: #abacb1;
 	}
-	.UserNameNick{
-    display: flex;
+	.UserNameNick {
+		display: flex;
 		bottom: 40px;
 		margin-left: 16px;
 		width: 500px;
 	}
-	.NameUser{
+	.NameUser {
 		font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 24px;
-    margin: 0;
+		font-weight: 700;
+		font-size: 24px;
+		line-height: 24px;
+		margin: 0;
 	}
-	.NickUser{
-    margin-top: 5px;
+	.NickUser {
+		margin-top: 5px;
 		margin-left: 14px;
 	}
-	.InfoUser{
+	.InfoUser {
 		bottom: 30px;
 	}
-	.UserInfoElse{
+	.UserInfoElse {
 		display: flex;
 		flex-direction: row;
 		margin: 16px auto 0px 16px;
 	}
-	.Else{
+	.Else {
 		justify-content: space-between;
 		margin-bottom: 0px;
 	}
-	.ElseVector{
+	.ElseVector {
 		display: flex;
-    width: 10px;
+		width: 10px;
 	}
-	.ElseText{
+	.ElseText {
 		font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 16px;
-    color: #ABACB1;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 16px;
+		color: #abacb1;
 		display: flex;
 		margin-left: 4px;
 	}
-	.VectorPlace0{
+	.VectorPlace0 {
 		position: relative;
-    bottom: 0px;
+		bottom: 0px;
 		width: 11px;
 	}
-	.VectorPlace1{
+	.VectorPlace1 {
 		position: relative;
 		right: 7.5px;
 		bottom: 3px;
 		width: 8px;
 	}
-	.VectorLink0{
+	.VectorLink0 {
 		position: relative;
 		top: 4.5px;
 		width: 10px;
 	}
-	.VectorLink1{
+	.VectorLink1 {
 		position: relative;
 		top: 2px;
 		right: 6px;
 		width: 7px;
 	}
-	.VectorLink2{
+	.VectorLink2 {
 		position: relative;
 		right: 12px;
 		width: 10px;
 	}
-	.VectorBirthday{
+	.VectorBirthday {
 		width: 15px;
 	}
-	.none{
+	.none {
 		display: none;
 	}
-	.InfoButton{
+	.InfoButton {
 		width: 120px;
-    margin: 0px 0px 0px 0px;
-    background: #FFFFFF;
-    border: 1px solid #0057FF;
-    border-radius: 5px;
-    padding: 4px;
-    font-size: 14px;
-    line-height: 14px;
-    font-weight: 700;
-    text-align: center;
-    color: #0057FF;
+		margin: 0px 0px 0px 0px;
+		background: #ffffff;
+		border: 1px solid #0057ff;
+		border-radius: 5px;
+		padding: 4px;
+		font-size: 14px;
+		line-height: 14px;
+		font-weight: 700;
+		text-align: center;
+		color: #0057ff;
 		cursor: pointer;
 	}
-	.InfoButtonMob{
+	.InfoButtonMob {
 		display: none;
 	}
 	a {
-		color: #0057FF;
+		color: #0057ff;
 	}
-	.br{
+	.br {
 		display: none;
 	}
-	.positionUserInfo{
+	.positionUserInfo {
 		margin: 80px 0px 20px 0px;
 	}
-	.ReadButt{
+	.ReadButt {
 		display: block;
 		width: 100px;
 		margin: 0px 10px 0px 0px;
-		background: #FFFFFF;
-		border: 1px solid #0057FF;
+		background: #ffffff;
+		border: 1px solid #0057ff;
 		border-radius: 5px;
 		padding: 15px;
 		font-size: 14px;
 		line-height: 14px;
 		font-weight: 700;
 		text-align: center;
-		color: #0057FF;
+		color: #0057ff;
 		cursor: pointer;
 	}
-	.ButtonColor{
+	.ButtonColor {
 		display: block;
-		background: #0057FF;
-		color: #FFFFFF;
+		background: #0057ff;
+		color: #ffffff;
 		width: 100px;
 		margin: 0px 10px 0px 0px;
-		border: 1px solid #0057FF;
+		border: 1px solid #0057ff;
 		border-radius: 5px;
 		padding: 15px;
 		font-size: 14px;
@@ -340,10 +338,10 @@ a {
 		text-align: center;
 		cursor: pointer;
 	}
-	.ButtonColorMob{
+	.ButtonColorMob {
 		display: none;
 	}
-	.UserDataBlokInf{
+	.UserDataBlokInf {
 		display: flex;
 		width: 280px;
 		justify-content: space-between;

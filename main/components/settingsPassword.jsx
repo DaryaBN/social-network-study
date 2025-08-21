@@ -3,12 +3,12 @@ import MenuSettings from "./SettingsMenu";
 import PasswordComponent from "./settingsPassComponents";
 
 const SettingsPassword = () => {
-	return(
+	return (
 		<div className="SettingsWidth">
-			<p className="SettingsTitle">Сменить пароль</p> 
+			<p className="SettingsTitle">Сменить пароль</p>
 			<div className="SettingsMobile-menu">
 				<MenuSettings />
-			</div> 
+			</div>
 			<div className="Settingsleft">
 				<PasswordComponent />
 			</div>
@@ -16,6 +16,6 @@ const SettingsPassword = () => {
 				<MenuSettings />
 			</div>
 		</div>
-	)
-}
-export default SettingsPassword
+	);
+};
+export default SettingsPassword;

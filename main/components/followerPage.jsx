@@ -1,44 +1,50 @@
 import "../styles/PostsBlog.css";
-import { useState } from "react";
-import { useEffect } from 'react';
-import TopicalList from "./TopicalList.jsx";
+import { useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import BloggersList from "./BloggerList.jsx";
-import UserInfo from "./UserInfo.jsx";
 import Subscribers from "./followersList.jsx";
-import { useLocation } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import TopicalList from "./TopicalList.jsx";
+import UserInfo from "./UserInfo.jsx";
 
-const Folover = () =>{
+const Folover = () => {
 	const location = useLocation();
 	const params = useParams();
 	const id = params.id;
 
-	const [folloverText, setFolloverText] = useState(true)
+	const [folloverText, setFolloverText] = useState(true);
 
 	useEffect(() => {
-		if (location.pathname === '/followers' || location.pathname === `/profile/${id}/followers`) {
-				setFolloverText(true);
-		} else if (location.pathname === '/following' || location.pathname === `/profile/${id}/following`) {
-				setFolloverText(false);
+		if (
+			location.pathname === "/followers" ||
+			location.pathname === `/profile/${id}/followers`
+		) {
+			setFolloverText(true);
+		} else if (
+			location.pathname === "/following" ||
+			location.pathname === `/profile/${id}/following`
+		) {
+			setFolloverText(false);
 		}
-}, [location.pathname, id]);
+	}, [location.pathname, id]);
 
-  return (
+	return (
 		<>
 			<div className="Indent"></div>
 			<div className="headerFeed">
-         <img src="/img/logoбелый.svg" alt="дельфин"/>
-      </div>
+				<img src="/img/logoбелый.svg" alt="дельфин" />
+			</div>
 			<div className="Logic">
 				<div className="Left">
 					<div className="LogicBlok1">
-            <UserInfo />
-          </div>
+						<UserInfo />
+					</div>
 					<div className="brUserPage"></div>
 					<div className="LogicBlok1">
-					<p className="folloverTitle">{folloverText ? 'Подписчики' : 'Подписки'}</p> 
-            <Subscribers />
-          </div>
+						<p className="folloverTitle">
+							{folloverText ? "Подписчики" : "Подписки"}
+						</p>
+						<Subscribers />
+					</div>
 				</div>
 				<div className="Right">
 					<div className="logicBlok2">
@@ -52,7 +58,7 @@ const Folover = () =>{
 				</div>
 			</div>
 		</>
-  )
+	);
 };
 
-export default Folover
+export default Folover;

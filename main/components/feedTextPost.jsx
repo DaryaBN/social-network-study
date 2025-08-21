@@ -1,12 +1,10 @@
-import "../styles/feedPosts.css"
+import "../styles/feedPosts.css";
 const FeedTextPost = ({ NameProps }) => {
 	const Text = NameProps.map((item) => (
-		<div className="LogicGreeting" key={item.id}>Что нового, {item.username}?</div>
+		<div className="LogicGreeting" key={item.id}>
+			Что нового, {item.username}?
+		</div>
 	));
-  return(
-		<>
-		{Text}
-		</>
-	) 
-}
-export default FeedTextPost
+	return <>{Text}</>;
+};
+export default FeedTextPost;

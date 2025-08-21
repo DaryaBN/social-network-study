@@ -1,107 +1,107 @@
-.IndexHeaderWithe{
-  display: flex;
-  flex-wrap: wrap;
-  width: auto;
-  background:#ffffff;
-  margin-left: auto;
-  margin-right: auto;
+.IndexHeaderWithe {
+	display: flex;
+	flex-wrap: wrap;
+	width: auto;
+	background: #ffffff;
+	margin-left: auto;
+	margin-right: auto;
 }
-.boxHeaderWithe{
-  width: 100%;
+.boxHeaderWithe {
+	width: 100%;
 }
 .vector {
-  width: 100%;
-  height: 38px;
-  margin-top: 24px;
-  text-align: center;
+	width: 100%;
+	height: 38px;
+	margin-top: 24px;
+	text-align: center;
 }
 .text {
-  width: 328px;
-  margin: 22px auto 24px auto;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 38px;
-  text-align: center;
+	width: 328px;
+	margin: 22px auto 24px auto;
+	font-size: 32px;
+	font-weight: 700;
+	line-height: 38px;
+	text-align: center;
 }
-.button1IndexBox{
-  width: 328px;
-  margin: 0px auto 16px auto;
-  display: flex;
-  justify-content: center;
-  background: #0057FF;
-  border: 1px solid #0057FF;
-  border-radius: 10px;
-  padding: 15px;
-  font-size: 18px;
-  line-height: 22px;
-  font-weight: 500;
-  color: #FFFFFF;
-  cursor: pointer;
+.button1IndexBox {
+	width: 328px;
+	margin: 0px auto 16px auto;
+	display: flex;
+	justify-content: center;
+	background: #0057ff;
+	border: 1px solid #0057ff;
+	border-radius: 10px;
+	padding: 15px;
+	font-size: 18px;
+	line-height: 22px;
+	font-weight: 500;
+	color: #ffffff;
+	cursor: pointer;
 }
-.button2IndexBox{
-  width: 328px;
-  display: flex;
-  justify-content: center;
-  margin: 0px auto 24px auto;
-  background: #FFFFFF;
-  border: 1px solid #0057FF;
-  border-radius: 10px;
-  padding: 15px;
-  font-size: 18px;
-  line-height: 22px;
-  font-weight: 500;
-  color: #0057FF;
-  cursor: pointer;
+.button2IndexBox {
+	width: 328px;
+	display: flex;
+	justify-content: center;
+	margin: 0px auto 24px auto;
+	background: #ffffff;
+	border: 1px solid #0057ff;
+	border-radius: 10px;
+	padding: 15px;
+	font-size: 18px;
+	line-height: 22px;
+	font-weight: 500;
+	color: #0057ff;
+	cursor: pointer;
 }
-.wrapped{
-  min-width: 100%;
-  height: 203px;
-  object-fit: cover;
-  background-size: cover;
+.wrapped {
+	min-width: 100%;
+	height: 203px;
+	object-fit: cover;
+	background-size: cover;
 }
-  @media (min-width: 1280px){
-  .IndexHeaderWithe{
-    display: flex;
-    flex-wrap: nowrap;
-    width: 1280px;
-    height: 640px;
-    background:#ffffff;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .boxHeaderWithe{
-    height: 640px;
-  }
-  .vector {
-    width: auto;
-    text-align: left;
-    margin-top: 42px;
-    margin-left: 64px;
-  }
-  .text {
-    width: 410px;
-    margin: 32px 1px 32px 64px;
-    font-size: 48px;
-    line-height: 58px;
-    font-weight: 700;
-    text-align: left;
-  }
-  .button1IndexBox{
-    width: 260px;
-    margin: 0 316px 16px 64px;
-    font-size: 18px;
-    line-height: 22px;
-    font-weight: 500;
-    cursor: pointer;
-  }
-  .button2IndexBox{
-    width: 260px;
-    margin: 0 316px 138px 64px;
-    font-size: 18px;
-    line-height: 22px;
-    font-weight: 500;
-  }
-  .wrapped{
-    height: 640px;
-  }
+@media (min-width: 1280px) {
+	.IndexHeaderWithe {
+		display: flex;
+		flex-wrap: nowrap;
+		width: 1280px;
+		height: 640px;
+		background: #ffffff;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.boxHeaderWithe {
+		height: 640px;
+	}
+	.vector {
+		width: auto;
+		text-align: left;
+		margin-top: 42px;
+		margin-left: 64px;
+	}
+	.text {
+		width: 410px;
+		margin: 32px 1px 32px 64px;
+		font-size: 48px;
+		line-height: 58px;
+		font-weight: 700;
+		text-align: left;
+	}
+	.button1IndexBox {
+		width: 260px;
+		margin: 0 316px 16px 64px;
+		font-size: 18px;
+		line-height: 22px;
+		font-weight: 500;
+		cursor: pointer;
+	}
+	.button2IndexBox {
+		width: 260px;
+		margin: 0 316px 138px 64px;
+		font-size: 18px;
+		line-height: 22px;
+		font-weight: 500;
+	}
+	.wrapped {
+		height: 640px;
+	}
 }
