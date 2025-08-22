@@ -33,8 +33,9 @@ const PostLikes = ({ postId }) => {
 	}
 
 	return (
-		<div
-			className="LikeVecktor"
+		<button
+			type="button"
+			className="LikeVecktor nonebutton"
 			onClick={() => like()}
 			onKeyDown={(e) => {
 				if (e.key === "Enter" || e.key === " ") {
@@ -49,7 +50,7 @@ const PostLikes = ({ postId }) => {
 				alt="нравиться"
 			/>
 			<p className="LikeText">{likesData?.likesNumber ?? 0}</p>
-		</div>
+		</button>
 	);
 };
 

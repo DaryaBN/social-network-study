@@ -152,8 +152,9 @@ const UserInfo = () => {
 							<div className="DataBlokNumbers">{userNumer[0].post}</div>
 							<div className="DataBlokText">Сообщений</div>
 						</div>
-						<div
-							className="DataBlok"
+						<button
+							type="button"
+							className="DataBlok nonebutton"
 							onClick={following}
 							onKeyDown={(e) => {
 								if (e.key === "Enter" || e.key === " ") {
@@ -164,9 +165,10 @@ const UserInfo = () => {
 						>
 							<div className="DataBlokNumbers">{userNumer[0].following}</div>
 							<div className="DataBlokText">Читаемых</div>
-						</div>
-						<div
-							className="DataBlok"
+						</button>
+						<button
+							type="button"
+							className="DataBlok nonebutton"
 							onClick={followers}
 							onKeyDown={(e) => {
 								if (e.key === "Enter" || e.key === " ") {
@@ -177,16 +179,18 @@ const UserInfo = () => {
 						>
 							<div className="DataBlokNumbers">{userNumer[0].follower}</div>
 							<div className="DataBlokText">Читателей</div>
-						</div>
+						</button>
 					</div>
 					<div className="DataBlok">
-						<div
+						<button
+							type="button"
 							className={buttonSetting ? "InfoButton" : "none"}
 							style={{ cursor: "pointer" }}
 						>
 							<NavLink to="/settings/profile">Редактировать профиль</NavLink>
-						</div>
-						<div
+						</button>
+						<button
+							type="button"
 							className={
 								buttonRead ? (isSuccess ? "ButtonColor" : " ReadButt") : "none"
 							}
@@ -201,7 +205,7 @@ const UserInfo = () => {
 							<div className={loading ? "" : "spinner"}>
 								{loading ? (isSuccess ? "Читаю" : "Читать") : ""}
 							</div>
-						</div>
+						</button>
 					</div>
 				</div>
 				<div className="positionUserInfo">
@@ -262,8 +266,9 @@ const UserInfo = () => {
 							<div className="DataBlokNumbers">{userNumer[0].post}</div>
 							<div className="DataBlokText">Сообщений</div>
 						</div>
-						<div
-							className="DataBlok"
+						<button
+							type="button"
+							className="DataBlok nonebutton"
 							onClick={following}
 							onKeyDown={(e) => {
 								if (e.key === "Enter" || e.key === " ") {
@@ -274,9 +279,10 @@ const UserInfo = () => {
 						>
 							<div className="DataBlokNumbers">{userNumer[0].following}</div>
 							<div className="DataBlokText">Читаемых</div>
-						</div>
-						<div
-							className="DataBlok"
+						</button>
+						<button
+							type="button"
+							className="DataBlok nonebutton"
 							onClick={followers}
 							onKeyDown={(e) => {
 								if (e.key === "Enter" || e.key === " ") {
@@ -287,15 +293,17 @@ const UserInfo = () => {
 						>
 							<div className="DataBlokNumbers">{userNumer[0].follower}</div>
 							<div className="DataBlokText">Читателей</div>
-						</div>
+						</button>
 					</div>
-					<div
+					<button
+						type="button"
 						className={buttonSetting ? "InfoButtonMob" : "none"}
 						style={{ cursor: "pointer" }}
 					>
 						<NavLink to="/settings/profile">Редактировать профиль</NavLink>
-					</div>
-					<div
+					</button>
+					<button
+						type="button"
 						className={
 							buttonRead
 								? isSuccess
@@ -314,7 +322,7 @@ const UserInfo = () => {
 						<div className={loading ? "" : "spinner"}>
 							{loading ? (isSuccess ? "Читаю" : "Читать") : ""}
 						</div>
-					</div>
+					</button>
 				</div>
 			</div>
 		</div>

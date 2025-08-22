@@ -129,7 +129,8 @@
 }
 .InfoButtonMob {
 	display: block;
-	margin: 13px;
+	margin: 13px auto 13px auto;
+	width: 90%;
 	background: #ffffff;
 	border: 1px solid #0057ff;
 	border-radius: 5px;
@@ -157,7 +158,8 @@ a {
 .ButtonColorMob {
 	background: #0057ff;
 	display: block;
-	margin: 13px;
+	margin: 13px auto 13px auto;
+	width: 90%;
 	border: 1px solid #0057ff;
 	border-radius: 5px;
 	padding: 14px;
@@ -170,6 +172,10 @@ a {
 }
 .ButtonColor {
 	display: none;
+}
+.nonebutton{
+  background: transparent;
+  border: none;
 }
 
 @media (min-width: 1280px) {

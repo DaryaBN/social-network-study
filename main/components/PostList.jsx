@@ -55,8 +55,9 @@ const PostList = () => {
 	const Info = todos.map((item) => (
 		<div className="PostListClass" key={item.id}>
 			<div className="PostLogic">
-				<div
-					className="PostPoto"
+				<button
+					type="button"
+					className="PostPoto nonebutton"
 					onClick={() => resID(item.id_user)}
 					onKeyDown={(e) => {
 						if (e.key === "Enter" || e.key === " ") {
@@ -70,11 +71,12 @@ const PostList = () => {
 					) : (
 						<div className="PotoUser"></div>
 					)}
-				</div>
+				</button>
 				<div className="PostInfo">
 					<div className="InfoData">
-						<div
-							className="InfoName"
+						<button
+							type="button"
+							className="InfoName nonebutton"
 							onClick={() => resID(item.id_user)}
 							onKeyDown={(e) => {
 								if (e.key === "Enter" || e.key === " ") {
@@ -85,7 +87,7 @@ const PostList = () => {
 						>
 							<p className="UserName"> {item.username}</p>
 							<p className="UserNick">{item.usernick}</p>
-						</div>
+						</button>
 						<p className="PostTime">{time(item.time, currentTime)}</p>
 					</div>
 					<p className="PostText">

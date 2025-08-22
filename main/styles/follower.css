@@ -50,6 +50,10 @@
 	background: #0057ff;
 	color: #ffffff;
 }
+.nonebutton{
+  background: transparent;
+  border: none;
+}
 @media (min-width: 1280px) {
 	.followePhoto {
 		margin: 16px 0px 0 16px;
