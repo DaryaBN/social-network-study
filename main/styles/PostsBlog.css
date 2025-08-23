@@ -11,6 +11,11 @@
 	width: 100%;
 	margin-bottom: 0px;
 }
+.PostPoto{
+	display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 .PotoUser {
 	width: 57px;
 	height: 57px;
@@ -32,6 +37,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	height: 32px;
+	padding: 0px;
 }
 .UserName {
 	font-weight: 700;
@@ -95,20 +101,20 @@
 	flex-wrap: nowrap;
 	gap: 10px;
 	font-weight: 400;
-	font-size: 14px;
+	font-size: 12px;
 	line-height: 24px;
 	color: #b1b1b1;
+	padding-top: 3px;
 }
 .LikeIMG {
 	height: 13px;
 	margin-top: 5px;
 }
 .LikeIMGfilter {
-	height: 13px;
+	height: 14px;
 	margin-top: 7px;
 	filter: brightness(1) invert(1) sepia(1) saturate(9) hue-rotate(-50deg);
 }
-
 .LikeText {
 	color: #b1b1b1;
 	margin-top: 0;
@@ -179,6 +185,10 @@
 .buttonText {
 	margin: 4px auto 4px auto;
 }
+.nonebutton{
+  background: transparent;
+  border: none;
+}
 @media (min-width: 1280px) {
 	.TitleMess {
 		font-size: 36px;
@@ -191,6 +201,7 @@
 		margin-right: auto;
 	}
 	.LogicBlok1 {
+		display: block;
 		margin-left: 0px;
 		margin-top: 0px;
 		width: 632px;
@@ -199,6 +210,7 @@
 	}
 	.logicBlok2 {
 		display: block;
+
 		width: 280px;
 		margin-left: 10px;
 		margin-right: 0px;
@@ -285,6 +297,7 @@
 		border-radius: 50px;
 		background-size: cover;
 		object-fit: cover;
+		border: none;
 	}
 	.blogRead {
 		float: right;
@@ -335,6 +348,7 @@
 	}
 	.Right {
 		float: right;
+		display: block;
 	}
 	.br {
 		display: none;

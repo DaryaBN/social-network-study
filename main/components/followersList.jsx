@@ -111,7 +111,8 @@ const Subscribers = () => {
 						alt="user"
 					/>
 				) : (
-					<div
+					<button
+						type="button"
 						className="followePhoto"
 						onClick={() => resID(item.user_id)}
 						onKeyDown={(e) => {
@@ -120,11 +121,12 @@ const Subscribers = () => {
 							}
 						}}
 						style={{ cursor: "pointer" }}
-					></div>
+					></button>
 				)}
 				<div className="folloverInfo">
-					<div
-						className="folloverName"
+					<button
+						type="button"
+						className="folloverName nonebutton"
 						onClick={() => resID(item.user_id)}
 						onKeyDown={(e) => {
 							if (e.key === "Enter" || e.key === " ") {
@@ -134,9 +136,10 @@ const Subscribers = () => {
 						style={{ cursor: "pointer" }}
 					>
 						{item.username}
-					</div>
-					<div
-						className="folloverNick"
+					</button>
+					<button
+						type="button"
+						className="folloverNick nonebutton"
 						onClick={() => resID(item.user_id)}
 						onKeyDown={(e) => {
 							if (e.key === "Enter" || e.key === " ") {
@@ -146,11 +149,12 @@ const Subscribers = () => {
 						style={{ cursor: "pointer" }}
 					>
 						{item.usernick}
-					</div>
+					</button>
 					<div className="folloverStstus">{item.info}</div>
 				</div>
 				{myId !== item.user_id && (
-					<div
+					<button
+						type="button"
 						className={
 							isSuccess[item.user_id]
 								? "folloverButtun folloverButtunColor"
@@ -165,7 +169,7 @@ const Subscribers = () => {
 						style={{ cursor: "pointer" }}
 					>
 						{isSuccess[item.user_id] ? "Читаю" : "Читать"}
-					</div>
+					</button>
 				)}
 			</div>
 			<div className="line"></div>

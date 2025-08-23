@@ -131,6 +131,8 @@ const ModalNewUser = ({ activeNewUser, setActiveNewUser }) => {
 					setActiveNewUser(false);
 				}
 			}}
+			role="dialog"
+			tabIndex={-1}
 		>
 			<div
 				className={activeNewUser ? "modalContent  active" : "modalContent"}
@@ -140,9 +142,12 @@ const ModalNewUser = ({ activeNewUser, setActiveNewUser }) => {
 						e.stopPropagation();
 					}
 				}}
+				role="document"
+				tabIndex={-1}
 			>
 				<form onSubmit={handleSubmit}>
-					<div
+					<button
+						type="button"
 						className="titleClose"
 						onClick={() => setActiveNewUser(false)}
 						onKeyDown={(e) => {
@@ -150,7 +155,7 @@ const ModalNewUser = ({ activeNewUser, setActiveNewUser }) => {
 								setActiveNewUser(false);
 							}
 						}}
-					></div>
+					></button>
 					<div className="title">
 						<h1 className="titleText">Регистрация</h1>
 						<img

@@ -89,6 +89,8 @@ const Modal = ({ active, setActive }) => {
 					setActive(false);
 				}
 			}}
+			role="dialog"
+			tabIndex={-1}
 		>
 			<div
 				className={active ? "modalContent  active" : "modalContent"}
@@ -98,17 +100,20 @@ const Modal = ({ active, setActive }) => {
 						e.stopPropagation();
 					}
 				}}
+				role="document"
+				tabIndex={-1}
 			>
 				<form onSubmit={handleSubmit}>
-					<div
-						className="titleClose"
+					<button
+						type="button"
+						className="titleClose"	
 						onClick={() => setActive(false)}
 						onKeyDown={(e) => {
 							if (e.key === "Enter" || e.key === " ") {
 								setActive(false);
 							}
 						}}
-					></div>
+					></button>
 					<div className="title">
 						<h1 className="titleText">Авторизация</h1>
 						<img

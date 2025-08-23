@@ -15,10 +15,7 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true,
-			"a11y": {
-				"noStaticElementInteractions": "off"
-			}
+			"recommended": true
 		}
 	},
 	"javascript": {

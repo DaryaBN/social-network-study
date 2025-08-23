@@ -57,11 +57,11 @@ export const postHashtag = createAsyncThunk(
 
 export const NewPostContent = createAsyncThunk(
 	"counter/NewPostContent",
-	async ({ tx, im }, { rejectWithValue, dispatch }) => {
+	async ({ textOFpost, imgOFpost }, { rejectWithValue, dispatch }) => {
 		try {
 			const postMes = {
-				mes: tx,
-				img: im,
+				mes: textOFpost,
+				img: imgOFpost,
 			};
 			const response = await fetch("/posts", {
 				method: "POST",

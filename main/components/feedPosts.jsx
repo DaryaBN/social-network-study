@@ -39,7 +39,9 @@ const FeedPosts = () => {
 			<div className="Indent"></div>
 			<div className="Logic">
 				<div className="Left">
-					<div
+					<button
+						type="button"
+						className="openFeedTextPost"
 						onClick={toggleWrite}
 						onKeyDown={(e) => {
 							if (e.key === "Enter" || e.key === " ") {
@@ -49,7 +51,7 @@ const FeedPosts = () => {
 						style={{ cursor: "pointer" }}
 					>
 						{!wirteOpenWeb && <FeedTextPost NameProps={name} />}
-					</div>
+					</button>
 					{wirteOpenWeb && (
 						<div className="newPostWirte">
 							<FeedNewPost onClose={closePostWindow} />
@@ -61,7 +63,8 @@ const FeedPosts = () => {
 					<div className="LogicBlok1">
 						<PostList />
 					</div>
-					<div
+					<button
+						type="button"
 						className="rectangle"
 						onClick={() => setWirteOpen(true)}
 						onKeyDown={(e) => {
@@ -72,7 +75,7 @@ const FeedPosts = () => {
 						style={{ cursor: "pointer" }}
 					>
 						<img src="/img/Vectorнаписать.svg" alt="перо" />
-					</div>
+					</button>
 				</div>
 				<div className="Right">
 					<FeedUser UserProps={name} />

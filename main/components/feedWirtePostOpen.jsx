@@ -16,6 +16,8 @@ const OpenWirtePosts = ({ open, setOpen }) => {
 				}
 			}}
 			style={{ cursor: "pointer" }}
+			role="dialog"
+			tabIndex={-1}
 		>
 			<div
 				className={open ? "PostOpenContent  active" : "PostOpenContent"}
@@ -26,8 +28,11 @@ const OpenWirtePosts = ({ open, setOpen }) => {
 					}
 				}}
 				style={{ cursor: "pointer" }}
+				role="document"
+				tabIndex={-1}
 			>
-				<div
+				<button
+					type="button"
 					className="titleClose"
 					onClick={() => setActive(false)}
 					onKeyDown={(e) => {
@@ -36,7 +41,7 @@ const OpenWirtePosts = ({ open, setOpen }) => {
 						}
 					}}
 					style={{ cursor: "pointer" }}
-				></div>
+				></button>
 				<FeedNewPost onClose={closePostWindowPhone} />
 			</div>
 		</div>

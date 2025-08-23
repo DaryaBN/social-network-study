@@ -110,7 +110,8 @@ const BloggersList = () => {
 					alt="user"
 				/>
 			) : (
-				<div
+				<button
+					type="button"
 					className="blogIMG"
 					onClick={() => resID(item.user_id)}
 					onKeyDown={(e) => {
@@ -119,9 +120,10 @@ const BloggersList = () => {
 						}
 					}}
 					style={{ cursor: "pointer" }}
-				></div>
+				></button>
 			)}
-			<div
+			<button
+				type="button"
 				className={
 					isSuccess[item.user_id] ? "blogRead blogReadColor" : "blogRead"
 				}
@@ -136,7 +138,7 @@ const BloggersList = () => {
 				<div className={loading ? "" : "spinner"}>
 					{loading ? (isSuccess[item.user_id] ? "Читаю" : "Читать") : ""}
 				</div>
-			</div>
+			</button>
 			<p
 				className="blogName"
 				onClick={() => resID(item.user_id)}
