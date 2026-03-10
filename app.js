@@ -22,8 +22,8 @@ app.listen(port, () => {
 
 const { Pool } = pkg;
 const pool = new Pool({
-	user: "postgres.jrlyrtxuiztwjvtwhjbi",
-	host: "aws-1-eu-central-1.pooler.supabase.com",
+	user: "postgres",
+	host: "db.jrlyrtxuiztwjvtwhjbi.supabase.co",
 	database: "postgres",
 	password: "yYM_Y9xxNjux@d.",
 	port: 5432,
